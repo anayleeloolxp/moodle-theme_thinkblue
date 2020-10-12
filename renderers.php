@@ -32,8 +32,8 @@ class theme_thinkblue_core_renderer extends core_renderer {
     /**
      * User menu renderer
      *
-     * @params stdClass|stdObject $user User object
-     * @params string $withlinks with links
+     * @param stdClass|stdObject $user User object
+     * @param string $withlinks with links
      */
     public function user_menu($user = null, $withlinks = null) {
         global $USER, $CFG;

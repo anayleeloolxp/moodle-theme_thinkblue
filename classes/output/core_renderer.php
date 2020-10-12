@@ -472,7 +472,13 @@ class core_renderer extends \core_renderer {
         ORIGINAL END. */
     }
 	
-	public function user_menu($user = null, $withlinks = null) {
+	/**
+     * User menu renderer
+     *
+     * @param stdClass|stdObject $user User object
+     * @param string $withlinks with links
+     */
+    public function user_menu($user = null, $withlinks = null) {
         global $USER, $CFG;
         require_once($CFG->dirroot . '/user/lib.php');
 
@@ -665,6 +671,12 @@ class core_renderer extends \core_renderer {
         );
     }
 
+    /**
+     * Context Header
+     *
+     * @param stdClass|stdObject $headerinfo User object
+     * @param string $headinglevel with links
+     */
     public function context_header($headerinfo = null, $headinglevel = 1) {
         global $DB, $USER, $CFG, $SITE;
         require_once($CFG->dirroot . '/user/lib.php');
