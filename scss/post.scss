@@ -866,7 +866,7 @@ a[href^="mailto"]::before {
     min-height: 50px;
     border-top: 1px solid #fff;
     flex-shrink: 0;
-    background: #eeeeee !important;
+    background: #eee !important;
 }
 
 /*------------------------------------
@@ -1381,7 +1381,7 @@ body#page-course-index-category section#region-main {
 }
 .coursebox > .info > .coursename a {
     background: none;
-    color: #555555;
+    color: #555;
 }
 #page-course-index-category form#coursesearch button.btn.btn-secondary {
     background: #00bcbe;
@@ -1743,7 +1743,6 @@ div#page-navbar ol.breadcrumb {
 
 #page-footer {
     background: #f5f6fa !important;
-    border-top: none;
     color: #666;
     text-align: left;
     border-top: 2px solid #00bcbe;
@@ -2655,7 +2654,7 @@ body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-con
 }
 .que.multichoice.deferredfeedback .content {
     width: auto;
-    margin: 0px;
+    margin: 0;
     padding-left: 15px;
     max-width: 75%;
     flex: 0 0 75%;
@@ -2804,7 +2803,6 @@ body#page-login-signup #page-wrapper #region-main span.float-sm-right.text-nowra
 #page-login-index #page #page-content .rememberpass label::after {
     content: "\f00c";
     font: normal normal normal 14px/1 FontAwesome;
-    opacity: 1;
     transition: color 0.3s ease-out;
     position: absolute;
     width: 20px;
@@ -3671,7 +3669,7 @@ body#page-course-index-category .box.py-3.generalbox.info {
     background: rgba(0, 0, 0, 0.3) !important;
 }
 .pagelayout-frontpage #page {
-    margin-top: 0px;
+    margin-top: 0;
 }
 nav.fixed-top.navbar {
     max-height: inherit;
@@ -3890,6 +3888,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         max-width: 540px;
     }
 }
+
 @media only screen and (min-width: 768px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
@@ -3899,6 +3898,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         max-width: 720px;
     }
 }
+
 @media only screen and (min-width: 992px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
@@ -3908,6 +3908,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         max-width: 960px;
     }
 }
+
 @media only screen and (min-width: 1200px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
@@ -3917,6 +3918,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         max-width: 1140px;
     }
 }
+
 @media only screen and (min-width: 1280px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
@@ -3938,6 +3940,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         min-width: 800px;
     }
 }
+
 @media only screen and (max-width: 1199px) {
     .block_tb_slider .bx-wrapper img {
         min-height: 520px;
@@ -4033,6 +4036,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 17px;
     }
 }
+
 @media only screen and (max-width: 991px) {
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
         font-size: 32px;
@@ -4278,6 +4282,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         text-align: justify;
     }
 }
+
 @media only screen and (max-width: 767px) {
     #page-wrapper header#page-header .col-12.pt-3.pb-3,
     #page-wrapper header#page-header .pt-3.pb-3.col-xs-12 {
@@ -4460,6 +4465,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         border: 1px solid #ccc;
     }
 }
+
 @media only screen and (max-width: 575px) {
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
         font-size: 20px;
