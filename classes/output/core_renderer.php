@@ -67,7 +67,6 @@ class core_renderer extends \core_renderer {
         if (get_config('theme_thinkblue', 'courseeditbutton') == '1') {
             return \core_renderer::edit_button($url);
         }
-        
     }
 
     /**
@@ -117,8 +116,7 @@ class core_renderer extends \core_renderer {
             return $this->page->theme->setting_file_url('favicon', 'favicon');
         } else {
             return $this->image_url('favicon', 'theme');
-        }
-        
+        }        
     }
 
     /**
