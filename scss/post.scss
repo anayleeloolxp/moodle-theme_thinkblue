@@ -792,10 +792,7 @@ blockquote::before {
     }
 
     /* If all Moodle links are hidden in the footer, we don't need a top line for the performance info.*/
-    @if variable-exists(footerhidehelplink) and
-        variable-exists(footerhidelogininfo) and
-        variable-exists(footerhidehomelink)
-    {
+    @if variable-exists(footerhidehelplink) and variable-exists(footerhidelogininfo) and variable-exists(footerhidehomelink) {
         @if $footerhidehelplink == "yes" and $footerhidelogininfo == "yes" and $footerhidehomelink == "yes" {
             .container-fluid:nth-of-type(2) > .row-fluid {
                 border-top: none;
@@ -1123,8 +1120,7 @@ a[href^="mailto"]::before {
     /* Remove border of child nodes which should appear as one block. */
     .list-group-item[data-key^="localboostnavigationactivity"],
     .list-group-item[data-parent-key^="localboostnavigationcustom"],
-    .list-group-item[data-key="localboostnavigationcoursesections"][data-collapse="0"]
-        + .list-group-item[href$="#section-0"] {
+    .list-group-item[data-key="localboostnavigationcoursesections"][data-collapse="0"] + .list-group-item[href$="#section-0"] {
         border-top: none;
     }
 }
@@ -1481,11 +1477,7 @@ div.course_category_tree .courses .coursebox .info .coursename {
 .adminloggedin .context-header-settings-menu .action-menu .action-menu-trigger .dropdown-toggle {
     display: inline-block;
 }
-body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
-    div.course_category_tree
-    .courses
-    .coursebox
-    .summary {
+body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .summary {
     position: static;
     width: 100%;
     color: #333;
@@ -1848,12 +1840,7 @@ span.text_copy {
     background: #dbdbdb;
     color: #333;
 }
-.preferences-container
-    .preference-table
-    .preference-row
-    .preference-state
-    input[type="checkbox"]:checked
-    + .preference-state-status-container {
+.preferences-container .preference-table .preference-row .preference-state input[type="checkbox"]:checked + .preference-state-status-container {
     background: #00bcbe;
     color: #fff;
 }
@@ -2409,12 +2396,7 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     /*top: 30px;*/
     height: auto;
 }
-.course-content
-    ul.topics
-    li.section.main
-    li.activity.modtype_regularvideo
-    .activityinstance
-    img.iconlarge.activityicon {
+.course-content ul.topics li.section.main li.activity.modtype_regularvideo .activityinstance img.iconlarge.activityicon {
     width: 110px;
     left: 0;
     top: 0;
@@ -2456,20 +2438,8 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     display: inline-block;
     text-decoration: none;
 }
-#page-course-view-topics
-    .course-content
-    ul.topics
-    li.section.main
-    li.activity
-    .contentafterlink
-    img.atto_image_button_left,
-#page-course-view-topics
-    .course-content
-    ul.topics
-    li.section.main
-    li.activity
-    .contentwithoutlink
-    img.atto_image_button_left {
+#page-course-view-topics .course-content ul.topics li.section.main li.activity .contentafterlink img.atto_image_button_left,
+#page-course-view-topics .course-content ul.topics li.section.main li.activity .contentwithoutlink img.atto_image_button_left {
     display: none;
 }
 body#page-course-view-topics div#completionprogressid {
@@ -2889,25 +2859,11 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body {
     text-align: center;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .card-deck
-    .card-body
-    p.card-text {
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body p.card-text {
     font-weight: 400;
     font-size: 22px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .card-deck
-    .card-body
-    h5.card-title {
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body h5.card-title {
     font-size: 45px;
     font-weight: 700;
     margin: 0 0 15px;
@@ -2940,34 +2896,13 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     margin: 0 auto;
     padding: 0 15px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-40
-    .contentwithoutlink
-    .no-overflow,
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-40 .contentwithoutlink .no-overflow,
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-38 .contentwithoutlink,
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-42
-    .contentwithoutlink
-    .no-overflow,
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-42 .contentwithoutlink .no-overflow,
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-41 .contentwithoutlink {
     text-align: center;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-39
-    .contentwithoutlink
-    .card {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card {
     width: 100% !important;
     display: block;
 }
@@ -2978,42 +2913,18 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 {
     padding: 40px 0;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-39
-    .contentwithoutlink
-    .card
-    img.img-responsive.atto_image_button_text-top {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card img.img-responsive.atto_image_button_text-top {
     width: 33%;
     margin: 0;
     padding-right: 10px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-39
-    .contentwithoutlink
-    .card
-    .card-block {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card .card-block {
     display: inline-block;
     vertical-align: top;
     width: 65%;
     padding-left: 10px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity
-    .card
-    .card-block
-    h4.card-title {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block h4.card-title {
     font-weight: 700;
     font-size: 25px;
     margin: 0 0 20px;
@@ -3023,28 +2934,13 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     margin: 0 0 30px;
     font-size: 17px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity
-    .card
-    .card-block
-    a.btn.btn-primary {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block a.btn.btn-primary {
     float: right;
 }
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 {
     padding: 40px 0 180px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity
-    .contentwithoutlink
-    h4.card-title {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink h4.card-title {
     font-weight: 700;
     font-size: 25px;
     margin: 0 0 25px;
@@ -3057,42 +2953,18 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     padding: 20px;
     position: relative;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-43
-    .card-deck
-    .card
-    img.card-img-top {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card img.card-img-top {
     width: 80px;
     height: 80px;
     margin: 0 auto;
     border-radius: 50%;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-43
-    .card-deck
-    .card
-    p.card-text {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text {
     font-size: 20px;
     margin: 0 0 15px;
     font-style: italic;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-43
-    .card-deck
-    .card
-    p.card-text:last-child {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text:last-child {
     font-size: 15px;
     width: 50%;
     margin: 0 auto;
@@ -3103,14 +2975,7 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     text-align: center;
     padding: 0 0 50px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-43
-    .card-deck
-    .card::after {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after {
     content: "";
 }
 
@@ -3126,28 +2991,10 @@ a.tocourse.back_to_course_home:before {
     font: normal normal normal 14px/1 FontAwesome;
     padding-right: 10px;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .carousel-item
-    .carousel-main-text,
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .carousel-item
-    .carousel-sub-text,
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text,
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text,
 body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-button,
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .carousel-item
-    .carousel-questions {
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-questions {
     position: absolute;
     width: 100%;
     text-align: center;
@@ -3155,13 +3002,7 @@ body#page-site-index
     transform: translate(-50%, 0);
     z-index: 1;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .carousel-item
-    .carousel-main-text {
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
     top: 22%;
     font-size: 50px;
     font-weight: 700;
@@ -3169,13 +3010,7 @@ body#page-site-index
     left: 50%;
     font-family: "Nunito Sans", sans-serif;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .carousel-item
-    .carousel-sub-text {
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text {
     top: 44%;
     font-size: 30px;
     font-weight: 600;
@@ -3187,13 +3022,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     top: 60%;
     left: 50%;
 }
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    .contentwithoutlink
-    .carousel-item
-    .carousel-questions {
+body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-questions {
     top: 69%;
     left: 50%;
     color: #000;
@@ -3388,22 +3217,11 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
 div.course_category_tree .collapsible-actions {
     display: none;
 }
-body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
-    div.course_category_tree
-    .courses
-    .coursebox
-    .info
-    h3.coursename {
+body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
     bottom: auto;
     top: 270px;
 }
-body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
-    div.course_category_tree
-    .courses
-    .coursebox
-    .info
-    h3.coursename
-    a {
+body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename a {
     color: #565656;
 }
 body#page-site-index h5.card-title {
@@ -3595,14 +3413,7 @@ aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_bo
     margin-left: 10px;
 }
 .block_tb_testimonials .tb_testimonials .testimonial_box::before,
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-43
-    .card-deck
-    .card::before {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::before {
     font: normal normal normal 383px FontAwesome;
     content: "\f075";
     position: absolute;
@@ -3617,14 +3428,7 @@ body#page-site-index
     color: #d2d2d2;
 }
 .block_tb_testimonials .tb_testimonials .testimonial_box::after,
-body#page-site-index
-    div#page
-    div#page-content
-    section#region-main
-    ul.section
-    .activity#module-43
-    .card-deck
-    .card::after {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after {
     font: normal normal normal 380px FontAwesome;
     content: "\f075";
     position: absolute;
@@ -3809,8 +3613,7 @@ body#page-login-signup footer#page-footer {
 }
 #page-login-index #page,
 body#page-login-signup #page {
-    background: url("/pluginfile.php/1/theme_thinkblue/additionalresources/0/signin_bck.jpg") no-repeat center center /
-        cover !important;
+    background: url("/pluginfile.php/1/theme_thinkblue/additionalresources/0/signin_bck.jpg") no-repeat center center / cover !important;
     background-attachment: fixed !important;
 }
 body#page-login-signup #region-main .container-fluid {
@@ -4125,22 +3928,10 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
 }
 
 @media only screen and (max-width: 1280px) {
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .carousel-item
-        .carousel-main-text {
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
         font-size: 40px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .carousel-item
-        .carousel-sub-text {
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text {
         font-size: 20px;
     }
     .preferences-container table.table.preference-table {
@@ -4155,77 +3946,20 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body {
         padding: 10px 10px 0;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        .card-body
-        h5.card-title,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        .userprofile
-        .profile_tree
-        section
-        h5.card-title,
-    .userprofile
-        .profile_tree
-        body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        section
-        h5.card-title,
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body h5.card-title,
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .userprofile .profile_tree section h5.card-title,
+    .userprofile .profile_tree body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck section h5.card-title,
     aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
         font-size: 35px;
         margin: 0 0 5px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        .card-body
-        p.card-text,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        .userprofile
-        .profile_tree
-        section
-        p.card-text,
-    .userprofile
-        .profile_tree
-        body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        section
-        p.card-text,
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body p.card-text,
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .userprofile .profile_tree section p.card-text,
+    .userprofile .profile_tree body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck section p.card-text,
     aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_des {
         font-size: 17px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        .card-body
-        p.card-text {
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body p.card-text {
         padding: 0 10px 15px;
     }
     .coursebox .title a {
@@ -4235,40 +3969,17 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 18px !important;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box .testimonial_title,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card
-        p.card-text {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text {
         font-size: 16px;
     }
     .block_tb_testimonials .testimonial_des,
     .block_tb_testimonials .testimonial_pos,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card
-        p.card-text:last-child {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text:last-child {
         font-size: 12px;
         width: 70%;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box::after,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card::after {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after {
         // border-top: 80px solid #f8f8fa;
         // border-left: 0 solid transparent;
         // border-right: 55px solid transparent;
@@ -4279,14 +3990,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         line-height: 268px;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box::before,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card::before {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::before {
         // border-top: 81px solid #d2d2d2;
         // border-left: 0 solid transparent;
         // border-right: 56px solid transparent;
@@ -4296,27 +4000,11 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         left: 0;
         line-height: 270px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity
-        .card
-        .card-block
-        p.card-text {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block p.card-text {
         margin: 0 0 20px;
         font-size: 15px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity
-        .card
-        .card-block
-        h4.card-title {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block h4.card-title {
         font-size: 22px;
     }
     .footer-main .copy-left-txt .image {
@@ -4325,12 +4013,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     .copy-left-txt > div {
         font-size: 13px;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
-        div.course_category_tree
-        .courses
-        .coursebox
-        .info
-        h3.coursename {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
         top: 205px;
         left: 30px;
     }
@@ -4340,13 +4023,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     div.course_category_tree .courses .coursebox .info h3.coursename a {
         font-size: 22px;
     }
-    .pagelayout-mydashboard
-        aside#block-region-content
-        .dashboard-card-deck
-        .card
-        .course-info-container
-        .text-muted
-        span {
+    .pagelayout-mydashboard aside#block-region-content .dashboard-card-deck .card .course-info-container .text-muted span {
         font-size: 16px;
     }
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
@@ -4386,58 +4063,20 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-weight: 600;
         font-size: 20px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .carousel-item
-        .carousel-main-text {
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
         font-size: 35px;
     }
     body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary,
     .block_tb_testimonials .tb_testimonials .test_get_started a {
         font-size: 15px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity
-        .contentwithoutlink
-        h4.card-title,
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink h4.card-title,
     body#page-site-index .card-body h5.card-title {
         font-size: 22px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        .card-body
-        h5.card-title,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        .userprofile
-        .profile_tree
-        section
-        h5.card-title,
-    .userprofile
-        .profile_tree
-        body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .card-deck
-        section
-        h5.card-title,
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body h5.card-title,
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .userprofile .profile_tree section h5.card-title,
+    .userprofile .profile_tree body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck section h5.card-title,
     aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
         font-size: 25px;
     }
@@ -4446,29 +4085,13 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         padding: 10px;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box .testimonial_title,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card
-        p.card-text {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text {
         font-size: 13px;
         margin: 0 0 5px;
     }
     .block_tb_testimonials .testimonial_des,
     .block_tb_testimonials .testimonial_pos,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card
-        p.card-text:last-child {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text:last-child {
         font-size: 11px;
         text-align: center;
     }
@@ -4490,23 +4113,9 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         border: 1px solid #eee;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box::after,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card::after,
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after,
     .block_tb_testimonials .tb_testimonials .testimonial_box::before,
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-43
-        .card-deck
-        .card::before {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::before {
         content: none !important;
     }
     body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43,
@@ -4537,15 +4146,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink {
         text-align: center;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-39
-        .contentwithoutlink
-        .card
-        .card-block {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card .card-block {
         text-align: left;
     }
     #page-wrapper #page-footer .footer-main {
@@ -4565,22 +4166,10 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     div#theme_switch_link {
         text-align: center;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .carousel-item
-        .carousel-sub-text {
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text {
         top: 48%;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        .contentwithoutlink
-        .carousel-item
-        .carousel-questions {
+    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-questions {
         top: 72%;
     }
     .footer-main .col-md-6 {
@@ -4594,12 +4183,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         padding: 10px 0 0;
         text-align: center;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
-        div.course_category_tree
-        .courses
-        .coursebox
-        .info
-        h3.coursename {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
         top: 155px;
         left: 25px;
         width: calc(100% - 50px);
@@ -4607,11 +4191,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     div.course_category_tree .courses .coursebox .info h3.coursename a {
         font-size: 18px;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
-        div.course_category_tree
-        .courses
-        .coursebox
-        .summary {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .summary {
         margin: 55px 0 10px;
         padding: 0 15px;
     }
@@ -4678,12 +4258,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     .course-content ul.topics h3.sectionname span {
         font-size: 18px;
     }
-    .course-content
-        ul.topics
-        li.section.main
-        li.activity.modtype_regularvideo
-        .activityinstance
-        img.iconlarge.activityicon {
+    .course-content ul.topics li.section.main li.activity.modtype_regularvideo .activityinstance img.iconlarge.activityicon {
         width: 80px;
     }
     .course-content ul.topics li.section.main li.activity span.instancename,
@@ -4760,53 +4335,23 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     }
     body#page-mod-quiz-view #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1,
     body#page-mod-quiz-attempt #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1,
-    body#page-course-view-topics
-        #page-wrapper
-        header#page-header
-        .mr-auto
-        .page-context-header
-        .page-header-headings
-        h1 {
+    body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
         padding-left: 0;
     }
     #block-region-side-pre .no-overflow {
         text-align: justify;
         font-size: 14px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-39
-        .contentwithoutlink
-        .card
-        .card-block {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card .card-block {
         width: 100%;
         text-align: center;
         padding: 20px 0 0;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity#module-39
-        .contentwithoutlink
-        .card
-        img.img-responsive.atto_image_button_text-top {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card img.img-responsive.atto_image_button_text-top {
         padding: 0;
         margin: 0 auto;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity
-        .card
-        .card-block
-        a.btn.btn-primary {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block a.btn.btn-primary {
         margin: 0 auto;
         float: none;
     }
@@ -4837,12 +4382,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         padding: 5px;
         margin: 0 auto;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
-        div.course_category_tree
-        .courses
-        .coursebox
-        .info
-        h3.coursename {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
         top: auto;
         bottom: 95px;
         width: calc(100% - 50px);
@@ -4945,14 +4485,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         max-width: 100%;
         padding: 0 15px;
     }
-    body#page-site-index
-        div#page
-        div#page-content
-        section#region-main
-        ul.section
-        .activity
-        .contentwithoutlink
-        h4.card-title,
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink h4.card-title,
     body#page-site-index .card-body h5.card-title,
     body#page-site-index .userprofile .profile_tree section h5.card-title,
     .userprofile .profile_tree body#page-site-index section h5.card-title {
