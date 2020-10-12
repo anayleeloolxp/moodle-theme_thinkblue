@@ -7,7 +7,7 @@
 
 /* Change the breakpoint if setting 'breakpoint' is active. */
 @if variable-exists(breakpoint) {
-    @if $breakpoint == 'yes' {
+    @if $breakpoint == "yes" {
         #region-main.has-blocks {
             display: inline-block;
             width: calc(100% - #{$blocks-plus-gutter});
@@ -38,7 +38,6 @@
         }
     }
 }
-
 
 /*------------------------------------
   Login page
@@ -184,12 +183,12 @@ body.loginbackgroundimage #page {
 /* Design for the text that can be added to the background images of the login page. */
 #loginbackgroundimagetext span {
     background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .125);
+    border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 /* This will only be needed if the setting "loginform" is checked */
 @if variable-exists(loginform) {
-    @if $loginform == 'yes' {
+    @if $loginform == "yes" {
         /* Make background of login panel slightly transparent */
         #page-login-index #region-main-box {
             div.card {
@@ -221,7 +220,7 @@ body.loginbackgroundimage #page {
  */
 /* Make page navbar dark if setting "darknavabr" is set to yes. */
 @if variable-exists(darknavbar) {
-    @if $darknavbar == 'yes' {
+    @if $darknavbar == "yes" {
         .navbar {
             .navbar-nav .nav-link .icon,
             .navbar-nav .nav-link,
@@ -245,7 +244,6 @@ body.loginbackgroundimage #page {
     }
 }
 
-
 /*------------------------------------
   User menu
   -------------------------------------*/
@@ -253,7 +251,7 @@ body.loginbackgroundimage #page {
 /* Don't display switched role information in the user menu
  * if setting 'showswitchedroleincourse' is active */
 @if variable-exists(showswitchedroleincourse) {
-    @if $showswitchedroleincourse == 'yes' {
+    @if $showswitchedroleincourse == "yes" {
         .userswitchedrole .usermenu {
             .usertext {
                 float: inherit;
@@ -266,12 +264,11 @@ body.loginbackgroundimage #page {
             }
             .avatar img {
                 margin-left: 1rem;
-                margin-right: .5rem;
+                margin-right: 0.5rem;
             }
         }
     }
 }
-
 
 /*------------------------------------
   Nav drawer menu
@@ -300,7 +297,7 @@ body.loginbackgroundimage #page {
      */
     /* Course home menu. */
     .list-group-item[data-key="coursehome"] {
-        padding: .75rem 1.25rem;
+        padding: 0.75rem 1.25rem;
         /* As this node is a heading node, no icon is needed and the media span can be hidden. */
         .media-left {
             display: none;
@@ -326,7 +323,7 @@ body.loginbackgroundimage #page {
 
 /* If the setting navdrawerfullwidth is enabled, we want the nav drawer menu to be displayed full size on small screens. */
 @if variable-exists(navdrawerfullwidth) {
-    @if $navdrawerfullwidth == 'yes' {
+    @if $navdrawerfullwidth == "yes" {
         @include media-breakpoint-down(sm) {
             #nav-drawer {
                 width: 100%;
@@ -338,7 +335,6 @@ body.loginbackgroundimage #page {
     }
 }
 
-
 /*------------------------------------
   Course page
   -------------------------------------*/
@@ -349,7 +345,6 @@ body.loginbackgroundimage #page {
         padding: 0.5rem 0;
     }
 }
-
 
 /*------------------------------------
   Course header
@@ -375,7 +370,7 @@ body.loginbackgroundimage #page {
 
 /* If showsettingsincourse is enabled, we have to style the cog icon a bit different. */
 @if variable-exists(showsettingsincourse) {
-    @if $showsettingsincourse == 'yes' {
+    @if $showsettingsincourse == "yes" {
         #page-header {
             /* If the setting is enabled we do not need the triangle icon, because there is no menu
              * popping up next to the cog icon. */
@@ -385,7 +380,6 @@ body.loginbackgroundimage #page {
         }
     }
 }
-
 
 /*------------------------------------
   Course content
@@ -398,7 +392,7 @@ body.loginbackgroundimage #page {
 /* Check if setting theme_thinkblue|section0title is set.
    If set, then revert the styles from .accesshide and set the style to be the same as other section titles. */
 @if variable-exists(section0title) {
-    @if $section0title == 'yes' {
+    @if $section0title == "yes" {
         body.path-course-view #section-0 h3.accesshide {
             position: inherit;
             left: inherit;
@@ -479,7 +473,7 @@ body.loginbackgroundimage #page {
         .section .contentafterlink {
             border-left: 2px solid $gray-light;
             padding-left: 10px;
-            font-size: .9rem;
+            font-size: 0.9rem;
         }
         /* Place meta information in a new line. */
         .resourcelinkdetails {
@@ -565,7 +559,7 @@ body.loginbackgroundimage #page {
 
 /* If showsettingsincourse is enabled */
 @if variable-exists(showsettingsincourse) {
-    @if $showsettingsincourse == 'yes' {
+    @if $showsettingsincourse == "yes" {
         /* We do not show the cog icon on the participants page as the settings on this page are
          * duplicated with the in-course course menu. */
         .path-user #region-main-settings-menu {
@@ -588,12 +582,11 @@ blockquote {
 
 blockquote::before {
     font-family: FontAwesome;
-    content: '\f10e';
+    content: "\f10e";
     font-size: 1.5em;
     padding-right: 10px;
     margin-left: -30px;
 }
-
 
 /*------------------------------------
   Course categories
@@ -611,75 +604,74 @@ blockquote::before {
     }
 }
 
-
 /*------------------------------------
   Blocks
   -------------------------------------*/
 @if variable-exists(blockicon) {
-    @if $blockicon == 'yes' {
+    @if $blockicon == "yes" {
         /* If setting blockicon is checked, add a default Font Awesome icon
          * before the block title. */
         .block .card-title::before {
             font-family: FontAwesome;
-            content: '\f009';
+            content: "\f009";
             font-size: 1.3rem;
             padding-right: 7px;
         }
         /* Provide different, suitable Font Awesome icons for different Moodle blocks. */
         .block_recent_activity .card-title::before {
-            content: '\f017';
+            content: "\f017";
         }
         .block_calendar_month .card-title::before,
         .block_calendar_upcoming .card-title::before {
-            content: '\f133';
+            content: "\f133";
         }
         .block_people .card-title::before {
-            content: '\f0c0';
+            content: "\f0c0";
         }
         .block_quickmail .card-title::before {
-            content: '\f003';
+            content: "\f003";
         }
         .block_activity_module .card-title::before {
-            content: '\f12e';
+            content: "\f12e";
         }
         .block_news_items .card-title::before {
-            content: '\f0a1';
+            content: "\f0a1";
         }
         .block_progress .card-title::before {
-            content: '\f0ae';
+            content: "\f0ae";
         }
         .block_private_files .card-title::before {
-            content: '\f114';
+            content: "\f114";
         }
         .block_comments .card-title::before {
-            content: '\f075';
+            content: "\f075";
         }
         .block_completion_status .card-title::before {
-            content: '\f0e4';
+            content: "\f0e4";
         }
         .block_search_forums .card-title::before {
-            content: '\f0e6';
+            content: "\f0e6";
         }
         .block_admin_bookmarks .card-title::before {
-            content: '\f097';
+            content: "\f097";
         }
         .block_adminblock .card-title::before {
-            content: '\f0fe';
+            content: "\f0fe";
         }
         .block_attendance .card-title::before {
-            content: '\f046';
+            content: "\f046";
         }
         .block_sharing_cart .card-title::before {
-            content: '\f07a';
+            content: "\f07a";
         }
         .block_glossary_random .card-title::before {
-            content: '\f14b';
+            content: "\f14b";
         }
         .block_selfcompletion .card-title::before {
-            content: '\f14a';
+            content: "\f14a";
         }
         .block_badges .card-title::before {
-            content: '\f0a3';
+            content: "\f0a3";
         }
     }
 }
@@ -688,7 +680,6 @@ blockquote::before {
 .block .btn {
     white-space: normal;
 }
-
 
 /*------------------------------------
   Profile Page
@@ -708,7 +699,6 @@ blockquote::before {
 #page-user-profile.editing .breadcrumb-button:first-of-type .singlebutton:first-of-type {
     display: initial;
 }
-
 
 /*------------------------------------
   Page Footer
@@ -748,7 +738,7 @@ blockquote::before {
 
     /* If the setting footerhidehelplink is enabled, then hide the helplink. */
     @if variable-exists(footerhidehelplink) {
-        @if $footerhidehelplink == 'yes' {
+        @if $footerhidehelplink == "yes" {
             .helplink {
                 display: none;
             }
@@ -757,7 +747,7 @@ blockquote::before {
 
     /* If the setting footerhidelogininfo is enabled, then hide the logininfo. */
     @if variable-exists(footerhidelogininfo) {
-        @if $footerhidelogininfo == 'yes' {
+        @if $footerhidelogininfo == "yes" {
             .logininfo {
                 display: none;
             }
@@ -766,7 +756,7 @@ blockquote::before {
 
     /* If the setting footerhidehomelink is enabled, then hide the homelink. */
     @if variable-exists(footerhidehomelink) {
-        @if $footerhidehomelink == 'yes' {
+        @if $footerhidehomelink == "yes" {
             .homelink {
                 display: none;
             }
@@ -775,7 +765,7 @@ blockquote::before {
 
     /* If the setting footerhideusertourslink is enabled, then hide the link to reset the user tour. */
     @if variable-exists(footerhideusertourslink) {
-        @if $footerhideusertourslink == 'yes' {
+        @if $footerhideusertourslink == "yes" {
             .tool_usertours-resettourcontainer {
                 display: none;
             }
@@ -793,7 +783,7 @@ blockquote::before {
 
     /* We need a top border only if there are footer block columns. */
     @if variable-exists(footerblocks) {
-        @if $footerblocks != '0columns' {
+        @if $footerblocks != "0columns" {
             .container-fluid:nth-of-type(2) > .row-fluid {
                 border-top: 1px solid #fff;
                 padding-top: 1rem;
@@ -802,15 +792,17 @@ blockquote::before {
     }
 
     /* If all Moodle links are hidden in the footer, we don't need a top line for the performance info.*/
-    @if variable-exists(footerhidehelplink) and variable-exists(footerhidelogininfo) and variable-exists(footerhidehomelink) {
-        @if $footerhidehelplink == 'yes' and $footerhidelogininfo == 'yes' and $footerhidehomelink == 'yes' {
+    @if variable-exists(footerhidehelplink) and
+        variable-exists(footerhidelogininfo) and
+        variable-exists(footerhidehomelink)
+    {
+        @if $footerhidehelplink == "yes" and $footerhidelogininfo == "yes" and $footerhidehomelink == "yes" {
             .container-fluid:nth-of-type(2) > .row-fluid {
                 border-top: none;
             }
         }
     }
 }
-
 
 /*------------------------------------
   General improvements
@@ -834,7 +826,6 @@ a[href^="mailto"]::before {
     content: "\f003";
     padding-right: 5px;
 }
-
 
 /*------------------------------------
   Maintenance Info
@@ -878,9 +869,8 @@ a[href^="mailto"]::before {
     min-height: 50px;
     border-top: 1px solid #fff;
     flex-shrink: 0;
-    background:#eeeeee !important;
+    background: #eeeeee !important;
 }
-
 
 /*------------------------------------
   Additional Elements
@@ -934,7 +924,7 @@ a[href^="mailto"]::before {
 /* Setting to move 'Switch role to...' menu item to the course settings - but only if
    setting showsettingsincourse is also enabled. */
 @if (variable-exists(incoursesettingsswitchtoroleposition) and variable-exists(showsettingsincourse)) {
-    @if ($incoursesettingsswitchtoroleposition == 'yes' and $showsettingsincourse == 'yes') {
+    @if ($incoursesettingsswitchtoroleposition == "yes" and $showsettingsincourse == "yes") {
         /* Hide the switch role to menu item within the user menu */
         .usermenu {
             .dropdown-menu a[data-title*="switchroleto"],
@@ -965,14 +955,13 @@ a[href^="mailto"]::before {
     min-height: 4rem;
 }
 
-
 /*------------------------------------
   Special Settings
   -------------------------------------*/
 
 /* If the setting "hidefooteronloginpage" is enabled, hide the footer on the login page. */
 @if variable-exists(hidefooteronloginpage) {
-    @if $hidefooteronloginpage == 'yes' {
+    @if $hidefooteronloginpage == "yes" {
         /* Because the footer will be hidden, but the footnote is visible, we have to adapt the position and size to
            match the footnote dimensions. */
         #page-login-index {
@@ -992,7 +981,7 @@ a[href^="mailto"]::before {
 }
 
 @if variable-exists(helptextmodal) {
-    @if $helptextmodal == 'yes' {
+    @if $helptextmodal == "yes" {
         .modal {
             /* Set font-size to normal size as the modals inherit the font size from the element they are placed in.
              * This is not intended and so we force the font size to be the normal size. */
@@ -1008,7 +997,6 @@ a[href^="mailto"]::before {
         }
     }
 }
-
 
 /* ----------------------------------------------------------
  VIDEO JS SKIN
@@ -1126,7 +1114,6 @@ a[href^="mailto"]::before {
     border-radius: 2px;
 }
 
-
 /*------------------------------------
   Special: Additional Plugins
   -------------------------------------*/
@@ -1136,14 +1123,15 @@ a[href^="mailto"]::before {
     /* Remove border of child nodes which should appear as one block. */
     .list-group-item[data-key^="localboostnavigationactivity"],
     .list-group-item[data-parent-key^="localboostnavigationcustom"],
-    .list-group-item[data-key="localboostnavigationcoursesections"][data-collapse="0"] + .list-group-item[href$="#section-0"] {
+    .list-group-item[data-key="localboostnavigationcoursesections"][data-collapse="0"]
+        + .list-group-item[href$="#section-0"] {
         border-top: none;
     }
 }
 /* Special styles for plugin mod_attendance to fix problems with positioning of the table headers in editing mode when
    the add a block widget is placed in the blocks column. */
 @if variable-exists(addablockposition) {
-    @if $addablockposition == 'positionblockregion' {
+    @if $addablockposition == "positionblockregion" {
         #page-mod-attendance-report .attendancereporttable .headcol {
             left: 20px;
         }
@@ -1154,16 +1142,7 @@ a[href^="mailto"]::before {
     }
 }
 
-
-
 /*ours old css*/
-
-
-
-
-
-
-
 
 // @font-face {
 //     font-family: OpenSans-Regular;
@@ -1171,8 +1150,8 @@ a[href^="mailto"]::before {
 //     src: url('../fonts/OpenSans-Regular.eot?#iefix')
 //              format('embedded-opentype'),
 //          url('../fonts/OpenSans-Regular.woff') format('woff'),
-// 		 url('../fonts/OpenSans-Regular.svg#webfont') format('svg'),      
-// 	     url('../fonts/OpenSans-Regular.ttf') format('truetype'); 
+// 		 url('../fonts/OpenSans-Regular.svg#webfont') format('svg'),
+// 	     url('../fonts/OpenSans-Regular.ttf') format('truetype');
 // }
 #region-main {
     // max-width: 1280px;
@@ -1180,10 +1159,11 @@ a[href^="mailto"]::before {
     // margin: 0 auto;
     overflow: inherit;
 }
-#page-wrapper .card, #page-wrapper #region-main {
+#page-wrapper .card,
+#page-wrapper #region-main {
     border: none;
 }
-div.form-inline .form-control{
+div.form-inline .form-control {
     width: 100%;
 }
 div.form-inline input.form-control,
@@ -1199,9 +1179,9 @@ div label.col-form-label {
 div#fitem_id_interests input {
     display: block;
     width: 70%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: .9375rem;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9375rem;
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
@@ -1210,9 +1190,9 @@ div#fitem_id_interests input {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0;
-    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 div#fgroup_id_buttonar {
     margin: 0 0 1rem;
@@ -1227,14 +1207,14 @@ div#fgroup_id_buttonar .col-md-9.form-inline.felement {
 }
 #region-main.has-blocks iframe,
 #page-enrol-index .coursebox .content .summary .no-overflow iframe {
-    width: calc(100% + 2.50rem);
+    width: calc(100% + 2.5rem);
     background: #00bcbe;
     min-height: 488px;
     margin-left: -1.25rem;
     margin-top: -1.25rem;
     margin-bottom: 15px;
 }
-#page-wrapper #region-main>div>h2,
+#page-wrapper #region-main > div > h2,
 #page-wrapper #region-main .region_main_settings_menu_proxy {
     display: none;
 }
@@ -1258,7 +1238,6 @@ aside#block-region-side-pre h5#instance-25-header {
     margin: 0;
 }
 .block.block_course_modulenavigation {
-    
     .backtocourse .tocourse {
         background: none;
         border: none;
@@ -1269,20 +1248,21 @@ aside#block-region-side-pre h5#instance-25-header {
     .section-group .section {
         border: none;
     }
-    .section ul.activities li>a {
+    .section ul.activities li > a {
         border: none;
         padding: 15px;
         color: #333;
     }
-    .pagination>li a, .allpagination>li a {
+    .pagination > li a,
+    .allpagination > li a {
         padding: 10px;
     }
-    .section-default>.module-navigation-section-heading {
+    .section-default > .module-navigation-section-heading {
         border: none;
         background: none;
         margin: 0 0 10px;
     }
-    .section-default>.module-navigation-section-heading+.section-collapse>.section-body {
+    .section-default > .module-navigation-section-heading + .section-collapse > .section-body {
         border: none;
     }
 }
@@ -1403,14 +1383,14 @@ body#page-course-index-category section#region-main {
     text-align: center;
     padding: 0;
 }
-.coursebox>.info>.coursename a {
+.coursebox > .info > .coursename a {
     background: none;
     color: #555555;
 }
 #page-course-index-category form#coursesearch button.btn.btn-secondary {
     background: #00bcbe;
     color: #fff;
-    padding: .375rem 1.75rem;
+    padding: 0.375rem 1.75rem;
 }
 div.course_category_tree .courses {
     display: flex;
@@ -1466,7 +1446,7 @@ div.course_category_tree .courses .coursebox ul.teachers {
     top: 188px;
 }
 div.course_category_tree .courses .coursebox .courseimage::before {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 0;
     left: 0;
@@ -1490,7 +1470,7 @@ div.course_category_tree .courses .coursebox .info h3.coursename a {
     background: none;
     padding: 0;
     font-size: 25px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 div.course_category_tree .courses .coursebox .info .coursename {
     margin: 0;
@@ -1501,7 +1481,11 @@ div.course_category_tree .courses .coursebox .info .coursename {
 .adminloggedin .context-header-settings-menu .action-menu .action-menu-trigger .dropdown-toggle {
     display: inline-block;
 }
-body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .summary {
+body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
+    div.course_category_tree
+    .courses
+    .coursebox
+    .summary {
     position: static;
     width: 100%;
     color: #333;
@@ -1624,17 +1608,17 @@ body#page-blog-index div.forumpost.blog_entry {
     float: none;
     margin: 10px 0 0;
 }
-.block_blog_menu form.blogsearchform>div {
+.block_blog_menu form.blogsearchform > div {
     display: flex;
     margin: 10px 0 0;
     flex-wrap: wrap;
 }
-.block_blog_menu form.blogsearchform>div input#blogsearchquery {
+.block_blog_menu form.blogsearchform > div input#blogsearchquery {
     border: 1px solid #00bcbe;
     padding: 3px 10px;
     width: calc(100% - 70px);
 }
-.block_blog_menu form.blogsearchform>div input[type="submit"] {
+.block_blog_menu form.blogsearchform > div input[type="submit"] {
     background: #00bcbe;
     width: 70px;
     border: 1px solid #00bcbe;
@@ -1699,7 +1683,9 @@ body#page-blog-index div.forumpost.blog_entry {
     width: 100%;
     text-align: center;
 }
-input.btn-primary, button.btn-primary, button.btn-secondary,
+input.btn-primary,
+button.btn-primary,
+button.btn-secondary,
 a.btn-primary {
     color: #fff !important;
     background-color: #00bcbe !important;
@@ -1712,7 +1698,7 @@ a.btn-primary {
 .adminloggedin #region-main-settings-menu .action-menu .dropdown-toggle {
     display: inline-block;
 }
-.adminloggedin #region-main-settings-menu>div {
+.adminloggedin #region-main-settings-menu > div {
     margin: 0;
 }
 // #page-mod-regularvideo-view .mr-auto .page-context-header .page-header-headings {
@@ -1723,19 +1709,19 @@ a.btn-primary {
     padding: 0 2px;
 }
 .usermenu .action-menu .dropdown-toggle {
-    color: #AFAFAF;
+    color: #afafaf;
 }
 .usermenu .action-menu .dropdown-toggle .usertext.mr-1 {
     color: #545454;
-	font-weight: 500;
+    font-weight: 500;
 }
 .usermenu .dropdown-toggle::after {
-    border-top: .4em solid;
-    border-right: .4em solid transparent;
-    border-left: .4em solid transparent;
+    border-top: 0.4em solid;
+    border-right: 0.4em solid transparent;
+    border-left: 0.4em solid transparent;
 }
 div#page-navbar ol.breadcrumb {
-    display : none;
+    display: none;
 }
 .availabilityinfo.isrestricted.isfullinfo {
     display: none;
@@ -1754,14 +1740,13 @@ div#page-navbar ol.breadcrumb {
     padding: 0;
 }
 
-
-.availabilityinfo.isrestricted { 
+.availabilityinfo.isrestricted {
     display: none;
 }
 
 .activityinstance img.activityicon {
-	width: 110px;
-	height: 62px;
+    width: 110px;
+    height: 62px;
 }
 
 #page-footer {
@@ -1769,7 +1754,7 @@ div#page-navbar ol.breadcrumb {
     border-top: none;
     color: #666;
     text-align: left;
-	border-top: 2px solid #00bcbe;
+    border-top: 2px solid #00bcbe;
 }
 
 #nav-drawer {
@@ -1779,15 +1764,16 @@ div#page-navbar ol.breadcrumb {
 #page-footer .col-sm-3 {
     float: left;
 }
-.social_media_links, .copyright_section {
+.social_media_links,
+.copyright_section {
     float: left;
-	margin-top: 20px;
+    margin-top: 20px;
 }
 #page-footer h2 {
     font-size: 22px;
     color: #737373;
     font-weight: 500;
-	text-align: left;
+    text-align: left;
 }
 #page-footer ul {
     list-style: none;
@@ -1816,8 +1802,8 @@ span.text_copy {
 #page-footer .social_media_links ul {
     margin-top: 0;
 }
-.social_media_links{
-	line-height: 40px;
+.social_media_links {
+    line-height: 40px;
 }
 #page-wrapper #page #page-content {
     padding: 20px 10px;
@@ -1862,7 +1848,12 @@ span.text_copy {
     background: #dbdbdb;
     color: #333;
 }
-.preferences-container .preference-table .preference-row .preference-state input[type="checkbox"]:checked+.preference-state-status-container {
+.preferences-container
+    .preference-table
+    .preference-row
+    .preference-state
+    input[type="checkbox"]:checked
+    + .preference-state-status-container {
     background: #00bcbe;
     color: #fff;
 }
@@ -1870,7 +1861,8 @@ span.text_copy {
 #page-login-change_password form .col-md-3 span.float-sm-right.text-nowrap {
     display: none;
 }
-div#fgroup_id_buttonar .col-md-3, div#fgroup_id_buttonar .col-md-9 {
+div#fgroup_id_buttonar .col-md-3,
+div#fgroup_id_buttonar .col-md-9 {
     flex: 0 0 100%;
     max-width: 100%;
 }
@@ -1950,12 +1942,12 @@ div#nav-drawer[data-region="drawer"] a.list-group-item.list-group-item-action,
 body#page-site-index div#nav-drawer.closed[data-region="drawer"] a.list-group-item.list-group-item-action {
     margin: 0;
     display: block;
-    padding: 20px 0!important;
+    padding: 20px 0 !important;
     border: none;
 }
 div#nav-drawer.closed[data-region="drawer"] a.list-group-item.list-group-item-action,
 body#page-site-index div#nav-drawer[data-region="drawer"] a.list-group-item.list-group-item-action {
-    padding: 12px 10px 12px 10px!important;
+    padding: 12px 10px 12px 10px !important;
 }
 div#nav-drawer[data-region="drawer"] a.list-group-item.list-group-item-action.active {
     color: #5d63bb !important;
@@ -1988,7 +1980,7 @@ div label.col-form-label {
 #page-login-index #region-main-box .form-control,
 #page-login-index #region-main-box .custom-select,
 #page-login-signup #region-main-box .form-control,
-#page-login-signup #region-main-box .custom-select { 
+#page-login-signup #region-main-box .custom-select {
     height: 50px;
     border: 1px solid #ebebeb;
     font-size: 13px;
@@ -2006,7 +1998,7 @@ body#page-login-signup #page-wrapper div#fitem_id_passwordpolicyinfo {
     display: inline;
 }
 #region-main-box div#fitem_id_currentpicture {
-    display: block !important; 
+    display: block !important;
 }
 #region-main-box #fitem_id_currentpicture .col-md-3 {
     margin-right: 45px;
@@ -2027,7 +2019,7 @@ body#page-login-signup #page-wrapper #region-main .col-md-9.form-inline.felement
 #fitem_id_imagefile .fp-viewbar.btn-group.float-sm-right a {
     background: none;
     border: none;
-    color: #999 !important
+    color: #999 !important;
 }
 #fitem_id_imagefile .fp-vb-icons.btn.btn-secondary.btn-sm.checked {
     background: none !important;
@@ -2050,15 +2042,16 @@ body#page-login-signup #page-wrapper #region-main .col-md-9.form-inline.felement
     display: inline-block;
     vertical-align: middle;
 }
-#fitem_id_imagefile .filepicker-filelist, #fitem_id_imagefile .filemanager-container {
+#fitem_id_imagefile .filepicker-filelist,
+#fitem_id_imagefile .filemanager-container {
     min-height: 300px;
     border-top: 0;
 }
-#fitem_id_imagefile .filepicker-filelist .filepicker-container, 
-#fitem_id_imagefile .filemanager.fm-noitems .fm-empty-container{
-    padding-top: 225px 
+#fitem_id_imagefile .filepicker-filelist .filepicker-container,
+#fitem_id_imagefile .filemanager.fm-noitems .fm-empty-container {
+    padding-top: 225px;
 }
-#fitem_id_imagefile .dndupload-arrow{
+#fitem_id_imagefile .dndupload-arrow {
     top: 75px;
 }
 #fitem_id_imagefile .form-filetypes-descriptions.w-100 {
@@ -2069,8 +2062,8 @@ body#page-login-signup #page-wrapper #region-main .col-md-9.form-inline.felement
     margin-top: 20px;
 }
 fieldset.clearfix.collapsible.collapsed {
-    border: none!important;
-    margin-bottom:.5rem !important;
+    border: none !important;
+    margin-bottom: 0.5rem !important;
     padding-bottom: 0 !important;
 }
 fieldset.clearfix.collapsible {
@@ -2080,7 +2073,7 @@ fieldset.clearfix.collapsible {
 }
 .page-header-image a img {
     border: 1px solid #d1d1d1;
-} 
+}
 #id_submitbutton {
     padding: 6px 40px;
     font-size: 19px;
@@ -2105,19 +2098,18 @@ fieldset.clearfix.collapsible {
 }
 /**EditProfile**/
 
-
 /**changepassword**/
 #id_changepassword .ftoggler {
     color: #00bcbe;
     font-weight: 700;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 .mform fieldset.collapsible legend a.fheader,
 .preferences-page-container h2 {
     font-weight: 600;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
-#id_changepassword  #fitem_id_username{
+#id_changepassword #fitem_id_username {
     display: none;
 }
 #id_changepassword {
@@ -2125,9 +2117,9 @@ fieldset.clearfix.collapsible {
 }
 /**changepassword**/
 
-div#fitem_id_useexperimentalui .col-md-3, 
+div#fitem_id_useexperimentalui .col-md-3,
 div#fitem_id_markasreadonnotification .col-md-3 {
-    max-width: 33%!important;
+    max-width: 33% !important;
     flex: 1;
 }
 
@@ -2143,10 +2135,10 @@ i.fa-question-circle {
 }
 
 /**Notification preferences**/
-.preferences-page-container h2{
+.preferences-page-container h2 {
     color: #00bcbe;
 }
-.preferences-page-container h4{ 
+.preferences-page-container h4 {
     color: #00bcbe;
     font-weight: 400;
     margin: 0;
@@ -2162,7 +2154,7 @@ i.fa-question-circle {
 /**Preferences**/
 // #page-header > .col-12.pt-3.pb-3{
 //     background: #f7f7f7;
-//     border-bottom: 2px solid #00bcbe; 
+//     border-bottom: 2px solid #00bcbe;
 // }
 #page-user-preferences .card-body h4 {
     font-size: 24px;
@@ -2173,24 +2165,24 @@ i.fa-question-circle {
     display: block;
     padding: 1px 0;
 }
-#page-user-preferences #maincontent + h2{
+#page-user-preferences #maincontent + h2 {
     display: block !important;
     color: #00bcbe;
     font-weight: 600;
-    font-family: 'Nunito Sans', sans-serif;
-} 
+    font-family: "Nunito Sans", sans-serif;
+}
 /**Preferences**/
 
 /**Main (dashboard)**/
-.pagelayout-mydashboard  #region-main-box .card-body.p-3 .card-title.d-inline {
+.pagelayout-mydashboard #region-main-box .card-body.p-3 .card-title.d-inline {
     position: absolute;
     left: 30px;
 }
-.pagelayout-mydashboard  #region-main-box .card-body.p-3 {
+.pagelayout-mydashboard #region-main-box .card-body.p-3 {
     position: relative;
 }
 .pagelayout-mydashboard .d-flex.align-items-center.flex-wrap div {
-    display: inline-block!important;
+    display: inline-block !important;
     width: auto;
     margin-right: 0 !important;
 }
@@ -2211,14 +2203,14 @@ i.fa-question-circle {
     background-color: #2c999c;
     border-color: #2c999c;
 }
-.pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:focus, 
+.pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:focus,
 .pagelayout-mydashboard .card.mb-3 .btn-outline-secondary.focus {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
-.pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:not(:disabled):not(.disabled):active, 
-.pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:not(:disabled):not(.disabled).active, 
-.pagelayout-mydashboard .card.mb-3 .show>.btn-outline-secondary.dropdown-toggle {
+.pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:not(:disabled):not(.disabled):active,
+.pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:not(:disabled):not(.disabled).active,
+.pagelayout-mydashboard .card.mb-3 .show > .btn-outline-secondary.dropdown-toggle {
     color: #fff;
     background-color: #2c999c;
     border-color: #2c999c;
@@ -2226,7 +2218,7 @@ i.fa-question-circle {
 .pagelayout-mydashboard .card.mb-3 .dropdown a {
     color: #00bcbe;
 }
-.pagelayout-mydashboard .card.mb-3 .dropdown .dropdown-item.active{
+.pagelayout-mydashboard .card.mb-3 .dropdown .dropdown-item.active {
     color: #fff !important;
 }
 .pagelayout-mydashboard .card.mb-3 .dropdown-menu.show {
@@ -2278,9 +2270,9 @@ aside#block-region-side-pre .card-text.content.mt-3 div[id*="calendar-multi-"] {
     padding: 15px 0 0 0;
 }
 .path-calendar .maincalendar .heightcontainer .header button.btn.btn-secondary {
-    color: #fff!important;
-    background-color: #00bcbe!important;
-    border-color: #00bcbe!important;
+    color: #fff !important;
+    background-color: #00bcbe !important;
+    border-color: #00bcbe !important;
 }
 aside#block-region-side-pre .card-text.content.mt-3 a span[class*="calendar_"] {
     background: #e7e7e7;
@@ -2356,7 +2348,7 @@ aside#block-region-side-pre .card-text.content.mt-3 a span[class*="calendar_"] {
 .container-fluid .text_to_html {
     width: 100%;
 }
-.copy-left-txt>div {
+.copy-left-txt > div {
     display: inline-block;
     vertical-align: middle;
 }
@@ -2389,7 +2381,7 @@ body#page-course-index-category section#region-main div.course_category_tree .su
 }
 #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
     color: #737373;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 .course-content ul.topics li.section.main li.activity span.instancename {
     color: #737373;
@@ -2403,7 +2395,7 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     padding-left: 130px;
     border: none;
     margin: 0;
-    color: #868e96!important;
+    color: #868e96 !important;
     font-size: 15px;
 }
 .course-content ul.topics li.section.main li.activity .activityinstance img.iconlarge.activityicon {
@@ -2417,7 +2409,12 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     /*top: 30px;*/
     height: auto;
 }
-.course-content ul.topics li.section.main li.activity.modtype_regularvideo .activityinstance img.iconlarge.activityicon {
+.course-content
+    ul.topics
+    li.section.main
+    li.activity.modtype_regularvideo
+    .activityinstance
+    img.iconlarge.activityicon {
     width: 110px;
     left: 0;
     top: 0;
@@ -2428,7 +2425,7 @@ body#page-course-index-category section#region-main div.course_category_tree .su
 .course-content ul.topics li.section.main .modtype_label .no-overflow img {
     width: 100%;
 }
-.course-content ul.topics li.section.main .modtype_label>div {
+.course-content ul.topics li.section.main .modtype_label > div {
     padding: 0;
 }
 .course-content ul.topics li.section.main li.activity {
@@ -2439,11 +2436,11 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     font-size: 17px;
     line-height: 17px;
 }
-.block.block_course_modulenavigation .section-default>.module-navigation-section-heading {
+.block.block_course_modulenavigation .section-default > .module-navigation-section-heading {
     margin: 0;
     padding: 0;
 }
-.block.block_course_modulenavigation ul.activities li>a.active {
+.block.block_course_modulenavigation ul.activities li > a.active {
     font-weight: 500;
 }
 #page-mod-quiz-view .quizattemptcounts {
@@ -2453,20 +2450,32 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     color: #fff;
     background-color: #00bcbe;
     border-color: #00bcbe;
-    padding: .375rem .75rem;
-    font-size: .9375rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9375rem;
     line-height: 1.5;
     display: inline-block;
     text-decoration: none;
 }
-#page-course-view-topics .course-content ul.topics li.section.main li.activity .contentafterlink img.atto_image_button_left,
-#page-course-view-topics .course-content ul.topics li.section.main li.activity .contentwithoutlink img.atto_image_button_left {
+#page-course-view-topics
+    .course-content
+    ul.topics
+    li.section.main
+    li.activity
+    .contentafterlink
+    img.atto_image_button_left,
+#page-course-view-topics
+    .course-content
+    ul.topics
+    li.section.main
+    li.activity
+    .contentwithoutlink
+    img.atto_image_button_left {
     display: none;
 }
 body#page-course-view-topics div#completionprogressid {
     display: none;
 }
-.block.block_course_modulenavigation .allpagination>li a {
+.block.block_course_modulenavigation .allpagination > li a {
     font-weight: 700;
     text-transform: uppercase;
     border-bottom: 1px solid #eee;
@@ -2480,12 +2489,12 @@ body#page-site-index aside#block-region-content .block .card-body {
     margin: 0 auto;
     width: 1000%;
 }
-.block.block_course_modulenavigation .allpagination>li a[aria-expanded="true"]::before {
+.block.block_course_modulenavigation .allpagination > li a[aria-expanded="true"]::before {
     content: "\f060";
     font: normal normal normal 14px/1 FontAwesome;
     padding-right: 10px;
 }
-.block.block_course_modulenavigation .allpagination>li a.collapsed::before {
+.block.block_course_modulenavigation .allpagination > li a.collapsed::before {
     content: none;
 }
 #page-login-index .col-sm-12.col-md-6.col-lg-4 h2.card-header.text-center img.img-fluid,
@@ -2544,7 +2553,7 @@ body#page-login-signup .page-header-headings {
     padding: 1.5rem 15px 2px !important;
 }
 #page-course-index-category #page-wrapper header#page-header .col-12.pt-3.pb-3 {
-    padding: 1.5rem 15px!important;
+    padding: 1.5rem 15px !important;
 }
 #page-wrapper #region-main div#wespherintro {
     padding: 0 !important;
@@ -2553,7 +2562,7 @@ body#page-login-signup .page-header-headings {
     color: #737373;
 }
 #page-mod-wespher-view .singlebutton button {
-    padding: .375rem 3rem;
+    padding: 0.375rem 3rem;
     min-width: 212px;
     font-size: 18px;
 }
@@ -2583,7 +2592,7 @@ body#page-mod-wespher-view #page-wrapper section#region-main .singlebutton {
     padding-left: 32%;
 }
 body#page-mod-wespher-view #page-wrapper section#region-main img.atto_image_button_left {
-    margin-top: -1.30rem;
+    margin-top: -1.3rem;
 }
 #page-wrapper header#page-header .d-flex.flex-wrap {
     float: right;
@@ -2761,10 +2770,11 @@ body#page-calendar-view #page-wrapper header#page-header .mr-auto .page-context-
     font-size: 19px;
     font-weight: 400;
     color: #3db8bf;
-    padding-top: calc(.375rem + 1px);
-    padding-bottom: calc(.375rem + 1px);
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
 }
-#page-login-index #page #page-content, #page-login-signup #page #page-content {
+#page-login-index #page #page-content,
+#page-login-signup #page #page-content {
     // background: rgba(255,255,255,0.9);
     padding: 73px 0 0;
 }
@@ -2825,7 +2835,7 @@ body#page-login-signup #page-wrapper #region-main span.float-sm-right.text-nowra
     content: "\f00c";
     font: normal normal normal 14px/1 FontAwesome;
     opacity: 1;
-    transition: color .3s ease-out;
+    transition: color 0.3s ease-out;
     position: absolute;
     width: 20px;
     height: 20px;
@@ -2872,22 +2882,36 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     width: 100%;
     height: auto;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity>div,
+body#page-site-index div#page div#page-content section#region-main ul.section .activity > div,
 body#page-site-index div#page div#page-content section#region-main ul.section .activity {
     padding: 0;
 }
 body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body {
     text-align: center;
 }
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body p.card-text {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .card-deck
+    .card-body
+    p.card-text {
     font-weight: 400;
     font-size: 22px;
 }
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body h5.card-title {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .card-deck
+    .card-body
+    h5.card-title {
     font-size: 45px;
     font-weight: 700;
     margin: 0 0 15px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card {
     padding: 0 10px;
@@ -2909,20 +2933,41 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary,
 .block_tb_testimonials .tb_testimonials .test_get_started a {
     font-size: 20px;
-    padding: .50rem 5rem;
+    padding: 0.5rem 5rem;
 }
 body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 15px;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-40 .contentwithoutlink .no-overflow,
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-40
+    .contentwithoutlink
+    .no-overflow,
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-38 .contentwithoutlink,
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-42 .contentwithoutlink .no-overflow,
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-42
+    .contentwithoutlink
+    .no-overflow,
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-41 .contentwithoutlink {
     text-align: center;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-39
+    .contentwithoutlink
+    .card {
     width: 100% !important;
     display: block;
 }
@@ -2933,34 +2978,73 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 {
     padding: 40px 0;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card img.img-responsive.atto_image_button_text-top {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-39
+    .contentwithoutlink
+    .card
+    img.img-responsive.atto_image_button_text-top {
     width: 33%;
     margin: 0;
     padding-right: 10px;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card .card-block {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-39
+    .contentwithoutlink
+    .card
+    .card-block {
     display: inline-block;
     vertical-align: top;
     width: 65%;
     padding-left: 10px;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block h4.card-title {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity
+    .card
+    .card-block
+    h4.card-title {
     font-weight: 700;
     font-size: 25px;
     margin: 0 0 20px;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block p.card-text {
     margin: 0 0 30px;
     font-size: 17px;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block a.btn.btn-primary {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity
+    .card
+    .card-block
+    a.btn.btn-primary {
     float: right;
 }
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 {
     padding: 40px 0 180px;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink h4.card-title {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity
+    .contentwithoutlink
+    h4.card-title {
     font-weight: 700;
     font-size: 25px;
     margin: 0 0 25px;
@@ -2973,18 +3057,42 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     padding: 20px;
     position: relative;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card img.card-img-top {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-43
+    .card-deck
+    .card
+    img.card-img-top {
     width: 80px;
     height: 80px;
     margin: 0 auto;
     border-radius: 50%;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-43
+    .card-deck
+    .card
+    p.card-text {
     font-size: 20px;
     margin: 0 0 15px;
     font-style: italic;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text:last-child {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-43
+    .card-deck
+    .card
+    p.card-text:last-child {
     font-size: 15px;
     width: 50%;
     margin: 0 auto;
@@ -2995,26 +3103,51 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     text-align: center;
     padding: 0 0 50px;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-43
+    .card-deck
+    .card::after {
     content: "";
 }
 
 a.tocourse.back_to_course_home {
-    font-weight: 700!important;
-    text-transform: uppercase!important;
-    border-bottom: 1px solid #eee!important;
-    text-decoration: none!important;
-    padding: 10px!important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid #eee !important;
+    text-decoration: none !important;
+    padding: 10px !important;
 }
 a.tocourse.back_to_course_home:before {
     content: "";
     font: normal normal normal 14px/1 FontAwesome;
     padding-right: 10px;
 }
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text,
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text,
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .carousel-item
+    .carousel-main-text,
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .carousel-item
+    .carousel-sub-text,
 body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-button,
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-questions {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .carousel-item
+    .carousel-questions {
     position: absolute;
     width: 100%;
     text-align: center;
@@ -3022,34 +3155,52 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     transform: translate(-50%, 0);
     z-index: 1;
 }
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .carousel-item
+    .carousel-main-text {
     top: 22%;
     font-size: 50px;
     font-weight: 700;
     color: #575757;
     left: 50%;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .carousel-item
+    .carousel-sub-text {
     top: 44%;
     font-size: 30px;
     font-weight: 600;
     color: #565656;
     left: 50%;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-button {
     top: 60%;
     left: 50%;
 }
-body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-questions {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    .contentwithoutlink
+    .carousel-item
+    .carousel-questions {
     top: 69%;
     left: 50%;
     color: #000;
 }
 body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item::before {
     content: "";
-    background: rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
     position: absolute;
     top: 0;
     left: 0;
@@ -3101,25 +3252,25 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     height: auto !important;
     box-shadow: none !important;
     min-height: auto !important;
-    border: 1px solid #dedcdd!important;
+    border: 1px solid #dedcdd !important;
 }
 .coursebox .progress {
-    border: none!important;
-    background: #ededed!important;
-    height: 10px!important;
+    border: none !important;
+    background: #ededed !important;
+    height: 10px !important;
     width: 100% !important;
 }
 .progress.bg-white.border {
-    opacity: 1!important;
-    width: calc(100% + 20px)!important;
-    margin-left: -10px!important;
-    position: relative!important;
-    top: 0!important;
-    height: 10px!important;
-    background: #ededed!important;
-    overflow: initial!important;
+    opacity: 1 !important;
+    width: calc(100% + 20px) !important;
+    margin-left: -10px !important;
+    position: relative !important;
+    top: 0 !important;
+    height: 10px !important;
+    background: #ededed !important;
+    overflow: initial !important;
     border: none !important;
-}   
+}
 .progress + .small {
     text-align: center;
     color: #00bcbe;
@@ -3129,14 +3280,14 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     text-align: left !important;
 }
 .coursebox.span12.grid {
-    padding: 15px 15px 50px!important;
-    margin: 10px!important;
-    max-width: calc(33% - 18px)!important;
-    border: 1px solid #dedcdd!important;
-    border-radius: 0!important;
-    max-height: inherit!important;
-    min-height: auto!important;
-    background: #fff!important;
+    padding: 15px 15px 50px !important;
+    margin: 10px !important;
+    max-width: calc(33% - 18px) !important;
+    border: 1px solid #dedcdd !important;
+    border-radius: 0 !important;
+    max-height: inherit !important;
+    min-height: auto !important;
+    background: #fff !important;
 }
 .coursebox.span12.grid .image_wrap {
     width: calc(100% + 30px);
@@ -3157,7 +3308,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     font-weight: 700 !important;
     color: #565656 !important;
     text-shadow: none !important;
-    font-family: 'Nunito Sans', sans-serif !important;
+    font-family: "Nunito Sans", sans-serif !important;
     text-transform: capitalize !important;
 }
 .coursebox.span12 .title {
@@ -3237,11 +3388,22 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
 div.course_category_tree .collapsible-actions {
     display: none;
 }
-body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
+body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
+    div.course_category_tree
+    .courses
+    .coursebox
+    .info
+    h3.coursename {
     bottom: auto;
     top: 270px;
 }
-body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename a {
+body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
+    div.course_category_tree
+    .courses
+    .coursebox
+    .info
+    h3.coursename
+    a {
     color: #565656;
 }
 body#page-site-index h5.card-title {
@@ -3258,11 +3420,11 @@ body#page-site-index h5.card-title {
     margin: 0;
 }
 div#page-wrapper {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     height: auto;
     min-height: 100%;
     padding-left: 0;
-    transition: .5s ease;
+    transition: 0.5s ease;
     background: #f5f6fa;
 }
 .drawer-open-left div#page-wrapper,
@@ -3306,7 +3468,7 @@ body#page-site-index aside#block-region-content .block .card-body {
     font-size: 30px;
     font-weight: 700;
     color: #565656;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     text-shadow: none;
     text-transform: capitalize;
 }
@@ -3316,7 +3478,7 @@ body#page-site-index aside#block-region-content .block .card-body {
     top: 15px;
     left: 50%;
     font-size: 18px;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     text-align: center;
 }
 .available_courses_2_list .progress .value {
@@ -3370,15 +3532,15 @@ body#page-site-index section.block_tb_blog_recent_home ul.list li {
     margin: 0 0 20px;
     display: inline-block;
     color: #737373;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 body#page-site-index section.block_tb_blog_recent_home ul.list + a {
     float: right;
     font-size: 20px;
-    padding: .5rem 5rem;
-    color: #fff!important;
-    background-color: #00bcbe!important;
-    border-color: #00bcbe!important;
+    padding: 0.5rem 5rem;
+    color: #fff !important;
+    background-color: #00bcbe !important;
+    border-color: #00bcbe !important;
     /*margin-top: -45px;*/
     margin-right: 2%;
 }
@@ -3397,7 +3559,7 @@ body.drawer-open-left {
 }
 #page-user-profile #page-wrapper header#page-header::before {
     content: "";
-    background: rgba(255,255,255,.6);
+    background: rgba(255, 255, 255, 0.6);
     position: absolute;
     top: 0;
     left: 0;
@@ -3433,7 +3595,14 @@ aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_bo
     margin-left: 10px;
 }
 .block_tb_testimonials .tb_testimonials .testimonial_box::before,
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::before {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-43
+    .card-deck
+    .card::before {
     font: normal normal normal 383px FontAwesome;
     content: "\f075";
     position: absolute;
@@ -3448,7 +3617,14 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     color: #d2d2d2;
 }
 .block_tb_testimonials .tb_testimonials .testimonial_box::after,
-body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after {
+body#page-site-index
+    div#page
+    div#page-content
+    section#region-main
+    ul.section
+    .activity#module-43
+    .card-deck
+    .card::after {
     font: normal normal normal 380px FontAwesome;
     content: "\f075";
     position: absolute;
@@ -3476,7 +3652,7 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 .block_tb_testimonials .tb_testimonials .testimonial_box .testimonial_img {
     margin: 0 0 1.25rem;
 }
-.block_tb_testimonials .testimonial_des, 
+.block_tb_testimonials .testimonial_des,
 .block_tb_testimonials .testimonial_pos {
     font-size: 15px;
     width: 60%;
@@ -3492,7 +3668,7 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 }
 .block_tb_testimonials .tb_testimonials .test_get_started a {
     font-size: 20px;
-    padding: .5rem 5rem;
+    padding: 0.5rem 5rem;
     color: #fff;
     background-color: #00bcbe;
     border-color: #00bcbe;
@@ -3503,7 +3679,7 @@ aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_bo
     padding: 1.25rem 1.25rem 10px;
     font-size: 45px;
     font-weight: 700;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_des {
     font-weight: 400;
@@ -3575,12 +3751,12 @@ section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption {
 section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
     font-size: 45px;
     font-weight: 700;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     color: #737373;
 }
 section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption p {
     color: #737373;
-    font-family: 'Sawarabi Mincho', sans-serif;
+    font-family: "Sawarabi Mincho", sans-serif;
 }
 section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span,
 section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption p {
@@ -3599,7 +3775,7 @@ section.block.block_tb_slider .bx-wrapper .slide_desc_sec a {
 }
 section.block.block_tb_slider .bx-wrapper .bxslide .slide_desc_sec a.get_started_a {
     font-size: 20px;
-    padding: .5rem 5rem;
+    padding: 0.5rem 5rem;
     color: #fff;
     background-color: #00bcbe;
     border-color: #00bcbe;
@@ -3610,7 +3786,7 @@ section.block.block_tb_slider .slide_desc_sec {
     margin: 50px 0 0;
 }
 section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption .slide_desc_sec p {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 #region-main-box div#notice div#modal-content,
 #region-main-box div#notice div#modal-content div#modal-header,
@@ -3633,7 +3809,8 @@ body#page-login-signup footer#page-footer {
 }
 #page-login-index #page,
 body#page-login-signup #page {
-    background: url("/pluginfile.php/1/theme_thinkblue/additionalresources/0/signin_bck.jpg") no-repeat center center / cover !important;
+    background: url("/pluginfile.php/1/theme_thinkblue/additionalresources/0/signin_bck.jpg") no-repeat center center /
+        cover !important;
     background-attachment: fixed !important;
 }
 body#page-login-signup #region-main .container-fluid {
@@ -3675,21 +3852,20 @@ body#page-site-index.adminloggedin div#page div#page-content section#region-main
     object-fit: cover;
 }
 .course-info-container span.sr-only {
-    display: none!important;
+    display: none !important;
 }
 body.pagelayout-login .singlebutton button.btn.btn-secondary {
     max-width: initial;
-    font-size: .9375rem;
+    font-size: 0.9375rem;
 }
 body#page-course-index-category .box.py-3.generalbox.info {
     display: none;
 }
 .path-user .btn-group.header-button-group {
     display: none;
-    
 }
 .pagelayout-frontpage nav.fixed-top.navbar.navbar-light.bg-white {
-    background: rgba(0,0,0,0.3) !important;
+    background: rgba(0, 0, 0, 0.3) !important;
 }
 .pagelayout-frontpage #page {
     margin-top: 0px;
@@ -3714,7 +3890,7 @@ nav.navbar.navbar-light.bg-white.navbar-expand button.btn i.icon {
     text-decoration: none !important;
     line-height: normal;
     color: #fff !important;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     background: none;
 }
 .usermenu .login a.browse_link {
@@ -3871,7 +4047,7 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu {
     height: 35px;
     background: #fff;
     border-radius: 5px;
-    display: flex!important;
+    display: flex !important;
     align-items: center;
     justify-content: center;
 }
@@ -3882,7 +4058,7 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu {
 .notloggedinuser .topusermenu {
     display: block;
 }
-div[data-region=right-hand-drawer].drawer {
+div[data-region="right-hand-drawer"].drawer {
     top: 73px;
     height: calc(100% - 73px);
 }
@@ -3902,74 +4078,76 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     margin-top: 72px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (min-width: 576px){
+@media only screen and (min-width: 576px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink,
-    div#region-main-box, .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
+    div#region-main-box,
+    .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
         max-width: 540px;
     }
 }
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink,
-    div#region-main-box, .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
+    div#region-main-box,
+    .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
         max-width: 720px;
     }
 }
-@media only screen and (min-width: 992px){
+@media only screen and (min-width: 992px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink,
-    div#region-main-box, .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
+    div#region-main-box,
+    .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
         max-width: 960px;
     }
 }
-@media only screen and (min-width: 1200px){
+@media only screen and (min-width: 1200px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink,
-    div#region-main-box, .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
+    div#region-main-box,
+    .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
         max-width: 1140px;
     }
 }
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 1280px) {
     body#page-site-index aside#block-region-content .block .card-body,
     body#page-site-index aside#block-region-content .block .userprofile .profile_tree section,
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink,
-    div#region-main-box, .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
+    div#region-main-box,
+    .pagelayout-mydashboard .block.card.mb-3 .card-body.p-3 {
         max-width: 1280px;
     }
 }
 
-
-
-
-
-@media only screen and (max-width: 1280px){
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
+@media only screen and (max-width: 1280px) {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .carousel-item
+        .carousel-main-text {
         font-size: 40px;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .carousel-item
+        .carousel-sub-text {
         font-size: 20px;
     }
     .preferences-container table.table.preference-table {
         min-width: 800px;
     }
 }
-@media only screen and (max-width: 1199px){
+@media only screen and (max-width: 1199px) {
     .block_tb_slider .bx-wrapper img {
         min-height: 520px;
         object-fit: cover;
@@ -3977,35 +4155,120 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body {
         padding: 10px 10px 0;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body h5.card-title, body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .userprofile .profile_tree section h5.card-title, .userprofile .profile_tree body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck section h5.card-title,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        .card-body
+        h5.card-title,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        .userprofile
+        .profile_tree
+        section
+        h5.card-title,
+    .userprofile
+        .profile_tree
+        body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        section
+        h5.card-title,
     aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
         font-size: 35px;
         margin: 0 0 5px;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body p.card-text, body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .userprofile .profile_tree section p.card-text, .userprofile .profile_tree body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck section p.card-text,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        .card-body
+        p.card-text,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        .userprofile
+        .profile_tree
+        section
+        p.card-text,
+    .userprofile
+        .profile_tree
+        body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        section
+        p.card-text,
     aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_des {
         font-size: 17px;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body p.card-text {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        .card-body
+        p.card-text {
         padding: 0 10px 15px;
     }
     .coursebox .title a {
-        font-size: 25px!important;
+        font-size: 25px !important;
     }
     .coursebox .course_description {
-        font-size: 18px!important;
+        font-size: 18px !important;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box .testimonial_title,
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card
+        p.card-text {
         font-size: 16px;
     }
-    .block_tb_testimonials .testimonial_des, .block_tb_testimonials .testimonial_pos,
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text:last-child {
+    .block_tb_testimonials .testimonial_des,
+    .block_tb_testimonials .testimonial_pos,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card
+        p.card-text:last-child {
         font-size: 12px;
         width: 70%;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box::after,
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card::after {
         // border-top: 80px solid #f8f8fa;
         // border-left: 0 solid transparent;
         // border-right: 55px solid transparent;
@@ -4015,8 +4278,15 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         left: 1px;
         line-height: 268px;
     }
-    .block_tb_testimonials .tb_testimonials .testimonial_box::before, 
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::before {
+    .block_tb_testimonials .tb_testimonials .testimonial_box::before,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card::before {
         // border-top: 81px solid #d2d2d2;
         // border-left: 0 solid transparent;
         // border-right: 56px solid transparent;
@@ -4026,20 +4296,41 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         left: 0;
         line-height: 270px;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block p.card-text {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity
+        .card
+        .card-block
+        p.card-text {
         margin: 0 0 20px;
         font-size: 15px;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block h4.card-title {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity
+        .card
+        .card-block
+        h4.card-title {
         font-size: 22px;
     }
     .footer-main .copy-left-txt .image {
         max-width: 35%;
     }
-    .copy-left-txt>div {
+    .copy-left-txt > div {
         font-size: 13px;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
+        div.course_category_tree
+        .courses
+        .coursebox
+        .info
+        h3.coursename {
         top: 205px;
         left: 30px;
     }
@@ -4049,7 +4340,13 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     div.course_category_tree .courses .coursebox .info h3.coursename a {
         font-size: 22px;
     }
-    .pagelayout-mydashboard aside#block-region-content .dashboard-card-deck .card .course-info-container .text-muted span {
+    .pagelayout-mydashboard
+        aside#block-region-content
+        .dashboard-card-deck
+        .card
+        .course-info-container
+        .text-muted
+        span {
         font-size: 16px;
     }
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
@@ -4059,9 +4356,9 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 17px;
     }
 }
-@media only screen and (max-width: 991px){
+@media only screen and (max-width: 991px) {
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
-        font-size: 32px;;
+        font-size: 32px;
     }
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption p {
         font-size: 17px;
@@ -4089,17 +4386,59 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-weight: 600;
         font-size: 20px;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .carousel-item
+        .carousel-main-text {
         font-size: 35px;
     }
     body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary,
     .block_tb_testimonials .tb_testimonials .test_get_started a {
         font-size: 15px;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink h4.card-title, body#page-site-index .card-body h5.card-title {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity
+        .contentwithoutlink
+        h4.card-title,
+    body#page-site-index .card-body h5.card-title {
         font-size: 22px;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body h5.card-title, body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .userprofile .profile_tree section h5.card-title, .userprofile .profile_tree body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck section h5.card-title, aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        .card-body
+        h5.card-title,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        .userprofile
+        .profile_tree
+        section
+        h5.card-title,
+    .userprofile
+        .profile_tree
+        body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .card-deck
+        section
+        h5.card-title,
+    aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
         font-size: 25px;
     }
     body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card,
@@ -4107,12 +4446,29 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         padding: 10px;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box .testimonial_title,
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card
+        p.card-text {
         font-size: 13px;
         margin: 0 0 5px;
     }
-    .block_tb_testimonials .testimonial_des, .block_tb_testimonials .testimonial_pos,
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card p.card-text:last-child {
+    .block_tb_testimonials .testimonial_des,
+    .block_tb_testimonials .testimonial_pos,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card
+        p.card-text:last-child {
         font-size: 11px;
         text-align: center;
     }
@@ -4134,8 +4490,23 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         border: 1px solid #eee;
     }
     .block_tb_testimonials .tb_testimonials .testimonial_box::after,
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::after, .block_tb_testimonials .tb_testimonials .testimonial_box::before, 
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43 .card-deck .card::before {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card::after,
+    .block_tb_testimonials .tb_testimonials .testimonial_box::before,
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-43
+        .card-deck
+        .card::before {
         content: none !important;
     }
     body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-43,
@@ -4166,8 +4537,15 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink {
         text-align: center;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 
-    .contentwithoutlink .card .card-block {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-39
+        .contentwithoutlink
+        .card
+        .card-block {
         text-align: left;
     }
     #page-wrapper #page-footer .footer-main {
@@ -4180,17 +4558,29 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 22px;
         margin: 0 0 5px;
     }
-    body#page-site-index section.block_tb_blog_recent_home ul.list+a {
+    body#page-site-index section.block_tb_blog_recent_home ul.list + a {
         font-size: 15px;
-        padding: .5rem 3rem;
+        padding: 0.5rem 3rem;
     }
     div#theme_switch_link {
         text-align: center;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-sub-text {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .carousel-item
+        .carousel-sub-text {
         top: 48%;
     }
-    body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-questions {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        .contentwithoutlink
+        .carousel-item
+        .carousel-questions {
         top: 72%;
     }
     .footer-main .col-md-6 {
@@ -4204,7 +4594,12 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         padding: 10px 0 0;
         text-align: center;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
+        div.course_category_tree
+        .courses
+        .coursebox
+        .info
+        h3.coursename {
         top: 155px;
         left: 25px;
         width: calc(100% - 50px);
@@ -4212,7 +4607,11 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     div.course_category_tree .courses .coursebox .info h3.coursename a {
         font-size: 18px;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .summary {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
+        div.course_category_tree
+        .courses
+        .coursebox
+        .summary {
         margin: 55px 0 10px;
         padding: 0 15px;
     }
@@ -4222,27 +4621,33 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     .pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox ul.teachers {
         top: 85px;
     }
-    #page-login-index .col-sm-12.col-md-6.col-lg-4, body#page-login-signup .col-md-8.col-xl-6 {
+    #page-login-index .col-sm-12.col-md-6.col-lg-4,
+    body#page-login-signup .col-md-8.col-xl-6 {
         max-width: 100%;
         flex: 0 0 100%;
     }
-    #page-user-edit form .col-md-3, #page-login-change_password form .col-md-3,
-    #page-user-language form .col-md-3, #page-user-forum form .col-md-3 {
+    #page-user-edit form .col-md-3,
+    #page-login-change_password form .col-md-3,
+    #page-user-language form .col-md-3,
+    #page-user-forum form .col-md-3 {
         flex: 0 0 100%;
         max-width: 100% !important;
     }
     #fitem_id_useexperimentalui .col-md-9 select {
-        max-width: 100%!important;
+        max-width: 100% !important;
     }
     #region-main-box .clearfix.collapsible legend,
     #id_changepassword .ftoggler {
         font-size: 20px !important;
         margin: 0 0 15px !important;
     }
-    div.form-inline input.form-control, div.form-inline .input-group, div.form-inline .custom-select {
+    div.form-inline input.form-control,
+    div.form-inline .input-group,
+    div.form-inline .custom-select {
         width: 100%;
     }
-    .preferences-page-container h2, #page-user-preferences #maincontent+h2 {
+    .preferences-page-container h2,
+    #page-user-preferences #maincontent + h2 {
         font-size: 22px;
     }
     #page-user-preferences .card-body h4 {
@@ -4264,7 +4669,8 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         left: 25px;
         width: calc(100% - 50px);
     }
-    .course-content ul.topics li.section.main, .course-content ul.weeks li.section.main,
+    .course-content ul.topics li.section.main,
+    .course-content ul.weeks li.section.main,
     .course-content ul.periods li.section.main {
         padding-top: 1rem;
         padding-bottom: 1rem;
@@ -4272,7 +4678,12 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     .course-content ul.topics h3.sectionname span {
         font-size: 18px;
     }
-    .course-content ul.topics li.section.main li.activity.modtype_regularvideo .activityinstance img.iconlarge.activityicon {
+    .course-content
+        ul.topics
+        li.section.main
+        li.activity.modtype_regularvideo
+        .activityinstance
+        img.iconlarge.activityicon {
         width: 80px;
     }
     .course-content ul.topics li.section.main li.activity span.instancename,
@@ -4292,8 +4703,9 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         text-align: justify;
     }
 }
-@media only screen and (max-width: 767px){
-    #page-wrapper header#page-header .col-12.pt-3.pb-3, #page-wrapper header#page-header .pt-3.pb-3.col-xs-12 {
+@media only screen and (max-width: 767px) {
+    #page-wrapper header#page-header .col-12.pt-3.pb-3,
+    #page-wrapper header#page-header .pt-3.pb-3.col-xs-12 {
         padding: 1.5rem 15px 35px !important;
     }
     #page-wrapper #region-main legend.ftoggler {
@@ -4334,7 +4746,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     }
     section.block.block_tb_slider .bx-wrapper .bxslide .slide_desc_sec a.get_started_a {
         font-size: 12px;
-        padding: .2rem 2rem;
+        padding: 0.2rem 2rem;
     }
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption .slide_desc_sec p {
         padding: 5px 0;
@@ -4346,34 +4758,66 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     #page-wrapper #page #page-content section.block.block_tb_slider .bx-wrapper {
         margin: 0 0 20px;
     }
-    body#page-mod-quiz-view #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1, body#page-mod-quiz-attempt #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1, body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
+    body#page-mod-quiz-view #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1,
+    body#page-mod-quiz-attempt #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1,
+    body#page-course-view-topics
+        #page-wrapper
+        header#page-header
+        .mr-auto
+        .page-context-header
+        .page-header-headings
+        h1 {
         padding-left: 0;
     }
     #block-region-side-pre .no-overflow {
         text-align: justify;
         font-size: 14px;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card .card-block {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-39
+        .contentwithoutlink
+        .card
+        .card-block {
         width: 100%;
         text-align: center;
         padding: 20px 0 0;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-39 .contentwithoutlink .card img.img-responsive.atto_image_button_text-top {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity#module-39
+        .contentwithoutlink
+        .card
+        img.img-responsive.atto_image_button_text-top {
         padding: 0;
         margin: 0 auto;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity .card .card-block a.btn.btn-primary {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity
+        .card
+        .card-block
+        a.btn.btn-primary {
         margin: 0 auto;
         float: none;
     }
     div#nav-drawer {
         max-width: 285px;
     }
-    nav.navbar.navbar-light.bg-white.navbar-expand a.navbar-brand>* {
+    nav.navbar.navbar-light.bg-white.navbar-expand a.navbar-brand > * {
         display: inline-block !important;
     }
     nav.navbar.navbar-light.bg-white.navbar-expand a.navbar-brand {
-        padding: 0!important;
+        padding: 0 !important;
         display: inline-block !important;
         max-width: 130px;
     }
@@ -4393,7 +4837,12 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         padding: 5px;
         margin: 0 auto;
     }
-    body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.course_category_tree .courses .coursebox .info h3.coursename {
+    body#page-course-index-category.pagelayout-coursecategory:not(.category-3)
+        div.course_category_tree
+        .courses
+        .coursebox
+        .info
+        h3.coursename {
         top: auto;
         bottom: 95px;
         width: calc(100% - 50px);
@@ -4432,7 +4881,10 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 25px;
         top: 0;
     }
-    #page-login-index #region-main-box .form-control, #page-login-index #region-main-box .custom-select, #page-login-signup #region-main-box .form-control, #page-login-signup #region-main-box .custom-select {
+    #page-login-index #region-main-box .form-control,
+    #page-login-index #region-main-box .custom-select,
+    #page-login-signup #region-main-box .form-control,
+    #page-login-signup #region-main-box .custom-select {
         height: 42px;
     }
     #page-login-index .col-sm-12.col-md-6.col-lg-4 h2.card-header.text-center img.img-fluid,
@@ -4445,13 +4897,14 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     }
     fieldset.clearfix.collapsible {
         margin-bottom: 20px !important;
-        padding-bottom: 15px!important;
+        padding-bottom: 15px !important;
         margin-left: 0;
     }
     form.mform fieldset {
         margin-left: 0;
     }
-    #id_submitbutton, #id_cancel {
+    #id_submitbutton,
+    #id_cancel {
         font-size: 14px;
     }
     div#region-main-box .form-group.row.fitem {
@@ -4466,9 +4919,8 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         padding: 15px;
         border: 1px solid #ccc;
     }
-    
 }
-@media only screen and (max-width: 575px){
+@media only screen and (max-width: 575px) {
     section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
         font-size: 20px;
     }
@@ -4493,7 +4945,17 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         max-width: 100%;
         padding: 0 15px;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink h4.card-title, body#page-site-index .card-body h5.card-title, body#page-site-index .userprofile .profile_tree section h5.card-title, .userprofile .profile_tree body#page-site-index section h5.card-title {
+    body#page-site-index
+        div#page
+        div#page-content
+        section#region-main
+        ul.section
+        .activity
+        .contentwithoutlink
+        h4.card-title,
+    body#page-site-index .card-body h5.card-title,
+    body#page-site-index .userprofile .profile_tree section h5.card-title,
+    .userprofile .profile_tree body#page-site-index section h5.card-title {
         font-size: 18px;
     }
     .footer-main .copy-left-txt {
@@ -4548,12 +5010,11 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     }
     #page-course-index-category #page-wrapper header#page-header .col-12.pt-3.pb-3,
     #page-course-index-category #page-wrapper header#page-header .pt-3.pb-3.col-xs-12 {
-        padding: 0.5rem 15px!important;
+        padding: 0.5rem 15px !important;
     }
     div.course_category_tree .courses {
         margin: 0;
     }
-    
 }
 
 nav.fixed-top.navbar.navbar-light.bg-white {
