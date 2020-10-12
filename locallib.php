@@ -205,16 +205,16 @@ function theme_thinkblue_get_imageareacontent() {
                             $setting = trim($setting);
                             if (!empty($setting)) {
                                 switch ($i) {
-                                // Check for the first param: link.
-                                case 1:
-                                    // The name of the image is the key for the URL that will be set.
-                                    $links[$settings[0]] = $settings[1];
-                                    break;
-                                // Check for the second param: alt text.
-                                case 2:
-                                    // The name of the image is the key for the alt text that will be set.
-                                    $alttexts[$settings[0]] = $settings[2];
-                                    break;
+                                    // Check for the first param: link.
+                                    case 1:
+                                        // The name of the image is the key for the URL that will be set.
+                                        $links[$settings[0]] = $settings[1];
+                                        break;
+                                    // Check for the second param: alt text.
+                                    case 2:
+                                        // The name of the image is the key for the alt text that will be set.
+                                        $alttexts[$settings[0]] = $settings[2];
+                                        break;
                                 }
                             }
                         }
@@ -437,7 +437,7 @@ function theme_thinkblue_get_incourse_activity_settings() {
  */
 function theme_thinkblue_get_course_guest_access_hint($courseid) {
     global $CFG;
-    require_once ($CFG->dirroot . '/enrol/self/lib.php');
+    require_once($CFG->dirroot . '/enrol/self/lib.php');
 
     $html = '';
     $instances = enrol_get_instances($courseid, true);

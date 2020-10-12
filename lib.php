@@ -73,7 +73,7 @@ function theme_thinkblue_get_main_scss_content($theme) {
 function theme_thinkblue_get_pre_scss($theme) {
     global $CFG;
     // MODIFICATION START.
-    require_once ($CFG->dirroot . '/theme/thinkblue/locallib.php');
+    require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
     // MODIFICATION END.
 
     $scss = '';

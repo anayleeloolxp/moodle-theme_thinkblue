@@ -47,8 +47,8 @@ if (get_config('theme_thinkblue', 'footerblocks') == '1columns') {
     $regions[] = 'footer-right';
 }
 
-$regions_front = $regions;
-$regions_front[] = 'content';
+$regionsfront = $regions;
+$regionsfront[] = 'content';
 
 $THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.
@@ -85,7 +85,7 @@ $THEME->layouts = [
     // The site home page.
     'frontpage' => array(
         'file' => 'columns2.php',
-        'regions' => $regions_front,
+        'regions' => $regionsfront,
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => true),
     ),

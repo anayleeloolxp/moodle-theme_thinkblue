@@ -25,32 +25,21 @@
 
 namespace theme_thinkblue\output;
 
-use coding_exception;
-use html_writer;
-use tabobject;
-use tabtree;
-use custom_menu_item;
-use custom_menu;
-use block_contents;
-use navigation_node;
 use action_link;
-use stdClass;
-use moodle_url;
-use preferences_groups;
 use action_menu;
-use help_icon;
-use single_button;
-use single_select;
-use paging_bar;
-use url_select;
-use context_course;
-use pix_icon;
 use action_menu_filler;
 use action_menu_link_secondary;
+use context_course;
 use context_header;
+use help_icon;
+use html_writer;
+use moodle_url;
+use navigation_node;
+use pix_icon;
+use single_button;
+use stdClass;
 
 defined('MOODLE_INTERNAL') || die;
-
 
 /**
  * Extending the core_renderer interface.
@@ -80,8 +69,8 @@ class core_renderer extends \core_renderer {
         }
         // MODIFICATION END.
         /* ORIGINAL START.
-        return '';
-        ORIGINAL END. */
+    return '';
+    ORIGINAL END. */
     }
 
     /**
@@ -112,7 +101,7 @@ class core_renderer extends \core_renderer {
         }
         // MODIFICATION END.
 
-        return ' id="'. $this->body_id().'" class="'.$this->body_css_classes($additionalclasses).'"';
+        return ' id="' . $this->body_id() . '" class="' . $this->body_css_classes($additionalclasses) . '"';
     }
 
     /**
@@ -135,10 +124,9 @@ class core_renderer extends \core_renderer {
         }
         // MODIFICATION END.
         /* ORIGINAL START.
-        return $this->image_url('favicon', 'theme');
-        ORIGINAL END. */
+    return $this->image_url('favicon', 'theme');
+    ORIGINAL END. */
     }
-
 
     /**
      * Override to display switched role information beneath the course header instead of the user menu.
@@ -160,9 +148,9 @@ class core_renderer extends \core_renderer {
             // the settings block on it. The region main settings are included in the settings block and
             // duplicating the content causes behat failures.
             $PAGE->add_header_action(html_writer::div(
-                    $this->region_main_settings_menu(),
-                    'd-print-none',
-                    ['id' => 'region-main-settings-menu']
+                $this->region_main_settings_menu(),
+                'd-print-none',
+                ['id' => 'region-main-settings-menu']
             ));
         }
 
@@ -192,14 +180,14 @@ class core_renderer extends \core_renderer {
             $currentuser = $USER->id == $userid;
             if (($currentuser || is_siteadmin($USER)) &&
                 has_capability('moodle/user:update', \context_system::instance())) {
-                $url = new moodle_url('/user/editadvanced.php', array('id'       => $userid, 'course' => $COURSE->id,
-                                                                      'returnto' => 'profile'));
+                $url = new moodle_url('/user/editadvanced.php', array('id' => $userid, 'course' => $COURSE->id,
+                    'returnto' => 'profile'));
                 $header->pageheadingbutton = $this->single_button($url, get_string('editmyprofile', 'core'));
             } else if ((has_capability('moodle/user:editprofile', \context_user::instance($userid)) &&
-                    !is_siteadmin($USER)) || ($currentuser &&
-                    has_capability('moodle/user:editownprofile', \context_system::instance()))) {
-                $url = new moodle_url('/user/edit.php', array('id'       => $userid, 'course' => $COURSE->id,
-                                                              'returnto' => 'profile'));
+                !is_siteadmin($USER)) || ($currentuser &&
+                has_capability('moodle/user:editownprofile', \context_system::instance()))) {
+                $url = new moodle_url('/user/edit.php', array('id' => $userid, 'course' => $COURSE->id,
+                    'returnto' => 'profile'));
                 $header->pageheadingbutton = $this->single_button($url, get_string('editmyprofile', 'core'));
             }
         }
@@ -229,7 +217,7 @@ class core_renderer extends \core_renderer {
             // If the user has the capability to change the course settings, an additional link to the course settings is shown.
             if (has_capability('moodle/course:update', context_course::instance($COURSE->id))) {
                 $html .= html_writer::tag('div', get_string('showhintcoursehiddensettingslink',
-                    'theme_thinkblue', array('url' => $CFG->wwwroot.'/course/edit.php?id='. $COURSE->id)));
+                    'theme_thinkblue', array('url' => $CFG->wwwroot . '/course/edit.php?id=' . $COURSE->id)));
             }
             $html .= html_writer::end_tag('div');
         }
@@ -266,8 +254,8 @@ class core_renderer extends \core_renderer {
                 $role = $opts->metadata['rolename'];
                 // Get the URL to switch back (normal role).
                 $url = new moodle_url('/course/switchrole.php',
-                    array('id'        => $COURSE->id, 'sesskey' => sesskey(), 'switchrole' => 0,
-                          'returnurl' => $this->page->url->out_as_local_url(false)));
+                    array('id' => $COURSE->id, 'sesskey' => sesskey(), 'switchrole' => 0,
+                        'returnurl' => $this->page->url->out_as_local_url(false)));
                 $html .= html_writer::start_tag('div', array('class' => 'switched-role-infobox alert alert-info'));
                 $html .= html_writer::tag('i', null, array('class' => 'fa fa-user-circle fa-3x fa-pull-left'));
                 $html .= html_writer::start_tag('div');
@@ -286,7 +274,6 @@ class core_renderer extends \core_renderer {
         // MODIFICATION END.
         return $html;
     }
-
 
     /**
      * Override to display course settings on every course site for permanent access
@@ -322,9 +309,9 @@ class core_renderer extends \core_renderer {
         // @codingStandardsIgnoreStart
         /* ORIGINAL START.
         if (($context->contextlevel == CONTEXT_COURSE) &&
-                !empty($currentnode) &&
-                ($currentnode->type == navigation_node::TYPE_COURSE || $currentnode->type == navigation_node::TYPE_SECTION)) {
-            $showcoursemenu = true;
+        !empty($currentnode) &&
+        ($currentnode->type == navigation_node::TYPE_COURSE || $currentnode->type == navigation_node::TYPE_SECTION)) {
+        $showcoursemenu = true;
         }
         ORIGINAL END. */
         // @codingStandardsIgnoreEnd
@@ -332,16 +319,14 @@ class core_renderer extends \core_renderer {
         $courseformat = course_get_format($this->page->course);
         // This is a single activity course format, always show the course menu on the activity main page.
         if ($context->contextlevel == CONTEXT_MODULE &&
-                !$courseformat->has_view_page()) {
-
+            !$courseformat->has_view_page()) {
             $this->page->navigation->initialise();
             $activenode = $this->page->navigation->find_active_node();
             // If the settings menu has been forced then show the menu.
             if ($this->page->is_settings_menu_forced()) {
                 $showcoursemenu = true;
             } else if (!empty($activenode) && ($activenode->type == navigation_node::TYPE_ACTIVITY ||
-                        $activenode->type == navigation_node::TYPE_RESOURCE)) {
-
+                $activenode->type == navigation_node::TYPE_RESOURCE)) {
                 // We only want to show the menu on the first page of the activity. This means
                 // the breadcrumb has no additional nodes.
                 if ($currentnode && ($currentnode->key == $activenode->key && $currentnode->type == $activenode->type)) {
@@ -352,15 +337,15 @@ class core_renderer extends \core_renderer {
 
         // This is the site front page.
         if ($context->contextlevel == CONTEXT_COURSE &&
-                !empty($currentnode) &&
-                $currentnode->key === 'home') {
+            !empty($currentnode) &&
+            $currentnode->key === 'home') {
             $showfrontpagemenu = true;
         }
 
         // This is the user profile page.
         if ($context->contextlevel == CONTEXT_USER &&
-                !empty($currentnode) &&
-                ($currentnode->key === 'myprofile')) {
+            !empty($currentnode) &&
+            ($currentnode->key === 'myprofile')) {
             $showusermenu = true;
         }
 
@@ -431,7 +416,7 @@ class core_renderer extends \core_renderer {
         }
         $context->logourl = $url;
         $context->sitename = format_string($SITE->fullname, true,
-                ['context' => context_course::instance(SITEID), "escape" => false]);
+            ['context' => context_course::instance(SITEID), "escape" => false]);
         // MODIFICATION START.
         // Only if setting "loginform" is checked, then call own login.mustache.
         if (get_config('theme_thinkblue', 'loginform') == 'yes') {
@@ -441,8 +426,8 @@ class core_renderer extends \core_renderer {
         }
         // MODIFICATION END.
         /* ORIGINAL START.
-        return $this->render_from_template('core/loginform', $context);
-        ORIGINAL END. */
+    return $this->render_from_template('core/loginform', $context);
+    ORIGINAL END. */
     }
 
     /**
@@ -457,7 +442,7 @@ class core_renderer extends \core_renderer {
         $context = $helpicon->export_for_template($this);
         // MODIFICATION START.
         // ID needed for modal dialog.
-        $context->linkid = $helpicon->component.'-'.$helpicon->identifier;
+        $context->linkid = $helpicon->component . '-' . $helpicon->identifier;
         // Fill body variable needed for modal mustache with text value.
         $context->body = $context->text;
         if (get_config('theme_thinkblue', 'helptextmodal') == 'yes') {
@@ -467,12 +452,12 @@ class core_renderer extends \core_renderer {
         }
         // MODIFICATION END.
         /* ORIGINAL START.
-        $context = $helpicon->export_for_template($this);
-        return $this->render_from_template('core/help_icon', $context);
-        ORIGINAL END. */
+    $context = $helpicon->export_for_template($this);
+    return $this->render_from_template('core/help_icon', $context);
+    ORIGINAL END. */
     }
-	
-	/**
+
+    /**
      * User menu renderer
      *
      * @param stdClass|stdObject $user User object
@@ -521,14 +506,13 @@ class core_renderer extends \core_renderer {
                 ),
                 $usermenuclasses
             );
-
         }
 
         // If logged in as a guest user, show a string to that effect.
         if (isguestuser()) {
             $returnstr = " <a class='browse_link' href=\"$loginurl\">" . get_string('browse_header', 'theme_thinkblue') . '</a>';
             if (!$loginpage && $withlinks) {
-                $returnstr .= " <a class='login_link' href=\"$loginurl\">".get_string('login').'</a>';
+                $returnstr .= " <a class='login_link' href=\"$loginurl\">" . get_string('login') . '</a>';
             }
 
             return html_writer::div(
@@ -542,14 +526,13 @@ class core_renderer extends \core_renderer {
 
         // Get some navigation opts.
         $opts = user_get_user_navigation_info($user, $this->page);
-		
-		$opts->metadata['userfullname'] = $USER->firstname;
+
+        $opts->metadata['userfullname'] = $USER->firstname;
 
         $avatarclasses = "avatars";
         $avatarcontents = html_writer::span($opts->metadata['useravatar'], 'avatar current');
-		
+
         $usertextcontents = $opts->metadata['userfullname'];
-		
 
         // Other user.
         if (!empty($opts->metadata['asotheruser'])) {
@@ -619,41 +602,40 @@ class core_renderer extends \core_renderer {
             $navitemcount = count($opts->navitems);
             $idx = 0;
             foreach ($opts->navitems as $key => $value) {
-
                 switch ($value->itemtype) {
-                    case 'divider':
-                        // If the nav item is a divider, add one and skip link processing.
-                        $am->add($divider);
-                        break;
+                case 'divider':
+                    // If the nav item is a divider, add one and skip link processing.
+                    $am->add($divider);
+                    break;
 
-                    case 'invalid':
-                        // Silently skip invalid entries (should we post a notification?).
-                        break;
+                case 'invalid':
+                    // Silently skip invalid entries (should we post a notification?).
+                    break;
 
-                    case 'link':
-                        // Process this as a link item.
-                        $pix = null;
-                        if (isset($value->pix) && !empty($value->pix)) {
-                            $pix = new pix_icon($value->pix, '', null, array('class' => 'iconsmall'));
-                        } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
-                            $value->title = html_writer::img(
-                                $value->imgsrc,
-                                $value->title,
-                                array('class' => 'iconsmall')
-                            ) . $value->title;
-                        }
-
-                        $al = new action_menu_link_secondary(
-                            $value->url,
-                            $pix,
+                case 'link':
+                    // Process this as a link item.
+                    $pix = null;
+                    if (isset($value->pix) && !empty($value->pix)) {
+                        $pix = new pix_icon($value->pix, '', null, array('class' => 'iconsmall'));
+                    } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
+                        $value->title = html_writer::img(
+                            $value->imgsrc,
                             $value->title,
-                            array('class' => 'icon')
-                        );
-                        if (!empty($value->titleidentifier)) {
-                            $al->attributes['data-title'] = $value->titleidentifier;
-                        }
-                        $am->add($al);
-                        break;
+                            array('class' => 'iconsmall')
+                        ) . $value->title;
+                    }
+
+                    $al = new action_menu_link_secondary(
+                        $value->url,
+                        $pix,
+                        $value->title,
+                        array('class' => 'icon')
+                    );
+                    if (!empty($value->titleidentifier)) {
+                        $al->attributes['data-title'] = $value->titleidentifier;
+                    }
+                    $am->add($al);
+                    break;
                 }
 
                 $idx++;
@@ -689,7 +671,7 @@ class core_renderer extends \core_renderer {
         if ($this->should_display_main_logo($headinglevel)) {
             $sitename = format_string($SITE->fullname, true, array('context' => context_course::instance(SITEID)));
             return html_writer::div(html_writer::empty_tag('img', [
-                    'src' => $this->get_logo_url(null, 150), 'alt' => $sitename, 'class' => 'img-fluid']), 'logo');
+                'src' => $this->get_logo_url(null, 150), 'alt' => $sitename, 'class' => 'img-fluid']), 'logo');
         }
 
         // Make sure to use the heading if it has been set.
@@ -725,75 +707,38 @@ class core_renderer extends \core_renderer {
 
                 $imagedata = $this->user_picture($user, array('size' => 100));
 
-                $enrolled_courses = count(enrol_get_users_courses($user->id));
+                $enrolledcourses = count(enrol_get_users_courses($user->id));
 
-
-                $commentsarr = $DB->get_record_sql('SELECT COUNT(*) as comments FROM {comments} WHERE userid = '.$user->id.';');
+                $commentsarr = $DB->get_record_sql('SELECT COUNT(*) as comments FROM {comments} WHERE userid = ' . $user->id . ';');
 
                 $comments = $commentsarr->comments;
 
                 $userbuttons = array(
-                   'classes' => array(
+                    'classes' => array(
                         'buttontype' => 'message',
-                        'title' => '<span class="totalcount_ph">'.$enrolled_courses.'</span> '.get_string('classes', 'theme_thinkblue'),
+                        'title' => '<span class="totalcount_ph">' . $enrolledcourses . '</span> ' . get_string('classes', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'classes',
                         'linkattributes' => '',
-                        'page' => $this->page
+                        'page' => $this->page,
                     ),
                     'entries' => array(
                         'buttontype' => 'message',
-                        'title' => '<span class="totalcount_ph">'.$comments.'</span> '.get_string('entries', 'theme_thinkblue'),
+                        'title' => '<span class="totalcount_ph">' . $comments . '</span> ' . get_string('entries', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'entries',
                         'linkattributes' => '',
-                        'page' => $this->page
+                        'page' => $this->page,
                     ),
                     'comments' => array(
                         'buttontype' => 'message',
-                        'title' => '<span class="totalcount_ph">'.$comments.'</span> '.get_string('comments', 'theme_thinkblue'),
+                        'title' => '<span class="totalcount_ph">' . $comments . '</span> ' . get_string('comments', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'comment',
                         'linkattributes' => '',
-                        'page' => $this->page
-                    )
+                        'page' => $this->page,
+                    ),
                 );
-
-                // Check to see if we should be displaying a message button.
-                /*if (!empty($CFG->messaging) && has_capability('moodle/site:sendmessage', $context)) {
-                    $userbuttons = array(
-                        'messages' => array(
-                            'buttontype' => 'message',
-                            'title' => get_string('message', 'message'),
-                            'url' => new moodle_url('/message/index.php', array('id' => $user->id)),
-                            'image' => 'message',
-                            'linkattributes' => \core_message\helper::messageuser_link_params($user->id),
-                            'page' => $this->page
-                        )
-                    );
-
-                    if ($USER->id != $user->id) {
-                        $iscontact = \core_message\api::is_contact($USER->id, $user->id);
-                        $contacttitle = $iscontact ? 'removefromyourcontacts' : 'addtoyourcontacts';
-                        $contacturlaction = $iscontact ? 'removecontact' : 'addcontact';
-                        $contactimage = $iscontact ? 'removecontact' : 'addcontact';
-                        $userbuttons['togglecontact'] = array(
-                                'buttontype' => 'togglecontact',
-                                'title' => get_string($contacttitle, 'message'),
-                                'url' => new moodle_url('/message/index.php', array(
-                                        'user1' => $USER->id,
-                                        'user2' => $user->id,
-                                        $contacturlaction => $user->id,
-                                        'sesskey' => sesskey())
-                                ),
-                                'image' => $contactimage,
-                                'linkattributes' => \core_message\helper::togglecontact_link_params($user, $iscontact),
-                                'page' => $this->page
-                            );   
-                    }
-
-                    $this->page->requires->string_for_js('changesmadereallygoaway', 'moodle');
-                }*/
             } else {
                 $heading = null;
             }

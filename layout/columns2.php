@@ -43,32 +43,29 @@ if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
 }
 
-if (is_siteadmin())
-{
+if (is_siteadmin()) {
     $extraclasses[] = 'adminloggedin';
 }
 
 global $USER;
-if( !isset($USER->id) && isset($USER->id)==''){
+if (!isset($USER->id) && isset($USER->id) == '') {
     $extraclasses[] = 'notloggedinuser';
-}else{
-    if($USER->id == 1 || $USER->id == 0){
+} else {
+    if ($USER->id == 1 || $USER->id == 0) {
         $extraclasses[] = 'notloggedinuser';
-    }else{
+    } else {
         $extraclasses[] = 'loggedinuser';
     }
 }
 
-
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $blockshtml = $OUTPUT->blocks('side-pre');
 
-if( $PAGE->pagetype == 'site-index'){
+if ($PAGE->pagetype == 'site-index') {
     $contentblockshtml = $OUTPUT->blocks('content');
-}else{
+} else {
     $contentblockshtml = '';
 }
-
 
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
 $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
@@ -114,7 +111,7 @@ $templatecontext = [
     // MODIFICATION START: Add Think Blue realated values to the template context.
     'catchshortcuts' => json_encode($catchshortcuts),
     'navdrawerfullwidth' => $navdrawerfullwidth,
-    'darknavbar' => $darknavbar
+    'darknavbar' => $darknavbar,
     // MODIFICATION END.
 ];
 
