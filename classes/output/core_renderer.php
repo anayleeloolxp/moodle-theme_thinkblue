@@ -116,7 +116,7 @@ class core_renderer extends \core_renderer {
             return $this->page->theme->setting_file_url('favicon', 'favicon');
         } else {
             return $this->image_url('favicon', 'theme');
-        }        
+        }
     }
 
     /**
