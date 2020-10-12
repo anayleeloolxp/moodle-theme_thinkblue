@@ -67,10 +67,7 @@ class core_renderer extends \core_renderer {
         if (get_config('theme_thinkblue', 'courseeditbutton') == '1') {
             return \core_renderer::edit_button($url);
         }
-        // MODIFICATION END.
-        /* ORIGINAL START.
-    return '';
-    ORIGINAL END. */
+        
     }
 
     /**
@@ -85,7 +82,7 @@ class core_renderer extends \core_renderer {
      * @return string
      */
     public function body_attributes($additionalclasses = array()) {
-        global $PAGE, $CFG;
+        global $CFG;
         require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
 
         if (!is_array($additionalclasses)) {
@@ -94,7 +91,7 @@ class core_renderer extends \core_renderer {
 
         // MODIFICATION START.
         // Only add classes for the login page.
-        if ($PAGE->bodyid == 'page-login-index') {
+        if ($this->page->bodyid == 'page-login-index') {
             $additionalclasses[] = 'loginbackgroundimage';
             // Generating a random class for displaying a random image for the login page.
             $additionalclasses[] = theme_thinkblue_get_random_loginbackgroundimage_class();
@@ -115,17 +112,13 @@ class core_renderer extends \core_renderer {
      * @return moodle_url The moodle_url for the favicon
      */
     public function favicon() {
-        global $PAGE;
         // MODIFICATION START.
-        if (!empty($PAGE->theme->settings->favicon)) {
-            return $PAGE->theme->setting_file_url('favicon', 'favicon');
+        if (!empty($this->page->theme->settings->favicon)) {
+            return $this->page->theme->setting_file_url('favicon', 'favicon');
         } else {
             return $this->image_url('favicon', 'theme');
         }
-        // MODIFICATION END.
-        /* ORIGINAL START.
-    return $this->image_url('favicon', 'theme');
-    ORIGINAL END. */
+        
     }
 
     /**
@@ -140,14 +133,14 @@ class core_renderer extends \core_renderer {
      */
     public function full_header() {
         // MODIFICATION START.
-        global $PAGE, $USER, $COURSE, $CFG;
+        global $USER, $COURSE, $CFG;
         // MODIFICATION END.
 
-        if ($PAGE->include_region_main_settings_in_header_actions() && !$PAGE->blocks->is_block_present('settings')) {
+        if ($this->page->include_region_main_settings_in_header_actions() && !$this->page->blocks->is_block_present('settings')) {
             // Only include the region main settings if the page has requested it and it doesn't already have
             // the settings block on it. The region main settings are included in the settings block and
             // duplicating the content causes behat failures.
-            $PAGE->add_header_action(html_writer::div(
+            $this->page->add_header_action(html_writer::div(
                 $this->region_main_settings_menu(),
                 'd-print-none',
                 ['id' => 'region-main-settings-menu']
@@ -158,7 +151,7 @@ class core_renderer extends \core_renderer {
         // MODIFICATION START.
         // Show the context header settings menu on all pages except for the profile page as we replace
         // it with an edit button there.
-        if ($PAGE->pagelayout != 'mypublic') {
+        if ($this->page->pagelayout != 'mypublic') {
             $header->settingsmenu = $this->context_header_settings_menu();
         }
         // MODIFICATION END.
@@ -166,12 +159,12 @@ class core_renderer extends \core_renderer {
         $header->settingsmenu = $this->context_header_settings_menu();
         ORIGINAL END. */
         $header->contextheader = $this->context_header();
-        $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
+        $header->hasnavbar = empty($this->page->layout_options['nonavbar']);
         $header->navbar = $this->navbar();
         // MODIFICATION START.
         // Show the page heading button on all pages except for the profile page.
         // There we replace it with an edit profile button.
-        if ($PAGE->pagelayout != 'mypublic') {
+        if ($this->page->pagelayout != 'mypublic') {
             $header->pageheadingbutton = $this->page_heading_button();
         } else {
             // Get the id of the user for whom the profile page is shown.
@@ -196,7 +189,7 @@ class core_renderer extends \core_renderer {
         $header->pageheadingbutton = $this->page_heading_button();
         ORIGINAL END. */
         $header->courseheader = $this->course_header();
-        $header->headeractions = $PAGE->get_header_actions();
+        $header->headeractions = $this->page->get_header_actions();
         // MODIFICATION START:
         // Change this to add the result in the html variable to be able to add further features below the header.
         // Render from the own header template.
@@ -210,7 +203,7 @@ class core_renderer extends \core_renderer {
         // If the setting showhintcoursehidden is set, the visibility of the course is hidden and
         // a hint for the visibility will be shown.
         if (get_config('theme_thinkblue', 'showhintcoursehidden') == 'yes' && $COURSE->visible == false &&
-            $PAGE->has_set_url() && $PAGE->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)) {
+            $this->page->has_set_url() && $this->page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)) {
             $html .= html_writer::start_tag('div', array('class' => 'course-hidden-infobox alert alert-warning'));
             $html .= html_writer::tag('i', null, array('class' => 'fa fa-exclamation-circle fa-3x fa-pull-left'));
             $html .= get_string('showhintcoursehiddengeneral', 'theme_thinkblue', $COURSE->id);
@@ -230,8 +223,8 @@ class core_renderer extends \core_renderer {
         // intended.
         if (get_config('theme_thinkblue', 'showhintcourseguestaccess') == 'yes'
             && is_guest(\context_course::instance($COURSE->id), $USER->id)
-            && $PAGE->has_set_url()
-            && $PAGE->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
+            && $this->page->has_set_url()
+            && $this->page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
             && !is_role_switched($COURSE->id)) {
             $html .= html_writer::start_tag('div', array('class' => 'course-guestaccess-infobox alert alert-warning'));
             $html .= html_writer::tag('i', null, array('class' => 'fa fa-exclamation-circle fa-3x fa-pull-left'));
@@ -308,8 +301,7 @@ class core_renderer extends \core_renderer {
         // MODIFICATION END.
         // @codingStandardsIgnoreStart
         /* ORIGINAL START.
-        if (($context->contextlevel == CONTEXT_COURSE) &&
-        !empty($currentnode) &&
+        if (($context->contextlevel == CONTEXT_COURSE) && !empty($currentnode) &&
         ($currentnode->type == navigation_node::TYPE_COURSE || $currentnode->type == navigation_node::TYPE_SECTION)) {
         $showcoursemenu = true;
         }
@@ -424,10 +416,6 @@ class core_renderer extends \core_renderer {
         } else {
             return $this->render_from_template('core/loginform', $context);
         }
-        // MODIFICATION END.
-        /* ORIGINAL START.
-    return $this->render_from_template('core/loginform', $context);
-    ORIGINAL END. */
     }
 
     /**
@@ -450,11 +438,6 @@ class core_renderer extends \core_renderer {
         } else {
             return $this->render_from_template('core/help_icon', $context);
         }
-        // MODIFICATION END.
-        /* ORIGINAL START.
-    $context = $helpicon->export_for_template($this);
-    return $this->render_from_template('core/help_icon', $context);
-    ORIGINAL END. */
     }
 
     /**
@@ -603,39 +586,39 @@ class core_renderer extends \core_renderer {
             $idx = 0;
             foreach ($opts->navitems as $key => $value) {
                 switch ($value->itemtype) {
-                case 'divider':
-                    // If the nav item is a divider, add one and skip link processing.
-                    $am->add($divider);
-                    break;
+                    case 'divider':
+                        // If the nav item is a divider, add one and skip link processing.
+                        $am->add($divider);
+                        break;
 
-                case 'invalid':
-                    // Silently skip invalid entries (should we post a notification?).
-                    break;
+                    case 'invalid':
+                        // Silently skip invalid entries (should we post a notification?).
+                        break;
 
-                case 'link':
-                    // Process this as a link item.
-                    $pix = null;
-                    if (isset($value->pix) && !empty($value->pix)) {
-                        $pix = new pix_icon($value->pix, '', null, array('class' => 'iconsmall'));
-                    } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
-                        $value->title = html_writer::img(
-                            $value->imgsrc,
+                    case 'link':
+                        // Process this as a link item.
+                        $pix = null;
+                        if (isset($value->pix) && !empty($value->pix)) {
+                            $pix = new pix_icon($value->pix, '', null, array('class' => 'iconsmall'));
+                        } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
+                            $value->title = html_writer::img(
+                                $value->imgsrc,
+                                $value->title,
+                                array('class' => 'iconsmall')
+                            ) . $value->title;
+                        }
+
+                        $al = new action_menu_link_secondary(
+                            $value->url,
+                            $pix,
                             $value->title,
-                            array('class' => 'iconsmall')
-                        ) . $value->title;
-                    }
-
-                    $al = new action_menu_link_secondary(
-                        $value->url,
-                        $pix,
-                        $value->title,
-                        array('class' => 'icon')
-                    );
-                    if (!empty($value->titleidentifier)) {
-                        $al->attributes['data-title'] = $value->titleidentifier;
-                    }
-                    $am->add($al);
-                    break;
+                            array('class' => 'icon')
+                        );
+                        if (!empty($value->titleidentifier)) {
+                            $al->attributes['data-title'] = $value->titleidentifier;
+                        }
+                        $am->add($al);
+                        break;
                 }
 
                 $idx++;
