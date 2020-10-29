@@ -26,6 +26,13 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
+    $settings->add(new admin_setting_configtext(
+        'theme_thinkblue/license',
+        get_string('license', 'theme_thinkblue'),
+        get_string('license', 'theme_thinkblue'),
+        0
+    ));
+
     // Create settings page with tabs.
     $settings = new theme_boost_admin_settingspage_tabs('themesettingthinkblue',
         get_string('configtitle', 'theme_thinkblue', null, true));

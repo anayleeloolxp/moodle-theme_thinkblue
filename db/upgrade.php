@@ -33,46 +33,5 @@ defined('MOODLE_INTERNAL') || die;
 function xmldb_theme_thinkblue_upgrade($oldversion) {
     global $DB;
 
-    if ($oldversion < 2018051701) {
-        // The setting "theme_thinkblue|navdrawericons" has been deleted because this functionality was
-        // integrated into core.
-        // Set the config to null.
-        set_config('navdrawericons', null, 'theme_thinkblue');
-
-        // The setting "theme_thinkblue|nawdrawerfullwidth" has been renamed to navdrawerfullwidth.
-        // If the setting is configured.
-        if ($oldnavdrawerfullwidth = get_config('theme_thinkblue', 'nawdrawerfullwidth')) {
-            // Set the value of the setting to the new setting.
-            set_config('navdrawerfullwidth', $oldnavdrawerfullwidth, 'theme_thinkblue');
-            // Drop the old setting.
-            set_config('nawdrawerfullwidth', null, 'theme_thinkblue');
-        }
-
-        upgrade_plugin_savepoint(true, 2018051701, 'theme', 'thinkblue');
-    }
-
-    if ($oldversion < 2018121700) {
-        // The setting "theme_thinkblue|incoursesettingsswitchtorole" has been renamed because the setting was
-        // upgraded with another option.
-        // Therefore set the old config to null.
-        set_config('incoursesettingsswitchtorole', null, 'theme_thinkblue');
-
-        upgrade_plugin_savepoint(true, 2018121700, 'theme', 'thinkblue');
-    }
-
-    if ($oldversion < 2020030800) {
-
-        // The setting "theme_thinkblue|imageareaitemslinks" has been renamed to imageareaitemsattributes.
-        // If the setting is configured.
-        if ($oldimageareaitemslinks = get_config('theme_thinkblue', 'imageareaitemslink')) {
-            // Set the value of the setting to the new setting.
-            set_config('imageareaitemsattributes', $oldimageareaitemslinks, 'theme_thinkblue');
-            // Drop the old setting.
-            set_config('imageareaitemslink', null, 'theme_thinkblue');
-        }
-
-        upgrade_plugin_savepoint(true, 2020030800, 'theme', 'thinkblue');
-    }
-
     return true;
 }

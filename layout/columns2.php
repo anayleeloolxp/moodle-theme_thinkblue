@@ -63,8 +63,10 @@ $blockshtml = $OUTPUT->blocks('side-pre');
 
 if ($PAGE->pagetype == 'site-index') {
     $contentblockshtml = $OUTPUT->blocks('content');
+    $abovecontentblockshtml = $OUTPUT->blocks('abovecontent');
 } else {
     $contentblockshtml = '';
+    $abovecontentblockshtml = '';
 }
 
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
@@ -102,6 +104,7 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'contentblocks' => $contentblockshtml,
+    'abovecontentblocks' => $abovecontentblockshtml,
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
     'bodyattributes' => $bodyattributes,

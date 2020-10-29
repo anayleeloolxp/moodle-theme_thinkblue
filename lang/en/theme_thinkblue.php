@@ -118,6 +118,8 @@ $string['region-footer-left'] = 'Footer (left)';
 $string['region-footer-middle'] = 'Footer (middle)';
 $string['region-footer-right'] = 'Footer (right)';
 $string['region-side-pre'] = 'Right';
+$string['region-content'] = 'Below Content';
+$string['region-abovecontent'] = 'Above Content';
 // ...Hide footer links.
 $string['footerlinksheadingsetting'] = 'Default footer links';
 $string['footerlinksheadingsetting_desc'] = 'Moodle provides some default links in the footer: Link to the Moodle docs, login information, and a link to the webpage start. <br/> With the following three settings you can decide if you want to hide specific links because you think that your users won\'t need them in your instance.';
@@ -241,3 +243,6 @@ $string['region-side-pre'] = 'Right';
 $string['classes'] = 'Classes';
 $string['entries'] = 'Entries';
 $string['comments'] = 'Comments';
+
+$string['nolicense'] = 'Invalid Leeloo LXP License ID';
+$string['license'] = 'Leeloo LXP License ID';
