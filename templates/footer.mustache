@@ -43,6 +43,14 @@
                 {{{ output.course_footer }}}
             </div>
 
+            {{! If admin setting is set to show stats. }}
+            {{#footerstats }}
+                {{! Add blocks to the first footer column.}}
+                <section data-region="footer-stats" class="d-print-none footer-stats col-12">
+                    {{{ footerstatshtml }}}
+                </section>
+            {{/footerstats }}
+
             {{! If admin setting is set to one footer column. }}
             {{#footerblock1columns }}
                 {{! Add blocks to the first footer column.}}
@@ -84,34 +92,41 @@
                 </section>
             {{/footerblock3columns }}
 
+            {{! If admin setting is set to three footer columns. }}
+            {{#footerblock4columns }}
+                {{! The layout is 3 columns on large screens. For medium and small screens it is better to display just 1 column.}}
+                {{! Add blocks to the first footer column.}}
+                <section data-region="footer-left" class="d-print-none col-12 col-lg-3">
+                    {{{ footerleftblocks }}}
+                </section>
+
+                {{! Add blocks to the second footer column.}}
+                <section data-region="footer-middle-l" class="d-print-none col-12 col-lg-3">
+                    {{{ footermiddlelblocks }}}
+                </section>
+
+                {{! Add blocks to the second footer column.}}
+                <section data-region="footer-middle-r" class="d-print-none col-12 col-lg-3">
+                    {{{ footermiddlerblocks }}}
+                </section>
+
+                {{! Add blocks to the third footer column.}}
+                <section data-region="footer-right" class="d-print-none col-12 col-lg-3">
+                    {{{ footerrightblocks }}}
+                </section>
+            {{/footerblock4columns }}
+
+            {{! If admin setting is set to show copyright. }}
+            {{#footercopy }}
+                <section data-region="footer-copy" class="d-print-none footer-copy col-12">
+                    {{{ footercopyhtml }}}
+                </section>
+            {{/footercopy }}
+
         </div>
     </div>
 
-    {{! Add standard Moodle footer behind the blocks area. }}
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="col-12">
-                {{# output.page_doc_link }}
-                    <p class="helplink">{{{ output.page_doc_link }}}</p>
-                {{/ output.page_doc_link }}
-
-                {{{ output.login_info }}}
-                <div class="tool_usertours-resettourcontainer"></div>
-                {{{ output.home_link }}}
-                <nav class="nav navbar-nav d-md-none" aria-label="{{#str}}custommenu, admin{{/str}}">
-                    {{# output.custom_menu_flat }}
-                        <ul class="list-unstyled pt-3">
-                            {{> theme_boost/custom_menu_footer }}
-                        </ul>
-                    {{/ output.custom_menu_flat }}
-                </nav>
-                {{{ output.standard_footer_html }}}
-                {{! Moved the variable
-                output.standard_end_of_body_html
-                to the end of the columns2.mustache template to solve Javascript issues with behat tests. }}
-            </div>
-        </div>
-    </div>
+    
 </footer>
 
 <script>
