@@ -880,6 +880,7 @@ a[href^="mailto"]::before {
     padding: 0.5rem;
     bottom: 0.5em;
     right: 0.5em;
+    z-index: 3;
     line-height: 1.7rem;
     color: #fff;
     background-color: #00bcbe;
@@ -2489,6 +2490,7 @@ body#page-login-signup .card-body {
 }
 #page-wrapper #page #page-content {
     min-height: 500px;
+    display: block;
 }
 body#page-login-signup .page-header-headings {
     display: none;
@@ -3223,10 +3225,10 @@ body#page-course-index-category.pagelayout-coursecategory:not(.category-3) div.c
     color: #565656;
 }
 body#page-site-index h5.card-title {
-    font-weight: 700;
     font-size: 25px;
     margin: 0 0 20px;
-    display: inline-block !important;
+    display: block !important;
+    text-align: center;
 }
 .home_articles_content .recent_blogdescription {
     margin: 0 0 20px;
@@ -3245,11 +3247,10 @@ div#page-wrapper {
 }
 .drawer-open-left div#page-wrapper,
 body#page-site-index div#page-wrapper {
-    padding-left: 76px;
+    padding-left: 71px;
 }
-body div#page-wrapper,
-body#page-site-index.drawer-open-left div#page-wrapper {
-    padding-left: 225px;
+body div#page-wrapper, body#page-site-index.drawer-open-left div#page-wrapper {
+    padding-left: 220px;
 }
 body#page-site-index aside#block-region-content .block .card-body {
     width: 100%;
@@ -3649,8 +3650,9 @@ body#page-site-index.adminloggedin div#page div#page-content section#region-main
     display: unset;
 }
 .block_tb_slider .bx-wrapper img {
-    min-height: 800px;
+    min-height: 912px;
     object-fit: cover;
+    max-height: 912px;
 }
 .course-info-container span.sr-only {
     display: none !important;
@@ -5024,7 +5026,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     -webkit-box-shadow: 0 0 2px #e7e7e9!important;
     box-shadow: 0 0 2px #e7e7e9!important;
     border: 1px solid #e7e7e9!important;
-    max-width: 100%!important;
+    // max-width: 100%!important;
 }
 .tb_clients .clients_box {
     padding: 0 10px;
@@ -5140,3 +5142,147 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 
 // 28-10-2020G
+
+
+// 31-10-2020
+
+// Frequently Asked Questions
+
+.tb_faq div#faq_box {
+    box-shadow: 0 0 2px #e7e7e9;
+    border: 1px solid #e7e7e9;
+}
+div.faq_more a {
+    padding: 10px 50px;
+    background: #626672 !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    font-size: 19px;
+}
+
+
+// footer
+
+#page-wrapper #page-footer {
+    padding: 0 !important;
+    border: none;
+    overflow: hidden;
+}
+#page-wrapper #page-footer section.footer-stats {
+    text-align: center;
+    padding: 40px;
+    background: #535762;
+    color: #fff;
+}
+#page-wrapper #page-footer section.footer-stats::before {
+    content: "";
+    background: #535762;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: calc(100vw - 100px);
+    transform: translate(-50%, 0);
+}
+#page-wrapper #page-footer section.footer-stats>* {
+    position: relative;
+    z-index: 1;
+}
+#page-wrapper #page-footer section.footer-stats h2 {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 28px;
+    color: #fff;
+    font-weight: 400;
+}
+#page-wrapper #page-footer section.footer-stats .row-fluid .statsin {
+    padding: 38px 15px;
+}
+#page-wrapper #page-footer section.footer-stats .row-fluid .statsin:not(:last-child) {
+    border-right: 1px solid rgba(255,255,255,0.6);
+}
+#page-wrapper #page-footer section.footer-stats .statsall {
+    margin: 35px 0;
+}
+#page-wrapper #page-footer section.footer-stats .stat-button a {
+    padding: 10px 50px;
+    background: #eff0f5 !important;
+    color: #535762 !important;
+    box-shadow: none !important;
+    display: inline-block;
+    font-size: 19px;
+}
+#page-wrapper #page-footer section.footer-stats .row-fluid .statsin h2 {
+    margin: 0 0 5px;
+    font-weight: 800;
+    font-size: 35px;
+}
+#page-wrapper #page-footer section.d-print-none:not(.footer-stats) {
+    padding: 50px 15px;
+    color: #666;
+}
+#page-wrapper #page-footer section.d-print-none:not(.footer-stats) h2 {
+    font-weight: 600;
+}
+#page-wrapper #page-footer section.d-print-none.footer-copy h2 {
+    text-align: center;
+    margin: 0 0 20px;
+    font-weight: 400;
+}
+#page-wrapper #page-footer section.d-print-none.footer-copy {
+    border-top: 1px solid #e7e7e9;
+    color: #737373;
+    padding-bottom: 0;
+}
+#page-wrapper #page-footer section.d-print-none.footer-copy p {
+    color: #737373;
+    text-align: center;
+}
+#page-wrapper #page-footer section.d-print-none.footer-copy .copyright-foo {
+    background: #eff0f5;
+    padding: 18px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin: 0 -15px;
+}
+#page-wrapper #page-footer section.d-print-none.footer-copy .copyright-foo::before {
+    content: "";
+    background: #eff0f5;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: calc(100vw - 100px);
+    transform: translate(-50%,0);
+    z-index: -1;
+}
+#page-wrapper #page #page-content section.block.block_tb_faq {
+    padding: 0 0 70px;
+}
+.block_tb_slider .bx-wrapper .bx-controls-direction a {
+    width: auto;
+    height: auto;
+    text-indent: 0;
+    padding: 10px 50px;
+    background: #626672 !important;
+    color: #fff!important;
+    box-shadow: none!important;
+    font-size: 20px;
+    text-decoration: none;
+    margin: 0;
+    bottom: 120px;
+    top: auto;
+}
+#page-wrapper #page #page-content section.block>.card-body {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
+.bx-controls-direction {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+// 31-10-2020

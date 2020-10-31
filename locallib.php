@@ -469,7 +469,6 @@ function theme_thinkblue_general_leeloosettings() {
     global $CFG;
     require_once($CFG->dirroot . '/lib/filelib.php');
     $leeloolxplicense = get_config('theme_thinkblue')->license;
-    $leeloolxplicense = '7857091966';
 
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
     $postdata = '&license_key=' . $leeloolxplicense;
