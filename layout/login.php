@@ -26,6 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
+$leeloosettings = theme_thinkblue_general_leeloosettings();
 
 $bodyattributes = $OUTPUT->body_attributes();
 $loginbackgroundimagetext = theme_thinkblue_get_loginbackgroundimage_text();
@@ -46,7 +47,8 @@ ob_start();
 // The footer blocks and the image area are currently not shown on the login page.
 // Here, we will add the footnote only.
 // Get footnote config.
-$footnote = get_config('theme_thinkblue', 'footnote');
+
+$footnote = $leeloosettings->additional_layout_settings->footnote;
 if (!empty($footnote)) {
     // Add footnote layout file.
     require_once(__DIR__ . '/includes/footnote.php');

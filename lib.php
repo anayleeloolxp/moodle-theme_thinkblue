@@ -24,7 +24,9 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-
+require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
+$leeloosettings = theme_thinkblue_general_leeloosettings();
+global $leeloosettings;
 /**
  * Returns the main SCSS content.
  *
@@ -35,7 +37,7 @@ function theme_thinkblue_get_main_scss_content($theme) {
     global $CFG;
 
     $scss = '';
-    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
+    $filename = !empty($leeloosettings->general_settings->preset) ? $leeloosettings->general_settings->preset : null;
     $fs = get_file_storage();
 
     $context = context_system::instance();
@@ -110,7 +112,22 @@ function theme_thinkblue_get_pre_scss($theme) {
 
     // Prepend variables first.
     foreach ($configurable as $configkey => $targets) {
-        $value = isset($theme->settings->{$configkey}) ? $theme->settings->{$configkey} : null;
+        if( isset($leeloosettings->general_settings->{$configkey}) ){
+            $value = isset($leeloosettings->general_settings->{$configkey});
+        }elseif( isset($leeloosettings->advanced_settings->{$configkey}) ){
+            $value = isset($leeloosettings->advanced_settings->{$configkey});
+        }elseif( isset($leeloosettings->course_layout_settings->{$configkey}) ){
+            $value = isset($leeloosettings->course_layout_settings->{$configkey});
+        }elseif( isset($leeloosettings->footer_layout_settings->{$configkey}) ){
+            $value = isset($leeloosettings->footer_layout_settings->{$configkey});
+        }elseif( isset($leeloosettings->additional_layout_settings->{$configkey}) ){
+            $value = isset($leeloosettings->additional_layout_settings->{$configkey});
+        }elseif( isset($leeloosettings->design_settings->{$configkey}) ){
+            $value = isset($leeloosettings->design_settings->{$configkey});
+        }else{
+            $value = null;
+        }
+        
         if (empty($value)) {
             continue;
         }
@@ -121,8 +138,8 @@ function theme_thinkblue_get_pre_scss($theme) {
 
     // MODIFICATION START: Overwrite Boost core SCSS variables which need units and thus couldn't be added to $configurable above.
     // Set variables which are processed in the context of the blockcolumnwidth setting.
-    if (isset($theme->settings->blockcolumnwidth)) {
-        $scss .= '$blocks-column-width: ' . $theme->settings->blockcolumnwidth . "px;\n";
+    if (isset($leeloosettings->design_settings->blockcolumnwidth)) {
+        $scss .= '$blocks-column-width: ' . $leeloosettings->design_settings->blockcolumnwidth . "px;\n";
         $scss .= '$grid-gutter-width: ' . "30px;\n";
     }
     // MODIFICATION END.
@@ -130,8 +147,8 @@ function theme_thinkblue_get_pre_scss($theme) {
     // MODIFICATION START: Set own SCSS variables which need units or calculations and thus couldn't be
     // added to $configurable above.
     // Set variables which are processed in the context of the blockcolumnwidth setting.
-    if (isset($theme->settings->blockcolumnwidthdashboard)) {
-        $scss .= '$blocks-column-width-dashboard: ' . $theme->settings->blockcolumnwidthdashboard . "px;\n";
+    if (isset($leeloosettings->design_settings->blockcolumnwidthdashboard)) {
+        $scss .= '$blocks-column-width-dashboard: ' . $leeloosettings->design_settings->blockcolumnwidthdashboard . "px;\n";
         $scss .= '$blocks-plus-gutter-dashboard: $blocks-column-width-dashboard + ( $grid-gutter-width / 2 )' . ";\n";
     }
     // MODIFICATION END.
@@ -141,8 +158,8 @@ function theme_thinkblue_get_pre_scss($theme) {
     // MODIFICATION END.
 
     // Prepend pre-scss.
-    if (!empty($theme->settings->scsspre)) {
-        $scss .= $theme->settings->scsspre;
+    if (!empty($leeloosettings->advanced_settings->scsspre)) {
+        $scss .= $leeloosettings->advanced_settings->scsspre;
     }
 
     return $scss;

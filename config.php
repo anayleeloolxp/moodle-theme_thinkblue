@@ -32,20 +32,29 @@ $THEME->scss = function ($theme) {
     return theme_thinkblue_get_main_scss_content($theme);
 };
 
+require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
+$leeloosettings = theme_thinkblue_general_leeloosettings();
+//$footerblocksetting = $leeloosettings->footer_layout_settings->footerblocks;
+
 // MODIFICATION START:
 // The declaration of the regions in that way is not part of the default config file.
 // It is needed for the Footer Blocks feature of Think Blue.
 $regions = array('side-pre');
-if (get_config('theme_thinkblue', 'footerblocks') == '1columns') {
+/*if ($footerblocksetting == '1columns') {
     $regions[] = 'footer-left';
-} else if (get_config('theme_thinkblue', 'footerblocks') == '2columns') {
+} else if ($footerblocksetting == '2columns') {
     $regions[] = 'footer-left';
     $regions[] = 'footer-right';
-} else if (get_config('theme_thinkblue', 'footerblocks') == '3columns') {
+} else if ($footerblocksetting == '3columns') {
     $regions[] = 'footer-left';
     $regions[] = 'footer-middle';
     $regions[] = 'footer-right';
-}
+} else if ($footerblocksetting == '4columns') {
+    $regions[] = 'footer-left';
+    $regions[] = 'footer-middle';
+    $regions[] = 'footer-middle-r';
+    $regions[] = 'footer-right';
+}*/
 
 $regionsfront = $regions;
 $regionsfront[] = 'content';
@@ -169,7 +178,7 @@ $THEME->prescsscallback = 'theme_thinkblue_get_pre_scss';
 $THEME->yuicssmodules = array();
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->requiredblocks = ' ';
-if (get_config('theme_thinkblue', 'addablockposition') == 'positionnavdrawer') {
+if ($leeloosettings->advanced_settings->addablockposition == 'positionnavdrawer') {
     $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 } else {
     $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_DEFAULT;

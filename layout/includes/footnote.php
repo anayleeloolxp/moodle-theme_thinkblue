@@ -25,7 +25,10 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$footnotesetting = get_config('theme_thinkblue', 'footnote');
+require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
+$leeloosettings = theme_thinkblue_general_leeloosettings();
+
+$footnotesetting = $leeloosettings->additional_layout_settings->footnote;
 
 // Only proceed if text area does not only contains empty tags.
 if (!html_is_blank($footnotesetting)) {

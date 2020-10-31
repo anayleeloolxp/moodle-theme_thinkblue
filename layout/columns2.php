@@ -31,6 +31,7 @@ user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 require_once($CFG->libdir . '/behat/lib.php');
 // MODIFICATION Start: Require own locallib.php.
 require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
+$leeloosettings = theme_thinkblue_general_leeloosettings();
 // MODIFICATION END.
 
 if (isloggedin()) {
@@ -75,21 +76,21 @@ $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 // Initialize array.
 $catchshortcuts = array();
 // If setting is enabled then add the parameter to the array.
-if (get_config('theme_thinkblue', 'catchendkey') == true) {
+if ($leeloosettings->advanced_settings->catchendkey == true) {
     $catchshortcuts[] = 'end';
 }
 // If setting is enabled then add the parameter to the array.
-if (get_config('theme_thinkblue', 'catchcmdarrowdown') == true) {
+if ($leeloosettings->advanced_settings->catchcmdarrowdown == true) {
     $catchshortcuts[] = 'cmdarrowdown';
 }
 // If setting is enabled then add the parameter to the array.
-if (get_config('theme_thinkblue', 'catchctrlarrowdown') == true) {
+if ($leeloosettings->advanced_settings->catchctrlarrowdown == true) {
     $catchshortcuts[] = 'ctrlarrowdown';
 }
 // MODIFICATION END.
 
 // MODIFICATION START: Setting 'darknavbar'.
-if (get_config('theme_thinkblue', 'darknavbar') == 'yes') {
+if ($leeloosettings->design_settings->darknavbar == 'yes') {
     $darknavbar = true;
 } else {
     $darknavbar = false;
@@ -97,7 +98,7 @@ if (get_config('theme_thinkblue', 'darknavbar') == 'yes') {
 // MODIFICATION END.
 
 // MODIFICATION START: Setting 'navdrawerfullwidth'.
-$navdrawerfullwidth = get_config('theme_thinkblue', 'navdrawerfullwidth');
+$navdrawerfullwidth = $leeloosettings->additional_layout_settings->navdrawerfullwidth;
 // MODIFICATION END.
 
 $templatecontext = [
@@ -123,7 +124,7 @@ $nav = $PAGE->flatnav;
 // Use the returned value from theme_thinkblue_get_modified_flatnav_defaulthomepageontop as the template context.
 $templatecontext['flatnavigation'] = theme_thinkblue_process_flatnav($nav);
 // If setting showsettingsincourse is enabled.
-if (get_config('theme_thinkblue', 'showsettingsincourse') == 'yes') {
+if ($leeloosettings->course_layout_settings->showsettingsincourse == 'yes') {
     // Context value for requiring incoursesettings.js.
     $templatecontext['incoursesettings'] = true;
     // Add the returned value from theme_thinkblue_get_incourse_settings to the template context.
@@ -146,13 +147,13 @@ ob_start();
 // Add footer blocks and standard footer.
 require_once(__DIR__ . '/includes/footer.php');
 // Get imageareaitems config.
-$imageareaitems = get_config('theme_thinkblue', 'imageareaitems');
+$imageareaitems = $leeloosettings->imageareaitems;
 if (!empty($imageareaitems)) {
     // Add imagearea layout file.
     require_once(__DIR__ . '/includes/imagearea.php');
 }
 // Get footnote config.
-$footnote = get_config('theme_thinkblue', 'footnote');
+$footnote = $leeloosettings->additional_layout_settings->footnote;
 if (!empty($footnote)) {
     // Add footnote layout file.
     require_once(__DIR__ . '/includes/footnote.php');

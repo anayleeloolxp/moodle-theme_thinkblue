@@ -108,6 +108,7 @@ function theme_thinkblue_get_random_loginbackgroundimage_class() {
  */
 function theme_thinkblue_get_loginbackgroundimage_text() {
     // Get the random number.
+    $leeloosettings = theme_thinkblue_general_leeloosettings();
     $number = theme_thinkblue_get_random_loginbackgroundimage_number();
 
     // Only search for the text if there's a background image.
@@ -120,7 +121,7 @@ function theme_thinkblue_get_loginbackgroundimage_text() {
         $filename = array_pop($file)->get_filename();
 
         // Get the config for loginbackgroundimagetext and make array out of the lines.
-        $lines = explode("\n", get_config('theme_thinkblue', 'loginbackgroundimagetext'));
+        $lines = explode("\n", $leeloosettings->design_settings->loginbackgroundimagetext);
 
         // Proceed the lines.
         foreach ($lines as $line) {
@@ -167,6 +168,7 @@ function theme_thinkblue_get_loginbackgroundimage_scss() {
  * @return array
  */
 function theme_thinkblue_get_imageareacontent() {
+    $leeloosettings = theme_thinkblue_general_leeloosettings();
     // Get cache.
     $themeboostcampuscache = cache::make('theme_thinkblue', 'imagearea');
     // If cache is filled, return the cache.
@@ -186,7 +188,7 @@ function theme_thinkblue_get_imageareacontent() {
         if (!empty($files)) {
             // Get the content from the setting imageareaitemsattributes and explode it to an array by the delimiter "new line".
             // The string contains: the image identifier (uploaded file name) and the corresponding link URL.
-            $lines = explode("\n", get_config('theme_thinkblue', 'imageareaitemsattributes'));
+            $lines = explode("\n", $leeloosettings->additional_layout_settings->imageareaitemsattributes);
             // Parse item settings.
             foreach ($lines as $line) {
                 $line = trim($line);
@@ -269,8 +271,9 @@ function theme_thinkblue_get_imageareacontent() {
  */
 function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
     global $USER;
+    $leeloosettings = theme_thinkblue_general_leeloosettings();
     // If the setting defaulthomepageontop is enabled.
-    if (get_config('theme_thinkblue', 'defaulthomepageontop') == 'yes') {
+    if ( $leeloosettings->additional_layout_settings->defaulthomepageontop == 'yes') {
         // Only proceed processing if we are in a course context.
         if (($coursehomenode = $flatnav->find('coursehome', global_navigation::TYPE_CUSTOM)) != false) {
             // If the site home is set as the default homepage by the admin.
@@ -356,10 +359,11 @@ function theme_thinkblue_set_node_on_top(flat_navigation $flatnav, $nodename, $b
  */
 function theme_thinkblue_get_incourse_settings() {
     global $COURSE, $PAGE;
+    $leeloosettings = theme_thinkblue_general_leeloosettings();
     // Initialize the node with false to prevent problems on pages that do not have a courseadmin node.
     $node = false;
     // If setting showsettingsincourse is enabled.
-    if (get_config('theme_thinkblue', 'showsettingsincourse') == 'yes') {
+    if ($leeloosettings->course_layout_settings->showsettingsincourse == 'yes') {
         // Only search for the courseadmin node if we are within a course or a module context.
         if ($PAGE->context->contextlevel == CONTEXT_COURSE || $PAGE->context->contextlevel == CONTEXT_MODULE) {
             // Get the courseadmin node for the current page.
@@ -368,8 +372,8 @@ function theme_thinkblue_get_incourse_settings() {
             if (!empty($node)) {
                 // If the setting 'incoursesettingsswitchtoroleposition' is set either set to the option 'yes'
                 // or to the option 'both', then add these to the $node.
-                if (((get_config('theme_thinkblue', 'incoursesettingsswitchtoroleposition') == 'yes') ||
-                    (get_config('theme_thinkblue', 'incoursesettingsswitchtoroleposition') == 'both'))
+                if ((($leeloosettings->course_layout_settings->incoursesettingsswitchtoroleposition == 'yes') ||
+                    ($leeloosettings->course_layout_settings->incoursesettingsswitchtoroleposition == 'both'))
                     && !is_role_switched($COURSE->id)) {
                     // Build switch role link
                     // We could only access the existing menu item by creating the user menu and traversing it.
@@ -413,7 +417,8 @@ function theme_thinkblue_get_incourse_activity_settings() {
     $context = $PAGE->context;
     $node = false;
     // If setting showsettingsincourse is enabled.
-    if (get_config('theme_thinkblue', 'showsettingsincourse') == 'yes') {
+    $leeloosettings = theme_thinkblue_general_leeloosettings();
+    if ($leeloosettings->course_layout_settings->showsettingsincourse == 'yes') {
         // Settings belonging to activity or resources.
         if ($context->contextlevel == CONTEXT_MODULE) {
             $node = $PAGE->settingsnav->find('modulesettings', navigation_node::TYPE_SETTING);
@@ -461,7 +466,8 @@ function theme_thinkblue_get_course_guest_access_hint($courseid) {
  * Get settings from Leeloo LXP.
  */
 function theme_thinkblue_general_leeloosettings() {
-    
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/filelib.php');
     $leeloolxplicense = get_config('theme_thinkblue')->license;
     $leeloolxplicense = '7857091966';
 
