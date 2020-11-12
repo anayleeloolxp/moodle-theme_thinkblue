@@ -246,3 +246,18 @@ $string['comments'] = 'Comments';
 
 $string['nolicense'] = 'Invalid Leeloo LXP License ID';
 $string['license'] = 'Leeloo LXP License ID';
+
+$string['hours'] = 'hours';
+$string['videoslessons'] = 'videos lessons';
+$string['modules'] = 'modules';
+$string['learningactivities'] = 'learning activities';
+$string['aboutcourse'] = 'About this course';
+$string['courseobjective'] = 'Course objectives';
+$string['send'] = 'Send';
+$string['courseoverview'] = 'Course overview';
+$string['coursesummary'] = 'Course Summary';
+$string['contactinst'] = 'Contact instructor';
+$string['subject'] = 'Subject';
+$string['message'] = 'Message';
+$string['enrollnow'] = 'Enroll Now';
+$string['userenrolled'] = 'You are already Enrolled.';

@@ -512,3 +512,54 @@ function theme_thinkblue_general_leeloosettings() {
     $resposedata = json_decode($output);
     return $resposedata->data;
 }
+
+/**
+ * Get settings from Leeloo LXP.
+ */
+function theme_thinkblue_coursedata($courseid) {
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/filelib.php');
+    $leeloolxplicense = get_config('theme_thinkblue')->license;
+
+    $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
+    $postdata = '&license_key=' . $leeloolxplicense;
+
+    $curl = new curl;
+
+    $options = array(
+        'CURLOPT_RETURNTRANSFER' => true,
+        'CURLOPT_HEADER' => false,
+        'CURLOPT_POST' => count($postdata),
+    );
+
+    if (!$output = $curl->post($url, $postdata, $options)) {
+        return get_string('nolicense', 'theme_thinkblue');
+    }
+
+    $infoleeloolxp = json_decode($output);
+
+    if ($infoleeloolxp->status != 'false') {
+        $leeloolxpurl = $infoleeloolxp->data->install_url;
+    } else {
+        return get_string('nolicense', 'theme_thinkblue');
+    }
+
+    $url = $leeloolxpurl . '/admin/course/get_course_theme_data/'.$courseid;
+
+    $postdata = '&license_key=' . $leeloolxplicense;
+
+    $curl = new curl;
+
+    $options = array(
+        'CURLOPT_RETURNTRANSFER' => true,
+        'CURLOPT_HEADER' => false,
+        'CURLOPT_POST' => count($postdata),
+    );
+
+    if (!$output = $curl->post($url, $postdata, $options)) {
+        return get_string('nolicense', 'theme_thinkblue');
+    }
+
+    $resposedata = json_decode($output);
+    return $resposedata->data;
+}

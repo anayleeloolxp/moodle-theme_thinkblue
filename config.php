@@ -25,6 +25,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+global $PAGE;
+$PAGE->requires->js(new moodle_url($CFG->wwwroot . '/theme/thinkblue/js/custom.js'));
+
 $THEME->name = 'thinkblue';
 $THEME->parents = ['boost'];
 $THEME->editor_sheets = [];
@@ -75,7 +78,7 @@ $THEME->layouts = [
     ),
     // Main course page.
     'course' => array(
-        'file' => 'columns2.php',
+        'file' => 'course.php',
         'regions' => $regions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
