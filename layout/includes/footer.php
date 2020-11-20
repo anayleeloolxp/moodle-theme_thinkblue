@@ -34,6 +34,9 @@ $footerblock = $leeloosettings->footer_block;
 $statsenabled = $leeloosettings->footer_stats->enable_footer_stats;
 $copyenabled = $leeloosettings->social_copyright_settings->enable_footer_social_copyright;
 
+$footerstatshtml = '';
+$footercopyhtml = '';
+
 if($statsenabled){
     $statstitle = $leeloosettings->footer_stats->footer_stats_title;
     $statsdescription = $leeloosettings->footer_stats->description;

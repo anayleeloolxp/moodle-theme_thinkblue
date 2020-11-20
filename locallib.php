@@ -478,7 +478,7 @@ function theme_thinkblue_general_leeloosettings() {
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => count($postdata),
+        'CURLOPT_POST' => 1,
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
@@ -502,7 +502,7 @@ function theme_thinkblue_general_leeloosettings() {
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => count($postdata),
+        'CURLOPT_POST' => 1,
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
