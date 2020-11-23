@@ -53,4 +53,6 @@ $plugin->dependencies = array(
     'block_tb_up_courses' => 2019010700,
     'mod_regularvideo' => 2015051101,
     'mod_wespher' => 2020022102,
+    'local_staticpage' => 2020021400,
+    'local_boostnavigation' => 2020080400,
 );
