@@ -529,7 +529,7 @@ function theme_thinkblue_coursedata($courseid) {
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => count($postdata),
+        'CURLOPT_POST' => 1,
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
@@ -553,7 +553,7 @@ function theme_thinkblue_coursedata($courseid) {
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => count($postdata),
+        'CURLOPT_POST' => 1,
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
