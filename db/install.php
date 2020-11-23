@@ -92,5 +92,8 @@ function xmldb_theme_thinkblue_install() {
     set_config('removegradescoursenode', '1', 'local_boostnavigation');
     set_config('removeparticipantscoursenode', '1', 'local_boostnavigation');
 
+    set_config('cleanhtml', '2', 'local_staticpage');
+    
+
     return true;
 }
