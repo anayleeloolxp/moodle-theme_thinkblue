@@ -273,51 +273,57 @@ function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
     global $USER;
     $leeloosettings = theme_thinkblue_general_leeloosettings();
     // If the setting defaulthomepageontop is enabled.
-    if ( $leeloosettings->additional_layout_settings->defaulthomepageontop == 'yes') {
-        // Only proceed processing if we are in a course context.
-        if (($coursehomenode = $flatnav->find('coursehome', global_navigation::TYPE_CUSTOM)) != false) {
-            // If the site home is set as the default homepage by the admin.
-            if (get_config('core', 'defaulthomepage') == HOMEPAGE_SITE) {
-                // Return the modified flat_navigation.
-                $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'home', $coursehomenode);
-            } else if (get_config('core', 'defaulthomepage') == HOMEPAGE_MY) {
-                // If the dashboard is set as the default homepage
-                // by the admin.
-                // Return the modified flat_navigation.
-                $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'myhome', $coursehomenode);
-            } else if (get_config('core', 'defaulthomepage') == HOMEPAGE_USER) {
-                // If the admin defined that the user can set
-                // the default homepage for himself.
-                // Site home.
-                if (get_user_preferences('user_home_page_preference') == 0) {
-                    // Return the modified flat_navigtation.
+    if ( isset($leeloosettings->additional_layout_settings->defaulthomepageontop) && isset($leeloosettings->additional_layout_settings->defaulthomepageontop) !='' ) {
+        if ( $leeloosettings->additional_layout_settings->defaulthomepageontop == 1) {
+            // Only proceed processing if we are in a course context.
+            if (($coursehomenode = $flatnav->find('coursehome', global_navigation::TYPE_CUSTOM)) != false) {
+                // If the site home is set as the default homepage by the admin.
+                if (get_config('core', 'defaulthomepage') == HOMEPAGE_SITE) {
+                    // Return the modified flat_navigation.
                     $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'home', $coursehomenode);
-                } else if (get_user_preferences('user_home_page_preference') == 1 || // Dashboard.
-                    get_user_preferences('user_home_page_preference') === false) {
-                    // If no user preference is set,
-                    // use the default value of core setting default homepage (Dashboard).
-                    // Return the modified flat_navigtation.
+                } else if (get_config('core', 'defaulthomepage') == HOMEPAGE_MY) {
+                    // If the dashboard is set as the default homepage
+                    // by the admin.
+                    // Return the modified flat_navigation.
                     $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'myhome', $coursehomenode);
+                } else if (get_config('core', 'defaulthomepage') == HOMEPAGE_USER) {
+                    // If the admin defined that the user can set
+                    // the default homepage for himself.
+                    // Site home.
+                    if (get_user_preferences('user_home_page_preference') == 0) {
+                        // Return the modified flat_navigtation.
+                        $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'home', $coursehomenode);
+                    } else if (get_user_preferences('user_home_page_preference') == 1 || // Dashboard.
+                        get_user_preferences('user_home_page_preference') === false) {
+                        // If no user preference is set,
+                        // use the default value of core setting default homepage (Dashboard).
+                        // Return the modified flat_navigtation.
+                        $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'myhome', $coursehomenode);
+                    } else {
+                        // Should not happen.
+                        // Return the passed flat navigation without changes.
+                        $flatnavreturn = $flatnav;
+                    }
                 } else {
                     // Should not happen.
                     // Return the passed flat navigation without changes.
                     $flatnavreturn = $flatnav;
                 }
             } else {
-                // Should not happen.
+                // Not in course context.
                 // Return the passed flat navigation without changes.
                 $flatnavreturn = $flatnav;
             }
         } else {
-            // Not in course context.
+            // Defaulthomepageontop not enabled.
             // Return the passed flat navigation without changes.
             $flatnavreturn = $flatnav;
         }
-    } else {
+    }else {
         // Defaulthomepageontop not enabled.
         // Return the passed flat navigation without changes.
         $flatnavreturn = $flatnav;
-    }
+    }    
 
     return $flatnavreturn;
 }
@@ -363,7 +369,7 @@ function theme_thinkblue_get_incourse_settings() {
     // Initialize the node with false to prevent problems on pages that do not have a courseadmin node.
     $node = false;
     // If setting showsettingsincourse is enabled.
-    if ($leeloosettings->course_layout_settings->showsettingsincourse == 'yes') {
+    if ($leeloosettings->course_layout_settings->showsettingsincourse == 1) {
         // Only search for the courseadmin node if we are within a course or a module context.
         if ($PAGE->context->contextlevel == CONTEXT_COURSE || $PAGE->context->contextlevel == CONTEXT_MODULE) {
             // Get the courseadmin node for the current page.
@@ -418,7 +424,7 @@ function theme_thinkblue_get_incourse_activity_settings() {
     $node = false;
     // If setting showsettingsincourse is enabled.
     $leeloosettings = theme_thinkblue_general_leeloosettings();
-    if ($leeloosettings->course_layout_settings->showsettingsincourse == 'yes') {
+    if ($leeloosettings->course_layout_settings->showsettingsincourse == 1) {
         // Settings belonging to activity or resources.
         if ($context->contextlevel == CONTEXT_MODULE) {
             $node = $PAGE->settingsnav->find('modulesettings', navigation_node::TYPE_SETTING);

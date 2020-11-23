@@ -7,7 +7,7 @@
 
 /* Change the breakpoint if setting 'breakpoint' is active. */
 @if variable-exists(breakpoint) {
-    @if $breakpoint == "yes" {
+    @if $breakpoint == "1" {
         #region-main.has-blocks {
             display: inline-block;
             width: calc(100% - #{$blocks-plus-gutter});
@@ -188,7 +188,7 @@ body.loginbackgroundimage #page {
 
 /* This will only be needed if the setting "loginform" is checked */
 @if variable-exists(loginform) {
-    @if $loginform == "yes" {
+    @if $loginform == "1" {
         /* Make background of login panel slightly transparent */
         #page-login-index #region-main-box {
             div.card {
@@ -220,7 +220,7 @@ body.loginbackgroundimage #page {
  */
 /* Make page navbar dark if setting "darknavabr" is set to yes. */
 @if variable-exists(darknavbar) {
-    @if $darknavbar == "yes" {
+    @if $darknavbar == "1" {
         .navbar {
             .navbar-nav .nav-link .icon,
             .navbar-nav .nav-link,
@@ -251,7 +251,7 @@ body.loginbackgroundimage #page {
 /* Don't display switched role information in the user menu
  * if setting 'showswitchedroleincourse' is active */
 @if variable-exists(showswitchedroleincourse) {
-    @if $showswitchedroleincourse == "yes" {
+    @if $showswitchedroleincourse == "1" {
         .userswitchedrole .usermenu {
             .usertext {
                 float: inherit;
@@ -323,7 +323,7 @@ body.loginbackgroundimage #page {
 
 /* If the setting navdrawerfullwidth is enabled, we want the nav drawer menu to be displayed full size on small screens. */
 @if variable-exists(navdrawerfullwidth) {
-    @if $navdrawerfullwidth == "yes" {
+    @if $navdrawerfullwidth == "1" {
         @include media-breakpoint-down(sm) {
             #nav-drawer {
                 width: 100%;
@@ -370,7 +370,7 @@ body.loginbackgroundimage #page {
 
 /* If showsettingsincourse is enabled, we have to style the cog icon a bit different. */
 @if variable-exists(showsettingsincourse) {
-    @if $showsettingsincourse == "yes" {
+    @if $showsettingsincourse == "1" {
         #page-header {
             /* If the setting is enabled we do not need the triangle icon, because there is no menu
              * popping up next to the cog icon. */
@@ -392,7 +392,7 @@ body.loginbackgroundimage #page {
 /* Check if setting theme_thinkblue|section0title is set.
    If set, then revert the styles from .accesshide and set the style to be the same as other section titles. */
 @if variable-exists(section0title) {
-    @if $section0title == "yes" {
+    @if $section0title == "1" {
         body.path-course-view #section-0 h3.accesshide {
             position: inherit;
             left: inherit;
@@ -559,7 +559,7 @@ body.loginbackgroundimage #page {
 
 /* If showsettingsincourse is enabled */
 @if variable-exists(showsettingsincourse) {
-    @if $showsettingsincourse == "yes" {
+    @if $showsettingsincourse == "1" {
         /* We do not show the cog icon on the participants page as the settings on this page are
          * duplicated with the in-course course menu. */
         .path-user #region-main-settings-menu {
@@ -608,7 +608,7 @@ blockquote::before {
   Blocks
   -------------------------------------*/
 @if variable-exists(blockicon) {
-    @if $blockicon == "yes" {
+    @if $blockicon == "1" {
         /* If setting blockicon is checked, add a default Font Awesome icon
          * before the block title. */
         .block .card-title::before {
@@ -738,7 +738,7 @@ blockquote::before {
 
     /* If the setting footerhidehelplink is enabled, then hide the helplink. */
     @if variable-exists(footerhidehelplink) {
-        @if $footerhidehelplink == "yes" {
+        @if $footerhidehelplink == "1" {
             .helplink {
                 display: none;
             }
@@ -747,7 +747,7 @@ blockquote::before {
 
     /* If the setting footerhidelogininfo is enabled, then hide the logininfo. */
     @if variable-exists(footerhidelogininfo) {
-        @if $footerhidelogininfo == "yes" {
+        @if $footerhidelogininfo == "1" {
             .logininfo {
                 display: none;
             }
@@ -756,7 +756,7 @@ blockquote::before {
 
     /* If the setting footerhidehomelink is enabled, then hide the homelink. */
     @if variable-exists(footerhidehomelink) {
-        @if $footerhidehomelink == "yes" {
+        @if $footerhidehomelink == "1" {
             .homelink {
                 display: none;
             }
@@ -765,7 +765,7 @@ blockquote::before {
 
     /* If the setting footerhideusertourslink is enabled, then hide the link to reset the user tour. */
     @if variable-exists(footerhideusertourslink) {
-        @if $footerhideusertourslink == "yes" {
+        @if $footerhideusertourslink == "1" {
             .tool_usertours-resettourcontainer {
                 display: none;
             }
@@ -793,7 +793,7 @@ blockquote::before {
 
     /* If all Moodle links are hidden in the footer, we don't need a top line for the performance info.*/
     @if variable-exists(footerhidehelplink) and variable-exists(footerhidelogininfo) and variable-exists(footerhidehomelink) {
-        @if $footerhidehelplink == "yes" and $footerhidelogininfo == "yes" and $footerhidehomelink == "yes" {
+        @if $footerhidehelplink == "1" and $footerhidelogininfo == "1" and $footerhidehomelink == "1" {
             .container-fluid:nth-of-type(2) > .row-fluid {
                 border-top: none;
             }
@@ -922,7 +922,7 @@ a[href^="mailto"]::before {
 /* Setting to move 'Switch role to...' menu item to the course settings - but only if
    setting showsettingsincourse is also enabled. */
 @if (variable-exists(incoursesettingsswitchtoroleposition) and variable-exists(showsettingsincourse)) {
-    @if ($incoursesettingsswitchtoroleposition == "yes" and $showsettingsincourse == "yes") {
+    @if ($incoursesettingsswitchtoroleposition == "yes" and $showsettingsincourse == "1") {
         /* Hide the switch role to menu item within the user menu */
         .usermenu {
             .dropdown-menu a[data-title*="switchroleto"],
@@ -959,7 +959,7 @@ a[href^="mailto"]::before {
 
 /* If the setting "hidefooteronloginpage" is enabled, hide the footer on the login page. */
 @if variable-exists(hidefooteronloginpage) {
-    @if $hidefooteronloginpage == "yes" {
+    @if $hidefooteronloginpage == "1" {
         /* Because the footer will be hidden, but the footnote is visible, we have to adapt the position and size to
            match the footnote dimensions. */
         #page-login-index {
@@ -979,7 +979,7 @@ a[href^="mailto"]::before {
 }
 
 @if variable-exists(helptextmodal) {
-    @if $helptextmodal == "yes" {
+    @if $helptextmodal == "1" {
         .modal {
             /* Set font-size to normal size as the modals inherit the font size from the element they are placed in.
              * This is not intended and so we force the font size to be the normal size. */
