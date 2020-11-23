@@ -296,9 +296,7 @@ require_once(__DIR__ . '/includes/footer.php');
 
 // Get imageareaitems config.
 
-$imageareaitems = $leeloosettings->imageareaitems;
-
-if (!empty($imageareaitems)) {
+if (!empty($leeloosettings->imageareaitems)) {
 
     // Add imagearea layout file.
 
@@ -434,13 +432,17 @@ $templatecontext['course_title'] = $PAGE->course->fullname;
 
 if( is_object($leeloocourse) ){
 
+    if( isset($leeloocourse->course_data->estimated_time) ){
+        $templatecontext['estimated_time'] = $leeloocourse->course_data->estimated_time;
+    }else{
+        $templatecontext['estimated_time'] = '';
+    }
+
+    
 
 
-    $templatecontext['estimated_time'] = $leeloocourse->course_data->estimated_time;
 
-
-
-    if($leeloocourse->course_data->stats_position == 'main'){
+    if( isset($leeloocourse->course_data->stats_position) && $leeloocourse->course_data->stats_position == 'main'){
 
         $stats_main = true;
 
@@ -456,7 +458,7 @@ if( is_object($leeloocourse) ){
 
 
 
-    if($leeloocourse->course_data->instructor_section_position == 'main'){
+    if( isset($leeloocourse->course_data->instructor_section_position) && $leeloocourse->course_data->instructor_section_position == 'main'){
 
         $teacher_main = true;
 
@@ -472,7 +474,7 @@ if( is_object($leeloocourse) ){
 
 
 
-    if($leeloocourse->course_data->about_course_section_position == 'main'){
+    if( isset($leeloocourse->course_data->about_course_section_position) && $leeloocourse->course_data->about_course_section_position == 'main'){
 
         $about_main = true;
 
@@ -488,7 +490,7 @@ if( is_object($leeloocourse) ){
 
 
 
-    if( $leeloocourse->course_data->course_header_image != '' ){
+    if( isset($leeloocourse->course_data->course_header_image) && $leeloocourse->course_data->course_header_image != '' ){
 
         $showheaderimage = true;
 
@@ -500,7 +502,7 @@ if( is_object($leeloocourse) ){
 
 
 
-    if( $leeloocourse->course_data->course_header_description != '' ){
+    if( isset($leeloocourse->course_data->course_header_description) && $leeloocourse->course_data->course_header_description != '' ){
 
         $showheaderdes = true;
 
@@ -512,7 +514,7 @@ if( is_object($leeloocourse) ){
 
 
 
-    if( $leeloocourse->course_data->course_video_url != '' ){
+    if( isset($leeloocourse->course_data->course_video_url) && $leeloocourse->course_data->course_video_url != '' ){
 
         $showvideo = true;
 
@@ -520,7 +522,7 @@ if( is_object($leeloocourse) ){
 
         $templatecontext['course_video'] = $leeloocourse->course_data->course_video_url;
 
-    }elseif(  $leeloocourse->course_data->course_image != '' ){
+    }elseif(  isset($leeloocourse->course_data->course_image) && $leeloocourse->course_data->course_image != '' ){
 
         $showimage = true;
 
@@ -532,7 +534,7 @@ if( is_object($leeloocourse) ){
 
 
 
-    if( $leeloocourse->course_data->course_objective != '' ){
+    if( isset($leeloocourse->course_data->course_objective) && $leeloocourse->course_data->course_objective != '' ){
 
         $showobjective = true;
 
@@ -544,7 +546,7 @@ if( is_object($leeloocourse) ){
 
 
 
-    if( $leeloocourse->course_data->course_instructor != '' ){
+    if( isset($leeloocourse->course_data->course_instructor) && $leeloocourse->course_data->course_instructor != '' ){
 
         $showinstuctor = true;
 
