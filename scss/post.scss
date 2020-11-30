@@ -38,7 +38,9 @@
         }
     }
 }
-
+#page {
+    color: $brandcolor;
+}
 /*------------------------------------
   Login page
   -------------------------------------*/
@@ -235,7 +237,7 @@ body.loginbackgroundimage #page {
             .usertext:hover,
             .dropdown-toggle:hover,
             .site-name:hover {
-                color: #41b9b7;
+                color:$brandcolor;
             }
             .navbar-brand:not(.has-logo) .site-name:hover {
                 color: #fff;
@@ -285,6 +287,7 @@ body.loginbackgroundimage #page {
     /* Remove border radius from the menu items. */
     .list-group-item {
         border-radius: 0;
+        background: none;
     }
 
     /* Reduce space between pix icons and text as this is too much. */
@@ -417,7 +420,7 @@ body.loginbackgroundimage #page {
         /* Set section dividing border-color to brand-primary. */
         li.section.main {
             border: none;
-            border-bottom: 1px solid #41b9b7;
+            border-bottom: 1px solid$brandcolor;
             padding-top: 3rem;
             padding-bottom: 2rem;
             margin: 0;
@@ -437,8 +440,8 @@ body.loginbackgroundimage #page {
         }
         /* Change style of highlighted section to highlight more. */
         li.section.main.current {
-            border-bottom: #41b9b7 4px solid;
-            border-top: #41b9b7 3px solid; /*1px less because of section dividing border. */
+            border-bottom:$brandcolor 4px solid;
+            border-top:$brandcolor 3px solid; /*1px less because of section dividing border. */
             background: $gray-lightest;
         }
         /* Remove highlighting from Theme Boost. */
@@ -499,7 +502,7 @@ body.loginbackgroundimage #page {
         }
         .section-navigation .mdl-left:not(:empty),
         .section-navigation .mdl-right:not(:empty) {
-            background-color: #41b9b7;
+            background-color:$brandcolor;
             padding: 2px 8px;
             border-radius: 2px;
             a {
@@ -516,7 +519,7 @@ body.loginbackgroundimage #page {
     ul.periods {
         /* Add bottom border to last section in editing mode. */
         li.section.main:last-child {
-            border-bottom: 1px solid #41b9b7;
+            border-bottom: 1px solid$brandcolor;
         }
         /* Special rule for hidden sections in editing mode as indents are different in this view. */
         li.section.main.hidden {
@@ -540,7 +543,7 @@ body.loginbackgroundimage #page {
 #intro {
     // background-color: $gray-lightest;
     // margin-bottom: 1em;
-    // border-left: 3px solid #41b9b7;
+    // border-left: 3px solid$brandcolor;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -551,7 +554,7 @@ body.loginbackgroundimage #page {
 /* Adjust the activity navigation buttons to suit to the topics navigation buttons. */
 #next-activity-link,
 #prev-activity-link {
-    background-color: #626672;
+    background-color: $brandcolor;
     padding: 4px 8px;
     border-radius: 2px;
     color: #fff;
@@ -882,8 +885,8 @@ a[href^="mailto"]::before {
     right: 0.5em;
     z-index: 3;
     line-height: 1.7rem;
-    color: #fff;
-    background-color: #41b9b7;
+    color: $buttons_text_color;
+    background-color: $buttons_background_color;
     border-radius: 100px;
     cursor: pointer;
     box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
@@ -1045,11 +1048,11 @@ a[href^="mailto"]::before {
 }
 .video-js {
     .vjs-big-play-button {
-        background-color: #41b9b7;
+        background-color:$brandcolor;
         border-radius: 2px;
     }
     &:hover .vjs-big-play-button {
-        background-color: #41b9b7;
+        background-color:$brandcolor;
     }
     .vjs-big-play-button {
         &:focus,
@@ -1058,7 +1061,7 @@ a[href^="mailto"]::before {
         }
     }
     .vjs-loading-spinner {
-        border-color: #41b9b7;
+        border-color:$brandcolor;
     }
     .vjs-control-bar2 {
         background-color: transparent;
@@ -1069,7 +1072,7 @@ a[href^="mailto"]::before {
     }
     .vjs-play-progress,
     .vjs-volume-level {
-        background-color: #41b9b7;
+        background-color:$brandcolor;
     }
     .vjs-big-play-button {
         border-width: 2px;
@@ -1169,7 +1172,7 @@ div.form-inline .custom-select {
     width: 70%;
 }
 div label.col-form-label {
-    color: #41b9b7;
+    color:$brandcolor;
     font-weight: 500;
     display: inline-block !important;
 }
@@ -1205,7 +1208,7 @@ div#fgroup_id_buttonar .col-md-9.form-inline.felement {
 #region-main.has-blocks iframe,
 #page-enrol-index .coursebox .content .summary .no-overflow iframe {
     width: 100%;
-    background: #41b9b7;
+    background:$brandcolor;
     min-height: 488px;
     // margin-left: -1.25rem;
     // margin-top: -1.25rem;
@@ -1225,7 +1228,7 @@ aside#block-region-side-pre .block_course_modulenavigation .card-body {
     padding: 0 !important;
 }
 aside#block-region-side-pre h5#instance-25-header {
-    background: #41b9b7;
+    background:$brandcolor;
     color: #fff;
     display: block !important;
     width: 100%;
@@ -1287,7 +1290,7 @@ nav.navbar.navbar-light.bg-white.navbar-expand {
     }
     button.btn i.icon {
         font-size: 30px;
-        color: #575757;
+        color: $text_color;
         width: auto;
         height: auto;
     }
@@ -1319,7 +1322,7 @@ nav.navbar.navbar-light.bg-white.navbar-expand {
     font-size: 14px;
 }
 .course-pro-sec .course-dtl p:first-child {
-    color: #626672;
+    color: $brandcolor;
     font-weight: 600;
     font-size: 20px;
 }
@@ -1386,7 +1389,7 @@ body#page-course-index-category section#region-main {
     color: #555;
 }
 #page-course-index-category form#coursesearch button.btn.btn-secondary {
-    background: #41b9b7;
+    background:$brandcolor;
     color: #fff;
     padding: 0.375rem 1.75rem;
 }
@@ -1414,7 +1417,7 @@ div.course_category_tree .courses .coursebox .content {
 div.course_category_tree .courses .coursebox .summary {
     float: none;
     margin: 0;
-    max-height: 55px;
+    max-height: 67px;
     overflow: hidden;
     width: calc(100% - 100px);
     // color: #fff;
@@ -1555,7 +1558,7 @@ body#page-login-signup #page-wrapper .card-title h3 {
     display: none;
 }
 body#page-login-signup #page-wrapper form label {
-    color: #3db8bf;
+    color: $brandcolor;
 }
 .mr-auto {
     width: 100%;
@@ -1573,7 +1576,7 @@ body#page-login-signup #page-wrapper form label {
     font-weight: 600;
     text-align: left;
     max-width: 1250px;
-    color: #41b9b7;
+    color:$brandcolor;
     margin: 0 auto;
 }
 #page-wrapper #region-main .no-overflow {
@@ -1585,7 +1588,7 @@ body#page-login-signup #page-wrapper form label {
 }
 .mr-auto .page-context-header .page-header-image + .page-header-headings h1 {
     text-align: center;
-    color: #575757;
+    color: $text_color;
 }
 div.forumpost {
     border: none;
@@ -1614,14 +1617,14 @@ body#page-blog-index div.forumpost.blog_entry {
     flex-wrap: wrap;
 }
 .block_blog_menu form.blogsearchform > div input#blogsearchquery {
-    border: 1px solid #41b9b7;
+    border: 1px solid$brandcolor;
     padding: 3px 10px;
     width: calc(100% - 70px);
 }
 .block_blog_menu form.blogsearchform > div input[type="submit"] {
-    background: #41b9b7;
+    background:$brandcolor;
     width: 70px;
-    border: 1px solid #41b9b7;
+    border: 1px solid$brandcolor;
     color: #fff;
 }
 .blog_entry .audience {
@@ -1684,9 +1687,9 @@ body#page-blog-index div.forumpost.blog_entry {
     text-align: center;
 }
 input.btn-primary, button.btn-primary, button.btn-secondary, a.btn-primary {
-    color: #fff !important;
-    background-color: #626672 !important;
-    border-color: #626672 !important;
+    background: $buttons_background_color !important;
+    color: $buttons_text_color !important;
+    border-color: $buttons_background_color !important;
 }
 #region-main-settings-menu .action-menu .dropdown-toggle {
     color: #ccc;
@@ -1747,14 +1750,14 @@ div#page-navbar ol.breadcrumb {
 }
 
 #page-footer {
-    background: #f5f6fa !important;
-    color: #666;
+    background: $pagefooterbackground !important;
+    color: $footeratag;
     text-align: left;
-    border-top: 2px solid #41b9b7;
+    border-top: 2px solid $brandcolor;
 }
 
 #nav-drawer {
-    background-color: #fff;
+    background-color: $menu_section_background;
 }
 
 #page-footer .col-sm-3 {
@@ -1767,7 +1770,6 @@ div#page-navbar ol.breadcrumb {
 }
 #page-footer h2 {
     font-size: 22px;
-    color: #575757;
     font-weight: 500;
     text-align: left;
 }
@@ -1777,20 +1779,20 @@ div#page-navbar ol.breadcrumb {
     margin-top: 20px;
 }
 #page-footer a {
-    color: #575757;
     text-decoration: none;
     line-height: 28px;
+    color: $footeratag;
 }
 .copyright_section img {
     max-width: 200px;
 }
 span.text_copy {
-    color: #575757;
+    color: $text_color;
     margin-left: 15px;
     font-size: 14px;
 }
 #page-footer .social_media_links a i {
-    color: #575757;
+    color: $text_color;
 }
 #page-footer .social_media_links li {
     float: left;
@@ -1814,7 +1816,7 @@ span.text_copy {
 #page-grade-report-overview-index #page-header .col-12.pt-3.pb-3,
 #page-course-user #page-header .col-12.pt-3.pb-3 {
     background: #f5f6fa;
-    border-bottom: 2px solid #41b9b7;
+    border-bottom: 2px solid$brandcolor;
 }
 #page-user-edit #page #page-content,
 #page-login-change_password #page #page-content,
@@ -1847,7 +1849,7 @@ span.text_copy {
     color: #333;
 }
 .preferences-container .preference-table .preference-row .preference-state input[type="checkbox"]:checked + .preference-state-status-container {
-    background: #626672;
+    background: $brandcolor;
     color: #fff;
 }
 #page-user-edit form .col-md-3 span.float-sm-right.text-nowrap,
@@ -1865,7 +1867,7 @@ div#fgroup_id_buttonar .col-md-9 {
     display: block;
 }
 input#id_cancel {
-    background: #626672;
+    background: $brandcolor;
     color: #fff;
 }
 .mform fieldset {
@@ -1884,12 +1886,15 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] a.list-group-it
 .leftusermenu .popover-region-container {
     height: 250px;
     width: 220px;
-    background: #f5f6fa;
+    background: $dropdownmenubackground;
     border: none;
     top: auto !important;
     bottom: 42px;
     left: -10px !important;
     right: auto;
+}
+.popover-region-toggle::before, .popover-region-toggle::after {
+    content: none !important;
 }
 div#nav-drawer.closed[data-region="drawer"] a.list-group-item span.media-body,
 body#page-site-index div#nav-drawer[data-region="drawer"] a.list-group-item span.media-body {
@@ -1945,8 +1950,8 @@ body#page-site-index div#nav-drawer[data-region="drawer"] a.list-group-item.list
     padding: 12px 10px 12px 10px !important;
 }
 div#nav-drawer[data-region="drawer"] a.list-group-item.list-group-item-action.active {
-    color: #5d63bb !important;
-    background: #f5f6fa !important;
+    color:$menu_active_color !important;
+    background: $menu_background_active !important;
     font-weight: 600 !important;
 }
 nav.list-group.mt-1 {
@@ -2066,7 +2071,7 @@ fieldset.clearfix.collapsible.collapsed {
     padding-bottom: 0 !important;
 }
 fieldset.clearfix.collapsible {
-    border-bottom: 2px solid #41b9b7 !important;
+    border-bottom: 2px solid$brandcolor !important;
     margin-bottom: 45px !important;
     padding-bottom: 35px !important;
 }
@@ -2099,7 +2104,7 @@ fieldset.clearfix.collapsible {
 
 /**changepassword**/
 #id_changepassword .ftoggler {
-    color: #575757;
+    color: $text_color;
     font-weight: 700;
     font-family: "Nunito Sans", sans-serif;
 }
@@ -2135,10 +2140,10 @@ i.fa-question-circle {
 
 /**Notification preferences**/
 .preferences-page-container h2 {
-    color: #575757;
+    color: $text_color;
 }
 .preferences-page-container h4 {
-    color: #575757;
+    color: $text_color;
     font-weight: 400;
     font-size: 15px;
     margin: 0;
@@ -2154,7 +2159,7 @@ i.fa-question-circle {
 /**Preferences**/
 // #page-header > .col-12.pt-3.pb-3{
 //     background: #f7f7f7;
-//     border-bottom: 2px solid #41b9b7;
+//     border-bottom: 2px solid$brandcolor;
 // }
 #page-user-preferences .card-body h4 {
     font-size: 24px;
@@ -2163,11 +2168,11 @@ i.fa-question-circle {
 #page-user-preferences .card-text a {
     display: block;
     padding: 1px 0;
-    color: #575757;
+    color: $text_color;
 }
 #page-user-preferences #maincontent + h2 {
     display: block !important;
-    color: #575757;
+    color: $text_color;
     font-weight: 600;
     font-family: "Nunito Sans", sans-serif;
 }
@@ -2200,8 +2205,8 @@ i.fa-question-circle {
 }
 .pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:hover {
     color: #fff;
-    background-color: #2c999c;
-    border-color: #2c999c;
+    background-color: $brandcolor;
+    border-color: $brandcolor;
 }
 .pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:focus,
 .pagelayout-mydashboard .card.mb-3 .btn-outline-secondary.focus {
@@ -2212,24 +2217,24 @@ i.fa-question-circle {
 .pagelayout-mydashboard .card.mb-3 .btn-outline-secondary:not(:disabled):not(.disabled).active,
 .pagelayout-mydashboard .card.mb-3 .show > .btn-outline-secondary.dropdown-toggle {
     color: #fff;
-    background-color: #2c999c;
-    border-color: #2c999c;
+    background-color: $brandcolor;
+    border-color: $brandcolor;
 }
 .pagelayout-mydashboard .card.mb-3 .dropdown a {
-    color: #41b9b7;
+    color:$brandcolor;
 }
 .pagelayout-mydashboard .card.mb-3 .dropdown a:active,
 .pagelayout-mydashboard .card.mb-3 .dropdown a:focus {
-    background: #41b9b7;
+    background:$brandcolor;
     color: #fff;
 }
 .pagelayout-mydashboard .card.mb-3 .dropdown .dropdown-item.active {
     color: #fff;
-    background-color: #2c999c;
+    background-color: $brandcolor;
 }
 .pagelayout-mydashboard .card.mb-3 .dropdown-menu.show {
     padding: 0;
-    border: 1px solid #41b9b7;
+    border: 1px solid$brandcolor;
 }
 // .pagelayout-mydashboard div#page-content {
 //     padding: 0 !important;
@@ -2277,15 +2282,15 @@ aside#block-region-side-pre .card-text.content.mt-3 div[id*="calendar-multi-"] {
 }
 .path-calendar .maincalendar .heightcontainer .header button.btn.btn-secondary {
     color: #fff !important;
-    background-color: #41b9b7 !important;
-    border-color: #41b9b7 !important;
+    background-color:$brandcolor !important;
+    border-color:$brandcolor !important;
 }
 aside#block-region-side-pre .card-text.content.mt-3 a span[class*="calendar_"] {
     background: #e7e7e7;
     color: #808080;
 }
 .block .minicalendar td.today a {
-    background: #41b9b7;
+    background:$brandcolor;
     color: #fff;
 }
 
@@ -2386,12 +2391,12 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     background: #f5f6fa;
 }
 #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
-    color: #575757;
+    color: $text_color;
     font-family: "Nunito Sans", sans-serif;
     max-width: inherit;
 }
 .course-content ul.topics li.section.main li.activity span.instancename {
-    color: #575757;
+    color: $text_color;
     font-weight: 700;
     vertical-align: top;
     padding-left: 130px;
@@ -2450,8 +2455,8 @@ body#page-course-index-category section#region-main div.course_category_tree .su
 }
 #page-mod-quiz-view .quizattemptcounts a {
     color: #fff;
-    background-color: #41b9b7;
-    border-color: #41b9b7;
+    background-color:$brandcolor;
+    border-color:$brandcolor;
     padding: 0.375rem 0.75rem;
     font-size: 0.9375rem;
     line-height: 1.5;
@@ -2521,7 +2526,7 @@ body#page-login-signup .page-header-headings {
 }
 #page-blog-index #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
     text-align: left;
-    color: #41b9b7;
+    color:$brandcolor;
 }
 #page-blog-index #page-wrapper #page #page-content {
     padding: 0 10px;
@@ -2538,7 +2543,7 @@ body#page-login-signup .page-header-headings {
 }
 #page-blog-index #page-wrapper section#region-main .no-overflow p {
     margin: 0 0 20px;
-    color: #575757;
+    color: $text_color;
 }
 #page-wrapper header#page-header .col-12.pt-3.pb-3 {
     padding: 0.5rem 15px 2px !important;
@@ -2550,7 +2555,7 @@ body#page-login-signup .page-header-headings {
     padding: 0 !important;
 }
 #page-wrapper #region-main div#wespherintro p {
-    color: #575757;
+    color: $text_color;
 }
 #page-mod-wespher-view .singlebutton button {
     padding: 0.375rem 3rem;
@@ -2558,7 +2563,7 @@ body#page-login-signup .page-header-headings {
     font-size: 18px;
 }
 #page-wrapper #region-main {
-    color: #575757;
+    color: $text_color;
     font-weight: 400;
     font-size: 15px;
 }
@@ -2616,7 +2621,7 @@ body#page-enrol-index .box.py-3.generalbox form.mform div#fitem_enrolpassword_12
     max-width: 100%;
 }
 body#page-enrol-index .box.py-3.generalbox form.mform div#fitem_enrolpassword_12 label {
-    color: #575757;
+    color: $text_color;
     padding: 0 0 10px;
 }
 body#page-enrol-index .box.py-3.generalbox form.mform div#fitem_enrolpassword_12 input {
@@ -2672,7 +2677,7 @@ body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-con
     border: none;
     color: #fff;
     text-align: center;
-    background: #41b9b7;
+    background:$brandcolor;
 }
 .que.multichoice.deferredfeedback .content {
     width: auto;
@@ -2682,7 +2687,7 @@ body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-con
     flex: 0 0 75%;
 }
 .que.multichoice.deferredfeedback .info .questionflag.editable {
-    color: #398082;
+    color:$brandcolor;
     font-weight: 500;
     font-size: 15px;
     margin: 15px 0 0;
@@ -2715,8 +2720,8 @@ body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-con
     color: #6d6d6d;
 }
 .path-mod-quiz #mod_quiz_navblock .qnbutton.thispage {
-    border: 1px solid #74d2d2;
-    background: #74d2d2;
+    border: 1px solid $brandcolor;
+    background: $brandcolor;
     color: #fff;
     font-weight: 700;
     font-size: 25px;
@@ -2751,7 +2756,7 @@ body#page-calendar-view #page-wrapper #region-main {
     padding: 1.25rem 0;
 }
 body#page-calendar-view #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
-    color: #41b9b7;
+    color:$brandcolor;
 }
 #page-login-index #region-main-box .form-group label.sr-only {
     display: none;
@@ -2760,7 +2765,7 @@ body#page-calendar-view #page-wrapper header#page-header .mr-auto .page-context-
     height: auto;
     font-size: 19px;
     font-weight: 400;
-    color: #3db8bf;
+    color: $brandcolor;
     padding-top: calc(0.375rem + 1px);
     padding-bottom: calc(0.375rem + 1px);
 }
@@ -2858,7 +2863,7 @@ body#page-login-signup #page-wrapper #region-main span.float-sm-right.text-nowra
     margin-bottom: 30px;
 }
 #page #page-content .form-group label {
-    color: #575757 !important;
+    color: $text_color !important;
 }
 body#page-site-index header#page-header {
     display: none;
@@ -3034,7 +3039,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     top: 22%;
     font-size: 50px;
     font-weight: 700;
-    color: #575757;
+    color: $text_color;
     left: 50%;
     font-family: "Nunito Sans", sans-serif;
 }
@@ -3130,7 +3135,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
 }
 .progress + .small {
     text-align: center;
-    color: #41b9b7;
+    color:$brandcolor;
     font-size: 18px;
 }
 .coursebox.list .course_description {
@@ -3193,7 +3198,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     overflow: initial !important;
 }
 .coursebox .progress:before {
-    color: #41b9b7 !important;
+    color:$brandcolor !important;
     text-indent: 0;
     top: 15px;
     left: 50%;
@@ -3240,7 +3245,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     overflow: hidden;
 }
 .coursebox .progress .value {
-    background: #41b9b7;
+    background:$brandcolor;
 }
 div.course_category_tree .collapsible-actions {
     display: none;
@@ -3285,9 +3290,13 @@ body#page-site-index aside#block-region-content .block .card-body {
 }
 #nav-drawer .list-group-item {
     padding: 12px 10px 12px 10px !important;
-    color: #727272 !important;
+    color: $menu_color !important;
     font-weight: 400;
     font-size: 14px;
+}
+#nav-drawer .list-group-item:hover, #nav-drawer .list-group-item:focus {
+    background: $menubackgroundhover;
+    color: $menu_colorhover !important;
 }
 #page-wrapper #page #page-content div.col-12 {
     max-width: 1920px;
@@ -3318,7 +3327,7 @@ body#page-site-index aside#block-region-content .block .card-body {
     text-transform: capitalize;
 }
 .available_courses_2_list .progress:before {
-    color: #41b9b7;
+    color:$brandcolor;
     text-indent: 0;
     top: 15px;
     left: 50%;
@@ -3327,14 +3336,14 @@ body#page-site-index aside#block-region-content .block .card-body {
     text-align: center;
 }
 .available_courses_2_list .progress .value {
-    background: #41b9b7;
+    background:$brandcolor;
 }
 img {
     max-width: 100%;
 }
 section.d-print-none .block_tb_blog_recent ul.list a.recent_blogtitle {
     font-weight: 700;
-    color: #575757;
+    color: $text_color;
     font-size: 17px;
     display: inline-block;
     margin: 0 0 10px;
@@ -3373,7 +3382,7 @@ body#page-site-index section.block_tb_blog_recent_home ul.list li {
     font-size: 25px;
     margin: 0 0 20px;
     display: inline-block;
-    color: #575757;
+    color: $text_color;
     font-family: "Nunito Sans", sans-serif;
 }
 body#page-site-index section.block_tb_blog_recent_home ul.list + a {
@@ -3381,8 +3390,8 @@ body#page-site-index section.block_tb_blog_recent_home ul.list + a {
     font-size: 20px;
     padding: 0.5rem 5rem;
     color: #fff !important;
-    background-color: #41b9b7 !important;
-    border-color: #41b9b7 !important;
+    background-color:$brandcolor !important;
+    border-color:$brandcolor !important;
     /*margin-top: -45px;*/
     margin-right: 2%;
 }
@@ -3497,9 +3506,9 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 .block_tb_testimonials .test_get_started a {
     font-size: 20px;
     padding: 0.5rem 5rem;
-    color: #fff;
-    background-color: #41b9b7;
-    border-color: #41b9b7;
+    color: $buttons_text_color;
+    background-color: $buttons_background_color;
+    border-color: $buttons_background_color;
     display: inline-block;
     text-decoration: none;
 }
@@ -3544,7 +3553,7 @@ aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_bo
     margin: 30px 0 0;
 }
 #page-user-profile span.header-button-title {
-    color: #575757;
+    color: $text_color;
     text-transform: uppercase;
     font-size: 14px;
 }
@@ -3581,10 +3590,10 @@ section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span {
     font-size: 45px;
     font-weight: 700;
     font-family: "Nunito Sans", sans-serif;
-    color: #575757;
+    color: $text_color;
 }
 section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption p {
-    color: #575757;
+    color: $text_color;
     font-family: "Sawarabi Mincho", sans-serif;
 }
 section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption span,
@@ -3607,8 +3616,8 @@ section.block.block_tb_slider .bx-wrapper .bxslide .slide_desc_sec a.get_started
     font-size: 20px;
     padding: 0.5rem 5rem;
     color: #fff;
-    background-color: #41b9b7;
-    border-color: #41b9b7;
+    background-color:$brandcolor;
+    border-color:$brandcolor;
     display: inline-block;
     text-decoration: none;
 }
@@ -3668,7 +3677,7 @@ body#page-login-signup #page-wrapper form div#fgroup_id_buttonar .form-group.fit
     width: 100%;
 }
 .login_signup_buttons .forgetpass a {
-    color: #41b9b7;
+    color:$brandcolor;
     font-size: 15px;
     display: inline-block;
     text-decoration: none;
@@ -3715,18 +3724,18 @@ nav.navbar.navbar-light.bg-white.navbar-expand button.btn i.icon {
 }
 .usermenu .login a {
     display: inline-block;
-    border: 2px solid #626672;
+    border: 2px solid $buttons_background_color;
     font-size: 26px;
     padding: 2px 45px;
     text-decoration: none !important;
     line-height: normal;
-    color: #626672 !important;
+    color: $buttons_background_color !important;
     font-family: "Nunito Sans", sans-serif;
     background: none;
 }
 .usermenu .login a.browse_link {
-    background: #626672;
-    color: #fff !important;
+    background: $buttons_background_color;
+    color: $buttons_text_color !important;
 }
 footer#page-footer {
     padding-left: 76px;
@@ -3835,7 +3844,7 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu u
     padding: 0;
     width: 35px;
     height: 35px;
-    background: #fff;
+    background: $brandbackground;
     border-radius: 5px;
     display: flex !important;
     align-items: center;
@@ -3845,7 +3854,7 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu u
 }
 .leftusermenu ul li.nav-item .popover-region .popover-region-toggle i {
     margin: 0;
-    color: #727272;
+    color: $brandcolor;
     font-size: 25px;
     width: auto;
     height: auto;
@@ -3867,7 +3876,7 @@ body#page-site-index div#nav-drawer[data-region="drawer"] .leftusermenu {
 div#nav-drawer[data-region="drawer"] .leftusermenu,
 body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu {
     padding: 7px 10px;
-    background: #ebecf1;
+    background: $copyrightbackground;
     height: 160px;
     width: 71px;
     position: fixed;
@@ -3880,13 +3889,15 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu {
     padding: 0;
     width: 35px;
     height: 35px;
-    background: #fff;
+    background: $brandbackground;
     border-radius: 5px;
     display: flex !important;
     align-items: center;
     justify-content: center;
 }
-
+.block_tb_slider .bx-wrapper .bx-pager.bx-default-pager a:hover, .block_tb_slider .bx-wrapper .bx-pager.bx-default-pager a.active, .block_tb_slider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: $brandcolor;
+}
 .topusermenu {
     display: none;
 }
@@ -4284,7 +4295,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 14px;
     }
     .preferences-page-container .preference-table h4 {
-        color: #41b9b7;
+        color:$brandcolor;
         font-weight: 400;
         margin: 0;
         font-size: 18px;
@@ -4639,7 +4650,7 @@ body#page-site-index div#page {
 // 28-10-2020G
 
 #page-wrapper #page #page-content section.block {
-    background: #f5f6fa;
+    background: $sectionblockbackground;
 }
 body#page-site-index aside#block-region-content .block .card-body h5.card-title {
     font-weight: 400;
@@ -4651,11 +4662,11 @@ body#page-site-index aside#block-region-content .block .card-body h5.card-title 
 div.owl-carousel .owl-nav button.owl-next, div.owl-carousel .owl-nav button.owl-prev {
     width: 45px;
     height: 45px;
-    background: #fff;
+    background: $owlnavbtnbackground !important;
     border-radius: 50%;
     font-size: 45px;
     line-height: 45px;
-    color: #f0f0f8;
+    color: $owlnavbtncolor !important;
     font-weight: 700;
     position: absolute;
     top: calc(50% - 22px);
@@ -4701,7 +4712,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_m_slots div.tb_m_slots .content_box .content_title {
     font-size: 20px;
-    color: #626574;
+    color: $cattitlecolor;
     padding: 1.25rem 1.25rem 10px;
     font-weight: 700;
     font-family: "Nunito Sans",sans-serif;
@@ -4710,7 +4721,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400;
     font-size: 14px;
     padding: 0 1.25rem 1.25rem;
-    color: #626574;
+    color: $brandcolor;
     min-height: 100px;
 }
 
@@ -4739,13 +4750,14 @@ div.owl-carousel .owl-nav button.owl-prev span {
     float: left;
     width: 50%;
     font-size: 20px;
-    color: #626574;
+    color: $cattitlecolor;
     font-weight: 700;
     font-family: "Nunito Sans",sans-serif;
 }
 .tb_headings .hd_box .hd_des {
     float: left;
     width: 50%;
+    color: $brandcolor;
     padding: 10px 2.25rem;
     min-height: 120px;
     margin: 0 0 30px;
@@ -4756,8 +4768,8 @@ div.owl-carousel .owl-nav button.owl-prev span {
     width: 50%;
 }
 .tb_headings .hd_box .hd_link a {
-    background: #626672;
-    color: #fff;
+    background: $buttons_background_color;
+    color: $buttons_text_color;
     display: block;
     max-width: 170px;
     text-align: center;
@@ -4782,9 +4794,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Featured Courses
 .tb_f_courses_list.owl-carousel .owl-item .coursebox {
     min-width: auto;
-    background: #fff!important;
-    box-shadow: 0 0 2px #e7e7e9!important;
-    border: 1px solid #e7e7e9!important;
     max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
@@ -4807,7 +4816,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .tb_f_courses_list.owl-carousel .owl-item .coursebox .course_title h2.title a {
     font-size: 20px!important;
-    color: #626574!important;
     background: none;
     box-shadow: none;
 }
@@ -4815,7 +4823,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: #626574!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -4826,9 +4833,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Upcoming Courses
 .block_tb_up_courses .tb_up_courses_list .coursebox.list {
     min-width: auto;
-    background: #fff!important;
-    box-shadow: 0 0 2px #e7e7e9!important;
-    border: 1px solid #e7e7e9!important;
     max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0 0 15px !important;
@@ -4851,7 +4855,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_up_courses .tb_up_courses_list .coursebox.list .course_title h2.title a {
     font-size: 20px!important;
-    color: #626574!important;
+    color: $brandcolor!important;
     background: none;
     box-shadow: none;
 }
@@ -4859,7 +4863,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: #626574!important;
+    color: $brandcolor!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -4870,16 +4874,11 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Available Courses
 .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox {
     min-width: auto;
-    background: #fff!important;
-    box-shadow: 0 0 2px #e7e7e9!important;
-    border: 1px solid #e7e7e9!important;
     max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0 0 15px !important;
 }
-.block_tb_a_courses .style_dark.tb_a_courses_list.owl-carousel .coursebox {
-    background: #5f5f5f!important;
-}
+
 .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox .course_image_embed {
     width: 100%;
     height: 200px;
@@ -4898,7 +4897,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox .course_title h2.title a {
     font-size: 20px!important;
-    color: #626574!important;
+    color: $brandcolor !important;
     background: none;
     box-shadow: none;
 }
@@ -4906,25 +4905,19 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: #626574!important;
+    color: $brandcolor !important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
     text-align: center!important;
 }
-.block_tb_a_courses .style_dark.tb_a_courses_list.owl-carousel .coursebox .course_title h2.title a,
-.block_tb_a_courses .style_dark.tb_a_courses_list.owl-carousel .coursebox .course_description {
-    color: #fff !important;
-}
+
 
 
 
 // In Progress Courses
 .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox {
     min-width: auto;
-    background: #fff!important;
-    box-shadow: 0 0 2px #e7e7e9!important;
-    border: 1px solid #e7e7e9!important;
     max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
@@ -4950,7 +4943,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox .course_title h2.title a {
     font-size: 20px!important;
-    color: #626574!important;
+    color: $brandcolor!important;
     background: none;
     box-shadow: none;
 }
@@ -4958,7 +4951,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: #626574!important;
+    color: $brandcolor!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -4969,9 +4962,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Completed Courses
 .block_tb_c_courses .tb_c_courses_list .coursebox {
     min-width: auto;
-    background: #fff!important;
-    box-shadow: 0 0 2px #e7e7e9!important;
-    border: 1px solid #e7e7e9!important;
     max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
@@ -4997,7 +4987,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_c_courses .tb_c_courses_list .coursebox .course_title h2.title a {
     font-size: 20px!important;
-    color: #626574!important;
+    color: $brandcolor!important;
     background: none;
     box-shadow: none;
 }
@@ -5005,7 +4995,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: #626574!important;
+    color: $brandcolor!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -5017,9 +5007,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // My Courses
 .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list {
     min-width: auto;
-    background: #fff!important;
-    box-shadow: 0 0 2px #e7e7e9!important;
-    border: 1px solid #e7e7e9!important;
     max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
@@ -5042,7 +5029,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list .course_title h2.title a {
     font-size: 20px!important;
-    color: #626574!important;
+    color: $brandcolor!important;
     background: none;
     box-shadow: none;
 }
@@ -5050,7 +5037,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: #626574!important;
+    color: $brandcolor!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -5113,18 +5100,20 @@ div.owl-carousel .owl-nav button.owl-prev span {
     float: left;
     width: 50%;
     font-size: 20px;
-    color: #626574;
+    color: $cattitlecolor;
     font-weight: 700;
     font-family: "Nunito Sans",sans-serif;
 }
 .teachers_pos {
     padding: 0 2.25rem 2.25rem;
     float: left;
+    color: $brandcolor;
     width: 50%;
 }
 .tb_teachers .teachers_box .teachers_des {
     float: left;
     width: 50%;
+    color: $brandcolor;
     padding: 10px 2.25rem;
     min-height: 120px;
 }
@@ -5151,6 +5140,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_title {
     font-size: 16px;
+    color: $brandcolor;
     margin: 0 0 25px;
     font-style: normal;
     position: relative;
@@ -5166,10 +5156,12 @@ div.owl-carousel .owl-nav button.owl-prev span {
 .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_text .testimonial_pos {
     width: 100%;
     text-align: left;
+    color: $brandcolor;
     font-style: normal;
 }
 .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_text .testimonial_des {
     font-weight: 600;
+    color: $cattitlecolor;
 }
 .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_title::before {
     font-size: 60px;
@@ -5178,7 +5170,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     left: -25px;
     line-height: 20px;
     transform: rotate(180deg);
-    color: #01b4b1;
+    color: $brandcolor;
     content: " ,, ";
     letter-spacing: -8px;
 }
@@ -5194,10 +5186,16 @@ div.owl-carousel .owl-nav button.owl-prev span {
     box-shadow: 0 0 2px #e7e7e9;
     border: 1px solid #e7e7e9;
 }
+.tb_faq div#faq_box .faq_title {
+    color: $basecolor;
+}
+.tb_faq div#faq_box .faq_des {
+    color: $brandcolor;
+}
 div.faq_more a {
     padding: 10px 50px;
-    background: #626672 !important;
-    color: #fff !important;
+    background: $buttons_background_color !important;
+    color: $buttons_text_color !important;
     box-shadow: none !important;
     font-size: 19px;
 }
@@ -5213,12 +5211,12 @@ div.faq_more a {
 #page-wrapper #page-footer section.footer-stats {
     text-align: center;
     padding: 40px;
-    background: #535762;
-    color: #fff;
+    background: $brandcolor;
+    color: $footer_one_text_color;
 }
 #page-wrapper #page-footer section.footer-stats::before {
     content: "";
-    background: #535762;
+    background: $footer_one_background_color;
     position: absolute;
     top: 0;
     left: 50%;
@@ -5229,12 +5227,13 @@ div.faq_more a {
 #page-wrapper #page-footer section.footer-stats>* {
     position: relative;
     z-index: 1;
+    color: $footer_one_text_color;
 }
 #page-wrapper #page-footer section.footer-stats h2 {
     text-align: center;
     margin: 0 0 20px;
     font-size: 28px;
-    color: #fff;
+    color: $footer_one_text_color;
     font-weight: 400;
 }
 #page-wrapper #page-footer section.footer-stats .row-fluid .statsin {
@@ -5248,23 +5247,32 @@ div.faq_more a {
 }
 #page-wrapper #page-footer section.footer-stats .stat-button a {
     padding: 10px 50px;
-    background: #eff0f5 !important;
-    color: #535762 !important;
+    background: $footer2btnbackground !important;
+    color: $footer2btncolor !important;
     box-shadow: none !important;
     display: inline-block;
     font-size: 19px;
 }
+
 #page-wrapper #page-footer section.footer-stats .row-fluid .statsin h2 {
     margin: 0 0 5px;
     font-weight: 800;
     font-size: 35px;
 }
-#page-wrapper #page-footer section.d-print-none:not(.footer-stats) {
-    padding: 50px 15px;
-    color: #666;
+#page-wrapper #page-footer section.d-print-none:not(.footer-stats):not(.footer-copy){
+    // background: $footer_two_background_color;
 }
-#page-wrapper #page-footer section.d-print-none:not(.footer-stats) h2 {
+#page-wrapper #page-footer section.d-print-none:not(.footer-stats),#page-wrapper #page-footer section.d-print-none:not(.footer-stats) a {
+    padding: 50px 15px;
+    color: $footer_two_text_color;
+}
+#page-wrapper #page-footer section.d-print-none:not(.footer-stats):not(.footer-copy) h2 {
     font-weight: 600;
+    color: $footer_two_text_color;
+}
+#page-wrapper #page-footer section.d-print-none.footer-copy h2 {
+    font-weight: 600;
+    color: $footer_three_text_color;
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy h2 {
     text-align: center;
@@ -5273,15 +5281,17 @@ div.faq_more a {
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy {
     border-top: 1px solid #e7e7e9;
-    color: #575757;
+    color: $footercolor;
     padding-bottom: 0 !important;
+    background: $footer_three_background_color;
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy p {
-    color: #575757;
+    color: $footer_three_text_color;
     text-align: center;
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy .copyright-foo {
-    background: #eff0f5;
+    background: $copyrightbackground;
+    color: $footercolor;
     padding: 14px 15px;
     text-align: center;
     position: relative;
@@ -5290,7 +5300,7 @@ div.faq_more a {
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy .copyright-foo::before {
     content: "";
-    background: #eff0f5;
+    background: $copyrightbackground;
     position: absolute;
     top: 0;
     left: 50%;
@@ -5307,8 +5317,8 @@ div.faq_more a {
     height: auto;
     text-indent: 0;
     padding: 10px 50px;
-    background: #626672 !important;
-    color: #fff!important;
+    background: $directionbtnbackground !important;
+    color: $directionbtncolor !important;
     box-shadow: none!important;
     font-size: 20px;
     text-decoration: none;
@@ -5388,24 +5398,24 @@ section.block_tb_slider .bx-wrapper .bx-pager {
 }
 .video-txt p {
     font-size: 17px;
-    color: #626672;
+    color: $brandcolor;
 }
 .video-txt h2 {
     margin: 40px 0;
     font-size: 40px;
     font-weight: 900;
-    color: #626672;
+    color: $brandcolor;
 }
 .video-txt h2 small {
     font-weight: 900;
 }
 .video-txt h2 span {
     font-size: 17px;
-    color: #626672;
+    color: $brandcolor;
     font-weight: normal;
 }
 .enroll-btn a {
-    background: #626672;
+    background: $brandcolor;
     display: block;
     max-width: 195px;
     margin: 0 auto;
@@ -5436,7 +5446,7 @@ section.block_tb_slider .bx-wrapper .bx-pager {
 }
 .mod-cont h3 {
     font-size: 25px;
-    color: #626672;
+    color: $brandcolor;
     font-weight: 700;
     margin: 0;
 }
@@ -5454,13 +5464,13 @@ mod-cont h3 small {
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 20px;
-    color: #626672;
+    color: $brandcolor;
 }
 .abt-txt-head {
     margin: 0 0 35px;
     font-size: 25px;
     font-weight: lighter;
-    color: #626672;
+    color: $brandcolor;
 }
 .abt-in-txt {
     font-size: 14px;
@@ -5491,7 +5501,7 @@ mod-cont h3 small {
 }
 #page-wrapper #page #page-content section.block>.card-body h5.card-title {
     font-weight: lighter;
-    color: #626672;
+    color: $headings_color;
     display: block !important;
     padding: 0px 0 15px;
 }
@@ -5505,14 +5515,14 @@ mod-cont h3 small {
 }
 .main-right-section .block.block_tb_course_nav .section-default>.module-navigation-section-heading a {
     font-size: 15px;
-    color: #626672;
+    color: $brandcolor;
     position: relative;
     border: none;
     box-shadow: none;
 }
 .main-right-section .block.block_tb_course_nav ul.activities li>a {
     font-size: 14px;
-    color: #626672;
+    color: $brandcolor;
     background: none;
 }
 .main-right-section .block.block_tb_course_nav .section-default>.module-navigation-section-heading+.section-collapse>.section-body {
@@ -5544,7 +5554,7 @@ mod-cont h3 small {
 .main-right-section .block.block_tb_course_nav .section-group .backtocourse .tocourse {
     font-size: 16px;
     font-weight: lighter !important;
-    color: #626672;
+    color: $brandcolor;
     display: block!important;
     border: none;
     border-bottom: 1px solid #f7f7f9 !important;
@@ -5578,7 +5588,7 @@ mod-cont h3 small {
 .main-left-section .course-content ul.topics li.section.main h3.sectionname a {
     font-size: 18px;
     font-weight: 600;
-    color: #626672;
+    color: $brandcolor;
     background: none;
     border: none;
     box-shadow: none;
@@ -5638,7 +5648,7 @@ mod-cont h3 small {
 .course-ur-form-head {
     font-size: 25px;
     font-weight: lighter;
-    color: #626672;
+    color: $brandcolor;
     margin: 0 0 35px;
 }
 .course-ur-form-main .form-control {
@@ -5648,7 +5658,7 @@ mod-cont h3 small {
     box-shadow: none;
 }
 .course-ur-form-main .btn.form-submit {
-    background: #626672;
+    background: $brandcolor;
     display: inline-block;
     max-width: 195px;
     padding: .375rem 4.75rem;
@@ -5674,7 +5684,7 @@ iframe.leeloo_themeframe {
 .book_content h3, .gradingsummary h3 {
     font-size: 18px;
     font-weight: 600;
-    color: #626672;
+    color: $brandcolor;
 }
 iframe#vimeoiframe {
     float: left;
@@ -5689,7 +5699,7 @@ iframe#vimeoiframe {
 .mform fieldset.collapsible legend a.fheader {
     font-size: 18px;
     font-weight: 600;
-    color: #575757;
+    color: $text_color;
     outline: none;
     box-shadow: none;
 }
@@ -5699,13 +5709,13 @@ iframe#vimeoiframe {
 
 // 12-11-2020G
 .profile_tree a {
-    color: #575757;
+    color: $text_color;
 }
 .profile_tree .card-body h3.lead {
     margin: 0 0 20px;
 }
 div#fitem_id_imagefile p#id_imagefile_label {
-    color: #575757;
+    color: $text_color;
 }
 div#fgroup_id_buttonar .d-flex.flex-wrap.align-items-center {
     justify-content: center;
@@ -5717,7 +5727,7 @@ div#fgroup_id_buttonar .d-flex.flex-wrap.align-items-center {
     margin: 0 auto;
 }
 .mr-auto .page-context-header .btn-group.header-button-group a {
-    color: #575757;
+    color: $text_color;
     text-decoration: none;
     background: none;
     box-shadow: none;
@@ -5730,7 +5740,7 @@ div#fgroup_id_buttonar .d-flex.flex-wrap.align-items-center {
     text-transform: uppercase;
 }
 .preferences-container .preference-table a {
-    color: #575757;
+    color: $text_color;
 }
 .coursebox .customfields-container {
     display: none;
@@ -5753,7 +5763,7 @@ div.leeloo_product_name, div.leeloo_product_details, div.leeloo_productdiv {
     text-align: left;
 }
 .block .minicalendar a {
-    color: #2c999c;
+    color: $brandcolor;
 }
 .block_myprofile .myprofileitem {
     line-height: normal;
@@ -5815,6 +5825,7 @@ nav.fixed-top.navbar {
 }
 body#page-site-index nav.fixed-top.navbar {
     position: absolute;
+    box-shadow: none;
 }
 .notloggedinuser nav.fixed-top.navbar {
     display: block;
@@ -5827,7 +5838,7 @@ body#page-site-index nav.fixed-top.navbar {
 }
 .logo_side_container button.btn.nav-link i {
     font-size: 30px;
-    color: #484848;
+    color: $hamburger_menu_color;
     width: auto;
     height: auto;
 }
@@ -5867,10 +5878,27 @@ body#page-site-index div#nav-drawer[data-region="drawer"] .logo_side_container .
 }
 .dropdown-menu-right.dropdown-menu {
     width: 220px;
-    background: #f5f6fa;
+    background: $dropdownmenubackground;
     border: none;
     top: -45px !important;
     left: -4px !important;
+}
+.dropdown-menu-right.dropdown-menu a.dropdown-item {
+    color: $dropdownitemcolor;
+    background: none;
+}
+.dropdown-menu-right.dropdown-menu a.dropdown-item:hover,
+.dropdown-menu-right.dropdown-menu a.dropdown-item:focus,
+.dropdown-menu-right.dropdown-menu a.dropdown-item:active {
+    color: $dropdownitemcolorhover;
+    background: $dropdownitembackgroundhover;
+}
+.dropdown-menu-right.dropdown-menu a.dropdown-item.active {
+    background: $dropdownitembackgroundactive;
+    color: $dropdownitemcoloractive;
+}
+div.message-app {
+    background: $dropdownmenubackground;
 }
 .usermenu a, #nav-drawer .list-group-item {
     box-shadow: none !important;
@@ -5881,7 +5909,6 @@ div#leeloosocialdiv iframe.leeloosocial {
 #page-login-index #page-wrapper #region-main .card-block .card-body {
     padding: 30px 0;
 }
-
 
 
 
@@ -6233,7 +6260,29 @@ div#leeloosocialdiv iframe.leeloosocial {
 
 
 
+.owl-carousel.owl-theme.style_dark .coursebox {
+    background: $dark_overlay_background_color !important;
+    box-shadow: 0 0 2px $dark_overlay_background_color!important;
+    border: 1px solid $dark_overlay_background_color!important;
+}
+.owl-carousel.owl-theme.style_dark .coursebox .course_title h2.title a,
+.owl-carousel.owl-theme.style_dark .coursebox .course_description {
+    color: $dark_overlay_text_color !important;
+}
 
+.style_light.owl-carousel.owl-theme .coursebox {
+    background: $light_overlay_background_color !important;
+    box-shadow: 0 0 2px $light_overlay_background_color!important;
+    border: 1px solid $light_overlay_background_color!important;
+}
+.style_light.owl-carousel.owl-theme .coursebox .course_title h2.title a,
+.style_light.owl-carousel.owl-theme .coursebox .course_description {
+    color: $light_overlay_text_color !important;
+}
+
+.block_tb_top_cats .tb_top_cats .tb_cat .tb_cat_content h2.cat_title a{
+    color: $cattitlecolor !important;
+}
 
 // 20-11-2020G
 

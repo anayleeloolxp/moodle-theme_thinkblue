@@ -157,7 +157,7 @@ function theme_thinkblue_get_pre_scss($theme) {
 
     // MODIFICATION END.
 
-
+    $leeloosettings = theme_thinkblue_general_leeloosettings();
 
     $scss = '';
 
@@ -165,57 +165,57 @@ function theme_thinkblue_get_pre_scss($theme) {
 
         // Config key => [variableName, ...].
 
-        'brandcolor' => ['primary'],
+        //'brandcolor' => ['primary'],
 
         // MODIFICATION START: Add own variables.
 
-        'section0title' => ['section0title'],
+        //'section0title' => ['section0title'],
 
-        'showswitchedroleincourse' => ['showswitchedroleincourse'],
+        //'showswitchedroleincourse' => ['showswitchedroleincourse'],
 
-        'loginform' => ['loginform'],
+        //'loginform' => ['loginform'],
 
-        'footerhidehelplink' => ['footerhidehelplink'],
+        //'footerhidehelplink' => ['footerhidehelplink'],
 
-        'footerhidelogininfo' => ['footerhidelogininfo'],
+        //'footerhidelogininfo' => ['footerhidelogininfo'],
 
-        'footerhidehomelink' => ['footerhidehomelink'],
+        //'footerhidehomelink' => ['footerhidehomelink'],
 
-        'blockicon' => ['blockicon'],
+        //'blockicon' => ['blockicon'],
 
-        'brandsuccesscolor' => ['success'],
+        //'brandsuccesscolor' => ['success'],
 
-        'brandinfocolor' => ['info'],
+        //'brandinfocolor' => ['info'],
 
-        'brandwarningcolor' => ['warning'],
+        //'brandwarningcolor' => ['warning'],
 
-        'branddangercolor' => ['danger'],
+        //'branddangercolor' => ['danger'],
 
-        'darknavbar' => ['darknavbar'],
+        //'darknavbar' => ['darknavbar'],
 
-        'footerblocks' => ['footerblocks'],
+        //'footerblocks' => ['footerblocks'],
 
-        'imageareaitemsmaxheight' => ['imageareaitemsmaxheight'],
+        //'imageareaitemsmaxheight' => ['imageareaitemsmaxheight'],
 
-        'showsettingsincourse' => ['showsettingsincourse'],
+        //'showsettingsincourse' => ['showsettingsincourse'],
 
-        'incoursesettingsswitchtoroleposition' => ['incoursesettingsswitchtoroleposition'],
+        //'incoursesettingsswitchtoroleposition' => ['incoursesettingsswitchtoroleposition'],
 
-        'hidefooteronloginpage' => ['hidefooteronloginpage'],
+        //'hidefooteronloginpage' => ['hidefooteronloginpage'],
 
-        'footerhideusertourslink' => ['footerhideusertourslink'],
+        //'footerhideusertourslink' => ['footerhideusertourslink'],
 
-        'navdrawerfullwidth' => ['navdrawerfullwidth'],
+        //'navdrawerfullwidth' => ['navdrawerfullwidth'],
 
-        'helptextmodal' => ['helptextmodal'],
+        //'helptextmodal' => ['helptextmodal'],
 
-        'breakpoint' => ['breakpoint'],
+        //'breakpoint' => ['breakpoint'],
 
-        'blockcolumnwidth' => ['blockcolumnwidth'],
+        //'blockcolumnwidth' => ['blockcolumnwidth'],
 
-        'blockcolumnwidthdashboard' => ['blockcolumnwidthdashboard'],
+        //'blockcolumnwidthdashboard' => ['blockcolumnwidthdashboard'],
 
-        'addablockposition' => ['addablockposition'],
+        //'addablockposition' => ['addablockposition'],
 
         // MODIFICATION END.
 
@@ -229,31 +229,31 @@ function theme_thinkblue_get_pre_scss($theme) {
 
         if( isset($leeloosettings->general_settings->{$configkey}) ){
 
-            $value = isset($leeloosettings->general_settings->{$configkey});
+            //$value = isset($leeloosettings->general_settings->{$configkey});
 
         }elseif( isset($leeloosettings->advanced_settings->{$configkey}) ){
 
-            $value = isset($leeloosettings->advanced_settings->{$configkey});
+            //$value = isset($leeloosettings->advanced_settings->{$configkey});
 
         }elseif( isset($leeloosettings->course_layout_settings->{$configkey}) ){
 
-            $value = isset($leeloosettings->course_layout_settings->{$configkey});
+            //$value = isset($leeloosettings->course_layout_settings->{$configkey});
 
         }elseif( isset($leeloosettings->footer_layout_settings->{$configkey}) ){
 
-            $value = isset($leeloosettings->footer_layout_settings->{$configkey});
+            //$value = isset($leeloosettings->footer_layout_settings->{$configkey});
 
         }elseif( isset($leeloosettings->additional_layout_settings->{$configkey}) ){
 
-            $value = isset($leeloosettings->additional_layout_settings->{$configkey});
+            //$value = isset($leeloosettings->additional_layout_settings->{$configkey});
 
         }elseif( isset($leeloosettings->design_settings->{$configkey}) ){
 
-            $value = isset($leeloosettings->design_settings->{$configkey});
+            //$value = isset($leeloosettings->design_settings->{$configkey});
 
         }else{
 
-            $value = null;
+            //$value = null;
 
         }
 
@@ -261,29 +261,88 @@ function theme_thinkblue_get_pre_scss($theme) {
 
         if (empty($value)) {
 
-            continue;
+            //continue;
 
         }
 
         array_map(function ($target) use (&$scss, $value) {
 
-            $scss .= '$' . $target . ': ' . $value . ";\n";
+            //$scss .= '$' . $target . ': ' . $value . ";\n";
 
         }, (array) $targets);
 
     }
 
+    $configurablecolors = [
+        //Config key => [variableName, ...].
+        'brandcolor' => '#626672',
+        'menu_color' => '#575757',
+        'menu_section_background' => '#fff',
+        'menu_active_color' => '#00aff0',
+        'menu_background_active' => '#f5f6fa',
+        'hamburger_menu_color' => '#00aff0',
+        'buttons_background_color' => '#00aff0',
+        'buttons_text_color' => '#fff',
+        'headings_color' => '#00aff0',
+        'text_color' => '#575757',
+        'footer_one_background_color' => '#00aff0',
+        'footer_one_text_color' => '#fff',
+        'footer_two_background_color' => '#00aff0',
+        'footer_two_text_color' => '#fff',
+        'footer_three_background_color' => '#00aff0',
+        'footer_three_text_color' => '#fff',
+        'basecolor' => '#030303',
+        'cattitlecolor' => '#5f6474',
+        'copyrightbackground' => '#eff0f5',
+        'pagefooterbackground' => '#f5f6fa',
+        'owlnavbtnbackground' => '#fff',
+        'owlnavbtncolor' => '#f0f0f8',
+        'sectionblockbackground' => '#f5f6fa',
+        'menubackgroundhover' => '#f8f9fa',
+        'menu_colorhover' => '#727272',
+        'brandbackground' => '#fff',
+        'dropdownmenubackground' => 'f5f6fa',
+        'dropdownitemcolor' => '#212529',
+        'dropdownitemcolorhover' => '#16181b',
+        'dropdownitembackgroundhover' => '#f8f9fa',
+        'dropdownitemcoloractive' => '#eff0f5',
+        'dropdownitembackgroundactive' => '#626672',
+        'directionbtnbackground' => '#626672',
+        'directionbtncolor' => '#fff',
+        'courseboxbackground' => '#787878',
+        'courseboxcolor' => '#fff',
+        'footer2head' => '#000',
+        'footer3head' => '#000',
+        'footeratag' => '#030303',
+        'footercolor' => '#787878',
+        'footer2btnbackground' => '#eff0f5',
+        'footer2btncolor' => '#030303',
+        'light_overlay_background_color' => '#fff',
+        'light_overlay_text_color' => '#000',
+        'dark_overlay_background_color' => '#000',
+        'dark_overlay_text_color' => '#fff',
+        
+    ];
 
+    foreach($configurablecolors as $colorsetting=>$colorsettingval){
 
+        if( isset($leeloosettings->general_settings->$colorsetting) && isset($leeloosettings->general_settings->$colorsetting) !='' ){
+            $scss .= '$'.$colorsetting.': ' . $leeloosettings->general_settings->$colorsetting . ";\n";
+        }else{
+            $scss .= '$'.$colorsetting.': ' . $colorsettingval . ";\n";
+        }
+
+    } 
+    
     // MODIFICATION START: Overwrite Boost core SCSS variables which need units and thus couldn't be added to $configurable above.
 
     // Set variables which are processed in the context of the blockcolumnwidth setting.
 
     if (isset($leeloosettings->design_settings->blockcolumnwidth)) {
 
-        $scss .= '$blocks-column-width: ' . $leeloosettings->design_settings->blockcolumnwidth . "px;\n";
+        //$scss .= '$blocks-column-width: ' . $leeloosettings->design_settings->blockcolumnwidth . "px;\n";
 
-        $scss .= '$grid-gutter-width: ' . "30px;\n";
+        //$scss .= '$grid-gutter-width: ' . "30px;\n";
 
     }
 
@@ -299,9 +358,9 @@ function theme_thinkblue_get_pre_scss($theme) {
 
     if (isset($leeloosettings->design_settings->blockcolumnwidthdashboard)) {
 
-        $scss .= '$blocks-column-width-dashboard: ' . $leeloosettings->design_settings->blockcolumnwidthdashboard . "px;\n";
+        //$scss .= '$blocks-column-width-dashboard: ' . $leeloosettings->design_settings->blockcolumnwidthdashboard . "px;\n";
 
-        $scss .= '$blocks-plus-gutter-dashboard: $blocks-column-width-dashboard + ( $grid-gutter-width / 2 )' . ";\n";
+        //$scss .= '$blocks-plus-gutter-dashboard: $blocks-column-width-dashboard + ( $grid-gutter-width / 2 )' . ";\n";
 
     }
 
@@ -311,7 +370,7 @@ function theme_thinkblue_get_pre_scss($theme) {
 
     // MODIFICATION START: Add login background images that are uploaded to the setting 'loginbackgroundimage' to CSS.
 
-    $scss .= theme_thinkblue_get_loginbackgroundimage_scss();
+    //$scss .= theme_thinkblue_get_loginbackgroundimage_scss();
 
     // MODIFICATION END.
 
