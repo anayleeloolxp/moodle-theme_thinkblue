@@ -327,7 +327,11 @@ function theme_thinkblue_get_pre_scss($theme) {
     foreach($configurablecolors as $colorsetting=>$colorsettingval){
 
         if( isset($leeloosettings->general_settings->$colorsetting) && isset($leeloosettings->general_settings->$colorsetting) !='' ){
-            $scss .= '$'.$colorsetting.': ' . $leeloosettings->general_settings->$colorsetting . ";\n";
+            if( $leeloosettings->general_settings->$colorsetting != '' ){
+                $scss .= '$'.$colorsetting.': ' . $leeloosettings->general_settings->$colorsetting . ";\n";
+            }else{
+                $scss .= '$'.$colorsetting.': ' . $colorsettingval . ";\n";
+            }
         }else{
             $scss .= '$'.$colorsetting.': ' . $colorsettingval . ";\n";
         }
