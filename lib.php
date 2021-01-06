@@ -384,7 +384,7 @@ function theme_thinkblue_get_pre_scss($theme) {
 
     if (!empty($leeloosettings->advanced_settings->scsspre)) {
 
-        $scss .= $leeloosettings->advanced_settings->scsspre;
+        $scss .= @$leeloosettings->advanced_settings->scsspre;
 
     }
 

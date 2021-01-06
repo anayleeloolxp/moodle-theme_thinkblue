@@ -199,7 +199,7 @@ if ( isset($leeloosettings->design_settings->darknavbar) && $leeloosettings->des
 // MODIFICATION START: Setting 'navdrawerfullwidth'.
 
 if( isset($leeloosettings->additional_layout_settings->navdrawerfullwidth)  ){
-    $navdrawerfullwidth = $leeloosettings->additional_layout_settings->navdrawerfullwidth; 
+    $navdrawerfullwidth = @$leeloosettings->additional_layout_settings->navdrawerfullwidth; 
 }else{
     $navdrawerfullwidth = 0;
 }
@@ -311,7 +311,7 @@ if (!empty($leeloosettings->imageareaitems)) {
 
 // Get footnote config.
 
-$footnote = $leeloosettings->additional_layout_settings->footnote;
+$footnote = @$leeloosettings->additional_layout_settings->footnote;
 
 if (!empty($footnote)) {
 

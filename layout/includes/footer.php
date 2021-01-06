@@ -28,22 +28,22 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
 
 $leeloosettings = theme_thinkblue_general_leeloosettings();
-$footerblocksetting = $leeloosettings->footer_layout_settings->footerblocks;
-$footerblock = $leeloosettings->footer_block;
+$footerblocksetting = @$leeloosettings->footer_layout_settings->footerblocks;
+$footerblock = @$leeloosettings->footer_block;
 
-$statsenabled = $leeloosettings->footer_stats->enable_footer_stats;
-$copyenabled = $leeloosettings->social_copyright_settings->enable_footer_social_copyright;
+$statsenabled = @$leeloosettings->footer_stats->enable_footer_stats;
+$copyenabled = @$leeloosettings->social_copyright_settings->enable_footer_social_copyright;
 
 $footerstatshtml = '';
 $footercopyhtml = '';
 
 if($statsenabled){
-    $statstitle = $leeloosettings->footer_stats->footer_stats_title;
-    $statsdescription = $leeloosettings->footer_stats->description;
-    $statsvals = $leeloosettings->footer_stats->statsval;
+    $statstitle = @$leeloosettings->footer_stats->footer_stats_title;
+    $statsdescription = @$leeloosettings->footer_stats->description;
+    $statsvals = @$leeloosettings->footer_stats->statsval;
 
-    $buttontest = $leeloosettings->footer_stats->button_test;
-    $buttonlink = $leeloosettings->footer_stats->button_link;
+    $buttontest = @$leeloosettings->footer_stats->button_test;
+    $buttonlink = @$leeloosettings->footer_stats->button_link;
 
     $footerstats = true;
     $footerstatshtml .= '<h2>'.$statstitle.'</h2>';
@@ -70,10 +70,10 @@ if($statsenabled){
 }
 
 if($copyenabled){
-    $socialtitle = $leeloosettings->social_copyright_settings->title;
-    $socialdescription = $leeloosettings->social_copyright_settings->description;
-    $socialdetails = $leeloosettings->social_copyright_settings->details;
-    $copyright_text = $leeloosettings->social_copyright_settings->copyright_text;
+    $socialtitle = @$leeloosettings->social_copyright_settings->title;
+    $socialdescription = @$leeloosettings->social_copyright_settings->description;
+    $socialdetails = @$leeloosettings->social_copyright_settings->details;
+    $copyright_text = @$leeloosettings->social_copyright_settings->copyright_text;
 
     $footercopy = true;
     $footercopyhtml .= '<h2>'.$socialtitle.'</h2>';
