@@ -38,7 +38,6 @@ $plugin->dependencies = array(
     'block_tb_a_courses' => 2019010700,
     'block_tb_blog' => 2019111800,
     'block_tb_c_courses' => 2019010700,
-    'theme_thinkblue' => 2019010700,
     'block_tb_course_nav' => 2019052015,
     'block_tb_f_courses' => 2019010700,
     'block_tb_faq' => 2019010700,
