@@ -55,4 +55,5 @@ $plugin->dependencies = array(
     'mod_wespher' => 2020022102,
     'local_staticpage' => 2020021400,
     'local_boostnavigation' => 2020080400,
+    'auth_leeloolxp_tracking_sso' => 2020092601
 );

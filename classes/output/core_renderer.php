@@ -826,12 +826,6 @@ class core_renderer extends \core_renderer {
 
         $url = $this->get_logo_url();
 
-        if ($url) {
-
-            $url = $url->out(false);
-
-        }
-
         $context->logourl = $url;
 
         $context->siteurl = $CFG->wwwroot;
@@ -1479,6 +1473,16 @@ class core_renderer extends \core_renderer {
         $contextheader = new context_header($heading, $headinglevel, $imagedata, $userbuttons);
 
         return $this->render_context_header($contextheader);
+
+    }
+
+    public function get_logo_url($maxwidth = null, $maxheight = 100) {
+        if( isset( $this->getleeloosettings()->general_settings->logoimage )  ){
+            return @$this->getleeloosettings()->general_settings->logoimage;
+        }else{
+            return 'https://leeloolxp.com/modules/mod_acadmic/images/Leeloo-lxp1.png';
+        }
+        
 
     }
 
