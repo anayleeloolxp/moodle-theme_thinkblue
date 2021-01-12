@@ -93,6 +93,21 @@ function xmldb_theme_thinkblue_install() {
     set_config('removeparticipantscoursenode', '1', 'local_boostnavigation');
 
     set_config('cleanhtml', '2', 'local_staticpage');
+
+    get_enabled_auth_plugins(true); // fix the list of enabled auths
+    if (empty($CFG->auth)) {
+        $authsenabled = array();
+    } else {
+        $authsenabled = explode(',', $CFG->auth);
+    }
+
+    $auth = 'leeloolxp_tracking_sso';
+
+    if (!in_array($auth, $authsenabled)) {
+        $authsenabled[] = $auth;
+        $authsenabled = array_unique($authsenabled);
+        set_config('auth', implode(',', $authsenabled));
+    }
     
 
     return true;
