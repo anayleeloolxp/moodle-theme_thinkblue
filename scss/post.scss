@@ -41,6 +41,13 @@
 #page {
     color: $brandcolor;
 }
+.modal-dialog {
+    width: 70%;
+    max-width: 70%;
+}
+iframe{
+    background: #ffffff!important;
+}
 /*------------------------------------
   Login page
   -------------------------------------*/
