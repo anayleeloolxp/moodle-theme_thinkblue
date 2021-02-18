@@ -39,7 +39,7 @@
     }
 }
 #page {
-    color: $brandcolor;
+    color: $text_color;
 }
 .modal-dialog {
     width: 70%;
@@ -244,7 +244,7 @@ body.loginbackgroundimage #page {
             .usertext:hover,
             .dropdown-toggle:hover,
             .site-name:hover {
-                color:$brandcolor;
+                color:$text_color;
             }
             .navbar-brand:not(.has-logo) .site-name:hover {
                 color: #fff;
@@ -1179,7 +1179,7 @@ div.form-inline .custom-select {
     width: 70%;
 }
 div label.col-form-label {
-    color:$brandcolor;
+    color:$text_color;
     font-weight: 500;
     display: inline-block !important;
 }
@@ -1329,7 +1329,7 @@ nav.navbar.navbar-light.bg-white.navbar-expand {
     font-size: 14px;
 }
 .course-pro-sec .course-dtl p:first-child {
-    color: $brandcolor;
+    color: $text_color;
     font-weight: 600;
     font-size: 20px;
 }
@@ -1565,7 +1565,7 @@ body#page-login-signup #page-wrapper .card-title h3 {
     display: none;
 }
 body#page-login-signup #page-wrapper form label {
-    color: $brandcolor;
+    color: $text_color;
 }
 .mr-auto {
     width: 100%;
@@ -1583,7 +1583,7 @@ body#page-login-signup #page-wrapper form label {
     font-weight: 600;
     text-align: left;
     max-width: 1250px;
-    color:$brandcolor;
+    color:$text_color;
     margin: 0 auto;
 }
 #page-wrapper #region-main .no-overflow {
@@ -1757,7 +1757,7 @@ div#page-navbar ol.breadcrumb {
 }
 
 #page-footer {
-    background: $pagefooterbackground !important;
+    /* background: $pagefooterbackground !important; */
     color: $footeratag;
     text-align: left;
     border-top: 2px solid $brandcolor;
@@ -1788,7 +1788,7 @@ div#page-navbar ol.breadcrumb {
 #page-footer a {
     text-decoration: none;
     line-height: 28px;
-    color: $footeratag;
+    color: $footer_one_text_color;
 }
 .copyright_section img {
     max-width: 200px;
@@ -2228,7 +2228,7 @@ i.fa-question-circle {
     border-color: $brandcolor;
 }
 .pagelayout-mydashboard .card.mb-3 .dropdown a {
-    color:$brandcolor;
+    color:$text_color;
 }
 .pagelayout-mydashboard .card.mb-3 .dropdown a:active,
 .pagelayout-mydashboard .card.mb-3 .dropdown a:focus {
@@ -2533,7 +2533,7 @@ body#page-login-signup .page-header-headings {
 }
 #page-blog-index #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
     text-align: left;
-    color:$brandcolor;
+    color:$text_color;
 }
 #page-blog-index #page-wrapper #page #page-content {
     padding: 0 10px;
@@ -2694,7 +2694,7 @@ body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-con
     flex: 0 0 75%;
 }
 .que.multichoice.deferredfeedback .info .questionflag.editable {
-    color:$brandcolor;
+    color:$text_color;
     font-weight: 500;
     font-size: 15px;
     margin: 15px 0 0;
@@ -2763,7 +2763,7 @@ body#page-calendar-view #page-wrapper #region-main {
     padding: 1.25rem 0;
 }
 body#page-calendar-view #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
-    color:$brandcolor;
+    color:$text_color;
 }
 #page-login-index #region-main-box .form-group label.sr-only {
     display: none;
@@ -2772,7 +2772,7 @@ body#page-calendar-view #page-wrapper header#page-header .mr-auto .page-context-
     height: auto;
     font-size: 19px;
     font-weight: 400;
-    color: $brandcolor;
+    color: $text_color;
     padding-top: calc(0.375rem + 1px);
     padding-bottom: calc(0.375rem + 1px);
 }
@@ -3142,7 +3142,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
 }
 .progress + .small {
     text-align: center;
-    color:$brandcolor;
+    color:$text_color;
     font-size: 18px;
 }
 .coursebox.list .course_description {
@@ -3205,7 +3205,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     overflow: initial !important;
 }
 .coursebox .progress:before {
-    color:$brandcolor !important;
+    color:$text_color !important;
     text-indent: 0;
     top: 15px;
     left: 50%;
@@ -3303,7 +3303,7 @@ body#page-site-index aside#block-region-content .block .card-body {
 }
 #nav-drawer .list-group-item:hover, #nav-drawer .list-group-item:focus {
     background: $menubackgroundhover;
-    color: $menu_colorhover !important;
+    color: $menucolorhover !important;
 }
 #page-wrapper #page #page-content div.col-12 {
     max-width: 1920px;
@@ -3334,7 +3334,7 @@ body#page-site-index aside#block-region-content .block .card-body {
     text-transform: capitalize;
 }
 .available_courses_2_list .progress:before {
-    color:$brandcolor;
+    color:$text_color;
     text-indent: 0;
     top: 15px;
     left: 50%;
@@ -3684,7 +3684,7 @@ body#page-login-signup #page-wrapper form div#fgroup_id_buttonar .form-group.fit
     width: 100%;
 }
 .login_signup_buttons .forgetpass a {
-    color:$brandcolor;
+    color:$text_color;
     font-size: 15px;
     display: inline-block;
     text-decoration: none;
@@ -3851,7 +3851,7 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu u
     padding: 0;
     width: 35px;
     height: 35px;
-    background: $brandbackground;
+    /* background: $brandbackground; */
     border-radius: 5px;
     display: flex !important;
     align-items: center;
@@ -3861,7 +3861,7 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu u
 }
 .leftusermenu ul li.nav-item .popover-region .popover-region-toggle i {
     margin: 0;
-    color: $brandcolor;
+    color: $dropdownitemcolor;
     font-size: 25px;
     width: auto;
     height: auto;
@@ -3883,7 +3883,7 @@ body#page-site-index div#nav-drawer[data-region="drawer"] .leftusermenu {
 div#nav-drawer[data-region="drawer"] .leftusermenu,
 body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu {
     padding: 7px 10px;
-    background: $copyrightbackground;
+    background: $dropdownmenubackground;
     height: 160px;
     width: 71px;
     position: fixed;
@@ -3896,14 +3896,17 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu {
     padding: 0;
     width: 35px;
     height: 35px;
-    background: $brandbackground;
+    /* background: $brandbackground; */
     border-radius: 5px;
     display: flex !important;
     align-items: center;
     justify-content: center;
 }
 .block_tb_slider .bx-wrapper .bx-pager.bx-default-pager a:hover, .block_tb_slider .bx-wrapper .bx-pager.bx-default-pager a.active, .block_tb_slider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: $brandcolor;
+    background: $directionbtncolor;
+}
+.block_tb_slider .bx-wrapper .bx-pager.bx-default-pager a{
+    background: $directionbtnbackground;
 }
 .topusermenu {
     display: none;
@@ -4302,7 +4305,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 14px;
     }
     .preferences-page-container .preference-table h4 {
-        color:$brandcolor;
+        color:$text_color;
         font-weight: 400;
         margin: 0;
         font-size: 18px;
@@ -4728,7 +4731,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400;
     font-size: 14px;
     padding: 0 1.25rem 1.25rem;
-    color: $brandcolor;
+    color: $text_color;
     min-height: 100px;
 }
 
@@ -4764,7 +4767,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 .tb_headings .hd_box .hd_des {
     float: left;
     width: 50%;
-    color: $brandcolor;
+    color: $text_color;
     padding: 10px 2.25rem;
     min-height: 120px;
     margin: 0 0 30px;
@@ -4862,7 +4865,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_up_courses .tb_up_courses_list .coursebox.list .course_title h2.title a {
     font-size: 20px!important;
-    color: $brandcolor!important;
+    color: $text_color!important;
     background: none;
     box-shadow: none;
 }
@@ -4870,7 +4873,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: $brandcolor!important;
+    color: $text_color!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -4904,7 +4907,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox .course_title h2.title a {
     font-size: 20px!important;
-    color: $brandcolor !important;
+    color: $text_color !important;
     background: none;
     box-shadow: none;
 }
@@ -4912,7 +4915,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: $brandcolor !important;
+    color: $text_color !important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -4950,7 +4953,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox .course_title h2.title a {
     font-size: 20px!important;
-    color: $brandcolor!important;
+    color: $text_color!important;
     background: none;
     box-shadow: none;
 }
@@ -4958,7 +4961,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: $brandcolor!important;
+    color: $text_color!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -4994,7 +4997,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_c_courses .tb_c_courses_list .coursebox .course_title h2.title a {
     font-size: 20px!important;
-    color: $brandcolor!important;
+    color: $text_color!important;
     background: none;
     box-shadow: none;
 }
@@ -5002,7 +5005,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: $brandcolor!important;
+    color: $text_color!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -5036,7 +5039,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list .course_title h2.title a {
     font-size: 20px!important;
-    color: $brandcolor!important;
+    color: $text_color!important;
     background: none;
     box-shadow: none;
 }
@@ -5044,7 +5047,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: $brandcolor!important;
+    color: $text_color!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
@@ -5114,13 +5117,13 @@ div.owl-carousel .owl-nav button.owl-prev span {
 .teachers_pos {
     padding: 0 2.25rem 2.25rem;
     float: left;
-    color: $brandcolor;
+    color: $text_color;
     width: 50%;
 }
 .tb_teachers .teachers_box .teachers_des {
     float: left;
     width: 50%;
-    color: $brandcolor;
+    color: $text_color;
     padding: 10px 2.25rem;
     min-height: 120px;
 }
@@ -5147,7 +5150,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_title {
     font-size: 16px;
-    color: $brandcolor;
+    color: $text_color;
     margin: 0 0 25px;
     font-style: normal;
     position: relative;
@@ -5163,7 +5166,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_text .testimonial_pos {
     width: 100%;
     text-align: left;
-    color: $brandcolor;
+    color: $text_color;
     font-style: normal;
 }
 .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_text .testimonial_des {
@@ -5177,7 +5180,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     left: -25px;
     line-height: 20px;
     transform: rotate(180deg);
-    color: $brandcolor;
+    color: $text_color;
     content: " ,, ";
     letter-spacing: -8px;
 }
@@ -5197,7 +5200,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     color: $basecolor;
 }
 .tb_faq div#faq_box .faq_des {
-    color: $brandcolor;
+    color: $text_color;
 }
 div.faq_more a {
     padding: 10px 50px;
@@ -5240,7 +5243,7 @@ div.faq_more a {
     text-align: center;
     margin: 0 0 20px;
     font-size: 28px;
-    color: $footer_one_text_color;
+    color: $footeratag;
     font-weight: 400;
 }
 #page-wrapper #page-footer section.footer-stats .row-fluid .statsin {
@@ -5267,19 +5270,21 @@ div.faq_more a {
     font-size: 35px;
 }
 #page-wrapper #page-footer section.d-print-none:not(.footer-stats):not(.footer-copy){
-    // background: $footer_two_background_color;
+    background: $footer_two_background_color;
 }
-#page-wrapper #page-footer section.d-print-none:not(.footer-stats),#page-wrapper #page-footer section.d-print-none:not(.footer-stats) a {
-    padding: 50px 15px;
+#page-wrapper #page-footer section.d-print-none:not(.footer-stats):not(.footer-copy) ,#page-wrapper #page-footer section.d-print-none:not(.footer-stats):not(.footer-copy)  a {
     color: $footer_two_text_color;
+}
+#page-wrapper #page-footer section.d-print-none:not(.footer-stats):not(.footer-copy) {
+    padding: 50px 15px;
 }
 #page-wrapper #page-footer section.d-print-none:not(.footer-stats):not(.footer-copy) h2 {
     font-weight: 600;
-    color: $footer_two_text_color;
+    color: $footer2head;
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy h2 {
     font-weight: 600;
-    color: $footer_three_text_color;
+    color: $footer3head;
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy h2 {
     text-align: center;
@@ -5291,6 +5296,7 @@ div.faq_more a {
     color: $footercolor;
     padding-bottom: 0 !important;
     background: $footer_three_background_color;
+    padding-top: 15px;
 }
 #page-wrapper #page-footer section.d-print-none.footer-copy p {
     color: $footer_three_text_color;
@@ -5405,20 +5411,20 @@ section.block_tb_slider .bx-wrapper .bx-pager {
 }
 .video-txt p {
     font-size: 17px;
-    color: $brandcolor;
+    color: $text_color;
 }
 .video-txt h2 {
     margin: 40px 0;
     font-size: 40px;
     font-weight: 900;
-    color: $brandcolor;
+    color: $text_color;
 }
 .video-txt h2 small {
     font-weight: 900;
 }
 .video-txt h2 span {
     font-size: 17px;
-    color: $brandcolor;
+    color: $text_color;
     font-weight: normal;
 }
 .enroll-btn a {
@@ -5453,7 +5459,7 @@ section.block_tb_slider .bx-wrapper .bx-pager {
 }
 .mod-cont h3 {
     font-size: 25px;
-    color: $brandcolor;
+    color: $text_color;
     font-weight: 700;
     margin: 0;
 }
@@ -5471,13 +5477,13 @@ mod-cont h3 small {
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 20px;
-    color: $brandcolor;
+    color: $text_color;
 }
 .abt-txt-head {
     margin: 0 0 35px;
     font-size: 25px;
     font-weight: lighter;
-    color: $brandcolor;
+    color: $text_color;
 }
 .abt-in-txt {
     font-size: 14px;
@@ -5522,14 +5528,14 @@ mod-cont h3 small {
 }
 .main-right-section .block.block_tb_course_nav .section-default>.module-navigation-section-heading a {
     font-size: 15px;
-    color: $brandcolor;
+    color: $text_color;
     position: relative;
     border: none;
     box-shadow: none;
 }
 .main-right-section .block.block_tb_course_nav ul.activities li>a {
     font-size: 14px;
-    color: $brandcolor;
+    color: $text_color;
     background: none;
 }
 .main-right-section .block.block_tb_course_nav .section-default>.module-navigation-section-heading+.section-collapse>.section-body {
@@ -5561,7 +5567,7 @@ mod-cont h3 small {
 .main-right-section .block.block_tb_course_nav .section-group .backtocourse .tocourse {
     font-size: 16px;
     font-weight: lighter !important;
-    color: $brandcolor;
+    color: $text_color;
     display: block!important;
     border: none;
     border-bottom: 1px solid #f7f7f9 !important;
@@ -5595,7 +5601,7 @@ mod-cont h3 small {
 .main-left-section .course-content ul.topics li.section.main h3.sectionname a {
     font-size: 18px;
     font-weight: 600;
-    color: $brandcolor;
+    color: $text_color;
     background: none;
     border: none;
     box-shadow: none;
@@ -5655,7 +5661,7 @@ mod-cont h3 small {
 .course-ur-form-head {
     font-size: 25px;
     font-weight: lighter;
-    color: $brandcolor;
+    color: $text_color;
     margin: 0 0 35px;
 }
 .course-ur-form-main .form-control {
@@ -5691,7 +5697,7 @@ iframe.leeloo_themeframe {
 .book_content h3, .gradingsummary h3 {
     font-size: 18px;
     font-weight: 600;
-    color: $brandcolor;
+    color: $text_color;
 }
 iframe#vimeoiframe {
     float: left;
@@ -5770,7 +5776,7 @@ div.leeloo_product_name, div.leeloo_product_details, div.leeloo_productdiv {
     text-align: left;
 }
 .block .minicalendar a {
-    color: $brandcolor;
+    color: $text_color;
 }
 .block_myprofile .myprofileitem {
     line-height: normal;

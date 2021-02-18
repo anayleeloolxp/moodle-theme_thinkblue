@@ -299,7 +299,7 @@ function theme_thinkblue_get_pre_scss($theme) {
         'owlnavbtncolor' => '#f0f0f8',
         'sectionblockbackground' => '#f5f6fa',
         'menubackgroundhover' => '#f8f9fa',
-        'menu_colorhover' => '#727272',
+        'menucolorhover' => '#727272',
         'brandbackground' => '#fff',
         'dropdownmenubackground' => 'f5f6fa',
         'dropdownitemcolor' => '#212529',
