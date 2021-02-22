@@ -540,36 +540,36 @@ class core_renderer extends \core_renderer {
             $idx = 0;
             foreach ($opts->navitems as $key => $value) {
                 switch ($value->itemtype) {
-                case 'divider':
-                    // If the nav item is a divider, add one and skip link processing.
-                    $am->add($divider);
-                    break;
-                case 'invalid':
-                    // Silently skip invalid entries (should we post a notification?).
-                    break;
-                case 'link':
-                    // Process this as a link item.
-                    $pix = null;
-                    if (isset($value->pix) && !empty($value->pix)) {
-                        $pix = new pix_icon($value->pix, '', null, array('class' => 'iconsmall'));
-                    } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
-                        $value->title = html_writer::img(
-                            $value->imgsrc,
+                    case 'divider':
+                        // If the nav item is a divider, add one and skip link processing.
+                        $am->add($divider);
+                        break;
+                    case 'invalid':
+                        // Silently skip invalid entries (should we post a notification?).
+                        break;
+                    case 'link':
+                        // Process this as a link item.
+                        $pix = null;
+                        if (isset($value->pix) && !empty($value->pix)) {
+                            $pix = new pix_icon($value->pix, '', null, array('class' => 'iconsmall'));
+                        } else if (isset($value->imgsrc) && !empty($value->imgsrc)) {
+                            $value->title = html_writer::img(
+                                $value->imgsrc,
+                                $value->title,
+                                array('class' => 'iconsmall')
+                            ) . $value->title;
+                        }
+                        $al = new action_menu_link_secondary(
+                            $value->url,
+                            $pix,
                             $value->title,
-                            array('class' => 'iconsmall')
-                        ) . $value->title;
-                    }
-                    $al = new action_menu_link_secondary(
-                        $value->url,
-                        $pix,
-                        $value->title,
-                        array('class' => 'icon')
-                    );
-                    if (!empty($value->titleidentifier)) {
-                        $al->attributes['data-title'] = $value->titleidentifier;
-                    }
-                    $am->add($al);
-                    break;
+                            array('class' => 'icon')
+                        );
+                        if (!empty($value->titleidentifier)) {
+                            $al->attributes['data-title'] = $value->titleidentifier;
+                        }
+                        $am->add($al);
+                        break;
                 }
                 $idx++;
                 // Add dividers after the first item and before the last item.
@@ -665,6 +665,14 @@ class core_renderer extends \core_renderer {
         $contextheader = new context_header($heading, $headinglevel, $imagedata, $userbuttons);
         return $this->render_context_header($contextheader);
     }
+
+    /**
+     * Context Header
+     *
+     * @param string $maxwidth maxwidth
+     * @param string $maxheight maxheight
+     * @return string HTML fragment
+     */
     public function get_logo_url($maxwidth = null, $maxheight = 100) {
         if (isset($this->getleeloosettings()->general_settings->logoimage)) {
             return @$this->getleeloosettings()->general_settings->logoimage;

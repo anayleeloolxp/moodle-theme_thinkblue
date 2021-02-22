@@ -274,7 +274,7 @@ class admin_setting_configthinkblue extends admin_setting {
 
     /**
      * Write the setting
-     * @param string data
+     * @param string $data data
      * @return mixed returns config if successful else null
      */
     public function write_setting($data) {
@@ -292,7 +292,7 @@ class admin_setting_configthinkblue extends admin_setting {
 
     /**
      * Validate data before storage
-     * @param string data
+     * @param string $data data
      * @return mixed true if ok string if error found
      */
     public function validate($data) {
@@ -318,8 +318,8 @@ class admin_setting_configthinkblue extends admin_setting {
 
     /**
      * Return an XHTML string for the setting
-     * @param string data
-     * @param string query
+     * @param string $data data
+     * @param string $query query
      * @return string Returns an XHTML string
      */
     public function output_html($data, $query = '') {
