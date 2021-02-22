@@ -480,6 +480,7 @@ function theme_thinkblue_general_leeloosettings() {
 
 /**
  * Get settings from Leeloo LXP.
+ * @param int $courseid The course ID.
  */
 function theme_thinkblue_coursedata($courseid) {
     global $CFG;

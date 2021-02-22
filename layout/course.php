@@ -349,36 +349,36 @@ if (is_object($leeloocourse)) {
     }
 
     if (isset($leeloocourse->course_data->stats_position) && $leeloocourse->course_data->stats_position == 'main') {
-        $stats_main = true;
+        $statsmain = true;
 
-        $templatecontext['stats_main'] = $stats_main;
+        $templatecontext['stats_main'] = $statsmain;
     } else {
 
-        $stats_sidebar = true;
+        $statssidebar = true;
 
-        $templatecontext['stats_sidebar'] = $stats_sidebar;
+        $templatecontext['stats_sidebar'] = $statssidebar;
     }
 
     if (isset($leeloocourse->course_data->instructor_section_position) && $leeloocourse->course_data->instructor_section_position == 'main') {
-        $teacher_main = true;
+        $teachermain = true;
 
-        $templatecontext['teacher_main'] = $teacher_main;
+        $templatecontext['teacher_main'] = $teachermain;
     } else {
 
-        $teacher_sidebar = true;
+        $teachersidebar = true;
 
-        $templatecontext['teacher_sidebar'] = $teacher_sidebar;
+        $templatecontext['teacher_sidebar'] = $teachersidebar;
     }
 
     if (isset($leeloocourse->course_data->about_course_section_position) && $leeloocourse->course_data->about_course_section_position == 'main') {
-        $about_main = true;
+        $aboutmain = true;
 
-        $templatecontext['about_main'] = $about_main;
+        $templatecontext['about_main'] = $aboutmain;
     } else {
 
-        $about_sidebar = true;
+        $aboutsidebar = true;
 
-        $templatecontext['about_sidebar'] = $about_sidebar;
+        $templatecontext['about_sidebar'] = $aboutsidebar;
     }
 
     if (isset($leeloocourse->course_data->course_header_image) && $leeloocourse->course_data->course_header_image != '') {

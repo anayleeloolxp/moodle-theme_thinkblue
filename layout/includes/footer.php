@@ -73,14 +73,14 @@ if ($copyenabled) {
     $socialtitle = @$leeloosettings->social_copyright_settings->title;
     $socialdescription = @$leeloosettings->social_copyright_settings->description;
     $socialdetails = @$leeloosettings->social_copyright_settings->details;
-    $copyright_text = @$leeloosettings->social_copyright_settings->copyright_text;
+    $copyrighttext = @$leeloosettings->social_copyright_settings->copyright_text;
 
     $footercopy = true;
     $footercopyhtml .= '<h2>' . $socialtitle . '</h2>';
     $footercopyhtml .= '<p>' . $socialdescription . '</p>';
 
     $footercopyhtml .= '<div class="socialdetails">' . $socialdetails . '</div>';
-    $footercopyhtml .= '<div class="copyright-foo">' . $copyright_text . '</div>';
+    $footercopyhtml .= '<div class="copyright-foo">' . $copyrighttext . '</div>';
 
     $templatecontext['footercopy'] = $footercopy;
     $templatecontext['footercopyhtml'] = $footercopyhtml;

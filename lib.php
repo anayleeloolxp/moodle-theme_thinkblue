@@ -318,6 +318,8 @@ class admin_setting_configthinkblue extends admin_setting {
 
     /**
      * Return an XHTML string for the setting
+     * @param string data
+     * @param string query
      * @return string Returns an XHTML string
      */
     public function output_html($data, $query = '') {
