@@ -487,14 +487,14 @@ function theme_thinkblue_coursedata($courseid) {
     $leeloolxplicense = get_config('theme_thinkblue')->license;
 
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
-    $postdata = '&license_key=' . $leeloolxplicense;
+    $postdata = array('license_key' => $leeloolxplicense);
 
     $curl = new curl;
 
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => 1,
+        'CURLOPT_POST' => count($postdata),
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
@@ -511,14 +511,14 @@ function theme_thinkblue_coursedata($courseid) {
 
     $url = $leeloolxpurl . '/admin/course/get_course_theme_data/'.$courseid;
 
-    $postdata = '&license_key=' . $leeloolxplicense;
+    $postdata = array('license_key' => $leeloolxplicense);
 
     $curl = new curl;
 
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => 1,
+        'CURLOPT_POST' => count($postdata),
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
@@ -536,12 +536,12 @@ function updateconfthinkblue(){
     $leeloolxplicense = get_config('theme_thinkblue')->license;
     
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
-    $postdata = '&license_key=' . $leeloolxplicense;
+    $postdata = array('license_key' => $leeloolxplicense);
     $curl = new curl;
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => 1,
+        'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
         
@@ -553,12 +553,12 @@ function updateconfthinkblue(){
         
     }
     $url = $leeloolxpurl . '/admin/Theme_setup/get_general_settings';
-    $postdata = '&license_key=' . $leeloolxplicense;
+    $postdata = array('license_key' => $leeloolxplicense);
     $curl = new curl;
     $options = array(
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
-        'CURLOPT_POST' => 1,
+        'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
         
