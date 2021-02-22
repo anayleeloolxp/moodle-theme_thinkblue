@@ -3695,7 +3695,6 @@ body.pagelayout-login .login_signup_buttons a#signupbtn,
 body#page-login-signup #page-wrapper #region-main input#id_submitbutton,
 body#page-login-signup #page-wrapper #region-main input#id_cancel {
     max-width: 100%;
-    background: #353535 !important;
     font-size: 24px;
     text-align: center;
     border: none;
@@ -3704,6 +3703,14 @@ body#page-login-signup #page-wrapper #region-main input#id_cancel {
     box-shadow: none;
     outline: none;
     width: 100%;
+    background: $buttons_background_color !important;
+    color: $buttons_text_color !important;
+    border-color: $buttons_background_color !important;
+}
+.dialog-modal-inn .sure-btn button{
+    background: $buttons_background_color !important;
+    color: $buttons_text_color !important;
+    border-color: $buttons_background_color !important;
 }
 #page-login-signup #page-wrapper #region-main .card-body form,
 body#page-login-index .card-body {
