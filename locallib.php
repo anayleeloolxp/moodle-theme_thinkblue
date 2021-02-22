@@ -472,9 +472,14 @@ function theme_thinkblue_get_course_guest_access_hint($courseid) {
  * Get settings from Leeloo LXP.
  */
 function theme_thinkblue_general_leeloosettings() {
-    $leeloolxplicense = get_config('theme_thinkblue')->license;
-    $settingsjson = get_config('theme_thinkblue')->settingsjson;
-    $resposedata = json_decode(base64_decode($settingsjson));
+    if (isset(get_config('theme_thinkblue')->license)) {
+        $leeloolxplicense = get_config('theme_thinkblue')->license;
+        $settingsjson = get_config('theme_thinkblue')->settingsjson;
+        $resposedata = json_decode(base64_decode($settingsjson));
+    } else {
+        return $otherobject = (object) array();
+    }
+
     return $resposedata->data;
 }
 
@@ -534,6 +539,9 @@ function theme_thinkblue_coursedata($courseid) {
  * Fetch and Update Configration From L
  */
 function updateconfthinkblue() {
+    if (!isset(get_config('theme_thinkblue')->license)) {
+        return;
+    }
     $leeloolxplicense = get_config('theme_thinkblue')->license;
 
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
