@@ -37,7 +37,7 @@ $copyenabled = @$leeloosettings->social_copyright_settings->enable_footer_social
 $footerstatshtml = '';
 $footercopyhtml = '';
 
-if($statsenabled){
+if ($statsenabled) {
     $statstitle = @$leeloosettings->footer_stats->footer_stats_title;
     $statsdescription = @$leeloosettings->footer_stats->description;
     $statsvals = @$leeloosettings->footer_stats->statsval;
@@ -46,41 +46,41 @@ if($statsenabled){
     $buttonlink = @$leeloosettings->footer_stats->button_link;
 
     $footerstats = true;
-    $footerstatshtml .= '<h2>'.$statstitle.'</h2>';
-    $footerstatshtml .= '<p>'.$statsdescription.'</p>';
+    $footerstatshtml .= '<h2>' . $statstitle . '</h2>';
+    $footerstatshtml .= '<p>' . $statsdescription . '</p>';
 
     $footerstatshtml .= '<div class="statsall"><div class="container-fluid"><div class="row-fluid">';
 
     $statscount = count($statsvals);
-    $statclass = 12/$statscount;
+    $statclass = 12 / $statscount;
 
-    foreach($statsvals as $stat){
-        $footerstatshtml .= '<div class="statsin col-12 col-lg-'.$statclass.'">';
-            $footerstatshtml .= '<h2>'.$stat->stats.'</h2>';
-            $footerstatshtml .= '<p>'.$stat->stats_for.'</p>';
-        $footerstatshtml .= '</div>';    
+    foreach ($statsvals as $stat) {
+        $footerstatshtml .= '<div class="statsin col-12 col-lg-' . $statclass . '">';
+        $footerstatshtml .= '<h2>' . $stat->stats . '</h2>';
+        $footerstatshtml .= '<p>' . $stat->stats_for . '</p>';
+        $footerstatshtml .= '</div>';
     }
 
     $footerstatshtml .= '</div></div></div>';
 
-    $footerstatshtml .= '<div class="stat-button"><a href="'.$buttonlink.'">'.$buttontest.'</a></div>';
+    $footerstatshtml .= '<div class="stat-button"><a href="' . $buttonlink . '">' . $buttontest . '</a></div>';
 
     $templatecontext['footerstats'] = $footerstats;
     $templatecontext['footerstatshtml'] = $footerstatshtml;
 }
 
-if($copyenabled){
+if ($copyenabled) {
     $socialtitle = @$leeloosettings->social_copyright_settings->title;
     $socialdescription = @$leeloosettings->social_copyright_settings->description;
     $socialdetails = @$leeloosettings->social_copyright_settings->details;
     $copyright_text = @$leeloosettings->social_copyright_settings->copyright_text;
 
     $footercopy = true;
-    $footercopyhtml .= '<h2>'.$socialtitle.'</h2>';
-    $footercopyhtml .= '<p>'.$socialdescription.'</p>';
+    $footercopyhtml .= '<h2>' . $socialtitle . '</h2>';
+    $footercopyhtml .= '<p>' . $socialdescription . '</p>';
 
-    $footercopyhtml .= '<div class="socialdetails">'.$socialdetails.'</div>';
-    $footercopyhtml .= '<div class="copyright-foo">'.$copyright_text.'</div>';
+    $footercopyhtml .= '<div class="socialdetails">' . $socialdetails . '</div>';
+    $footercopyhtml .= '<div class="copyright-foo">' . $copyright_text . '</div>';
 
     $templatecontext['footercopy'] = $footercopy;
     $templatecontext['footercopyhtml'] = $footercopyhtml;
@@ -95,7 +95,7 @@ if ($footerblocksetting === '0columns') {
 if ($footerblocksetting === '1columns') {
     $footerblock1columns = true;
 
-    $templatecontext['footerleftblocks'] = '<h2>'.$footerblock[0]->footer_title.'</h2>'.$footerblock[0]->footer_detail;
+    $templatecontext['footerleftblocks'] = '<h2>' . $footerblock[0]->footer_title . '</h2>' . $footerblock[0]->footer_detail;
     $templatecontext['footerblock1columns'] = $footerblock1columns;
 
     echo $OUTPUT->render_from_template('theme_thinkblue/footer', $templatecontext);
@@ -105,8 +105,8 @@ if ($footerblocksetting === '1columns') {
 if ($footerblocksetting === '2columns') {
     $footerblock2columns = true;
 
-    $templatecontext['footerleftblocks'] = '<h2>'.$footerblock[0]->footer_title.'</h2>'.$footerblock[0]->footer_detail;
-    $templatecontext['footerrightblocks'] = '<h2>'.$footerblock[1]->footer_title.'</h2>'.$footerblock[1]->footer_detail;
+    $templatecontext['footerleftblocks'] = '<h2>' . $footerblock[0]->footer_title . '</h2>' . $footerblock[0]->footer_detail;
+    $templatecontext['footerrightblocks'] = '<h2>' . $footerblock[1]->footer_title . '</h2>' . $footerblock[1]->footer_detail;
     $templatecontext['footerblock2columns'] = $footerblock2columns;
 
     echo $OUTPUT->render_from_template('theme_thinkblue/footer', $templatecontext);
@@ -116,9 +116,9 @@ if ($footerblocksetting === '2columns') {
 if ($footerblocksetting === '3columns') {
     $footerblock3columns = true;
 
-    $templatecontext['footerleftblocks'] = '<h2>'.$footerblock[0]->footer_title.'</h2>'.$footerblock[0]->footer_detail;
-    $templatecontext['footermiddleblocks'] = '<h2>'.$footerblock[1]->footer_title.'</h2>'.$footerblock[1]->footer_detail;
-    $templatecontext['footerrightblocks'] = '<h2>'.$footerblock[2]->footer_title.'</h2>'.$footerblock[2]->footer_detail;
+    $templatecontext['footerleftblocks'] = '<h2>' . $footerblock[0]->footer_title . '</h2>' . $footerblock[0]->footer_detail;
+    $templatecontext['footermiddleblocks'] = '<h2>' . $footerblock[1]->footer_title . '</h2>' . $footerblock[1]->footer_detail;
+    $templatecontext['footerrightblocks'] = '<h2>' . $footerblock[2]->footer_title . '</h2>' . $footerblock[2]->footer_detail;
     $templatecontext['footerblock3columns'] = $footerblock3columns;
 
     echo $OUTPUT->render_from_template('theme_thinkblue/footer', $templatecontext);
@@ -128,10 +128,10 @@ if ($footerblocksetting === '3columns') {
 if ($footerblocksetting === '4columns') {
     $footerblock4columns = true;
 
-    $templatecontext['footerleftblocks'] = '<h2>'.$footerblock[0]->footer_title.'</h2>'.$footerblock[0]->footer_detail;
-    $templatecontext['footermiddlelblocks'] = '<h2>'.$footerblock[1]->footer_title.'</h2>'.$footerblock[1]->footer_detail;
-    $templatecontext['footermiddlerblocks'] = '<h2>'.$footerblock[2]->footer_title.'</h2>'.$footerblock[2]->footer_detail;
-    $templatecontext['footerrightblocks'] = '<h2>'.$footerblock[3]->footer_title.'</h2>'.$footerblock[3]->footer_detail;
+    $templatecontext['footerleftblocks'] = '<h2>' . $footerblock[0]->footer_title . '</h2>' . $footerblock[0]->footer_detail;
+    $templatecontext['footermiddlelblocks'] = '<h2>' . $footerblock[1]->footer_title . '</h2>' . $footerblock[1]->footer_detail;
+    $templatecontext['footermiddlerblocks'] = '<h2>' . $footerblock[2]->footer_title . '</h2>' . $footerblock[2]->footer_detail;
+    $templatecontext['footerrightblocks'] = '<h2>' . $footerblock[3]->footer_title . '</h2>' . $footerblock[3]->footer_detail;
     $templatecontext['footerblock4columns'] = $footerblock4columns;
 
     echo $OUTPUT->render_from_template('theme_thinkblue/footer', $templatecontext);

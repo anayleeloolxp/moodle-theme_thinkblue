@@ -207,16 +207,16 @@ function theme_thinkblue_get_imageareacontent() {
                             $setting = trim($setting);
                             if (!empty($setting)) {
                                 switch ($i) {
-                                    // Check for the first param: link.
-                                    case 1:
-                                        // The name of the image is the key for the URL that will be set.
-                                        $links[$settings[0]] = $settings[1];
-                                        break;
-                                    // Check for the second param: alt text.
-                                    case 2:
-                                        // The name of the image is the key for the alt text that will be set.
-                                        $alttexts[$settings[0]] = $settings[2];
-                                        break;
+                                // Check for the first param: link.
+                                case 1:
+                                    // The name of the image is the key for the URL that will be set.
+                                    $links[$settings[0]] = $settings[1];
+                                    break;
+                                // Check for the second param: alt text.
+                                case 2:
+                                    // The name of the image is the key for the alt text that will be set.
+                                    $alttexts[$settings[0]] = $settings[2];
+                                    break;
                                 }
                             }
                         }
@@ -273,8 +273,8 @@ function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
     global $USER;
     $leeloosettings = theme_thinkblue_general_leeloosettings();
     // If the setting defaulthomepageontop is enabled.
-    if ( isset($leeloosettings->additional_layout_settings->defaulthomepageontop) && isset($leeloosettings->additional_layout_settings->defaulthomepageontop) !='' ) {
-        if ( $leeloosettings->additional_layout_settings->defaulthomepageontop == 1) {
+    if (isset($leeloosettings->additional_layout_settings->defaulthomepageontop) && isset($leeloosettings->additional_layout_settings->defaulthomepageontop) != '') {
+        if ($leeloosettings->additional_layout_settings->defaulthomepageontop == 1) {
             // Only proceed processing if we are in a course context.
             if (($coursehomenode = $flatnav->find('coursehome', global_navigation::TYPE_CUSTOM)) != false) {
                 // If the site home is set as the default homepage by the admin.
@@ -319,11 +319,11 @@ function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
             // Return the passed flat navigation without changes.
             $flatnavreturn = $flatnav;
         }
-    }else {
+    } else {
         // Defaulthomepageontop not enabled.
         // Return the passed flat navigation without changes.
         $flatnavreturn = $flatnav;
-    }    
+    }
 
     return $flatnavreturn;
 }
@@ -509,7 +509,7 @@ function theme_thinkblue_coursedata($courseid) {
         return get_string('nolicense', 'theme_thinkblue');
     }
 
-    $url = $leeloolxpurl . '/admin/course/get_course_theme_data/'.$courseid;
+    $url = $leeloolxpurl . '/admin/course/get_course_theme_data/' . $courseid;
 
     $postdata = array('license_key' => $leeloolxplicense);
 
@@ -532,9 +532,9 @@ function theme_thinkblue_coursedata($courseid) {
 /**
  * Fetch and Update Configration From L
  */
-function updateconfthinkblue(){
+function updateconfthinkblue() {
     $leeloolxplicense = get_config('theme_thinkblue')->license;
-    
+
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
     $postdata = array('license_key' => $leeloolxplicense);
     $curl = new curl;
@@ -544,13 +544,11 @@ function updateconfthinkblue(){
         'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
-        
     }
     $infoleeloolxp = json_decode($output);
     if ($infoleeloolxp->status != 'false') {
         $leeloolxpurl = $infoleeloolxp->data->install_url;
     } else {
-        
     }
     $url = $leeloolxpurl . '/admin/Theme_setup/get_general_settings';
     $postdata = array('license_key' => $leeloolxplicense);
@@ -561,7 +559,6 @@ function updateconfthinkblue(){
         'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
-        
     }
     set_config('settingsjson', base64_encode($output), 'theme_thinkblue');
 }
