@@ -299,7 +299,7 @@ if ($leelooproduct) {
         $userenrolled = true;
 
         $templatecontext['userenrolled'] = $userenrolled;
-    } elseif (!$jsessionid) {
+    } else if (!$jsessionid) {
 
         $showlogin = false;
 
@@ -317,8 +317,6 @@ if ($leelooproduct) {
 }
 
 $templatecontext['course_title'] = $PAGE->course->fullname;
-
-//print_r($leeloocourse);
 
 if (is_object($leeloocourse)) {
     if (isset($leeloocourse->course_data->estimated_time)) {
@@ -365,7 +363,9 @@ if (is_object($leeloocourse)) {
 
         $templatecontext['showheaderimage'] = $showheaderimage;
 
-        $templatecontext['course_header_image'] = '<style>.page-top-main-banner{background-size: 100% 100%;background:url("' . $leeloocourse->course_data->course_header_image . '")</style>';
+        $courseheadimage = '<style>.page-top-main-banner{background-size: 100% 100%;background:url("' . $leeloocourse->course_data->course_header_image . '")</style>';
+
+        $templatecontext['course_header_image'] = $courseheadimage;
     }
 
     if (isset($leeloocourse->course_data->course_header_description) && $leeloocourse->course_data->course_header_description != '') {
@@ -382,7 +382,7 @@ if (is_object($leeloocourse)) {
         $templatecontext['showvideo'] = $showvideo;
 
         $templatecontext['course_video'] = $leeloocourse->course_data->course_video_url;
-    } elseif (isset($leeloocourse->course_data->course_image) && $leeloocourse->course_data->course_image != '') {
+    } else if (isset($leeloocourse->course_data->course_image) && $leeloocourse->course_data->course_image != '') {
 
         $showimage = true;
 

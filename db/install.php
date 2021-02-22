@@ -34,46 +34,214 @@ function xmldb_theme_thinkblue_install() {
 
     $time = time();
 
-    $otherobject = (object) array('blockname' => 'tb_slider', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -10, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_slider',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -10,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_m_slots', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -9, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_m_slots',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -9,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_headings', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -8, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_headings',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -8,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_top_cats', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -7, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_top_cats',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -7,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_up_courses', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -6, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_up_courses',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -6,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_f_courses', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -5, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_f_courses',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -5,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_a_courses', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -4, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_a_courses',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -4,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_in_courses', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -3, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_in_courses',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -3,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_c_courses', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -2, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_c_courses',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -2,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_my_courses', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => -1, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_my_courses',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => -1,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_testimonials', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => 0, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_testimonials',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => 0,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_clients', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => 1, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_clients',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => 1,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_teachers', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => 2, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_teachers',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => 2,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
-    $otherobject = (object) array('blockname' => 'tb_faq', 'parentcontextid' => 2, 'showinsubcontexts' => 0, 'requiredbytheme' => 0, 'pagetypepattern' => 'site-index', 'subpagepattern' => '', 'defaultregion' => 'abovecontent', 'defaultweight' => 3, 'configdata' => '', 'timecreated' => $time, 'timemodified' => $time);
+    $otherobject = (object) array(
+        'blockname' => 'tb_faq',
+        'parentcontextid' => 2,
+        'showinsubcontexts' => 0,
+        'requiredbytheme' => 0,
+        'pagetypepattern' => 'site-index',
+        'subpagepattern' => '',
+        'defaultregion' => 'abovecontent',
+        'defaultweight' => 3,
+        'configdata' => '',
+        'timecreated' => $time,
+        'timemodified' => $time
+    );
     $DB->insert_record('block_instances', $otherobject);
 
     set_config('insertcustomnodesusers', 'Home|/?redirect=0||||||||"calendar"

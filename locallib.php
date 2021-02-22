@@ -545,11 +545,13 @@ function updateconfthinkblue() {
         'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
+        $falsevar = '';
     }
     $infoleeloolxp = json_decode($output);
     if ($infoleeloolxp->status != 'false') {
         $leeloolxpurl = $infoleeloolxp->data->install_url;
     } else {
+        $falsevar = '';
     }
     $url = $leeloolxpurl . '/admin/Theme_setup/get_general_settings';
     $postdata = array('license_key' => $leeloolxplicense);
@@ -560,6 +562,7 @@ function updateconfthinkblue() {
         'CURLOPT_POST' => count($postdata),
     );
     if (!$output = $curl->post($url, $postdata, $options)) {
+        $falsevar = '';
     }
     set_config('settingsjson', base64_encode($output), 'theme_thinkblue');
 }
