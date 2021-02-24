@@ -14,6 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Theme Think Blue - Ajax send email
+ *
+ * @package    theme_thinkblue
+ * @copyright  2020 Leeloo LXP (https://leeloolxp.com)
+ * @author     Leeloo LXP <info@leeloolxp.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+require('../../../config.php');
+
 $to = $_REQUEST['teacheremail'];
 $subject = 'Enquiry :- ' . $_REQUEST['subject'];
 $txt = $_REQUEST['message'];

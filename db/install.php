@@ -244,11 +244,12 @@ function xmldb_theme_thinkblue_install() {
     );
     $DB->insert_record('block_instances', $otherobject);
 
+    $editingurl = '/course/view.php?id={courseid}&sesskey={sesskey}&edit={editingtoggle}';
     set_config('insertcustomnodesusers', 'Home|/?redirect=0||||||||"calendar"
     Leeloo LXP Dashboard|/local/staticpage/view.php?page=srm|||||||leeloossourl|"calendar"
     Leeloo LXP Social|/local/staticpage/view.php?page=social|||||||leeloossourl|"calendar"
     Blog|/blog/index.php?userid=2||||||||"calendar"
-    {editingtoggle}|/course/view.php?id={courseid}&sesskey={sesskey}&edit={editingtoggle}|||editingteacher|admin,manager|OR|fa-pencil|editing|participants', 'local_boostnavigation');
+    {editingtoggle}|'.$editingurl.'|||editingteacher|admin,manager|OR|fa-pencil|editing|participants', 'local_boostnavigation');
 
     set_config('removemyhomenode', '1', 'local_boostnavigation');
     set_config('removehomenode', '1', 'local_boostnavigation');
