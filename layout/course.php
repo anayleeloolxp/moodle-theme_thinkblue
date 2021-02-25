@@ -289,9 +289,9 @@ if ($leelooproduct) {
 
     global $SESSION;
 
-    $jsessionid = $SESSION->jsession_id;
+    @$jsessionid = $SESSION->jsession_id;
 
-    $context = get_context_instance(CONTEXT_COURSE, $courseid, MUST_EXIST);
+    $context = context_course::instance($courseid);
 
     $enrolled = is_enrolled($context, $USER->id, '', true);
 

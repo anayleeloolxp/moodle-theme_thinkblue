@@ -638,7 +638,7 @@ class core_renderer extends \core_renderer {
                         'title' => '<span class="totalcount_ph">' . $enrolledcourses . '</span> ' . get_string('classes', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'classes',
-                        'linkattributes' => '',
+                        'linkattributes' => array(),
                         'page' => $this->page,
                     ),
                     'entries' => array(
@@ -646,7 +646,7 @@ class core_renderer extends \core_renderer {
                         'title' => '<span class="totalcount_ph">' . $comments . '</span> ' . get_string('entries', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'entries',
-                        'linkattributes' => '',
+                        'linkattributes' => array(),
                         'page' => $this->page,
                     ),
                     'comments' => array(
@@ -654,7 +654,7 @@ class core_renderer extends \core_renderer {
                         'title' => '<span class="totalcount_ph">' . $comments . '</span> ' . get_string('comments', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'comment',
-                        'linkattributes' => '',
+                        'linkattributes' => array(),
                         'page' => $this->page,
                     ),
                 );
