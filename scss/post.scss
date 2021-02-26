@@ -4694,9 +4694,24 @@ body#page-site-index div#page {
 
 // 28-10-2020G
 
+.block .owl-item .coursebox.span12 .image_wrap {
+    float: none;
+    margin: 0 auto;
+}
+
+.coursebox {
+    max-height: none!important;
+    overflow: hidden!important;
+}
+
+.coursebox.span4:nth-child(3n+1) {
+    clear: left;
+}
+
 #page-wrapper #page #page-content section.block {
     background: $sectionblockbackground;
     z-index: inherit;
+    position: relative;
 }
 body#page-site-index aside#block-region-content .block .card-body h5.card-title {
     font-weight: 400;
@@ -5075,7 +5090,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list .course_title h2.title a {
     font-size: 20px!important;
-    color: $text_color!important;
     background: none;
     box-shadow: none;
 }
@@ -5083,7 +5097,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-weight: 400!important;
     font-size: 14px!important;
     padding: 0 1.25rem 1.25rem;
-    color: $text_color!important;
     min-height: 100px;
     margin: 0!important;
     width: 100%;
