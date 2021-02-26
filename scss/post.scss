@@ -3262,7 +3262,6 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
 }
 .coursebox .course_description {
     color: #8b8b8b !important;
-    height: 60px !important;
     font-weight: 400 !important;
     font-size: 19px !important;
     overflow: hidden !important;
@@ -4685,7 +4684,6 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     position: absolute;
     right: 0;
     top: 10px;
-    z-index: 999999;
 }
 #page-site-index .block_tb_slider {
     top: 0;
@@ -4698,6 +4696,7 @@ body#page-site-index div#page {
 
 #page-wrapper #page #page-content section.block {
     background: $sectionblockbackground;
+    z-index: inherit;
 }
 body#page-site-index aside#block-region-content .block .card-body h5.card-title {
     font-weight: 400;
@@ -5927,11 +5926,8 @@ body#page-site-index div#nav-drawer[data-region="drawer"] .logo_side_container .
     margin-right: 10px !important;
 }
 .dropdown-menu-right.dropdown-menu {
-    width: 220px;
     background: $dropdownmenubackground;
     border: none;
-    top: -45px !important;
-    left: -4px !important;
 }
 .dropdown-menu-right.dropdown-menu a.dropdown-item {
     color: $dropdownitemcolor;
