@@ -3548,6 +3548,16 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     display: inline-block;
     text-decoration: none;
 }
+a.leeloo_cert, .leeloo_view {
+    background: $buttons_background_color;
+    border: 1px solid $buttons_background_color;
+    color: $buttons_text_color;
+}
+.block_tb_latestentry ul.list+a{
+    color: $buttons_text_color;
+    background-color: $buttons_background_color;
+    border-color: $buttons_background_color;
+}
 aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
     padding: 1.25rem 1.25rem 10px;
     font-size: 45px;
