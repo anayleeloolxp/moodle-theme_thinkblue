@@ -3136,17 +3136,26 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     padding: 15px 15px 50px !important;
     margin: 10px !important;
     max-width: calc(33.3333% - 20px) !important;
-    border: 1px solid #dedcdd !important;
+    border: 1px solid $light_overlay_background_color !important;
     border-radius: 0 !important;
     // max-height: inherit !important;
     // min-height: auto !important;
-    background: #fff !important;
+    background: $light_overlay_background_color !important;
+}
+.style_dark .coursebox.grid {
+    border: 1px solid $dark_overlay_background_color !important;
+    background: $dark_overlay_background_color !important;
 }
 .coursebox.span12 {
     height: auto !important;
     box-shadow: none !important;
     min-height: auto !important;
-    border: 1px solid #dedcdd !important;
+    border: 1px solid $light_overlay_background_color !important;
+    background: $light_overlay_background_color !important;
+}
+.style_dark .coursebox.span12 {
+    background: $dark_overlay_background_color !important;
+    border: 1px solid $dark_overlay_background_color !important;
 }
 .coursebox .progress {
     border: none !important;
@@ -3200,10 +3209,13 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
 .coursebox .title a {
     font-size: 30px !important;
     font-weight: 700 !important;
-    color: #565656 !important;
+    color: $light_overlay_text_color !important;
     text-shadow: none !important;
     font-family: "Nunito Sans", sans-serif !important;
     text-transform: capitalize !important;
+}
+.style_dark .coursebox .title a {
+    color: $dark_overlay_text_color !important;
 }
 .coursebox.span12 .title {
     padding: 0 !important;
@@ -3230,13 +3242,16 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     overflow: initial !important;
 }
 .coursebox .progress:before {
-    color:$text_color !important;
+    color:$light_overlay_text_color !important;
     text-indent: 0;
     top: 15px;
     left: 50%;
     font-size: 18px;
     transform: translate(-50%, 0);
     text-align: center;
+}
+.style_dark .coursebox .progress:before {
+    color:$dark_overlay_text_color!important;
 }
 .coursebox .box.py-3.flush,
 .coursebox .teacher_names,
@@ -3261,13 +3276,16 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     margin: 0 !important;
 }
 .coursebox .course_description {
-    color: #8b8b8b !important;
+    color: $light_overlay_text_color !important;
     font-weight: 400 !important;
     font-size: 19px !important;
     overflow: hidden !important;
     display: inline-block !important;
     text-align: center !important;
     margin: 0 0 20px !important;
+}
+.style_dark .coursebox .course_description {
+    color: $dark_overlay_text_color !important;
 }
 .coursebox:not(.span12) .image_wrap {
     margin: -15px -15px 0 !important;
@@ -4999,9 +5017,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     float: none;
     max-width: 100%!important;
     position: static!important;
-}
-.block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox .progress {
-    display: none;
 }
 .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox .course_title {
     padding: 1.25rem 1.25rem 10px;
