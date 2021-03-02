@@ -4725,6 +4725,8 @@ body#page-site-index div#page {
 .block .owl-item .coursebox.span12 .image_wrap {
     float: none;
     margin: 0 auto;
+    height: 240px;
+    width: 100%;
 }
 
 .coursebox {
@@ -5428,6 +5430,7 @@ section.block_tb_slider .bx-wrapper .bx-pager {
     // max-width: 1280px;
     width: 100%;
     margin: 0 auto;
+    max-width: 2560px;
 }
 .layout_boxed .bx-controls-direction {
     max-width: 1280px;
@@ -5993,6 +5996,15 @@ div#leeloosocialdiv iframe.leeloosocial {
 #page-login-index #page-wrapper #region-main .card-block .card-body {
     padding: 30px 0;
 }
+
+
+.block_tb_top_cats .tb_top_cats .tb_cat {
+    width: 24%;
+    margin: .5%;
+    max-width: 475px;
+}
+
+
 
 
 
