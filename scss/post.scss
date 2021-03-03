@@ -1615,6 +1615,8 @@ div.addbloglink {
 }
 body#page-blog-index div.forumpost.blog_entry {
     margin: 30px 0 0;
+    border-bottom: 1px solid #f5f6fa;
+    min-height: 280px;
 }
 .mr-auto .page-context-header .btn-group.header-button-group {
     float: none;
@@ -1629,6 +1631,9 @@ body#page-blog-index div.forumpost.blog_entry {
     border: 1px solid$brandcolor;
     padding: 3px 10px;
     width: calc(100% - 70px);
+}
+.blog_entry .tags {
+    margin-top: 0;
 }
 .block_blog_menu form.blogsearchform > div input[type="submit"] {
     background:$brandcolor;
@@ -1955,6 +1960,12 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] {
     left: 0;
     padding: 0 0 160px;
     transition: 0.5s ease;
+}
+#nav-drawer .list-group-item svg g {
+    fill: $menu_color;
+}
+#nav-drawer .list-group-item:hover svg g, #nav-drawer .list-group-item:focus svg g {
+    fill: $menucolorhover;
 }
 .notloggedin div#nav-drawer[data-region="drawer"] {
     padding: 0 !important;
@@ -2568,11 +2579,11 @@ body#page-login-signup .page-header-headings {
 // #page-blog-index #page-wrapper section#region-main {
 //     padding: 0;
 // }
-#page-blog-index #page-wrapper section#region-main .attachedimages {
-    margin: 0 0 20px;
-}
+// #page-blog-index #page-wrapper section#region-main .attachedimages {
+//     margin: 0 0 20px;
+// }
 #page-blog-index #page-wrapper section#region-main .no-overflow p {
-    margin: 0 0 20px;
+    margin: 0;
     color: $text_color;
 }
 #page-wrapper header#page-header .col-12.pt-3.pb-3 {
@@ -2952,7 +2963,7 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary,
 .block_tb_testimonials .test_get_started a {
     font-size: 20px;
-    padding: 0.5rem 5rem;
+    padding: 10px 50px;
 }
 body#page-site-index  div#page div#page-content section#region-main ul.section .activity .contentwithoutlink {
     margin: 0 auto;
@@ -3133,7 +3144,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     position: static !important;
 }
 .coursebox.grid {
-    padding: 15px 15px 50px !important;
+    padding: 15px 15px 30px !important;
     margin: 10px !important;
     max-width: calc(33.3333% - 20px) !important;
     border: 1px solid $light_overlay_background_color !important;
@@ -3207,7 +3218,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     background: none !important;
 }
 .coursebox .title a {
-    font-size: 30px !important;
+    font-size: 20px !important;
     font-weight: 700 !important;
     color: $light_overlay_text_color !important;
     text-shadow: none !important;
@@ -3404,11 +3415,6 @@ section.d-print-none .block_tb_blog_recent ul.list a.recent_blogtitle {
 section.d-print-none .block_tb_blog_recent ul.list p {
     text-align: justify;
 }
-section.d-print-none .block_tb_blog_recent ul.list a.recent_blogmore {
-    text-align: center;
-    display: block;
-    margin: 10px 0;
-}
 section.d-print-none .block_tb_blog_recent ul.list li {
     margin: 0 0 15px;
 }
@@ -3432,11 +3438,27 @@ body#page-site-index section.block_tb_blog_recent_home ul.list li {
 }
 .home_articles_content a.recent_blogtitle {
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
     margin: 0 0 20px;
     display: inline-block;
-    color: $text_color;
+    color: $cattitlecolor;
     font-family: "Nunito Sans", sans-serif;
+}
+#page-site-index .recent_blogdescription a.recent_blogmore {
+    color: $buttons_text_color;
+    background-color: $buttons_background_color;
+    border-color: $buttons_background_color;
+
+    display: block;
+    max-width: 210px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: lighter;
+    padding: 10px 50px;
+    text-decoration: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 40px 0 0;
 }
 body#page-site-index section.block_tb_blog_recent_home ul.list + a {
     float: right;
@@ -3575,6 +3597,28 @@ a.leeloo_cert, .leeloo_view {
     color: $buttons_text_color;
     background-color: $buttons_background_color;
     border-color: $buttons_background_color;
+
+    display: block;
+    margin: 10px auto 0;
+    float: none;
+    max-width: 280px;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 50px;
+    font-size: 20px;
+}
+.block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox a {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 50px;
+    display: inline-block;
+}
+.block_leeloo_paid_courses .leeloo_paid_courses_list .course_description_old {
+    min-height: 60px;
+}
+.block_leeloo_paid_courses .leeloo_paid_courses_list {
+    display: flex;
+    flex-wrap: wrap;
 }
 aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
     padding: 1.25rem 1.25rem 10px;
@@ -4084,9 +4128,6 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .card-deck .card-body p.card-text {
         padding: 0 10px 15px;
     }
-    .coursebox .title a {
-        font-size: 25px !important;
-    }
     .coursebox .course_description {
         font-size: 18px !important;
     }
@@ -4288,7 +4329,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         font-size: 15px;
     }
     .home_articles_content a.recent_blogtitle {
-        font-size: 22px;
+        font-size: 18px;
         margin: 0 0 5px;
     }
     body#page-site-index section.block_tb_blog_recent_home ul.list + a {
@@ -4783,7 +4824,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     background: #fff;
     box-shadow: 0 0 2px #e7e7e9;
     border: 1px solid #e7e7e9;
-    max-width: 95%;
+    max-width: 100%;
     margin: 0 auto;
 }
 .block_tb_m_slots .tb_m_slots .content_img {
@@ -4810,12 +4851,20 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_m_slots div.tb_m_slots .content_box .content_des {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
     padding: 0 1.25rem 1.25rem;
     color: $text_color;
     min-height: 100px;
 }
-
+#page-wrapper #page #page-content section.block#inst912 {
+    padding: 1rem!important;
+}
+#page-wrapper #page #page-content section.block#inst912 .card-body {
+    background: #fff;
+    box-shadow: 0 0 2px #e7e7e9;
+    border: 1px solid #e7e7e9;
+    max-width: calc(2000px - 2rem);
+}
 
 
 // Headings
@@ -4864,9 +4913,9 @@ div.owl-carousel .owl-nav button.owl-prev span {
     display: block;
     max-width: 170px;
     text-align: center;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: lighter;
-    padding: 7px;
+    padding: 10px 50px;
     text-decoration: none;
     box-shadow: none;
 }
@@ -4919,7 +4968,9 @@ div.owl-carousel .owl-nav button.owl-prev span {
     width: 100%;
     text-align: center!important;
 }
-
+.leeloo_div span.leeloo_price {
+    text-align: left;
+}
 
 // Upcoming Courses
 .block_tb_up_courses .tb_up_courses_list .coursebox.list {
@@ -5149,6 +5200,8 @@ div.owl-carousel .owl-nav button.owl-prev span {
 .tb_clients .clients_box .clients_img {
     background: #f5f6fa;
     height: 80px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 .tb_clients .clients_box .clients_img a {
     display: block;
@@ -5269,21 +5322,28 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Frequently Asked Questions
 
 .tb_faq div#faq_box {
+    padding: 15px 25px;
+}
+.tb_faq div#faq_box {
     box-shadow: 0 0 2px #e7e7e9;
     border: 1px solid #e7e7e9;
 }
 .tb_faq div#faq_box .faq_title {
     color: $basecolor;
+    font-size: 16px;
 }
 .tb_faq div#faq_box .faq_des {
     color: $text_color;
+}
+div.tb_faq {
+    margin: 0 -10px;
 }
 div.faq_more a {
     padding: 10px 50px;
     background: $buttons_background_color !important;
     color: $buttons_text_color !important;
     box-shadow: none !important;
-    font-size: 19px;
+    font-size: 20px;
 }
 
 
@@ -5430,7 +5490,7 @@ section.block_tb_slider .bx-wrapper .bx-pager {
     // max-width: 1280px;
     width: 100%;
     margin: 0 auto;
-    max-width: 2560px;
+    max-width: 2000px;
 }
 .layout_boxed .bx-controls-direction {
     max-width: 1280px;
@@ -6003,6 +6063,227 @@ div#leeloosocialdiv iframe.leeloosocial {
     margin: .5%;
     max-width: 475px;
 }
+.bx-controls-direction {
+    max-width: 2000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+#page-wrapper #page #page-content section#inst911 .no-overflow {
+    position: relative;
+    padding-top: 40%;
+}
+#page-wrapper #page #page-content section#inst911 .no-overflow iframe {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none !important;
+}
+#page-site-index #page-wrapper #page #page-content section.block ul.list .home_articles_img {
+    background: #eff0f5;
+    width: 50%;
+    float: left;
+    max-height: 335px;
+    overflow: hidden;
+    padding: 0;
+}
+#page-site-index #page-wrapper #page #page-content section.block ul.list .home_articles_img img {
+    width: 100%;
+    display: block;
+}
+#page-site-index #page-wrapper #page #page-content section.block ul.list li {
+    background: #fff;
+    box-shadow: 0 0 2px #e7e7e9;
+    border: 1px solid #e7e7e9;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+#page-wrapper #page #page-content section.block ul.list .home_articles_content {
+    float: left;
+    width: 50%;
+    color: $text_color;
+    padding: 10px 2.25rem;
+    min-height: 120px;
+    margin: 0 0 30px;
+}
+.courses .coursebox>.info {
+    padding: 10px;
+}
+.courses .coursebox>.content>div.summary,
+.courses .coursebox>.content>ul.teachers {
+    width: 80%;
+    margin: 0;
+    padding: 10px;
+}
+.courses .coursebox>.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+.courses .coursebox>.content>div.courseimage {
+    width: 20%;
+    margin: 0;
+    padding: 10px;
+}
+.coursebox>.info>h3.coursename {
+    margin: 0;
+    float: none;
+}
+#page-wrapper #region-main div.no-overflow {
+    line-height: 1.5;
+}
+.coursebox>.info>h3.coursename a {
+    padding: 0;
+}
+.block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox:not(.span12) .title a,
+.block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox.span12 .title a {
+    padding: 0;
+}
+.frontpage-course-list-all {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.courses .coursebox>.content>div.courseimage img {
+    max-width: inherit;
+    max-height: inherit;
+    width: 100%;
+    height: auto;
+}
+.courses .coursebox {
+    padding: 20px;
+}
+div#frontpage-available-course-list h2 {
+    text-align: center;
+    max-width: 2000px;
+    margin: 0 auto 20px;
+    padding: 0 0 15px;
+    font-size: 25px;
+}
+#page-site-index div#frontpage-available-course-list,
+#page-site-index #maincontent {
+    background: #f5f6fa;
+}
+.has-blocks .addbloglink {
+    text-align: right;
+}
+.has-blocks .addbloglink a {
+    background: $buttons_background_color;
+    color: $buttons_text_color;
+    text-align: center;
+    font-size: 15px;
+    font-weight: lighter;
+    padding: 7px 30px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: none;
+}
+body:not(#page-site-index) div#page {
+    max-width: 2000px;
+    margin: 0 auto;
+}
+#page-blog-index #page-wrapper section#region-main .attachedimages {
+    width: 24%;
+    float: left;
+    height: 210px;
+    background: #f5f6fa;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#page-blog-index #page-wrapper section#region-main .attachedimages img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#page-blog-index #page-wrapper section#region-main div.no-overflow.content {
+    position: relative;
+    padding-left: 25%;
+    font-size: 15px;
+}
+.forumpost .row .topic .subject a {
+    font-size: 16px;
+    font-weight: 700;
+    color: $buttons_background_color;
+}
+.forumpost .row .topic .author {
+    font-size: 12px;
+    color: $text_color;
+}
+.forumpost .row .topic .author a {
+    color: $buttons_background_color;
+}
+#page-blog-index #page-wrapper section#region-main .commands {
+    font-size: 15px;
+    padding: 5px 0;
+    color: #a7b2da;
+}
+#page-blog-index #page-wrapper section#region-main .commands a {
+    color: #a7b2da;
+    font-size: 13px;
+}
+.blog_entry .tags a {
+    color: #a7b2da;
+    font-size: 15px;
+}
+.comment-area textarea {
+    outline: none;
+}
+.comment-area a {
+    background: #a7b2da;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    font-weight: lighter;
+    padding: 3px 10px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: none;
+}
+.container-fluid .text_to_html {
+    display: inline-block;
+    font-size: 14px;
+}
+footer#page-footer .logininfo {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 5px;
+}
+footer#page-footer .homelink {
+    float: left;
+    padding-bottom: 1rem;
+}
+footer#page-footer .tool_dataprivacy {
+    float: right;
+    padding-bottom: 1rem;
+}
+footer#page-footer .tool_dataprivacy, footer#page-footer .homelink {
+    margin-top: -30px;
+}
+.leeloo_product .leeloo_product_image,
+.leeloo_subsc .leeloo_subsc_image {
+    height: 255px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
