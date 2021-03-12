@@ -1883,6 +1883,7 @@ div#fgroup_id_buttonar .col-md-9 {
 input#id_cancel {
     background: $brandcolor;
     color: #fff;
+    border: none;
 }
 .mform fieldset {
     margin-left: 2.4rem;
@@ -2124,6 +2125,7 @@ fieldset.clearfix.collapsible {
 #id_submitbutton {
     padding: 6px 40px;
     font-size: 19px;
+    border: none;
 }
 #id_cancel {
     padding: 6px 45px;
@@ -2445,9 +2447,9 @@ body#page-course-index-category section#region-main div.course_category_tree .su
     height: auto;
 }
 .course-content ul.topics li.section.main li.activity.modtype_regularvideo .activityinstance img.iconlarge.activityicon {
-    width: 110px;
-    left: 0;
-    top: 0;
+    // width: 110px;
+    // left: 0;
+    // top: 0;
 }
 .section .activity .activityinstance a {
     text-decoration: none;
@@ -2933,8 +2935,7 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
 body#page-site-index div#page div#page-content section#region-main ul.section .activity#module-42 {
     padding: 20px 0 40px;
 }
-body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary,
-.block_tb_testimonials .test_get_started a {
+body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary {
     font-size: 20px;
     padding: 10px 50px;
 }
@@ -3178,7 +3179,7 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     margin: -15px -15px 0;
 }
 .coursebox.list .progress {
-    margin: 10px 0 30px;
+    margin: 10px 0 40px;
     overflow: initial;
 }
 .progress + .small strong {
@@ -3311,10 +3312,13 @@ body#page-site-index h5.card-title {
 }
 #page-wrapper #page #page-content aside#block-region-side-pre section.block.block_tb_blog ul.list li .recent_blogdescription a {
     color: $brandcolor;
+    display: inline;
+    margin: 0;
 }
 #page-wrapper #page #page-content aside#block-region-side-pre section.block.block_tb_blog ul.list li {
     display: flex;
     flex-wrap: wrap;
+    align-items: self-start;
     padding-bottom: 15px;
     border-bottom: 1px solid #f5f6fa;
     margin: 0 0 10px;
@@ -3450,11 +3454,12 @@ body#page-site-index section.block_tb_blog_recent_home ul.list li {
     color: $cattitlecolor;
     font-family: "Nunito Sans", sans-serif;
 }
-#page-site-index .recent_blogdescription a.recent_blogmore {
-    color: $buttons_text_color;
-    background-color: $buttons_background_color;
-    border-color: $buttons_background_color;
-
+#page-site-index .recent_blogdescription a.recent_blogmore,
+.block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox .course_description a,
+.tb_headings .hd_box .hd_link a {
+    color: $buttons_text_color !important;
+    background-color: $buttons_background_color !important;
+    border-color: $buttons_background_color !important;
     display: block;
     max-width: 210px;
     text-align: center;
@@ -3465,6 +3470,14 @@ body#page-site-index section.block_tb_blog_recent_home ul.list li {
     -webkit-box-shadow: none;
     box-shadow: none;
     margin: 40px 0 0;
+}
+.block .minicalendar td a {
+    text-decoration: none;
+}
+.block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox .course_description a {
+    display: inline-block;
+    max-width: initial;
+    // margin: 0;
 }
 body#page-site-index section.block_tb_blog_recent_home ul.list + a {
     float: right;
@@ -3582,42 +3595,10 @@ body#page-site-index div#page div#page-content section#region-main ul.section .a
     padding: 20px 0 20px;
     text-align: center;
 }
-.block_tb_testimonials .test_get_started a {
-    font-size: 20px;
-    padding: 0.5rem 5rem;
-    color: $buttons_text_color;
-    background-color: $buttons_background_color;
-    border-color: $buttons_background_color;
-    display: inline-block;
-    text-decoration: none;
-}
-a.leeloo_cert, .leeloo_view {
+a.leeloo_cert {
     background: $buttons_background_color;
     border: 1px solid $buttons_background_color;
     color: $buttons_text_color;
-}
-.block_tb_latestentry ul.list+a{
-    color: $buttons_text_color;
-    background-color: $buttons_background_color;
-    border-color: $buttons_background_color;
-
-    display: block;
-    margin: 10px auto 0;
-    float: none;
-    max-width: 280px;
-    text-align: center;
-    text-decoration: none;
-    padding: 10px 50px;
-    font-size: 20px;
-}
-.block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox a {
-    text-decoration: none;
-    font-size: 20px;
-    padding: 10px 50px;
-    display: inline-block;
-    // background-color: $buttons_background_color;
-    // border-color: $buttons_background_color;
-    // color: $buttons_text_color;
 }
 .block_leeloo_paid_courses .leeloo_paid_courses_list .course_description_old {
     min-height: 60px;
@@ -3625,6 +3606,9 @@ a.leeloo_cert, .leeloo_view {
 .block_leeloo_paid_courses .leeloo_paid_courses_list {
     display: flex;
     flex-wrap: wrap;
+    min-width: 100%;
+    width: auto;
+    margin: 0 -10px;
 }
 aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_box .content_title {
     padding: 1.25rem 1.25rem 10px;
@@ -3966,6 +3950,35 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu u
     justify-content: center;
     outline: none;
     box-shadow: none;
+    position: relative;
+}
+.content-item-container .content-item-body {
+    text-align: left;
+}
+.content-item-container .view-more {
+    position: static;
+    color: #a7b2da;
+    margin: 10px 0 0;
+    display: inline-block;
+}
+.content-item-container:hover .view-more {
+    color: #fff;
+}
+.popover-region-notifications .content-item-container:hover .notification-image img {
+    filter: brightness(0);
+}
+.leftusermenu ul li.nav-item .usermenu .dropdown-menu-right.dropdown-menu {
+    margin: 0 0 45px;
+}
+.moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd .closebutton {
+    background: none !important;
+    outline: none;
+}
+.form-control, .custom-select, .btn-group>.btn, .btn {
+    box-shadow: none !important;
+}
+.invalid-feedback, .fp-repo-items, .yui3-panel, .yui3-panel div {
+    outline: none;
 }
 .leftusermenu ul li.nav-item .popover-region .popover-region-toggle i {
     margin: 0;
@@ -4090,7 +4103,6 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         max-width: 1280px;
     }
 }
-
 @media only screen and (max-width: 1280px) {
     body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
         font-size: 40px;
@@ -4221,8 +4233,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     body#page-site-index div#page div#page-content section#region-main .contentwithoutlink .carousel-item .carousel-main-text {
         font-size: 35px;
     }
-    body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary,
-    .block_tb_testimonials .test_get_started a {
+    body#page-site-index div#page div#page-content section#region-main ul.section .activity a.btn-primary {
         font-size: 15px;
     }
     body#page-site-index div#page div#page-content section#region-main ul.section .activity .contentwithoutlink h4.card-title,
@@ -4739,6 +4750,7 @@ body#page-site-index div#page {
     margin: 0 auto;
     height: 240px;
     width: 100%;
+    max-width: 100%;
 }
 
 .coursebox {
@@ -4832,7 +4844,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 #page-wrapper #page #page-content section.block#inst912 .card-body {
     background: #fff;
-    box-shadow: 0 0 2px #e7e7e9;
+    // box-shadow: 0 0 2px #e7e7e9;
     border: 1px solid #e7e7e9;
     max-width: calc(2000px - 2rem);
 }
@@ -4878,17 +4890,28 @@ div.owl-carousel .owl-nav button.owl-prev span {
     float: left;
     width: 50%;
 }
-.tb_headings .hd_box .hd_link a {
-    background: $buttons_background_color;
-    color: $buttons_text_color;
+.block_tb_testimonials .test_get_started a,
+.block_tb_latestentry ul.list+a, div.faq_more a {
+    background: $buttons_background_color !important;
+    color: $buttons_text_color !important;
     display: block;
-    max-width: 170px;
+    max-width: 250px;
     text-align: center;
     font-size: 20px;
     font-weight: lighter;
     padding: 10px 50px;
     text-decoration: none;
     box-shadow: none;
+    margin: 0 auto;
+}
+.block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox:not(.span12) .course_description span.leeloo_price {
+    color: $buttons_background_color;
+    float: right;
+    display: none;
+}
+.block_tb_latestentry ul.list+a {
+    float: none;
+    margin: 10px auto 0;
 }
 .tb_headings.owl-theme.owl-carousel .owl-nav button.owl-next,
 .tb_headings.owl-theme .owl-nav button.owl-prev {
@@ -4900,12 +4923,10 @@ div.owl-carousel .owl-nav button.owl-prev span {
     right: 30px;
     margin: 0;
 }
-
-
 // Featured Courses
 .tb_f_courses_list.owl-carousel .owl-item .coursebox {
     min-width: auto;
-    max-width: 95%!important;
+    // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
 }
@@ -4926,7 +4947,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     margin: 0;
 }
 .tb_f_courses_list.owl-carousel .owl-item .coursebox .course_title h2.title a {
-    font-size: 20px!important;
     background: none;
     box-shadow: none;
 }
@@ -4946,7 +4966,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Upcoming Courses
 .block_tb_up_courses .tb_up_courses_list .coursebox.list {
     min-width: auto;
-    max-width: 95%!important;
+    // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0 0 15px !important;
 }
@@ -4967,7 +4987,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     margin: 0;
 }
 .block_tb_up_courses .tb_up_courses_list .coursebox.list .course_title h2.title a {
-    font-size: 20px!important;
     color: $text_color!important;
     background: none;
     box-shadow: none;
@@ -4989,7 +5008,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Available Courses
 .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox {
     min-width: auto;
-    max-width: 95%!important;
+    // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0 0 15px !important;
 }
@@ -5011,7 +5030,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     margin: 0;
 }
 .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox .course_title h2.title a {
-    font-size: 20px!important;
     color: $text_color !important;
     background: none;
     box-shadow: none;
@@ -5031,7 +5049,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // In Progress Courses
 .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox {
     min-width: auto;
-    max-width: 95%!important;
+    // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
 }
@@ -5052,7 +5070,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     margin: 0;
 }
 .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox .course_title h2.title a {
-    font-size: 20px!important;
     color: $text_color!important;
     background: none;
     box-shadow: none;
@@ -5072,7 +5089,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // Completed Courses
 .block_tb_c_courses .tb_c_courses_list .coursebox {
     min-width: auto;
-    max-width: 95%!important;
+    // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
 }
@@ -5117,7 +5134,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 // My Courses
 .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list {
     min-width: auto;
-    max-width: 95%!important;
+    // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
 }
@@ -5138,7 +5155,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
     margin: 0;
 }
 .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list .course_title h2.title a {
-    font-size: 20px!important;
     background: none;
     box-shadow: none;
 }
@@ -5281,6 +5297,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     transform: rotate(180deg);
     color: $text_color;
     content: " ,, ";
+    color: #00b5ab;
     letter-spacing: -8px;
 }
 
@@ -5294,7 +5311,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     padding: 15px 25px;
 }
 .tb_faq div#faq_box {
-    box-shadow: 0 0 2px #e7e7e9;
+    // box-shadow: 0 0 2px #e7e7e9;
     border: 1px solid #e7e7e9;
 }
 .tb_faq div#faq_box .faq_title {
@@ -5307,14 +5324,6 @@ div.owl-carousel .owl-nav button.owl-prev span {
 div.tb_faq {
     margin: 0 -10px;
 }
-div.faq_more a {
-    padding: 10px 50px;
-    background: $buttons_background_color !important;
-    color: $buttons_text_color !important;
-    box-shadow: none !important;
-    font-size: 20px;
-}
-
 
 // footer
 
@@ -5428,7 +5437,7 @@ div.faq_more a {
     z-index: -1;
 }
 #page-wrapper #page #page-content section.block.block_tb_faq {
-    padding: 0 0 70px;
+    // padding: 0 0 70px;
 }
 .block_tb_slider .bx-wrapper .bx-controls-direction a {
     width: auto;
@@ -5580,8 +5589,10 @@ body#page-course-view-topics div#page div#page-content div#region-main-box {
     color: $text_color;
 }
 .mod-inn {
-    padding: 35px 20px;
+    padding: 35px 10px;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 .mod-icn {
     width: 50px;
@@ -5968,7 +5979,8 @@ body#page-site-index nav.fixed-top.navbar {
     background: none!important;
     border: none;
     padding: 0;
-    outline: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 .logo_side_container button.btn.nav-link i {
     font-size: 30px;
@@ -6041,12 +6053,14 @@ div#leeloosocialdiv iframe.leeloosocial {
 #page-login-index #page-wrapper #region-main .card-block .card-body {
     padding: 30px 0;
 }
-
-
+.block_tb_top_cats .tb_top_cats {
+    margin: 0 -0.5%;
+}
 .block_tb_top_cats .tb_top_cats .tb_cat {
     width: 24%;
     margin: .5%;
     max-width: 475px;
+    box-shadow: none;
 }
 .bx-controls-direction {
     max-width: 2000px;
@@ -6283,15 +6297,188 @@ div.comment-message .picture {
 div.comment-message .text {
     padding: 0 0 0 30px;
 }
+.usertour {
+    text-align: center;
+}
+#page-footer .usertour a {
+    color: $menu_color;
+    padding: 8px;
+    display: inline-block;
+}
+.block_online_users .content .info {
+    text-align: left;
+}
+.block_online_users .content .list {
+    margin: 15px 0 0;
+}
+.block_online_users .content .list li.listentry {
+    padding: 5px 0;
+    border-top: 1px solid #f5f6fa;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.block_online_users .content .list li.listentry a,
+.gotocal a, .block_private_files .content .footer a {
+    color: $menu_color;
+}
+.block_private_files .content .footer {
+    padding: 0;
+    margin-top: 0;
+}
+.flex-column, .flex-column * {
+    outline: none;
+}
+.message-app .border-top.bg-white.position-relative .d-flex.p-3.justify-content-end {
+    padding: 0 !important;
+}
+.message-app .btn.btn-link.btn-icon.icon-size-4 {
+    margin: 0 !important;
+}
+.message-app .footer-container textarea {
+    height: 36px;
+}
+.pagination li a {
+    box-shadow: none !important;
+}
 
 
 
 
-
-
-
-
-
+@media only screen and (max-width: 1500px) {
+    .block_tb_m_slots div.tb_m_slots .content_box .content_title,
+    .coursebox .title a,
+    .pagelayout-mydashboard aside#block-region-content .dashboard-card-deck .card .course-info-container .text-muted span {
+        font-size: 16px !important;
+    }
+    .block_tb_m_slots div.tb_m_slots .content_box .content_des {
+        font-size: 13px;
+        min-height: 90px;
+    }
+    .block_tb_top_cats .tb_top_cats .tb_cat .tb_cat_content p.cat_des {
+        font-size: 13px;
+    }
+    .tb_f_courses_list.owl-carousel .owl-item .coursebox .course_description,
+    .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox .course_description {
+        font-size: 13px!important;
+        min-height: 100px;
+    }
+    .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box {
+        padding: 25px 35px;
+    }
+    .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_title {
+        font-size: 13px;
+    }
+    .block_tb_testimonials .testimonial_des, .block_tb_testimonials .testimonial_pos {
+        font-size: 13px;
+    }
+    .block_tb_testimonials .test_get_started a, .block_tb_latestentry ul.list+a, div.faq_more a {
+        font-size: 15px;
+        padding: 8px 30px;
+        max-width: 200px;
+    }
+    .pagelayout-mydashboard aside#block-region-content .dashboard-card-deck .card .course-info-container {
+        padding: 15px !important;
+    }
+    .pagelayout-mydashboard aside#block-region-content .dashboard-card-deck .card .course-info-container a.coursename {
+        text-align: left;
+        font-size: 13px;
+    }
+    #page-site-index .recent_blogdescription a.recent_blogmore, .block_leeloo_paid_courses .leeloo_paid_courses_list .coursebox .course_description a, .tb_headings .hd_box .hd_link a {
+        font-size: 15px;
+        padding: 7px 30px;
+        max-width: 180px;
+    }
+    .block .owl-item .coursebox.span12 .image_wrap,
+    .block_tb_m_slots .tb_m_slots .content_img,
+    .leeloo_product .leeloo_product_image, .leeloo_subsc .leeloo_subsc_image,
+    .dashboard-card-deck .dashboard-card .dashboard-card-img {
+        max-height: 180px;
+        height: 180px;
+    }
+    #page-wrapper #region-main .block .owl-item .coursebox.span12 .image_wrap,
+    #page-wrapper #region-main .block_tb_m_slots .tb_m_slots .content_img,
+    #page-wrapper #region-main .leeloo_product .leeloo_product_image, .leeloo_subsc .leeloo_subsc_image,
+    #page-wrapper #region-main .dashboard-card-deck .dashboard-card .dashboard-card-img {
+        max-height: 150px;
+        height: 150px;
+    }
+    .tb_clients .clients_box .clients_img {
+        height: auto;
+    }
+    .tb_clients .clients_box {
+        padding: 0 5px;
+    }
+    .block_tb_testimonials .tb_testimonials .testimonial_box .testimonial_img img {
+        width: 60px;
+        height: 60px;
+    }
+    #page-wrapper #region-main .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list,
+    #page-wrapper #region-main .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox {
+        max-width: 100% !important;
+    }
+    .coursebox .progress:before {
+        font-size: 12px;
+        width: 100%;
+    }
+    .btn-outline-secondary {
+        font-size: 13px;
+    }
+    .block_leeloo_paid_courses .leeloo_paid_courses_list .course_description_old {
+        font-size: 13px;
+    }
+    .progress+.small, #page-admin-search .adminpagepath .progress+li {
+        font-size: 13px;
+    }
+    .pagelayout-mydashboard .d-flex.align-items-center.flex-wrap {
+        position: static;
+        float: none;
+    }
+    .leeloo_subsdiv a, .leeloo_productdiv a {
+        padding: 7px;
+        font-size: 14px;
+    }
+    .leeloo_product_name, .leeloo_subs_name {
+        font-size: 13px;
+    }
+    .mod-icn {
+        width: 35px;
+    }
+    .mod-cont {
+        width: calc(100% - 35px);
+    }
+    .mod-inn {
+        padding: 25px 10px;
+    }
+    .mod-cont h3 {
+        font-size: 18px;
+    }
+    .abt-txt-head {
+        font-size: 18px;
+    }
+    .video-txt {
+        padding: 15px;
+    }
+    .page-top-main-banner {
+        min-height: 275px;
+        padding: 80px 10px 30px;
+    }
+    .page-top-main-banner-cont h2, .pagelayout-course #page-wrapper header#page-header .mr-auto .page-context-header .page-header-headings h1 {
+        font-size: 32px;
+    }
+    #page-wrapper #page #page-content section.block>.card-body h5.card-title,
+    #page-wrapper #page #page-content .userprofile .profile_tree section.block>section h5.card-title,
+    .userprofile .profile_tree #page-wrapper #page #page-content section.block>section h5.card-title {
+        padding: 0 0 5px;
+        margin: 0 0 5px;
+    }
+    #page-site-index #page-wrapper #page #page-content section.block ul.list .home_articles_img {
+        max-height: 300px;
+    }
+    .tb_teachers .teachers_box .teachers_img {
+        max-height: 285px;
+    }
+}
 @media only screen and (max-width: 1199px) {
     .block_tb_slider .bx-wrapper .bx-controls-direction a {
         padding: 8px 30px;
@@ -6305,14 +6492,14 @@ div.comment-message .text {
         min-height: 200px;
         max-height: 200px;
     }
-    .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox .course_title h2.title a {
-        font-size: 15px!important;
-    }
     .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box {
         padding: 15px 22px;
     }
     .block_tb_testimonials .owl-carousel.tb_testimonials .testimonial_box .testimonial_title::before {
-        left: 0;
+        left: -15px;
+    }
+    .coursebox:not(.span12) .image_wrap {
+        height: 180px;
     }
     .tb_headings .hd_box .hd_des {
         margin: 0 0 15px;
@@ -6325,6 +6512,20 @@ div.comment-message .text {
     }
     div.course_category_tree .courses .coursebox .info h3.coursename a {
         font-size: 17px;
+    }
+    .block_tb_top_cats .tb_top_cats .tb_cat .tb_cat_content {
+        padding: 5px;
+    }
+    .teachers_pos {
+        padding: 0 1.25rem 0.25rem;
+    }
+    .tb_teachers .teachers_box .teachers_title {
+        padding: 0.25rem 1.25rem 0;
+        font-size: 16px;
+    }
+    .tb_teachers .teachers_box .teachers_des {
+        padding: 10px 1.25rem;
+        font-size: 14px;
     }
 }
 @media only screen and (max-width: 991px) {
@@ -6404,7 +6605,6 @@ div.comment-message .text {
         margin: 5px;
         font-size: 13px;
     }
-    div.faq_more a,
     #page-wrapper #page-footer section.footer-stats .stat-button a {
         padding: 6px 40px;
         font-size: 15px;
@@ -6423,10 +6623,6 @@ div.comment-message .text {
     }
     #page-wrapper #page-footer section.footer-stats .row-fluid .statsin h2 {
         font-size: 25px;
-    }
-    .block_tb_m_slots div.tb_m_slots .content_box .content_title {
-        font-size: 15px;
-        padding: 0.25rem 0.25rem 5px;
     }
     .block_tb_m_slots div.tb_m_slots .content_box .content_des {
         font-size: 13px;
@@ -6447,21 +6643,12 @@ div.comment-message .text {
         padding: 10px 1.25rem;
         text-align: center;
     }
-    .tb_headings .hd_box .hd_link a {
-        max-width: 130px;
-        font-size: 14px;
-        padding: 7px;
-        margin: 0 auto;
-    }
     .block_tb_up_courses .tb_up_courses_list .coursebox.list .course_image_embed {
         height: 150px;
         min-height: 150px;
     }
     .block_tb_up_courses .tb_up_courses_list .coursebox.list .course_title {
         padding: 0.25rem 0.25rem 5px;
-    }
-    .block_tb_up_courses .tb_up_courses_list .coursebox.list .course_title h2.title a {
-        font-size: 15px !important;
     }
     .block_tb_up_courses .tb_up_courses_list .coursebox.list .course_description {
         font-size: 13px!important;
