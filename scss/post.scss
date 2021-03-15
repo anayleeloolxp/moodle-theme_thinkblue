@@ -3968,7 +3968,13 @@ body#page-site-index div#nav-drawer.closed[data-region="drawer"] .leftusermenu u
     filter: brightness(0);
 }
 .leftusermenu ul li.nav-item .usermenu .dropdown-menu-right.dropdown-menu {
-    margin: 0 0 45px;
+    // margin: 0 0 45px;
+    transform: translate(0, 0) !important;
+    bottom: 42px;
+    top: auto !important;
+    right: -26px;
+    left: auto !important;
+    width: 220px;
 }
 .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd .closebutton {
     background: none !important;
@@ -5720,7 +5726,7 @@ mod-cont h3 small {
     padding: 10px 0;
 }
 #page-wrapper #page #page-content .main-right-section section.block_course_mod .mod-inn h3 span {
-    min-width: 55px;
+    // min-width: 55px;
     display: inline-block;
     text-align: right;
     padding: 0 5px;
