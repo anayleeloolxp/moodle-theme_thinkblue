@@ -630,7 +630,7 @@ class core_renderer extends \core_renderer {
                 }
                 $imagedata = $this->user_picture($user, array('size' => 100));
                 $enrolledcourses = count(enrol_get_users_courses($user->id));
-                $commentsarr = $DB->get_record_sql('SELECT COUNT(*) as comments FROM {comments} WHERE userid = ' . $user->id . ';');
+                $commentsarr = $DB->get_record_sql('SELECT COUNT(*) as comments FROM {comments} WHERE userid = ?', [$user->id]);
                 $comments = $commentsarr->comments;
                 $userbuttons = array(
                     'classes' => array(

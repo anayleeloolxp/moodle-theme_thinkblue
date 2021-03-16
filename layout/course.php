@@ -272,7 +272,7 @@ $templatecontext['username'] = $USER->username;
 
 $templatecontext['userfullname'] = fullname($USER);
 
-$leelooproduct = $DB->get_record_sql('SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = 1 AND courseid = ' . $courseid);
+$leelooproduct = $DB->get_record_sql('SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = ? AND courseid = ?', [1, $courseid]);
 
 if ($leelooproduct) {
     $isleelooproduct = true;
