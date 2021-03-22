@@ -3844,8 +3844,9 @@ section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption .slide_desc_sec 
 body#page-login-signup .card-body .card-title.text-xs-center {
     padding: 0;
 }
-#page-login-signup .card-body .card-title.text-xs-center img.img-fluid,
 #page-login-index #page #page-content h2.card-header img.img-fluid {
+}
+#page-login-signup .card-body .card-title.text-xs-center img.img-fluid {
     filter: brightness(0.5);
     width: auto;
 }
@@ -3955,12 +3956,13 @@ body#page-login-index div#nav-drawer,
 body#page-login-signup div#nav-drawer {
     display: none;
 }
-body#page-login-index div#page-wrapper,
-body#page-login-signup div#page-wrapper,
-body#page-login-index footer#page-footer,
-body#page-login-signup footer#page-footer {
+body#page-login-index div#page-wrapper, body#page-login-signup div#page-wrapper,
+body#page-login-index footer#page-footer, body#page-login-signup footer#page-footer {
     padding: 0;
     margin: 0;
+}
+body#page-login-index footer#page-footer, body#page-login-signup footer#page-footer {
+    background: $footer_one_background_color !important;
 }
 span#user-notifications {
     position: absolute;
@@ -6410,7 +6412,7 @@ body:not(#page-site-index) div#page {
 footer#page-footer .logininfo {
     width: 100%;
     text-align: center;
-    padding: 10px 0 5px;
+    padding: 1rem 0 0;
 }
 footer#page-footer .homelink {
     float: left;
@@ -6421,7 +6423,7 @@ footer#page-footer .tool_dataprivacy {
     padding-bottom: 1rem;
 }
 footer#page-footer .tool_dataprivacy, footer#page-footer .homelink {
-    margin-top: -30px;
+    margin-top: -25px;
 }
 .leeloo_product .leeloo_product_image,
 .leeloo_subsc .leeloo_subsc_image {
