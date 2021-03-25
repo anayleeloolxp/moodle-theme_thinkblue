@@ -68,7 +68,7 @@ class core_renderer extends \core_renderer {
     public function edit_button(moodle_url $url) {
         // MODIFICATION START.
         // If setting editbuttonincourseheader ist checked give out the edit on / off button in course header.
-        if ($this->getleeloosettings()->course_layout_settings->courseeditbutton == '1') {
+        if (@$this->getleeloosettings()->course_layout_settings->courseeditbutton == '1') {
             return \core_renderer::edit_button($url);
         }
     }
@@ -111,8 +111,8 @@ class core_renderer extends \core_renderer {
      */
     public function favicon() {
         // MODIFICATION START.
-        if (!empty($this->getleeloosettings()->general_settings->favicon)) {
-            return $this->getleeloosettings()->general_settings->favicon;
+        if (!empty(@$this->getleeloosettings()->general_settings->favicon)) {
+            return @$this->getleeloosettings()->general_settings->favicon;
         } else {
             return $this->image_url('favicon', 'theme');
         }
@@ -195,7 +195,7 @@ class core_renderer extends \core_renderer {
         // MODIFICATION START:
         // If the setting showhintcoursehidden is set, the visibility of the course is hidden and
         // a hint for the visibility will be shown.
-        if ($this->getleeloosettings()->course_layout_settings->showhintcoursehidden == 1 && $COURSE->visible == false &&
+        if (@$this->getleeloosettings()->course_layout_settings->showhintcoursehidden == 1 && $COURSE->visible == false &&
             $this->page->has_set_url() && $this->page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)) {
             $html .= html_writer::start_tag('div', array('class' => 'course-hidden-infobox alert alert-warning'));
             $html .= html_writer::tag('i', null, array('class' => 'fa fa-exclamation-circle fa-3x fa-pull-left'));
@@ -213,7 +213,7 @@ class core_renderer extends \core_renderer {
         // We also check that the user did not switch the role. This is a special case for roles that can fully access the course
         // without being enrolled. A role switch would show the guest access hint additionally in that case and this is not
         // intended.
-        if ($this->getleeloosettings()->course_layout_settings->showhintcourseguestaccess == 1
+        if (@$this->getleeloosettings()->course_layout_settings->showhintcourseguestaccess == 1
             && is_guest(\context_course::instance($COURSE->id), $USER->id)
             && $this->page->has_set_url()
             && $this->page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
@@ -228,7 +228,7 @@ class core_renderer extends \core_renderer {
         // MODIFICATION END.
         // MODIFICATION START.
         // Only use this if setting 'showswitchedroleincourse' is active.
-        if ($this->getleeloosettings()->course_layout_settings->showswitchedroleincourse === 1) {
+        if (@$this->getleeloosettings()->course_layout_settings->showswitchedroleincourse === 1) {
             // Check if the user did a role switch.
             // If not, adding this section would make no sense and, even worse,
             // user_get_user_navigation_info() will throw an exception due to the missing user object.
@@ -386,8 +386,8 @@ class core_renderer extends \core_renderer {
             ['context' => context_course::instance(SITEID), "escape" => false]);
         // MODIFICATION START.
         // Only if setting "loginform" is checked, then call own login.mustache.
-        if ($this->getleeloosettings()->design_settings->loginform == 1) {
-            return $this->render_from_template('theme_thinkblue/loginform', $context);
+        if (@$this->getleeloosettings()->design_settings->loginform == 1) {
+            return @$this->render_from_template('theme_thinkblue/loginform', $context);
         } else {
             return $this->render_from_template('core/loginform', $context);
         }
@@ -407,7 +407,7 @@ class core_renderer extends \core_renderer {
         $context->linkid = $helpicon->component . '-' . $helpicon->identifier;
         // Fill body variable needed for modal mustache with text value.
         $context->body = $context->text;
-        if ($this->getleeloosettings()->design_settings->helptextmodal == 1) {
+        if (@$this->getleeloosettings()->design_settings->helptextmodal == 1) {
             return $this->render_from_template('theme_thinkblue/help_icon', $context);
         } else {
             return $this->render_from_template('core/help_icon', $context);

@@ -33,7 +33,6 @@ $plugin->maturity = MATURITY_STABLE;
 $plugin->cron = 60 * 5; // Cron 5mins.
 $plugin->dependencies = array(
     'theme_boost' => 2019111800,
-    'tool_leeloo_courses_sync' => 2019062700,
     'tool_leeloolxp_sync' => 2019062701,
     'block_tb_a_courses' => 2019010700,
     'block_tb_blog' => 2019111800,

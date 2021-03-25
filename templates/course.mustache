@@ -114,8 +114,9 @@
                     {{/hasregionmainsettingsmenu}}
 
                     <div class="row">
-                        <div class="col-9">
+                        {{#showsidebar}}<div class="col-9">{{/showsidebar}}{{^showsidebar}}<div class="col-12">{{/showsidebar}}
                             <div class="main-left-section">
+                                {{#showtopvideosection}}
                                 <div class="left-top-video-section">
                                     <div class="row">
                                         <div class="col-9">
@@ -157,6 +158,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{/showtopvideosection}}
 
                                 {{#stats_main}}
                                 <div class="left-mod-section">
@@ -300,6 +302,7 @@
                                 
                             </div>
                         </div>
+                        {{#showsidebar}}
                         <div class="col-3">
 
                         
@@ -453,6 +456,7 @@
 
                             </div>
                         </div>
+                        {{/showsidebar}}
                     </div>
                 </div>
             </div>

@@ -111,19 +111,19 @@ $catchshortcuts = array();
 
 // If setting is enabled then add the parameter to the array.
 
-if ($leeloosettings->advanced_settings->catchendkey == true) {
+if (@$leeloosettings->advanced_settings->catchendkey == true) {
     $catchshortcuts[] = 'end';
 }
 
 // If setting is enabled then add the parameter to the array.
 
-if ($leeloosettings->advanced_settings->catchcmdarrowdown == true) {
+if (@$leeloosettings->advanced_settings->catchcmdarrowdown == true) {
     $catchshortcuts[] = 'cmdarrowdown';
 }
 
 // If setting is enabled then add the parameter to the array.
 
-if ($leeloosettings->advanced_settings->catchctrlarrowdown == true) {
+if (@$leeloosettings->advanced_settings->catchctrlarrowdown == true) {
     $catchshortcuts[] = 'ctrlarrowdown';
 }
 
@@ -131,7 +131,7 @@ if ($leeloosettings->advanced_settings->catchctrlarrowdown == true) {
 
 // MODIFICATION START: Setting 'darknavbar'.
 
-if ($leeloosettings->design_settings->darknavbar == 1) {
+if (@$leeloosettings->design_settings->darknavbar == 1) {
     $darknavbar = true;
 } else {
 
@@ -190,7 +190,7 @@ $templatecontext['flatnavigation'] = theme_thinkblue_process_flatnav($nav);
 
 // If setting showsettingsincourse is enabled.
 
-if ($leeloosettings->course_layout_settings->showsettingsincourse == 1) {
+if (@$leeloosettings->course_layout_settings->showsettingsincourse == 1) {
     // Context value for requiring incoursesettings.js.
 
     $templatecontext['incoursesettings'] = true;
@@ -228,7 +228,7 @@ require_once(__DIR__ . '/includes/footer.php');
 
 // Get imageareaitems config.
 
-if (!empty($leeloosettings->imageareaitems)) {
+if (!empty(@$leeloosettings->imageareaitems)) {
     // Add imagearea layout file.
 
     require_once(__DIR__ . '/includes/imagearea.php');
@@ -272,50 +272,51 @@ $templatecontext['username'] = $USER->username;
 
 $templatecontext['userfullname'] = fullname($USER);
 
-$leelooproduct = $DB->get_record_sql('SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = ? AND courseid = ?', [1, $courseid]);
+if (isset(get_config('tool_leeloo_courses_sync')->version)) {
+    $leelooproduct = $DB->get_record_sql('SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = ? AND courseid = ?', [1, $courseid]);
 
-if ($leelooproduct) {
-    $isleelooproduct = true;
+    if ($leelooproduct) {
+        $isleelooproduct = true;
 
-    $templatecontext['isleelooproduct'] = $isleelooproduct;
+        $templatecontext['isleelooproduct'] = $isleelooproduct;
 
-    $templatecontext['leelooproductprice'] = $leelooproduct->productprice;
+        $templatecontext['leelooproductprice'] = $leelooproduct->productprice;
 
-    $productid = $leelooproduct->productid;
+        $productid = $leelooproduct->productid;
 
-    $productalias = $leelooproduct->product_alias;
+        $productalias = $leelooproduct->product_alias;
 
-    $urlalias = $productid . '-' . $productalias;
+        $urlalias = $productid . '-' . $productalias;
 
-    global $SESSION;
+        global $SESSION;
 
-    @$jsessionid = $SESSION->jsession_id;
+        @$jsessionid = $SESSION->jsession_id;
 
-    $context = context_course::instance($courseid);
+        $context = context_course::instance($courseid);
 
-    $enrolled = is_enrolled($context, $USER->id, '', true);
+        $enrolled = is_enrolled($context, $USER->id, '', true);
 
-    if ($enrolled) {
-        $userenrolled = true;
+        if ($enrolled) {
+            $userenrolled = true;
 
-        $templatecontext['userenrolled'] = $userenrolled;
-    } else if (!$jsessionid) {
+            $templatecontext['userenrolled'] = $userenrolled;
+        } else if (!$jsessionid) {
 
-        $showlogin = false;
+            $showlogin = false;
 
-        $templatecontext['showlogin'] = $showlogin;
+            $templatecontext['showlogin'] = $showlogin;
 
-        $templatecontext['loginurl'] = $CFG->wwwroot . '/login/index.php';
-    } else {
+            $templatecontext['loginurl'] = $CFG->wwwroot . '/login/index.php';
+        } else {
 
-        $showbuy = true;
+            $showbuy = true;
 
-        $templatecontext['showbuy'] = $showbuy;
+            $templatecontext['showbuy'] = $showbuy;
 
-        $templatecontext['buyurl'] = "https://leeloolxp.com/products-listing/product/$urlalias?session_id=$jsessionid";
+            $templatecontext['buyurl'] = "https://leeloolxp.com/products-listing/product/$urlalias?session_id=$jsessionid";
+        }
     }
 }
-
 $templatecontext['course_title'] = $PAGE->course->fullname;
 
 if (is_object($leeloocourse)) {
@@ -465,6 +466,14 @@ $templatecontext['activities'] = $activities;
 $templatecontext['videos'] = $videos;
 
 $templatecontext['baseurl'] = $CFG->wwwroot;
+
+if( isset($hasblocks) && isset($aboutsidebar) && isset($statssidebar) && isset($teachersidebar) ){
+    $templatecontext['showsidebar'] = true;
+}
+
+if( isset($showvideo) || isset($showimage) || isset($isleelooproduct) ){
+    $templatecontext['showtopvideosection'] = true;
+}
 
 // Render course.mustache from thinkblue.
 

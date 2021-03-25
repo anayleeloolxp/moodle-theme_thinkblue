@@ -74,7 +74,7 @@ if (!isset($USER->id) && isset($USER->id) == '') {
 }
 
 if (isset($leeloosettings->general_settings->layouttype) && isset($leeloosettings->general_settings->layouttype) != '') {
-    if ($leeloosettings->general_settings->layouttype == 'boxed') {
+    if (@$leeloosettings->general_settings->layouttype == 'boxed') {
         $extraclasses[] = 'layout_boxed';
     } else {
         $extraclasses[] = 'layout_fullwidth';
@@ -110,19 +110,19 @@ $catchshortcuts = array();
 
 // If setting is enabled then add the parameter to the array.
 
-if ($leeloosettings->advanced_settings->catchendkey == true) {
+if (@$leeloosettings->advanced_settings->catchendkey == true) {
     $catchshortcuts[] = 'end';
 }
 
 // If setting is enabled then add the parameter to the array.
 
-if ($leeloosettings->advanced_settings->catchcmdarrowdown == true) {
+if (@$leeloosettings->advanced_settings->catchcmdarrowdown == true) {
     $catchshortcuts[] = 'cmdarrowdown';
 }
 
 // If setting is enabled then add the parameter to the array.
 
-if ($leeloosettings->advanced_settings->catchctrlarrowdown == true) {
+if (@$leeloosettings->advanced_settings->catchctrlarrowdown == true) {
     $catchshortcuts[] = 'ctrlarrowdown';
 }
 
@@ -130,7 +130,7 @@ if ($leeloosettings->advanced_settings->catchctrlarrowdown == true) {
 
 // MODIFICATION START: Setting 'darknavbar'.
 
-if (isset($leeloosettings->design_settings->darknavbar) && $leeloosettings->design_settings->darknavbar == 1) {
+if (isset($leeloosettings->design_settings->darknavbar) && @$leeloosettings->design_settings->darknavbar == 1) {
     $darknavbar = true;
 } else {
 
@@ -193,7 +193,7 @@ $templatecontext['flatnavigation'] = theme_thinkblue_process_flatnav($nav);
 
 // If setting showsettingsincourse is enabled.
 
-if ($leeloosettings->course_layout_settings->showsettingsincourse == 1) {
+if (@$leeloosettings->course_layout_settings->showsettingsincourse == 1) {
     // Context value for requiring incoursesettings.js.
 
     $templatecontext['incoursesettings'] = true;
@@ -231,7 +231,7 @@ require_once(__DIR__ . '/includes/footer.php');
 
 // Get imageareaitems config.
 
-if (!empty($leeloosettings->imageareaitems)) {
+if (!empty(@$leeloosettings->imageareaitems)) {
     // Add imagearea layout file.
 
     require_once(__DIR__ . '/includes/imagearea.php');
