@@ -4988,6 +4988,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     float: left;
     // max-height: 335px;
     overflow: hidden;
+    margin-right: 0;
 }
 .tb_headings .hd_box .hd_img img {
     min-height: 100%;
@@ -5051,7 +5052,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 // Featured Courses
 .tb_f_courses_list.owl-carousel .owl-item .coursebox {
-    min-width: auto;
+    min-width: 100%;
     // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
@@ -5133,7 +5134,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 // Available Courses
 .block_tb_a_courses .tb_a_courses_list.owl-carousel .coursebox {
-    min-width: auto;
+    min-width: 100%;
     // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0 0 15px !important;
@@ -5174,7 +5175,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 
 // In Progress Courses
 .block_tb_in_courses .owl-carousel.tb_in_courses_list .coursebox {
-    min-width: auto;
+    min-width: 100%;
     // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
@@ -5259,7 +5260,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
 
 // My Courses
 .block_tb_my_courses .owl-carousel.tb_my_courses_list .coursebox.list {
-    min-width: auto;
+    min-width: 100%;
     // max-width: 95%!important;
     margin: 0 auto!important;
     padding: 0!important;
@@ -5347,7 +5348,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     background: #f5f6fa;
 }
 .tb_teachers .teachers_box .teachers_title {
-    padding: 30px 2.25rem 0;
+    padding: 30px 0 0;
     float: left;
     width: 50%;
     font-size: 20px;
@@ -5356,7 +5357,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     font-family: "Nunito Sans",sans-serif;
 }
 .teachers_pos {
-    padding: 0 2.25rem 2.25rem;
+    padding: 0 0 0;
     float: left;
     color: $text_color;
     width: 50%;
@@ -5365,7 +5366,7 @@ div.owl-carousel .owl-nav button.owl-prev span {
     float: left;
     width: 50%;
     color: $text_color;
-    padding: 10px 2.25rem;
+    padding: 10px 0;
     min-height: 120px;
     font-size: 16px;
 }
@@ -5423,9 +5424,8 @@ div.owl-carousel .owl-nav button.owl-prev span {
     left: -25px;
     line-height: 20px;
     transform: rotate(180deg);
-    color: $text_color;
     content: " ,, ";
-    color: #00b5ab;
+    color: $brandcolor;
     letter-spacing: -8px;
 }
 
