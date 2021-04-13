@@ -54,4 +54,5 @@ $plugin->dependencies = array(
     'local_staticpage' => 2020021400,
     'local_boostnavigation' => 2020080400,
     'auth_leeloolxp_tracking_sso' => 2020092601,
+    'local_leeloolxpcontentapi' => 2021031907,
 );
