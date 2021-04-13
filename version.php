@@ -30,7 +30,6 @@ $plugin->version = 2020032400;
 $plugin->release = '1.0.0';
 $plugin->requires = 2019111800;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->cron = 60 * 5; // Cron 5mins.
 $plugin->dependencies = array(
     'theme_boost' => 2019111800,
     'tool_leeloolxp_sync' => 2019062701,
