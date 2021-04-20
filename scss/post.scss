@@ -3377,9 +3377,9 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     color: $dark_overlay_text_color !important;
 }
 .coursebox:not(.span12) .image_wrap {
-    margin: -15px -15px 0 !important;
-    min-width: calc(100% + 30px);
-    height: 350px;
+    margin: 0 0 0!important;
+    min-width: 100%;
+    height: 240px;
     overflow: hidden;
 }
 .coursebox .progress .value {
@@ -3742,6 +3742,37 @@ aside#block-region-content .block_tb_content_boxes .tb_content_boxes .content_bo
     display: inline-block;
     width: calc(100% - 85px);
     vertical-align: top;
+    height: 55px;
+    padding: 10px 25px;
+    font-size: 16px;
+}
+.block_globalsearch .searchform fieldset {
+    display: flex;
+}
+.block_globalsearch .searchform button#searchform_button {
+    height: 55px;
+    padding: 5px 10px;
+    outline: none;
+    font-size: 0;
+}
+.block_globalsearch .searchform button#searchform_button::before {
+    content: "\f002";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 40px;
+}
+.block_globalsearch .footer a {
+    background: #a7b2da!important;
+    color: #fff!important;
+    border: none !important;
+    padding: 10px 20px;
+    font-size: .9375rem;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.block_globalsearch .footer {
+    margin: 15px 0 0;
 }
 #page-user-forum form .col-md-3 span.float-sm-right.text-nowrap {
     display: none;
@@ -3809,7 +3840,7 @@ section.block.block_tb_slider .bx-wrapper .bx-caption.bxcaption p {
 section.block.block_tb_slider .bx-wrapper .bxslide {
     position: relative;
     display: block;
-    min-width: 100%;
+    // min-width: 100%;
 }
 #page-wrapper #page #page-content section.block.block_tb_slider .card-body.p-3 .card-text {
     margin: 0 !important;
@@ -3936,6 +3967,7 @@ nav.navbar.navbar-light.bg-white.navbar-expand button.btn i.icon {
     border: 2px solid $buttons_background_color;
     font-size: 26px;
     padding: 2px 45px;
+    height: 39px;
     text-decoration: none !important;
     line-height: normal;
     color: $buttons_background_color !important;
@@ -4650,7 +4682,9 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
     }
     .usermenu .login a {
         margin-left: 15px;
-        font-size: 13px;
+        font-size: 14px;
+        height: auto;
+        padding: 5px 30px;
     }
     .mr-auto .page-context-header .page-header-headings h1 {
         font-size: 18px;
@@ -4807,7 +4841,7 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
         margin-left: 5px;
         font-size: 13px;
         padding: 2px 10px;
-        border: 1px solid #fff;
+        border: 1px solid $buttons_background_color;
     }
     nav.navbar.navbar-light.bg-white.navbar-expand button.btn i.icon {
         font-size: 20px;
@@ -4989,6 +5023,31 @@ div.owl-carousel .owl-nav button.owl-prev span {
     // max-height: 335px;
     overflow: hidden;
     margin-right: 0;
+    min-height: 300px;
+}
+div#page-wrapper nav.fixed-top.navbar ul.navbar-nav.d-none.d-md-flex .dropdown a.dropdown-toggle {
+    color: #a7b2da;
+    margin-left: 10px;
+    border: 2px solid #a7b2da;
+    padding: 6px 25px;
+    height: 39px;
+    font-size: 15px;
+    outline: none;
+    box-shadow: none;
+}
+div#page-wrapper nav.fixed-top.navbar ul.navbar-nav.d-none.d-md-flex .dropdown .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+div#page-wrapper nav.fixed-top.navbar {
+    display: flex;
+    align-items: flex-start;
+}
+div#page-wrapper nav.fixed-top.navbar ul.navbar-nav.d-none.d-md-flex {
+    order: 2;
+}
+div#page-wrapper nav.fixed-top.navbar ul.topusermenu.nav.navbar-nav.ml-auto {
+    order: 1;
 }
 .tb_headings .hd_box .hd_img img {
     min-height: 100%;
@@ -5312,6 +5371,15 @@ div.owl-carousel .owl-nav button.owl-prev span {
 }
 .block_tb_clients .card-body {
     background: white;
+}
+#page-wrapper #page #page-content section.block.block_tb_clients>.card-body {
+    max-width: calc(2000px - 2rem);
+}
+.layout_boxed #page-wrapper #page #page-content section.block.block_tb_clients>.card-body {
+    max-width: 1280px;
+}
+.layout_boxed #page-wrapper #page #page-content section.block.block_tb_clients>.card-body .card-text {
+    max-width: 100%;
 }
 .tb_clients .clients_box {
     padding: 0 10px;
@@ -6119,6 +6187,7 @@ nav.fixed-top.navbar {
 body#page-site-index nav.fixed-top.navbar {
     position: absolute;
     box-shadow: none;
+    z-index: 1;
 }
 .notloggedinuser nav.fixed-top.navbar {
     display: block;
@@ -6256,6 +6325,8 @@ div#leeloosocialdiv iframe.leeloosocial {
     position: relative;
     display: inline-block;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 #page-wrapper #page #page-content section.block ul.list .home_articles_content {
     float: left;
@@ -6263,7 +6334,19 @@ div#leeloosocialdiv iframe.leeloosocial {
     color: $text_color;
     padding: 30px 2.25rem;
     min-height: 120px;
-    margin: 0 0 30px;
+    // margin: 0 0 30px;
+}
+.block_tb_top_cats .tb_top_cats .tb_cat .tb_cat_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#page-site-index #page-wrapper #page #page-content section.block ul.list .home_articles_img {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
 }
 .courses .coursebox>.info {
     padding: 10px;
@@ -6598,8 +6681,24 @@ div.comment-message .text {
     padding: 5px;
     text-decoration: none;
 }
-
-
+aside#block-region-abovecontent section.block .no-overflow p {
+    position: relative;
+    padding-top: 56%;
+}
+aside#block-region-abovecontent section.block .no-overflow p iframe#video_discover {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none!important;
+}
+.block_globalsearch .searchform {
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+}
 
 
 
@@ -6663,6 +6762,9 @@ div.comment-message .text {
     #page-wrapper #region-main .leeloo_product .leeloo_product_image, .leeloo_subsc .leeloo_subsc_image,
     #page-wrapper #region-main .dashboard-card-deck .dashboard-card .dashboard-card-img {
         max-height: 150px;
+        height: 150px;
+    }
+    .coursebox:not(.span12) .image_wrap {
         height: 150px;
     }
     .tb_clients .clients_box .clients_img {

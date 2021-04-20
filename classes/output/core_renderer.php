@@ -499,7 +499,7 @@ class core_renderer extends \core_renderer {
         }
         // Role.
         if (!empty($opts->metadata['asotherrole'])) {
-            $role = core_text::strtolower(preg_replace('#[ ]+#', '-', trim($opts->metadata['rolename'])));
+            $role = \core_text::strtolower(preg_replace('#[ ]+#', '-', trim($opts->metadata['rolename'])));
             $usertextcontents .= html_writer::span(
                 $opts->metadata['rolename'],
                 'meta role role-' . $role
