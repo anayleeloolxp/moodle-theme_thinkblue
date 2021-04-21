@@ -467,7 +467,7 @@ $templatecontext['videos'] = $videos;
 
 $templatecontext['baseurl'] = $CFG->wwwroot;
 
-if( isset($hasblocks) && isset($aboutsidebar) && isset($statssidebar) && isset($teachersidebar) ){
+if( isset($hasblocks) || isset($aboutsidebar) || isset($statssidebar) || isset($teachersidebar) ){
     $templatecontext['showsidebar'] = true;
 }
 

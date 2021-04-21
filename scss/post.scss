@@ -3381,6 +3381,16 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
     min-width: 100%;
     height: 240px;
     overflow: hidden;
+    height: auto !important;
+    padding-top: 55%;
+    position: relative !important;
+}
+.coursebox:not(.span12) .image_wrap img.course_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 .coursebox .progress .value {
     background:$brandcolor;
@@ -4970,6 +4980,10 @@ div.owl-carousel .owl-nav button.owl-prev span {
     height: 220px;
     overflow: hidden;
     background: #eff0f5;
+    position: relative;
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: 55%;
 }
 .block_tb_m_slots .tb_m_slots .content_img img {
     width: 100%;
@@ -4979,6 +4993,16 @@ div.owl-carousel .owl-nav button.owl-prev span {
 .block_tb_m_slots .tb_m_slots .content_img a {
     display: block;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+section.block.block_tb_clients>.card-body div.owl-carousel .owl-nav button.owl-prev {
+    left: -26px;
+}
+section.block.block_tb_clients>.card-body div.owl-carousel .owl-nav button.owl-next {
+    right: -26px;
 }
 .block_tb_m_slots div.tb_m_slots .content_box .content_title {
     font-size: 20px;
@@ -5052,6 +5076,7 @@ div#page-wrapper nav.fixed-top.navbar ul.topusermenu.nav.navbar-nav.ml-auto {
 .tb_headings .hd_box .hd_img img {
     min-height: 100%;
     object-fit: cover;
+    width: 100%;
 }
 .tb_headings .hd_box .hd_title {
     padding: 30px 2.25rem 10px;
@@ -5386,7 +5411,7 @@ div#page-wrapper nav.fixed-top.navbar ul.topusermenu.nav.navbar-nav.ml-auto {
 }
 .tb_clients .clients_box .clients_img {
     background: #f5f6fa;
-    height: 80px;
+    // height: 80px;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -6761,11 +6786,11 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     #page-wrapper #region-main .block_tb_m_slots .tb_m_slots .content_img,
     #page-wrapper #region-main .leeloo_product .leeloo_product_image, .leeloo_subsc .leeloo_subsc_image,
     #page-wrapper #region-main .dashboard-card-deck .dashboard-card .dashboard-card-img {
-        max-height: 150px;
-        height: 150px;
+        max-height: 180px;
+        height: 180px;
     }
     .coursebox:not(.span12) .image_wrap {
-        height: 150px;
+        height: 180px;
     }
     .tb_clients .clients_box .clients_img {
         height: auto;
@@ -7213,4 +7238,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 .block_globalsearch .card-text {
     max-width: 900px;
     margin: 0 auto;
+}
+.block .owl-carousel .owl-dots.disabled, .block .owl-carousel .owl-nav.disabled {
+    display: unset;
 }

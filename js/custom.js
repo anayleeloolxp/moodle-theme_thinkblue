@@ -30,4 +30,20 @@ require(["jquery"], function ($) {
     $(".leelooProdcutSingModal").on("hidden.bs.modal", function () {
         location.reload();
     });
+
+    $(window).scroll(function() {
+
+        if ($(document).scrollTop() > 220) {
+            $('#back-to-top').fadeIn(300);
+        } else {
+            $('#back-to-top').fadeOut(100);
+        }
+
+    });
+
+    $('#back-to-top').click(function(event) {
+        event.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 500);
+    });
+
 });
