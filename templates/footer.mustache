@@ -119,7 +119,10 @@
             {{! If admin setting is set to show copyright. }}
             {{#footercopy }}
                 <section data-region="footer-copy" class="d-print-none footer-copy col-12">
-                    {{{ footercopyhtml }}}
+                    <!-- custom_menu -->
+                    <div class="lang_switcher_div">{{{ output.custom_menu }}}</div>
+                    <div class="footer_copy_inner">{{{ footercopyhtml }}}</div>
+                    <div class="footer_poweredby">Powered by <a target="_blank" href="https://leeloolxp.com/">Leeloo LXP</a></div>
                 </section>
             {{/footercopy }}
 
