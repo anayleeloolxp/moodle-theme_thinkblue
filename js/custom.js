@@ -5,6 +5,15 @@ require(["jquery"], function ($) {
 
             $(this).toggleClass("section_availability_close");
         });
+        $(".copyquizattempturl").click(function (e) {
+            e.preventDefault();
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(this).attr("href")).select();
+            document.execCommand("copy");
+            $temp.remove();
+            alert('Copied');
+        });
 
         $(".fa-leeloo").hide();
 

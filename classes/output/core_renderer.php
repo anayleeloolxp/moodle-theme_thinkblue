@@ -84,7 +84,16 @@ class core_renderer extends \core_renderer {
      * @return string
      */
     public function body_attributes($additionalclasses = array()) {
-        global $CFG;
+        global $CFG, $USER;
+
+        $reqstartquiz = optional_param('startattempt', 0, PARAM_RAW);
+        if( $reqstartquiz == 1 ){
+            $quizid = optional_param('id', 0, PARAM_RAW);
+            $usersession = $USER->sesskey;
+            $urltogo = $CFG->wwwroot . '/mod/quiz/startattempt.php?_qf__mod_quiz_preflight_check_form=1&cmid='.$quizid.'&sesskey='.$usersession;
+            redirect($urltogo);
+        }
+        
         require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
         if (!is_array($additionalclasses)) {
             $additionalclasses = explode(' ', $additionalclasses);
@@ -679,5 +688,77 @@ class core_renderer extends \core_renderer {
         } else {
             return 'https://leeloolxp.com/modules/mod_acadmic/images/Leeloo-lxp1.png';
         }
+    }
+
+    /**
+     * This is an optional menu that can be added to a layout by a theme. It contains the
+     * menu for the most specific thing from the settings block. E.g. Module administration.
+     *
+     * @return string
+     */
+    public function region_main_settings_menu() {
+        $context = $this->page->context;
+        $menu = new action_menu();
+
+        if ($context->contextlevel == CONTEXT_MODULE) {
+
+            $this->page->navigation->initialise();
+            $node = $this->page->navigation->find_active_node();
+            $buildmenu = false;
+            // If the settings menu has been forced then show the menu.
+            if ($this->page->is_settings_menu_forced()) {
+                $buildmenu = true;
+            } else if (!empty($node) && ($node->type == navigation_node::TYPE_ACTIVITY ||
+                            $node->type == navigation_node::TYPE_RESOURCE)) {
+
+                $items = $this->page->navbar->get_items();
+                $navbarnode = end($items);
+                // We only want to show the menu on the first page of the activity. This means
+                // the breadcrumb has no additional nodes.
+                if ($navbarnode && ($navbarnode->key === $node->key && $navbarnode->type == $node->type)) {
+                    $buildmenu = true;
+                }
+            }
+            if ($buildmenu) {
+                // Get the course admin node from the settings navigation.
+                $node = $this->page->settingsnav->find('modulesettings', navigation_node::TYPE_SETTING);
+                if ($node) {
+                    // Build an action menu based on the visible nodes from this navigation tree.
+                    $this->build_action_menu_from_navigation($menu, $node);
+                }
+            }
+
+        } else if ($context->contextlevel == CONTEXT_COURSECAT) {
+            // For course category context, show category settings menu, if we're on the course category page.
+            if ($this->page->pagetype === 'course-index-category') {
+                $node = $this->page->settingsnav->find('categorysettings', navigation_node::TYPE_CONTAINER);
+                if ($node) {
+                    // Build an action menu based on the visible nodes from this navigation tree.
+                    $this->build_action_menu_from_navigation($menu, $node);
+                }
+            }
+
+        } else {
+            $items = $this->page->navbar->get_items();
+            $navbarnode = end($items);
+
+            if ($navbarnode && ($navbarnode->key === 'participants')) {
+                $node = $this->page->settingsnav->find('users', navigation_node::TYPE_CONTAINER);
+                if ($node) {
+                    // Build an action menu based on the visible nodes from this navigation tree.
+                    $this->build_action_menu_from_navigation($menu, $node);
+                }
+
+            }
+        }
+
+        $quizid = optional_param('id', 0, PARAM_RAW);
+        $text = get_string('copyquizattempturl', 'theme_thinkblue');
+        $url = new moodle_url('/mod/quiz/view.php', array('id' => $quizid,'startattempt' => 1));
+        $link = new action_link($url, $text, null, null, new pix_icon('t/copy', $text));
+        $link->add_class('copyquizattempturl');
+        $menu->add_secondary_action($link);
+
+        return $this->render($menu);
     }
 }
