@@ -752,12 +752,14 @@ class core_renderer extends \core_renderer {
             }
         }
 
-        $quizid = optional_param('id', 0, PARAM_RAW);
-        $text = get_string('copyquizattempturl', 'theme_thinkblue');
-        $url = new moodle_url('/mod/quiz/view.php', array('id' => $quizid,'startattempt' => 1));
-        $link = new action_link($url, $text, null, null, new pix_icon('t/copy', $text));
-        $link->add_class('copyquizattempturl');
-        $menu->add_secondary_action($link);
+        if ($this->page->bodyid == 'page-mod-quiz-view') {
+            $quizid = optional_param('id', 0, PARAM_RAW);
+            $text = get_string('copyquizattempturl', 'theme_thinkblue');
+            $url = new moodle_url('/mod/quiz/view.php', array('id' => $quizid,'startattempt' => 1));
+            $link = new action_link($url, $text, null, null, new pix_icon('t/copy', $text));
+            $link->add_class('copyquizattempturl');
+            $menu->add_secondary_action($link);
+        }
 
         return $this->render($menu);
     }
