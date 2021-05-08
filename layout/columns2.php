@@ -73,14 +73,26 @@ if (!isset($USER->id) && isset($USER->id) == '') {
     }
 }
 
-if (isset($leeloosettings->general_settings->layouttype) && isset($leeloosettings->general_settings->layouttype) != '') {
-    if (@$leeloosettings->general_settings->layouttype == 'boxed') {
-        $extraclasses[] = 'layout_boxed';
+if ($PAGE->pagetype == 'site-index') {
+    if (isset($leeloosettings->general_settings->homelayouttype) && isset($leeloosettings->general_settings->homelayouttype) != '') {
+        if (@$leeloosettings->general_settings->homelayouttype == 'boxed') {
+            $extraclasses[] = 'layout_boxed';
+        } else {
+            $extraclasses[] = 'layout_fullwidth';
+        }
     } else {
         $extraclasses[] = 'layout_fullwidth';
     }
-} else {
-    $extraclasses[] = 'layout_fullwidth';
+}else{
+    if (isset($leeloosettings->general_settings->layouttype) && isset($leeloosettings->general_settings->layouttype) != '') {
+        if (@$leeloosettings->general_settings->layouttype == 'boxed') {
+            $extraclasses[] = 'layout_boxed';
+        } else {
+            $extraclasses[] = 'layout_fullwidth';
+        }
+    } else {
+        $extraclasses[] = 'layout_fullwidth';
+    }
 }
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
