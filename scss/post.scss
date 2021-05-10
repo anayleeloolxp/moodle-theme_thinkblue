@@ -6009,7 +6009,7 @@ mod-cont h3 small {
     padding-left: 10px;
     border: none;
 }
-.main-right-section .block.block_tb_course_nav .section-default>.module-navigation-section-heading a::after {
+.main-right-section .block.block_tb_course_nav .section-default>.module-navigation-section-heading a[data-toggle="collapse"]::after {
     content: "";
     width: 10px;
     height: 10px;
@@ -7420,4 +7420,6 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     border: none !important;
     margin: 0 !important;
 }
-
+.course-content .section-summary .section-title a {
+    color: $headings_color;
+}
