@@ -5010,7 +5010,7 @@ body#page-site-index aside#block-region-content .block .card-body h5.card-title 
     font-size: 25px;
     margin: 0 0 20px;
 }
-div.owl-carousel .owl-nav button.owl-next, div.owl-carousel .owl-nav button.owl-prev {
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
     width: 45px;
     height: 45px;
     background: $owlnavbtnbackground !important;
@@ -5024,29 +5024,29 @@ div.owl-carousel .owl-nav button.owl-next, div.owl-carousel .owl-nav button.owl-
     outline: none;
     box-shadow: 1px 2px 3px #ccc;
 }
-div.owl-carousel .owl-nav button.owl-prev {
+.owl-carousel .owl-nav button.owl-prev {
     left: -20px;
 }
-div.owl-carousel .owl-nav button.owl-next {
+.owl-carousel .owl-nav button.owl-next {
     right: -20px;
 }
-.block_tb_m_slots div.owl-carousel .owl-nav button.owl-next,
-.block_tb_m_slots div.owl-carousel .owl-nav button.owl-prev,
-.block_tb_f_courses div.owl-carousel .owl-nav button.owl-next,
-.block_tb_f_courses div.owl-carousel .owl-nav button.owl-prev,
-.block_tb_a_courses div.owl-carousel .owl-nav button.owl-next,
-.block_tb_a_courses div.owl-carousel .owl-nav button.owl-prev {
+.block_tb_m_slots .owl-carousel .owl-nav button.owl-next,
+.block_tb_m_slots .owl-carousel .owl-nav button.owl-prev,
+.block_tb_f_courses .owl-carousel .owl-nav button.owl-next,
+.block_tb_f_courses .owl-carousel .owl-nav button.owl-prev,
+.block_tb_a_courses .owl-carousel .owl-nav button.owl-next,
+.block_tb_a_courses .owl-carousel .owl-nav button.owl-prev {
     top: calc(50% - 0px);
 }
-div.owl-carousel .owl-nav button.owl-next span,
-div.owl-carousel .owl-nav button.owl-prev span {
+.owl-carousel .owl-nav button.owl-next span,
+.owl-carousel .owl-nav button.owl-prev span {
     position: relative;
     top: -3px;
 }
-div.owl-carousel .owl-nav button.owl-prev span {
+.owl-carousel .owl-nav button.owl-prev span {
     left: -5px;
 }
-div.owl-carousel .owl-nav button.owl-next span {
+.owl-carousel .owl-nav button.owl-next span {
     right: -5px;
 }
 
@@ -5082,10 +5082,10 @@ div.owl-carousel .owl-nav button.owl-next span {
     left: 0;
     width: 100%;
 }
-section.block.block_tb_clients>.card-body div.owl-carousel .owl-nav button.owl-prev {
+section.block.block_tb_clients>.card-body .owl-carousel .owl-nav button.owl-prev {
     left: -35px;
 }
-section.block.block_tb_clients>.card-body div.owl-carousel .owl-nav button.owl-next {
+section.block.block_tb_clients>.card-body .owl-carousel .owl-nav button.owl-next {
     right: -35px;
 }
 .block_tb_m_slots div.tb_m_slots .content_box .content_title {
@@ -5209,10 +5209,13 @@ div#page-wrapper nav.fixed-top.navbar ul.topusermenu.nav.navbar-nav.ml-auto {
     margin: 10px auto 0;
 }
 .tb_headings.owl-theme.owl-carousel .owl-nav button.owl-next,
-.tb_headings.owl-theme .owl-nav button.owl-prev {
+.tb_headings.owl-theme .owl-nav button.owl-prev,
+.lastentrylist.owl-theme.owl-carousel .owl-nav button.owl-next,
+.lastentrylist.owl-theme .owl-nav button.owl-prev {
     position: static;
 }
-.tb_headings.owl-theme .owl-nav {
+.tb_headings.owl-theme .owl-nav,
+.lastentrylist.owl-theme .owl-nav {
     position: absolute;
     bottom: 30px;
     right: 30px;
@@ -7180,7 +7183,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     #page-login-signup #page-wrapper #region-main .card-body form, body#page-login-index .card-body {
         padding: 20px;
     }
-    div.owl-carousel .owl-nav button.owl-next, div.owl-carousel .owl-nav button.owl-prev {
+    .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
         width: 35px;
         height: 35px;
         font-size: 35px;
@@ -7252,7 +7255,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     .tb_headings .hd_box .hd_title, .tb_headings .hd_box .hd_des, .tb_headings .hd_box .hd_link {
         width: 100%;
     }
-    .tb_headings.owl-theme .owl-nav {
+    .tb_headings.owl-theme .owl-nav, .lastentrylist.owl-theme .owl-nav {
         position: static;
     }
     .block_tb_f_courses .coursebox.list .course_image_embed {
