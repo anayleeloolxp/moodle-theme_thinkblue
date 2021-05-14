@@ -35,6 +35,7 @@ use navigation_node;
 use pix_icon;
 use single_button;
 use stdClass;
+use user_picture;
 
 defined('MOODLE_INTERNAL') || die;
 /**
@@ -187,6 +188,23 @@ class core_renderer extends \core_renderer {
                 $header->pageheadingbutton = $this->single_button($url, get_string('editmyprofile', 'core'));
             }
         }
+
+        if( $USER->id && !is_siteadmin($USER) ){
+            global $PAGE, $DB;
+            $header->showsrm = true;
+
+            $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
+            $src = $userpicture->get_url($PAGE);
+            $header->avatar = $src;   
+            $header->fullnameuser = fullname($USER);
+            
+            $header->coinimg = new moodle_url('/theme/thinkblue/img/coin.png');
+            $header->coins = '1372';
+            $header->diamondimg = new moodle_url('/theme/thinkblue/img/diamond.png');
+            $header->diamonds = '481';
+
+        }
+
         // MODIFICATION END.
         /* ORIGINAL START
         $header->pageheadingbutton = $this->page_heading_button();

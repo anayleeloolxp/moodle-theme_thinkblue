@@ -35,6 +35,76 @@
 }}
 
 <header id="page-header" class="row">
+    {{#showsrm}}
+    <div class="srm-top-team-div">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="user_detl_left">
+                    <div class="user_detl_img">
+                        <div class="user_img">
+                                <img src="{{{avatar}}}" class="img-thumbnail img-circle thumb96 ">
+                        </div>
+                    </div>
+                    <div class="user_detl_cont">
+                        <div class="user_detl_cont_inn">
+                            <h4>{{{fullnameuser}}}</h4>
+                            <!--<p>Dev</p>-->
+                        </div> 
+                    </div>
+                    <!--<div class="user_detl_cont">
+                        <div class="user_detl_cont_inn">
+                            <label>Select Theme</label>
+                            <select class="theme_select_cls" id="theme_select_id">
+                                <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=light">Light</option>
+                                <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=dark" selected="selected">Dark</option>
+                            </select>
+                        </div> 
+                    </div>-->
+                </div>
+            </div>
+            <div class="col-lg-9">
+
+                <div class="srm-top-right-head">
+                    <div class="col-srm">
+                        <div class="srm-top-left-div srm-top-left-div-first">
+                            <span class="round-span">998</span>
+                            <span class="box-span">8038<small>/3000</small></span>
+                            <!-- <span class="box-icn-span">
+                                <img src="https://leeloolxp.com/moodle-plugins-testing/uploads/logo_32.png">
+                            </span> -->
+                        </div>
+                    </div>
+
+                    <div class="col-srm">
+                        <div class="srm-top-left-div srm-top-left-div-second">
+                            <span class="round-span">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </span>
+                            <span class="box-span">{{{coins}}}</span>
+                            <span class="box-icn-span">
+                                <img src="{{{coinimg}}}">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-srm">
+                        <div class="srm-top-left-div srm-top-left-div-third">
+                            <span class="round-span">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </span>
+                            <span class="box-span">{{{diamonds}}}</span>
+                            <span class="box-icn-span">
+                                <img src="{{{diamondimg}}}">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{/showsrm}}
+
     <div class="col-12 pt-3 pb-3">
         <div class="card {{^contextheader}}border-0 bg-transparent{{/contextheader}}">
             <div class="card-body {{^contextheader}}p-2{{/contextheader}}">

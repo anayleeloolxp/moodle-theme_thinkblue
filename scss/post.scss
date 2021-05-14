@@ -7423,3 +7423,151 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 .course-content .section-summary .section-title a {
     color: $headings_color;
 }
+/* game header*/
+.srm-top-team-div {
+    padding: 15px;
+    width: 100%;
+}
+.srm-top-team-div .user_detl_img {
+    max-width: inherit;
+    width: auto;
+}
+.srm-top-team-div .user_detl_img .user_img {
+    width: 80px;
+    height: 80px;
+}
+.srm-top-team-div .user_detl_cont h4 {
+    font-weight: 600;
+}
+.srm-top-left-div {
+    position: relative;
+    display: flex;
+    align-items: center;
+	width: 240px;
+}
+.srm-top-left-div span.round-span {
+    background: #dbe1eb;
+    width: 80px;
+    height: 80px;
+    display: inline-grid;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #050709;
+    font-weight: 900;
+    font-size: 30px;
+	position: relative;
+    z-index: 1;
+}
+.srm-top-left-div span.box-span {
+    background: #dbe1eb;
+    display: inline-block;
+    padding: 10px 10px;
+    color: #050709;
+    font-weight: 900;
+    font-size: 22px;
+	position: relative;
+    width: calc(100% - 100px);
+	margin-left: -10px;
+}
+.srm-top-left-div span.box-icn-span {
+    position: absolute;
+    right: -30px;
+}
+.srm-top-left-div span.box-span::before {
+    content: "";
+    border-top: 53px solid #dbe1eb;
+    border-left: 0px solid #dbe1eb;
+    border-right: 30px solid transparent;
+    position: absolute;
+    right: -30px;
+    top: 0;
+}
+.srm-top-left-div span.box-span small {
+    font-size: 100%;
+    color: #737879;
+}
+.user_detl_top.user_detl_head .user_detl_top_right {
+    margin: 0;
+    color: #737879;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.user_detl_top.user_detl_head .user_detl_top_left img {
+    filter: contrast(0.5);
+    max-width: 50px;
+	display: inline-block;
+}
+.user_detl_top.user_detl_head .user_detl_top_left {
+    text-align: right;
+}
+.user_detl_top.user_detl_head {
+    margin: 0 0 20px;
+}
+.user_detl_top_right {
+    color: #60707d;
+    text-align: left;
+}
+.user_detl_top_left {
+    color: black;
+    text-align: right;
+}
+.user_detl_top_left {
+    color: #050709;
+    font-weight: 900;
+    font-size: 16px;
+}
+.srm-top-right-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+.srm-top-right-head .col-srm {
+    padding: 0 10px;
+}
+.user_detl_left {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.user_detl_img {
+	width: 210px;
+	/* max-width: 35%; */
+}
+
+.user_detl_cont {
+	width: calc(100% - 210px);
+	/* max-width: 65%; */
+	padding-left: 10px;
+}
+
+.user_detl_img .user_img img {
+	width: 100% !important;
+	height: auto !important;
+	max-height: 210px;
+	border: 2px solid #b08aff;
+    border-radius: 50%;
+}
+
+.user_detl_cont h4 {
+	color: #353535;
+	margin: 0px 0 5px;
+	font-weight: 800;
+	font-size: 22px;
+}
+.srm-top-team-div .user_detl_cont {
+    width: calc(100% - 80px);
+}
+.user_detl_cont p {
+	color: #6c6c6c;
+	font-weight: 500;
+	font-size: 15px;
+}
+.srm-top-left-div span.box-icn-span img {
+    max-width: 100px;
+}
+/* game header end*/
