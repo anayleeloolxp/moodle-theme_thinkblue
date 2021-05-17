@@ -43,88 +43,9 @@
                 {{{ output.course_footer }}}
             </div>
 
-            {{! If admin setting is set to show stats. }}
-            {{#footerstats }}
-                {{! Add blocks to the first footer column.}}
-                <section data-region="footer-stats" class="d-print-none footer-stats col-12">
-                    {{{ footerstatshtml }}}
-                </section>
-            {{/footerstats }}
+            {{{footerhtml}}}
 
-            {{! If admin setting is set to one footer column. }}
-            {{#footerblock1columns }}
-                {{! Add blocks to the first footer column.}}
-                <section data-region="footer-left" class="d-print-none col-12">
-                    {{{ footerleftblocks }}}
-                </section>
-            {{/footerblock1columns }}
-
-            {{! If admin setting is set to two footer columns. }}
-            {{#footerblock2columns }}
-                {{! The layout is 2 columns on large screens. For medium and small screens it is better to display just 1 column.}}
-                {{! Add blocks to the first footer column.}}
-                <section data-region="footer-left" class="d-print-none col-12 col-lg-6">
-                    {{{ footerleftblocks }}}
-                </section>
-
-                {{! Add blocks to the third footer column.}}
-                <section data-region="footer-right" class="d-print-none col-12 col-lg-6">
-                    {{{ footerrightblocks }}}
-                </section>
-            {{/footerblock2columns }}
-
-            {{! If admin setting is set to three footer columns. }}
-            {{#footerblock3columns }}
-                {{! The layout is 3 columns on large screens. For medium and small screens it is better to display just 1 column.}}
-                {{! Add blocks to the first footer column.}}
-                <section data-region="footer-left" class="d-print-none col-12 col-lg-4">
-                    {{{ footerleftblocks }}}
-                </section>
-
-                {{! Add blocks to the second footer column.}}
-                <section data-region="footer-middle" class="d-print-none col-12 col-lg-4">
-                    {{{ footermiddleblocks }}}
-                </section>
-
-                {{! Add blocks to the third footer column.}}
-                <section data-region="footer-right" class="d-print-none col-12 col-lg-4">
-                    {{{ footerrightblocks }}}
-                </section>
-            {{/footerblock3columns }}
-
-            {{! If admin setting is set to three footer columns. }}
-            {{#footerblock4columns }}
-                {{! The layout is 3 columns on large screens. For medium and small screens it is better to display just 1 column.}}
-                {{! Add blocks to the first footer column.}}
-                <section data-region="footer-left" class="d-print-none col-12 col-lg-3">
-                    {{{ footerleftblocks }}}
-                </section>
-
-                {{! Add blocks to the second footer column.}}
-                <section data-region="footer-middle-l" class="d-print-none col-12 col-lg-3">
-                    {{{ footermiddlelblocks }}}
-                </section>
-
-                {{! Add blocks to the second footer column.}}
-                <section data-region="footer-middle-r" class="d-print-none col-12 col-lg-3">
-                    {{{ footermiddlerblocks }}}
-                </section>
-
-                {{! Add blocks to the third footer column.}}
-                <section data-region="footer-right" class="d-print-none col-12 col-lg-3">
-                    {{{ footerrightblocks }}}
-                </section>
-            {{/footerblock4columns }}
-
-            {{! If admin setting is set to show copyright. }}
-            {{#footercopy }}
-                <section data-region="footer-copy" class="d-print-none footer-copy col-12">
-                    <!-- custom_menu -->
-                    <div class="lang_switcher_div">{{{ output.custom_menu }}}</div>
-                    <div class="footer_copy_inner">{{{ footercopyhtml }}}</div>
-                    <div class="footer_poweredby">Powered by <a target="_blank" href="https://leeloolxp.com/">Leeloo LXP</a></div>
-                </section>
-            {{/footercopy }}
+            <div id="lang_hide">{{{ output.custom_menu }}}</div>
 
         </div>
     </div>

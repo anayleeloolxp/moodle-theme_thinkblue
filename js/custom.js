@@ -1,5 +1,9 @@
 require(["jquery"], function ($) {
     $(document).ready(function () {
+
+        $('.lang_switcher_div').html($('#lang_hide').html());
+        $('#lang_hide').remove();
+
         $(".section_availability").click(function () {
             $(this).parent(".content").find("ul.section").slideToggle();
 
