@@ -7433,8 +7433,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     width: auto;
 }
 .srm-top-team-div .user_detl_img .user_img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
 }
 .srm-top-team-div .user_detl_cont h4 {
     font-weight: 600;
@@ -7443,12 +7442,12 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     position: relative;
     display: flex;
     align-items: center;
-	width: 240px;
+	width: 200px;
 }
 .srm-top-left-div span.round-span {
     background: #dbe1eb;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     display: inline-grid;
     flex-wrap: wrap;
     align-items: center;
@@ -7463,21 +7462,22 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 .srm-top-left-div span.box-span {
     background: #dbe1eb;
     display: inline-block;
-    padding: 10px 10px;
+    padding: 7px 15px;
     color: #050709;
     font-weight: 900;
-    font-size: 22px;
+    font-size: 16px;
 	position: relative;
     width: calc(100% - 100px);
 	margin-left: -10px;
 }
 .srm-top-left-div span.box-icn-span {
     position: absolute;
-    right: -30px;
+    right: 0px;
+    top: -10px;
 }
 .srm-top-left-div span.box-span::before {
     content: "";
-    border-top: 53px solid #dbe1eb;
+    border-top: 38px solid #dbe1eb;
     border-left: 0px solid #dbe1eb;
     border-right: 30px solid transparent;
     position: absolute;
@@ -7549,7 +7549,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 	width: 100% !important;
 	height: auto !important;
 	max-height: 210px;
-	border: 2px solid #b08aff;
+	border: 2px solid $dropdownitemcolor;
     border-radius: 50%;
 }
 
@@ -7568,6 +7568,6 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 	font-size: 15px;
 }
 .srm-top-left-div span.box-icn-span img {
-    max-width: 100px;
+    max-width: 70px;
 }
 /* game header end*/

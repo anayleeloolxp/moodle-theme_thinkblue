@@ -198,9 +198,9 @@ class core_renderer extends \core_renderer {
             $header->avatar = $src;   
             $header->fullnameuser = fullname($USER);
             
-            $header->coinimg = new moodle_url('/theme/thinkblue/img/coin.png');
+            $header->coinimg = new moodle_url('/theme/thinkblue/img/Coin.png');
             $header->coins = '1372';
-            $header->diamondimg = new moodle_url('/theme/thinkblue/img/diamond.png');
+            $header->diamondimg = new moodle_url('/theme/thinkblue/img/Jade.png');
             $header->diamonds = '481';
 
         }
