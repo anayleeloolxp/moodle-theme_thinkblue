@@ -454,7 +454,7 @@ foreach ($modinfo->sections as $section) {
 $videos = 0;
 
 foreach ($modinfo->cms as $cms) {
-    if ($cms->modname == 'leeloolxp_vimeo') {
+    if ($cms->modname == 'leeloolxpvimeo') {
         $videos += 1;
     }
 }
