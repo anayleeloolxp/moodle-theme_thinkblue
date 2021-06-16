@@ -869,16 +869,6 @@ a[href^="mailto"]::before {
     }
 }
 
-/*
- * Footnote.
- */
-.footnote {
-    min-height: 50px;
-    border-top: 1px solid #fff;
-    flex-shrink: 0;
-    background: #eee !important;
-}
-
 /*------------------------------------
   Additional Elements
   -------------------------------------*/
@@ -5780,6 +5770,10 @@ div.tb_faq {
     width: calc(100vw - 100px);
     transform: translate(-50%,0);
     z-index: -1;
+}
+.footnote{
+    background: $copyrightbackground !important;
+    color: $footercolor !important;
 }
 .block_tb_slider .bx-wrapper .bx-controls-direction a {
     width: auto;
