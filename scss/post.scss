@@ -3223,6 +3223,27 @@ body#page-site-index div#page div#page-content section#region-main .contentwitho
 .coursebox .categorypath {
     position: static !important;
 }
+.block_tb_courses .tb_course_sin.emstyle_embeded.style_light::after {
+    background: $light_overlay_background_color;
+    opacity: .6;
+}
+.block_tb_courses .tb_course_sin.style_light .coursetitle a, .block_tb_courses .tb_course_sin.style_light .coursedesc {
+    color: $light_overlay_text_color !important;
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded.style_dark::after{
+    background: $dark_overlay_background_color;
+    opacity: .6;
+}
+.block_tb_courses .tb_course_sin.style_dark .coursetitle a, .block_tb_courses .tb_course_sin.style_dark .coursedesc {
+    color: $dark_overlay_text_color !important;
+}
+.block_tb_courses .tb_course_sin.style_dark {
+    background-color: $dark_overlay_background_color;
+}
+.block_tb_courses .tb_course_sin.style_light {
+    background-color: $light_overlay_background_color;
+}
+
 .coursebox.grid {
     padding: 15px 15px 30px !important;
     margin: 10px !important;
