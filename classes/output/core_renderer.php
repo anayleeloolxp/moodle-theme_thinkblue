@@ -36,6 +36,7 @@ use pix_icon;
 use single_button;
 use stdClass;
 use user_picture;
+use curl;
 
 defined('MOODLE_INTERNAL') || die;
 /**
@@ -190,6 +191,7 @@ class core_renderer extends \core_renderer {
         }
 
         if( $USER->id && !is_siteadmin($USER) ){
+            $gamificationdata = $this->gamification_data( base64_encode($USER->email) );
             global $PAGE, $DB;
             $header->showsrm = true;
 
@@ -197,7 +199,29 @@ class core_renderer extends \core_renderer {
             $src = $userpicture->get_url($PAGE);
             $header->avatar = $src;   
             $header->fullnameuser = fullname($USER);
+
+            $header->points = $gamificationdata->total_points;
+            $header->current_level = $gamificationdata->current_level;
+            $header->next_level_points = $gamificationdata->next_level_points;
             
+            $header->currencyhtml = '';
+
+            if( !empty($gamificationdata->currency_data) ){
+                foreach($gamificationdata->currency_data as $currency){
+                    $header->currencyhtml .= '<div class="col-srm">
+                    <div class="srm-top-left-div srm-top-left-div-third">
+                        <span class="round-span">
+                            <img src="'.$currency->image.'">
+                        </span>
+                        <span class="box-span">'.$currency->totalcount.'</span>
+                        <span class="box-icn-span">
+                            <!--<img src="'.$currency->image.'">-->
+                        </span>
+                    </div>
+                </div>';
+                }
+            }
+
             $header->coinimg = new moodle_url('/theme/thinkblue/img/Coin.png');
             $header->coins = '1372';
             $header->diamondimg = new moodle_url('/theme/thinkblue/img/Jade.png');
@@ -780,5 +804,65 @@ class core_renderer extends \core_renderer {
         }
 
         return $this->render($menu);
+    }
+
+    /**
+     * Gamification data
+     *
+     * @param string $email email
+     * @return string HTML fragment
+     */
+    public function gamification_data($baseemail) {
+        global $CFG;
+        require_once($CFG->dirroot . '/lib/filelib.php');
+        $leeloolxplicense = get_config('theme_thinkblue')->license;
+    
+        $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
+        $postdata = array('license_key' => $leeloolxplicense);
+    
+        $curl = new curl;
+    
+        $options = array(
+            'CURLOPT_RETURNTRANSFER' => true,
+            'CURLOPT_HEADER' => false,
+            'CURLOPT_POST' => count($postdata),
+        );
+    
+        if (!$output = $curl->post($url, $postdata, $options)) {
+            $outputarr = json_encode(array());
+            $resposedata = json_decode($outputarr);
+            return $resposedata;
+        }
+    
+        $infoleeloolxp = json_decode($output);
+    
+        if ($infoleeloolxp->status != 'false') {
+            $leeloolxpurl = $infoleeloolxp->data->install_url;
+        } else {
+            $outputarr = json_encode(array());
+            $resposedata = json_decode($outputarr);
+            return $resposedata;
+        }
+    
+        $url = $leeloolxpurl . '/admin/Sync_moodle_course/get_user_gam_data?user_email=' . $baseemail;
+    
+        $postdata = array('user_email' => $baseemail);
+    
+        $curl = new curl;
+    
+        $options = array(
+            'CURLOPT_RETURNTRANSFER' => true,
+            'CURLOPT_HEADER' => false,
+            'CURLOPT_POST' => count($postdata),
+        );
+    
+        if (!$output = $curl->post($url, $postdata, $options)) {
+            $outputarr = json_encode(array());
+            $resposedata = json_decode($outputarr);
+            return $resposedata;
+        }
+    
+        $resposedata = json_decode($output);
+        return $resposedata;
     }
 }
