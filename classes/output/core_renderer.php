@@ -129,6 +129,54 @@ class core_renderer extends \core_renderer {
         }
     }
     /**
+     * Gamified header.
+     *
+     * Returns the html.
+     *
+     * @return moodle_url The moodle_url for the favicon
+     */
+    public function gamification_header() {
+        global $USER;
+        $gamheader = new stdClass();
+        $html = '';
+        if( $USER->id && !is_siteadmin($USER) ){
+            $gamificationdata = $this->gamification_data( base64_encode($USER->email) );
+            global $PAGE, $DB;
+            $gamheader->showsrm = true;
+
+            $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
+            $src = $userpicture->get_url($PAGE);
+            $gamheader->avatar = $src;   
+            $gamheader->fullnameuser = fullname($USER);
+
+            $gamheader->points = $gamificationdata->total_points;
+            $gamheader->current_level = $gamificationdata->current_level;
+            $gamheader->next_level_points = $gamificationdata->next_level_points;
+            
+            $gamheader->currencyhtml = '';
+
+            if( !empty($gamificationdata->currency_data) ){
+                foreach($gamificationdata->currency_data as $currency){
+                    $gamheader->currencyhtml .= '<div class="col-srm">
+                    <div class="srm-top-left-div srm-top-left-div-third">
+                        <span class="round-span">
+                            <img src="'.$currency->image.'">
+                        </span>
+                        <span class="box-span">'.$currency->totalcount.'</span>
+                        <span class="box-icn-span">
+                            <!--<img src="'.$currency->image.'">-->
+                        </span>
+                    </div>
+                </div>';
+                }
+            }
+
+            $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
+
+        }
+        return $html;
+    }
+    /**
      * Override to display switched role information beneath the course header instead of the user menu.
      * We change this because the switch role function is course related and therefore it should be placed in the course context.
      *
@@ -188,45 +236,6 @@ class core_renderer extends \core_renderer {
                     'returnto' => 'profile'));
                 $header->pageheadingbutton = $this->single_button($url, get_string('editmyprofile', 'core'));
             }
-        }
-
-        if( $USER->id && !is_siteadmin($USER) ){
-            $gamificationdata = $this->gamification_data( base64_encode($USER->email) );
-            global $PAGE, $DB;
-            $header->showsrm = true;
-
-            $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
-            $src = $userpicture->get_url($PAGE);
-            $header->avatar = $src;   
-            $header->fullnameuser = fullname($USER);
-
-            $header->points = $gamificationdata->total_points;
-            $header->current_level = $gamificationdata->current_level;
-            $header->next_level_points = $gamificationdata->next_level_points;
-            
-            $header->currencyhtml = '';
-
-            if( !empty($gamificationdata->currency_data) ){
-                foreach($gamificationdata->currency_data as $currency){
-                    $header->currencyhtml .= '<div class="col-srm">
-                    <div class="srm-top-left-div srm-top-left-div-third">
-                        <span class="round-span">
-                            <img src="'.$currency->image.'">
-                        </span>
-                        <span class="box-span">'.$currency->totalcount.'</span>
-                        <span class="box-icn-span">
-                            <!--<img src="'.$currency->image.'">-->
-                        </span>
-                    </div>
-                </div>';
-                }
-            }
-
-            $header->coinimg = new moodle_url('/theme/thinkblue/img/Coin.png');
-            $header->coins = '1372';
-            $header->diamondimg = new moodle_url('/theme/thinkblue/img/Jade.png');
-            $header->diamonds = '481';
-
         }
 
         // MODIFICATION END.
@@ -829,8 +838,7 @@ class core_renderer extends \core_renderer {
         );
     
         if (!$output = $curl->post($url, $postdata, $options)) {
-            $outputarr = json_encode(array());
-            $resposedata = json_decode($outputarr);
+            $resposedata = new stdClass();
             return $resposedata;
         }
     
@@ -839,8 +847,7 @@ class core_renderer extends \core_renderer {
         if ($infoleeloolxp->status != 'false') {
             $leeloolxpurl = $infoleeloolxp->data->install_url;
         } else {
-            $outputarr = json_encode(array());
-            $resposedata = json_decode($outputarr);
+            $resposedata = new stdClass();
             return $resposedata;
         }
     
@@ -857,8 +864,7 @@ class core_renderer extends \core_renderer {
         );
     
         if (!$output = $curl->post($url, $postdata, $options)) {
-            $outputarr = json_encode(array());
-            $resposedata = json_decode($outputarr);
+            $resposedata = new stdClass();
             return $resposedata;
         }
     

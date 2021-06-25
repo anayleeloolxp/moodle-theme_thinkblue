@@ -1,0 +1,80 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_thinkblue/game_header
+
+    This template renders the header.
+
+    Example context (json):
+    {
+        "contextheader": "context_header_html",
+        "settingsmenu": "settings_html",
+        "hasnavbar": false,
+        "navbar": "navbar_if_available",
+        "courseheader": "course_header_html"
+    }
+
+    Page header.
+}}
+{{! MODIFICATION:
+    * Changed the order of the settingsmenu item.
+}}
+
+{{#showsrm}}
+<div class="srm-top-team-div">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="user_detl_left">
+                <div class="user_detl_img">
+                    <div class="user_img">
+                            <img src="{{{avatar}}}" class="img-thumbnail img-circle thumb96 ">
+                    </div>
+                </div>
+                <div class="user_detl_cont">
+                    <div class="user_detl_cont_inn">
+                        <h4>{{{fullnameuser}}}</h4>
+                        <!--<p>Dev</p>-->
+                    </div> 
+                </div>
+                <!--<div class="user_detl_cont">
+                    <div class="user_detl_cont_inn">
+                        <label>Select Theme</label>
+                        <select class="theme_select_cls" id="theme_select_id">
+                            <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=light">Light</option>
+                            <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=dark" selected="selected">Dark</option>
+                        </select>
+                    </div> 
+                </div>-->
+            </div>
+        </div>
+        <div class="col-lg-9">
+
+            <div class="srm-top-right-head">
+                <div class="col-srm">
+                    <div class="srm-top-left-div srm-top-left-div-first">
+                        <span class="round-span">{{{current_level}}}</span>
+                        <span class="box-span">{{{points}}}<small>/{{{next_level_points}}}</small></span>
+                    </div>
+                </div>
+
+                {{{currencyhtml}}}
+            </div>
+
+        </div>
+    </div>
+</div>
+{{/showsrm}}
