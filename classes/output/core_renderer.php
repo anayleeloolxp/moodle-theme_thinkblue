@@ -139,8 +139,10 @@ class core_renderer extends \core_renderer {
         global $USER;
         $gamheader = new stdClass();
         $html = '';
-        if( $USER->id && !is_siteadmin($USER) ){
-            $gamificationdata = $this->gamification_data( base64_encode($USER->email) );
+        $gamificationdata = $this->gamification_data( base64_encode($USER->email) );
+
+        if( $USER->id && !is_siteadmin($USER) && count((array)($gamificationdata)) ){
+            
             global $PAGE, $DB;
             $gamheader->showsrm = true;
 
@@ -822,53 +824,25 @@ class core_renderer extends \core_renderer {
      * @return string HTML fragment
      */
     public function gamification_data($baseemail) {
-        global $CFG;
-        require_once($CFG->dirroot . '/lib/filelib.php');
-        $leeloolxplicense = get_config('theme_thinkblue')->license;
-    
-        $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
-        $postdata = array('license_key' => $leeloolxplicense);
-    
-        $curl = new curl;
-    
-        $options = array(
-            'CURLOPT_RETURNTRANSFER' => true,
-            'CURLOPT_HEADER' => false,
-            'CURLOPT_POST' => count($postdata),
-        );
-    
-        if (!$output = $curl->post($url, $postdata, $options)) {
-            $resposedata = new stdClass();
-            return $resposedata;
+        global $DB, $CFG;
+
+        $email = base64_decode($baseemail);
+
+        $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
+
+        if (!empty($tb_game_points)) {
+            $resposedata = json_decode($tb_game_points->pointsdata);
+        }else{
+            require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
+            theme_thinkblue_gamisync($baseemail);
+
+            $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
+            if (!empty($tb_game_points)) {
+                $resposedata = json_decode($tb_game_points->pointsdata);
+            }else{
+                $resposedata = new stdClass();
+            }
         }
-    
-        $infoleeloolxp = json_decode($output);
-    
-        if ($infoleeloolxp->status != 'false') {
-            $leeloolxpurl = $infoleeloolxp->data->install_url;
-        } else {
-            $resposedata = new stdClass();
-            return $resposedata;
-        }
-    
-        $url = $leeloolxpurl . '/admin/Sync_moodle_course/get_user_gam_data?user_email=' . $baseemail;
-    
-        $postdata = array('user_email' => $baseemail);
-    
-        $curl = new curl;
-    
-        $options = array(
-            'CURLOPT_RETURNTRANSFER' => true,
-            'CURLOPT_HEADER' => false,
-            'CURLOPT_POST' => count($postdata),
-        );
-    
-        if (!$output = $curl->post($url, $postdata, $options)) {
-            $resposedata = new stdClass();
-            return $resposedata;
-        }
-    
-        $resposedata = json_decode($output);
         return $resposedata;
     }
 }

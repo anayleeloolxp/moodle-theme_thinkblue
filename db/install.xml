@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="theme/thinkblue/db" VERSION="20101203" COMMENT="XMLDB file for Moodle theme/thinkblue"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="tb_game_points" COMMENT="thinkblue table for game points">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
+        <FIELD NAME="useremail" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="User email"/>
+        <FIELD NAME="pointsdata" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Game points for user"/>
+		  </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

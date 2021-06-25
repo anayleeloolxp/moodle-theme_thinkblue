@@ -574,3 +574,70 @@ function updateconfthinkblue() {
     }
     set_config('settingsjson', base64_encode($output), 'theme_thinkblue');
 }
+
+/**
+ * Sync Gamification data
+ *
+ * @param string $email email
+ * @return string HTML fragment
+ */
+function theme_thinkblue_gamisync($baseemail) {
+    global $CFG, $DB;
+    require_once($CFG->dirroot . '/lib/filelib.php');
+    $leeloolxplicense = get_config('theme_thinkblue')->license;
+
+    $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
+    $postdata = array('license_key' => $leeloolxplicense);
+
+    $curl = new curl;
+
+    $options = array(
+        'CURLOPT_RETURNTRANSFER' => true,
+        'CURLOPT_HEADER' => false,
+        'CURLOPT_POST' => count($postdata),
+    );
+
+    if (!$output = $curl->post($url, $postdata, $options)) {
+        return;
+    }
+
+    $infoleeloolxp = json_decode($output);
+
+    if ($infoleeloolxp->status != 'false') {
+        $leeloolxpurl = $infoleeloolxp->data->install_url;
+    } else {
+        return;
+    }
+
+    $url = $leeloolxpurl . '/admin/Sync_moodle_course/get_user_gam_data?user_email=' . $baseemail;
+
+    $postdata = array('user_email' => $baseemail);
+
+    $curl = new curl;
+
+    $options = array(
+        'CURLOPT_RETURNTRANSFER' => true,
+        'CURLOPT_HEADER' => false,
+        'CURLOPT_POST' => count($postdata),
+    );
+
+    if (!$output = $curl->post($url, $postdata, $options)) {
+        return;
+    }
+
+    $email = base64_decode($baseemail);
+
+    $data = [
+        'useremail' => $email,
+        'pointsdata' => $output,
+    ];
+
+    $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
+
+    if (!empty($tb_game_points)) {
+        $data['id'] = $tb_game_points->id;
+        $DB->update_record('tb_game_points', $data);
+    } else {
+        $DB->insert_record('tb_game_points', $data);
+    }
+}
