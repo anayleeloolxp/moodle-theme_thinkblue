@@ -35,6 +35,38 @@ global $leeloosettings;
 /**
  * Returns the main SCSS content.
  *
+ * @param formwrapper $formwrapper The formwrapper.
+ * @param mform $mform The mform.
+ */
+function theme_thinkblue_coursemodule_standard_elements ($formwrapper, $mform){
+    $modulename = $formwrapper->get_current()->modulename;
+    
+    if ($modulename == 'quiz') {
+
+        // get_string ( 'leeloo_text' , 'theme_thinkblue' );
+
+        $mform->addElement('header', 'leeloo_fields', get_string ('leeloo_fields_lang', 'theme_thinkblue'));
+        
+        $options = array(
+            'discover' => get_string ('discover_lang', 'theme_thinkblue'),
+            'exercises' => get_string ('exercises_lang', 'theme_thinkblue'),
+            'trivias' => get_string ('trivias_lang', 'theme_thinkblue'),
+            'assessments' => get_string ('assessments_lang', 'theme_thinkblue')
+        );
+        $mform->addElement('select', 'quiztype', get_string ('quiz_type_lang', 'theme_thinkblue'), $options);
+
+        $options = array(
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+        );
+        $mform->addElement('select', 'difficulty', get_string ('difficulty_lang', 'theme_thinkblue'), $options);
+    }    
+}
+
+/**
+ * Returns the main SCSS content.
+ *
  * @param theme_config $theme The theme config object.
  * @return string
  */

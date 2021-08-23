@@ -538,7 +538,7 @@ function theme_thinkblue_coursedata($courseid) {
 /**
  * Fetch and Update Configration From L
  */
-function updateconfthinkblue() {
+function theme_thinkblue_updateconf() {
     if (!isset(get_config('theme_thinkblue')->license)) {
         return;
     }
