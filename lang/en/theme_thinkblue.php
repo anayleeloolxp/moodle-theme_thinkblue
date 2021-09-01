@@ -267,4 +267,3 @@ $string['discover_lang'] = 'Discover';
 $string['exercises_lang'] = 'Exercises/problems';
 $string['trivias_lang'] = 'Trivias';
 $string['assessments_lang'] = 'Assessments/certifications';
-$string['difficulty_lang'] = 'Difficulty';

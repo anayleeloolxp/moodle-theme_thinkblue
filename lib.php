@@ -54,13 +54,6 @@ function theme_thinkblue_coursemodule_standard_elements ($formwrapper, $mform){
             'assessments' => get_string ('assessments_lang', 'theme_thinkblue')
         );
         $mform->addElement('select', 'quiztype', get_string ('quiz_type_lang', 'theme_thinkblue'), $options);
-
-        $options = array(
-            '1' => '1',
-            '2' => '2',
-            '3' => '3',
-        );
-        $mform->addElement('select', 'difficulty', get_string ('difficulty_lang', 'theme_thinkblue'), $options);
     }    
 }
 

@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_thinkblue';
-$plugin->version = 202106251;
+$plugin->version = 2021090101;
 $plugin->release = '1.0.0';
 $plugin->requires = 2019111800;
 $plugin->maturity = MATURITY_STABLE;
