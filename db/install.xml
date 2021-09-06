@@ -9,7 +9,17 @@
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
         <FIELD NAME="useremail" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="User email"/>
         <FIELD NAME="pointsdata" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Game points for user"/>
-		  </FIELDS>
+	  </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="tb_question_diff" COMMENT="thinkblue table for question difficulty">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
+        <FIELD NAME="questionid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Question id"/>
+        <FIELD NAME="difficulty" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Question id"/>
+      </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>

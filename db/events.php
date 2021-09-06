@@ -29,4 +29,9 @@ $observers = array(
         'eventname' => '\mod_quiz\event\attempt_submitted',
         'callback' => '\theme_thinkblue\themesyncobserver::attempt_submitted',
     ),
+
+    array(
+        'eventname' => '\core\event\question_updated',
+        'callback' => '\theme_thinkblue\themesyncobserver::question_updated',
+    ),
 );

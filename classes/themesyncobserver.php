@@ -144,4 +144,28 @@ class themesyncobserver {
 
         return true;
     }
+
+    /**
+    * Triggered when course completed.
+    *
+    * @param \core\event\question_updated $event
+    */
+   public static function question_updated(\core\event\question_updated $event) {
+
+        global $DB;
+        $questionid = $event->objectid;
+        
+        $questiondata = $DB->get_record('tb_question_diff', array('questionid' => $questionid));
+        if( $questiondata ){
+            $cookiename = 'question_difficulty_'.$questionid;
+            $questiondifficulty = $_COOKIE[$cookiename];
+            $DB->execute("update {tb_question_diff} set difficulty = ? where questionid = ?", [$questiondifficulty, $questionid]);
+        }else{
+            $cookiename = 'question_difficulty_'.$questionid;
+            $questiondifficulty = $_COOKIE[$cookiename];
+            $DB->execute("INSERT INTO {tb_question_diff} (questionid, difficulty) VALUES (?, ?)", [$questionid, $questiondifficulty]);
+        }
+        return true;
+    }
+       
 }

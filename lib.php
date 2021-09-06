@@ -257,6 +257,69 @@ function theme_thinkblue_reset_app_cache() {
 }
 
 /**
+ * If setting is updated, use this callback to clear the theme_thinkblue' own application cache.
+ */
+function theme_thinkblue_before_footer() {
+
+    global $PAGE, $DB;
+
+    if (strpos($PAGE->pagetype, 'question-type-') !== false) {
+        $questionid = optional_param('id', 0, PARAM_INT);
+
+        if( $questionid != 0 ){
+
+            $questiondata = $DB->get_record('tb_question_diff', array('questionid' => $questionid));
+
+            if( $questiondata ){
+                $difficultyval = $questiondata->difficulty;
+            }else{
+                $difficultyval = 1;
+            }
+
+            $$selectedone = '';
+            $selectedtwo = '';
+            $selectedthree = '';
+
+            if( $difficultyval == 1 ){
+                $selectedone = 'selected';
+            }
+            if( $difficultyval == 2 ){
+                $selectedtwo = 'selected';
+            }
+            if( $difficultyval == 3 ){
+                $selectedthree = 'selected';
+            }
+
+            $difficulty_field = '<div id="fitem_id_difficulty" class="form-group row  fitem   "><div class="col-md-3 col-form-label d-flex pb-0 pr-md-0"><label class="d-inline word-break " for="id_difficulty">Difficulty</label><div class="ml-1 ml-md-auto d-flex align-items-center align-self-start"></div></div><div class="col-md-9 form-inline align-items-start felement" data-fieldtype="select"><select class="custom-select" name="difficulty" id="id_difficulty"><option value="1" '.$selectedone.'>1</option><option value="2" '.$selectedtwo.'>2</option><option value="3" '.$selectedthree.'>3</option></select><div class="form-control-feedback invalid-feedback" id="id_error_difficulty"></div></div></div>';
+
+            $PAGE->requires->js_init_code('require(["jquery"], function ($) {
+                $(document).ready(function () {
+
+                    function setCookie(cname, cvalue, exdays) {
+                        const d = new Date();
+                        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                        let expires = "expires="+ d.toUTCString();
+                        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                    }
+
+                    setCookie("question_difficulty_'.$questionid.'", '.$difficultyval.', 1);
+
+                    var diff_field = \''.$difficulty_field.'\';
+                    $(diff_field).insertAfter("#fitem_id_name");
+
+                    $("#id_difficulty").change(function () {
+                        var selectedValue = $(this).val();
+                        setCookie("question_difficulty_'.$questionid.'", selectedValue, 1);
+                    });
+
+                });
+            });');
+
+        }
+    }
+}
+
+/**
  * The most flexibly setting, user is typing text
  *
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
