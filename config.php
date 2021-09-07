@@ -160,7 +160,9 @@ $THEME->layouts = [
 $THEME->enable_dock = false;
 $THEME->prescsscallback = 'theme_thinkblue_get_pre_scss';
 $THEME->yuicssmodules = array();
-$THEME->rendererfactory = 'theme_overridden_renderer_factory';
+require_once($CFG->dirroot.'/local/leeloolxptrivias/renderer.php');
+$THEME->rendererfactory = 'local_leeloolxptrivias_renderer_factory';
+//$THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->requiredblocks = ' ';
 if ($leeloosettings->advanced_settings->addablockposition == 'positionnavdrawer') {
     $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
