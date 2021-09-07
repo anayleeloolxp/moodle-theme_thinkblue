@@ -260,10 +260,3 @@ $string['message'] = 'Message';
 $string['enrollnow'] = 'Enroll Now';
 $string['userenrolled'] = 'You are already Enrolled.';
 $string['copyquizattempturl'] = 'Copy attempt url';
-
-$string['leeloo_fields_lang'] = 'Additional fields';
-$string['quiz_type_lang'] = 'Quiz Type';
-$string['discover_lang'] = 'Discover';
-$string['exercises_lang'] = 'Exercises/problems';
-$string['trivias_lang'] = 'Trivias';
-$string['assessments_lang'] = 'Assessments/certifications';
