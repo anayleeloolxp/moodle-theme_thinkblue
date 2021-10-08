@@ -5928,7 +5928,7 @@ body#page-course-view-topics div#page div#page-content div#region-main-box {
     height: 100%;
 }
 .left-mod-section {
-    margin: 10px 0 0;
+    margin: 0 0;
     background: #fff;
     box-shadow: 1px 1px 2px rgba(0,0,0,.1);
 }
@@ -6188,7 +6188,7 @@ iframe.leeloo_themeframe {
     color: $text_color;
 }
 iframe#vimeoiframe {
-    float: left;
+    /*float: left;*/
 }
 .path-mod-survey #surveyform th {
     width: 50%;
@@ -7591,3 +7591,20 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     max-width: 70px;
 }
 /* game header end*/
+
+.course-content ul.topics li.section .left, .course-content ul.weeks li.section .left, .course-content ul.topics li.section .right, .course-content ul.weeks li.section .right {
+    padding: 0px 0px 0;
+    text-align: right;
+    width: auto;
+    position: relative;
+    z-index: 9;
+    right: 65px;
+}
+
+[data-region="blocks-column"] {
+    width: 25%;
+}
+#region-main-settings-menu.has-blocks, #region-main.has-blocks {
+    display: inline-block;
+    width: calc(75% - 15px);
+}
