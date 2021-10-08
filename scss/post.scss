@@ -2811,6 +2811,9 @@ body#page-course-view-topics #page-wrapper header#page-header .mr-auto .page-con
     min-height: 100%;
     background: #f7f7f7;
 }
+#page-mod-quiz-review .que.deferredfeedback .content .formulation.clearfix {
+    min-height: auto;
+}
 .path-mod-quiz #mod_quiz_navblock .qnbutton span {
     display: none;
 }
