@@ -1,6 +1,13 @@
 require(["jquery"], function ($) {
     $(document).ready(function () {
 
+        $("#page-course-view-topics ul.topics li.section").each(function(){
+            var count = $(this).find('ul.section > li').length;
+            if( count == 0 ){
+                $(this).hide();
+            }
+        });
+
         $('.lang_switcher_div').html($('#lang_hide').html());
         $('#lang_hide').remove();
 
