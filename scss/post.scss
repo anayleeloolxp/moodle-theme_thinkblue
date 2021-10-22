@@ -7586,3 +7586,15 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 .notloggedinuser .srm-top-team-div {
     display: none;
 }
+.bottom_activity_navigation {
+    background: #303030;
+}
+.bottom_activity_navigation .activity-navigation {
+    margin: 10px 0!important;
+}
+.bottom_activity_navigation #next-activity-link, .bottom_activity_navigation  #prev-activity-link {
+    background-color: transparent;
+    padding: 4px 8px;
+    border-radius: 2px;
+    color: #F5F6FA;
+}
