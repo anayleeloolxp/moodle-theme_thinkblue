@@ -923,6 +923,6 @@ class core_renderer extends \core_renderer {
         $activitynav = new \core_course\output\activity_navigation($prevmod, $nextmod, $activitylist);
         $renderer = $this->page->get_renderer('core', 'course');
         //print_r($activitynav); // can be used to match design
-        return $renderer->render($activitynav);
+        return '<div class="bottom_activity_navigation">'.$renderer->render($activitynav).'</div>';
     }
 }
