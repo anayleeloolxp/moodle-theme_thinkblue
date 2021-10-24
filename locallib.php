@@ -542,6 +542,10 @@ function theme_thinkblue_updateconf() {
     if (!isset(get_config('theme_thinkblue')->license)) {
         return;
     }
+
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/filelib.php');
+
     $leeloolxplicense = get_config('theme_thinkblue')->license;
 
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
