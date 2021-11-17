@@ -37,6 +37,7 @@ use single_button;
 use stdClass;
 use user_picture;
 use curl;
+use completion_info;
 
 defined('MOODLE_INTERNAL') || die;
 /**
@@ -136,7 +137,7 @@ class core_renderer extends \core_renderer {
      * @return moodle_url The moodle_url for the favicon
      */
     public function gamification_header() {
-        global $USER;
+        global $USER, $SITE;
         $gamheader = new stdClass();
         $html = '';
         $gamificationdata = $this->gamification_data( base64_encode($USER->email) );
@@ -154,8 +155,89 @@ class core_renderer extends \core_renderer {
             $gamheader->points = $gamificationdata->total_points;
             $gamheader->current_level = $gamificationdata->current_level;
             $gamheader->next_level_points = $gamificationdata->next_level_points;
+
+            $gamheader->get_logo_url = $this->get_logo_url();
+            $gamheader->sitename = format_string($SITE->fullname, true,
+            ['context' => context_course::instance(SITEID), "escape" => false]);
             
             $gamheader->currencyhtml = '';
+
+            $gamheader->letsgotxt = get_string('letsgo', 'theme_thinkblue');
+
+            $enrolledcourses = enrol_get_my_courses();
+
+            $enrolledcourseslist = array();
+            $count = 0;
+            foreach( $enrolledcourses as $key => $enrolledcourse ){
+                
+                $completion = new completion_info($enrolledcourse);
+
+                $completionok = [
+                    COMPLETION_COMPLETE,
+                    COMPLETION_COMPLETE_PASS,
+                ];
+
+                $enrolledcoursears = array();
+
+                $arcount = 0;
+                $oldsection = '';
+                foreach($completion->get_activities() as $ar){
+                    //$current = $completion->get_data($ar);
+
+                    $activityname = $ar->name;
+                    $activitysection = $ar->section;
+                    $activityiconurl = $ar->get_icon_url();
+                    $activityurl = new moodle_url($ar->url, array('forceview' => 1));
+                    
+                    
+                    $hascompletion = $completion->is_enabled($ar);
+                    if ($hascompletion) {
+                        $completeclass = 'incomplete';
+                    }
+
+                    $completiondata = $completion->get_data(
+                        $ar,
+                        true
+                    );
+                    if (in_array(
+                        $completiondata->completionstate,
+                        $completionok
+                    )) {
+                        $completeclass = 'completed active';
+                    }
+
+                    if( $completeclass == 'incomplete' ){
+
+                        if( $activitysection == $oldsection || $oldsection == 0 ){
+                            $oldsection = $activitysection;
+
+                            $enrolledcoursears[0]['activitysectionname'] = $ar->get_section_info()->name;
+                            $enrolledcoursears[0]['activities'][$arcount]['activityname'] = $activityname;
+                            $enrolledcoursears[0]['activities'][$arcount]['activitysection'] = $activitysection;
+                            $enrolledcoursears[0]['activities'][$arcount]['activityiconurl'] = $activityiconurl;
+                            $enrolledcoursears[0]['activities'][$arcount]['activityurl'] = $activityurl;
+                            $enrolledcoursears[0]['activities'][$arcount]['completeclass'] = $completeclass;
+                            
+    
+                            $arcount++;
+                        }
+                        
+                    }
+
+                    
+                }
+
+                $enrolledcourseslist[$count]->id = $enrolledcourse->id;
+                $enrolledcourseslist[$count]->fullname = $enrolledcourse->fullname;
+                $enrolledcourseslist[$count]->image = theme_thinkblue_course_image($enrolledcourse);
+                $enrolledcourseslist[$count]->url = new moodle_url('/course/view.php', array('id' => $enrolledcourse->id));
+
+                $enrolledcourseslist[$count]->enrolledcoursears = $enrolledcoursears;
+                $count++;
+
+            }
+
+            $gamheader->enrolledcourseslist = $enrolledcourseslist;
 
             if( !empty($gamificationdata->currency_data) ){
                 foreach($gamificationdata->currency_data as $currency){
@@ -172,6 +254,13 @@ class core_renderer extends \core_renderer {
                 </div>';
                 }
             }
+
+            $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
+
+        }else{
+            $gamheader->get_logo_url = $this->get_logo_url();
+            $gamheader->sitename = format_string($SITE->fullname, true,
+            ['context' => context_course::instance(SITEID), "escape" => false]);
 
             $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
 
@@ -844,5 +933,125 @@ class core_renderer extends \core_renderer {
             }
         }
         return $resposedata;
+    }
+
+    /**
+     * Returns standard navigation between activities in a course.
+     *
+     * @return string the navigation HTML.
+     */
+    public function activity_navigation() {
+        // First we should check if we want to add navigation.
+        $context = $this->page->context;
+        if (($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
+            || $context->contextlevel != CONTEXT_MODULE) {
+            return '';
+        }
+
+        // If the activity is in stealth mode, show no links.
+        if ($this->page->cm->is_stealth()) {
+            return '';
+        }
+
+        // Get a list of all the activities in the course.
+        $course = $this->page->cm->get_course();
+        $modinfo = get_fast_modinfo($course);
+        $completioninfo = new completion_info($course);
+        $format = course_get_format($course);
+
+        $sections = $format->get_sections();
+
+        $navigationsections = [];
+
+        $completionok = [
+            COMPLETION_COMPLETE,
+            COMPLETION_COMPLETE_PASS,
+        ];
+
+        foreach( $sections as $section){
+            $i = $section->section;
+            if (!$section->uservisible) {
+                continue;
+            }
+            $navigationsections[$i]['name'] = $section->name;
+
+            if (!empty($modinfo->sections[$i])) {
+                foreach ($modinfo->sections[$i] as $modnumber) {
+                    $module = $modinfo->cms[$modnumber];
+                    if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage) {
+                        continue;
+                    }
+
+                    $hascompletion = $completioninfo->is_enabled($module);
+                    if ($hascompletion) {
+                        $completeclass = 'incomplete';
+                    }
+
+                    $completiondata = $completioninfo->get_data(
+                        $module,
+                        true
+                    );
+                    if (in_array(
+                        $completiondata->completionstate,
+                        $completionok
+                    )) {
+                        $completeclass = 'completed';
+                    }
+
+                    $navigationsections[$i]['modules'][$module->id]['name'] = $module->name;
+                    $navigationsections[$i]['modules'][$module->id]['icon'] = $module->get_icon_url();
+                    $navigationsections[$i]['modules'][$module->id]['link'] = new moodle_url($module->url, array('forceview' => 1));
+                    $navigationsections[$i]['modules'][$module->id]['completeclass'] = $completeclass;
+                }
+            }
+
+            $count_modules = count($navigationsections[$i]['modules']);
+
+            if( $count_modules == 0 ){
+                unset($navigationsections[$i]);
+            }
+
+            
+        }
+
+        $activityhtml = '';
+        foreach( $navigationsections as $navigationsection){
+
+            $modulehtml = '';
+            foreach( $navigationsection['modules'] as $module ){
+                $completonclass = $module['completeclass'];
+                $modulehtml .= '<li class="'.$completonclass.'"><a href="'.$module['link'].'" title="'.$module['name'].'"><img src="'.$module['icon'].'"></a></li>';
+            }
+
+            $activityhtml .= '<div class="d1"><h2>'.$navigationsection["name"].'</h2><ul>'.$modulehtml.'</ul></div>';
+        }
+
+        return '<div class="bottom_activity_navigation">
+            <div class="page-bottom-bar">
+                <div class="row">
+                    <div class="col-sm-4">
+                    <div class="bottom_activity-left">
+                        <div class="home-ico">
+                            <img src="https://solodaleplay.com/theme/thinkblue/img/Duels-Gourav2_03.png">
+                        </div>
+
+                        <div class="home-ico-text">
+                            <p>'.$this->page->cm->get_section_info()->name.'</p>
+                            <p>'.$course->shortname.'</p>
+                        </div>
+                    </div>
+                    </div>
+
+                     <div class="col-sm-8">
+                        <div class="bottom_activity-right-main">
+                            <div class="bottom_activity-right">
+                                '.$activityhtml.'
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>';
+        
     }
 }

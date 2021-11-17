@@ -31,6 +31,9 @@ global $PAGE, $DB;
 
 // MODIFICATION END.
 
+$listvideos = optional_param('videos', 0, PARAM_RAW);
+$completion = new completion_info($PAGE->course);
+
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 
 require_once($CFG->libdir . '/behat/lib.php');
@@ -47,7 +50,7 @@ if (isloggedin()) {
     $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
 } else {
 
-    $navdraweropen = false;
+    $navdraweropen = true;
 }
 
 $extraclasses = [];
@@ -264,6 +267,10 @@ $modinfo = get_fast_modinfo($courseid);
 
 $leeloocourse = theme_thinkblue_coursedata($courseid);
 
+$quizzesdata = theme_thinkblue_quizzes_user_coursedata($courseid, $USER->email);
+
+$templatecontext['quizzesdata'] = (object)$quizzesdata->data;
+
 $templatecontext['coursesummary'] = $PAGE->course->summary;
 
 $templatecontext['useremail'] = $USER->email;
@@ -452,12 +459,38 @@ foreach ($modinfo->sections as $section) {
 }
 
 $videos = 0;
-
+$videosurl = '';
+$firstvideo = '';
+$firstar = '';
 foreach ($modinfo->cms as $cms) {
+
+    if( $firstar == '' ){
+        $firstar = $cms->get_url();
+    }
+
     if ($cms->modname == 'leeloolxpvimeo') {
+
+        if( $firstvideo == '' ){
+            $firstvideo = $cms->get_url();
+        }
+
+        $current = $completion->get_data($cms);
+        
+        if( $videosurl == '' ){
+            if( $current->completionstate == 0 ){
+                $videosurl = $cms->get_url();
+            }
+        }
+
         $videos += 1;
     }
 }
+
+if( $videosurl == '' ){
+    $videosurl = $firstvideo;
+}
+
+$templatecontext['videosurl'] = $videosurl;
 
 $templatecontext['modules'] = count($modinfo->sections);
 
@@ -475,9 +508,195 @@ if( isset($showvideo) || isset($showimage) || isset($isleelooproduct) ){
     $templatecontext['showtopvideosection'] = true;
 }
 
-// Render course.mustache from thinkblue.
+$letsgourl = '';
 
-echo $OUTPUT->render_from_template('theme_thinkblue/course', $templatecontext);
+// Render course.mustache from thinkblue.
+if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || is_siteadmin() ){
+    echo $OUTPUT->render_from_template('theme_thinkblue/course', $templatecontext);
+}else{
+    $format = course_get_format($PAGE->course);
+    $sections = $format->get_sections();
+
+    if( $format->get_format() == 'flexsections' ){
+        
+
+        $sectionhtml = '';
+        $selectskillhtmlfull = '';
+
+        $templatecontext['sectionhtml'] = $OUTPUT->main_content();
+        $templatecontext['selectskillhtmlfull'] = '';
+
+        /*foreach( $sections as $section){
+            $sectionnum = $section->section;
+
+            $children = course_get_format($PAGE->course)->get_subsections($sectionnum);
+            foreach ($children as $num) {
+                print_r($num);
+            }
+            //print_r($children);
+
+        }*/
+    }else{
+
+        $navigationsections = [];
+
+        $completionok = [
+            COMPLETION_COMPLETE,
+            COMPLETION_COMPLETE_PASS,
+        ];
+
+        foreach( $sections as $key => $section){
+            $i = $section->section;
+            if (!$section->uservisible) {
+                continue;
+            }
+
+            if( $section->name == '' ){
+                $section->name = 'Topic '.$key;
+            }
+
+            $navigationsections[$i]['name'] = $section->name;
+
+            if (!empty($modinfo->sections[$i])) {
+                foreach ($modinfo->sections[$i] as $modnumber) {
+                    $module = $modinfo->cms[$modnumber];
+                    if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage) {
+                        continue;
+                    }
+
+                    $hascompletion = $completion->is_enabled($module);
+                    if ($hascompletion) {
+                        $completeclass = 'incomplete';
+                    }
+
+                    $completiondata = $completion->get_data(
+                        $module,
+                        true
+                    );
+                    if (in_array(
+                        $completiondata->completionstate,
+                        $completionok
+                    )) {
+                        $completeclass = 'completed active';
+                    }
+
+                    $navigationsections[$i]['modules'][$module->id]['name'] = $module->name;
+                    $navigationsections[$i]['modules'][$module->id]['icon'] = $module->get_icon_url();
+                    $navigationsections[$i]['modules'][$module->id]['link'] = new moodle_url($module->url, array('forceview' => 1));
+                    $navigationsections[$i]['modules'][$module->id]['completeclass'] = $completeclass;
+                }
+            }
+
+            $count_modules = count($navigationsections[$i]['modules']);
+
+            if( $count_modules == 0 ){
+                unset($navigationsections[$i]);
+            }
+
+            
+        }
+
+        $sectionhtml = '';
+        $selectskillhtml = '';
+        
+        foreach( $navigationsections as $navkey => $navigationsection){
+
+            if( trim($navigationsection["name"]) == '' ){
+                $navigationsection["name"] = 'Topic '.($navkey+1);
+            }
+
+            $modulehtml = '';
+            $sectionuncompletear = '';
+            $sectionfirstar = '';
+            foreach( $navigationsection['modules'] as $module ){
+                $completonclass = $module['completeclass'];
+
+                if( $sectionfirstar == '' ){
+                    $sectionfirstar = $module['link'];
+                }
+
+                if( $module['completeclass'] == 'incomplete' && $sectionuncompletear == '' ){
+                    $sectionuncompletear = $module['link'];
+                }
+
+                $modulehtml .= '<tr class="label_cont_td">
+                <td>
+                    <div class="label_txt"><a href="'.$module['link'].'" title="'.$module['name'].'">'.$module['name'].'</a></div>
+                </td>
+                <td>
+                    <div class="label_icn">
+                        <ul>
+                            <li class="'.$completonclass.'"><a href="'.$module['link'].'" title="'.$module['name'].'"><img width="48" src="'.$module['icon'].'" /></a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>';
+            }
+
+            if( $sectionuncompletear == '' ){
+                $sectionuncompletear = $sectionfirstar;
+            }
+
+            $sectionhtml .= '<div class="slill_table_item">
+            <table class="table">
+                <tr class="section_nm_th">
+                    <th colspan="2"><div class="section_name">'.$navigationsection["name"].'</div></th>
+                </tr>
+                '.$modulehtml.'
+                        
+            </table>
+            </div>';
+
+            $selectskillhtml .= '<tr class="label_nm_td">
+                        <td><div class="label_name"><a href="'.$sectionuncompletear.'">'.$navigationsection["name"].'</a></div></td>
+                    </tr>';
+
+        }
+
+        $selectskillhtmlfull = '<div class="slill_table_item">
+            <table class="table">
+                <tr class="section_nm_th">
+                    <th colspan="2"><div class="section_name">Sections</div></th>
+                </tr>
+                '.$selectskillhtml.'
+            </table>
+        </div>';
+
+        $templatecontext['sectionhtml'] = '<div class="slill_table"><div class="slill_table_items">'.$sectionhtml.'</div></div>';
+        
+        $templatecontext['selectskillhtmlfull'] = '<div class="slill_table"><div class="slill_table_items">'.$selectskillhtmlfull.'</div></div>';
+
+    }
+
+    foreach($completion->get_activities() as $ar){
+        $current = $completion->get_data($ar);
+        if( $current->completionstate == 0 ){
+            $letsgourl = $ar->get_url();
+            
+            if( $ar->modname == 'quiz' ){
+                $quizid = $ar->get_course_module_record()->instance;
+                $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
+                if( $quizdata->quiztype == 'discover' || $quizdata->quiztype == 'trivias' ){
+                    $letsgourl .= '&autostart=1';
+                }
+            }
+
+            break;
+        }
+    }
+
+    if( $letsgourl == '' ){
+        $letsgourl = $firstar;
+    }
+
+    $templatecontext['letsgourl'] = $letsgourl;
+
+    //$current = $this->get_data($cm, false, $USER->id);
+    //get_activities
+    //print_r($modinfo);
+    echo $OUTPUT->render_from_template('theme_thinkblue/coursegamified', $templatecontext);
+}
+
 
 // MODIFICATION END.
 

@@ -270,45 +270,14 @@ function theme_thinkblue_get_imageareacontent() {
  * @return flat_navigation.
  */
 function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
-    global $USER;
+    global $USER, $PAGE;
     $leeloosettings = theme_thinkblue_general_leeloosettings();
     // If the setting defaulthomepageontop is enabled.
     if (isset($leeloosettings->additional_layout_settings->defaulthomepageontop) && isset($leeloosettings->additional_layout_settings->defaulthomepageontop) != '') {
         if (@$leeloosettings->additional_layout_settings->defaulthomepageontop == 1) {
             // Only proceed processing if we are in a course context.
             if (($coursehomenode = $flatnav->find('coursehome', global_navigation::TYPE_CUSTOM)) != false) {
-                // If the site home is set as the default homepage by the admin.
-                if (get_config('core', 'defaulthomepage') == HOMEPAGE_SITE) {
-                    // Return the modified flat_navigation.
-                    $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'home', $coursehomenode);
-                } else if (get_config('core', 'defaulthomepage') == HOMEPAGE_MY) {
-                    // If the dashboard is set as the default homepage
-                    // by the admin.
-                    // Return the modified flat_navigation.
-                    $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'myhome', $coursehomenode);
-                } else if (get_config('core', 'defaulthomepage') == HOMEPAGE_USER) {
-                    // If the admin defined that the user can set
-                    // the default homepage for himself.
-                    // Site home.
-                    if (get_user_preferences('user_home_page_preference') == 0) {
-                        // Return the modified flat_navigtation.
-                        $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'home', $coursehomenode);
-                    } else if (get_user_preferences('user_home_page_preference') == 1 || // Dashboard.
-                        get_user_preferences('user_home_page_preference') === false) {
-                        // If no user preference is set,
-                        // use the default value of core setting default homepage (Dashboard).
-                        // Return the modified flat_navigtation.
-                        $flatnavreturn = theme_thinkblue_set_node_on_top($flatnav, 'myhome', $coursehomenode);
-                    } else {
-                        // Should not happen.
-                        // Return the passed flat navigation without changes.
-                        $flatnavreturn = $flatnav;
-                    }
-                } else {
-                    // Should not happen.
-                    // Return the passed flat navigation without changes.
-                    $flatnavreturn = $flatnav;
-                }
+                $flatnavreturn = $flatnav;
             } else {
                 // Not in course context.
                 // Return the passed flat navigation without changes.
@@ -323,6 +292,36 @@ function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
         // Defaulthomepageontop not enabled.
         // Return the passed flat navigation without changes.
         $flatnavreturn = $flatnav;
+    }
+
+    $flatnavreturn->remove('coursehome');
+
+    $course = $PAGE->course;
+
+    if ($course->id > 1) {
+        // It's a real course.
+        
+        $courseformat = course_get_format($course);
+        $coursenode = $PAGE->navigation->find_active_node();
+        $targettype = navigation_node::TYPE_COURSE;
+
+        // Single activity format has no course node - the course node is swapped for the activity node.
+        if (!$courseformat->has_view_page()) {
+            $targettype = navigation_node::TYPE_ACTIVITY;
+        }
+
+        while (!empty($coursenode) && ($coursenode->type != $targettype)) {
+            $coursenode = $coursenode->parent;
+        }
+        // There is one very strange page in mod/feedback/view.php which thinks it is both site and course
+        // context at the same time. That page is broken but we need to handle it (hence the SITEID).
+        if ($coursenode && $coursenode->key != SITEID) {
+            foreach ($coursenode->children as $child) {
+                if ($child->key) {
+                    $flatnavreturn->remove($child->key);
+                }
+            }
+        }
     }
 
     return $flatnavreturn;
@@ -536,12 +535,85 @@ function theme_thinkblue_coursedata($courseid) {
 }
 
 /**
+ * Get course user quiz data from Leeloo LXP.
+ * @param int $courseid The course ID.
+ * @param string $useremail The course ID.
+ */
+function theme_thinkblue_quizzes_user_coursedata($courseid, $useremail) {
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/filelib.php');
+    $leeloolxplicense = get_config('theme_thinkblue')->license;
+
+    $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
+    $postdata = array('license_key' => $leeloolxplicense);
+
+    $curl = new curl;
+
+    $options = array(
+        'CURLOPT_RETURNTRANSFER' => true,
+        'CURLOPT_HEADER' => false,
+        'CURLOPT_POST' => count($postdata),
+    );
+
+    if (!$output = $curl->post($url, $postdata, $options)) {
+        return get_string('nolicense', 'theme_thinkblue');
+    }
+
+    $infoleeloolxp = json_decode($output);
+
+    if ($infoleeloolxp->status != 'false') {
+        $leeloolxpurl = $infoleeloolxp->data->install_url;
+    } else {
+        return get_string('nolicense', 'theme_thinkblue');
+    }
+
+    $url = $leeloolxpurl . '/admin/sync_moodle_course/getusercoursequizzesdata';
+
+    $postdata = array('email' => base64_encode($useremail), 'courseid' => $courseid);
+
+    $curl = new curl;
+
+    $options = array(
+        'CURLOPT_RETURNTRANSFER' => true,
+        'CURLOPT_HEADER' => false,
+        'CURLOPT_POST' => count($postdata),
+    );
+
+    if (!$output = $curl->post($url, $postdata, $options)) {
+        return get_string('nolicense', 'theme_thinkblue');
+    }
+
+    $resposedata = json_decode($output);
+
+    foreach( $resposedata->data->quizzes_history as $key => $quizzes_history ){
+        if( $quizzes_history->winningstatus == 'defeat' ){
+            $resposedata->data->quizzes_history[$key]->button = 'Revenge';
+        }else{
+            $resposedata->data->quizzes_history[$key]->button = 'Again';
+        }
+        $resposedata->data->quizzes_history[$key]->buttonlink = $CFG->wwwroot.'/mod/quiz/view.php?id='.$quizzes_history->activity_id;
+        
+    }
+
+    foreach( $resposedata->data->quizzes_requests as $key => $quizzes_requests ){
+        $resposedata->data->quizzes_requests[$key]->acceptlink = $CFG->wwwroot.'/mod/quiz/view.php?id='.$quizzes_requests->activity_id;
+        
+    }
+
+    return $resposedata;
+}
+
+/**
  * Fetch and Update Configration From L
  */
 function theme_thinkblue_updateconf() {
     if (!isset(get_config('theme_thinkblue')->license)) {
         return;
     }
+
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/filelib.php');
+
     $leeloolxplicense = get_config('theme_thinkblue')->license;
 
     $url = 'https://leeloolxp.com/api_moodle.php/?action=page_info';
@@ -640,4 +712,35 @@ function theme_thinkblue_gamisync($baseemail) {
     } else {
         $DB->insert_record('tb_game_points', $data);
     }
+}
+
+/**
+ * Get the image for a course if it exists
+ *
+ * @param object $course The course whose image we want
+ * @return string|void
+ */
+function theme_thinkblue_course_image($course) {
+    global $CFG;
+
+    $course = new core_course_list_element($course);
+    // Check to see if a file has been set on the course level.
+    if ($course->id > 0 && $course->get_course_overviewfiles()) {
+        foreach ($course->get_course_overviewfiles() as $file) {
+            $isimage = $file->is_valid_image();
+            $url = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
+                $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
+            if ($isimage) {
+                return $url;
+            } else {
+                return 'https://leeloolxp.com/modules/mod_acadmic/images/Leeloo-lxp1.png';
+            }
+        }
+    } else {
+        // Lets try to find some default images eh?.
+        return 'https://leeloolxp.com/modules/mod_acadmic/images/Leeloo-lxp1.png';
+    }
+    // Where are the default at even?.
+    return print_error('error');
 }

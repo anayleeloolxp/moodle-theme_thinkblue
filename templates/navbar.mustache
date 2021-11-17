@@ -24,12 +24,16 @@
     * Add class bg-white or bg-dark to the navbar dependent on the setting darknavbar.
 }}
 
-<nav class="fixed-top navbar navbar-light {{#darknavbar}}bg-dark{{/darknavbar}} {{^darknavbar}}bg-white{{/darknavbar}} navbar-expand moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<nav class="topbar fixed-top navbar navbar-light {{#darknavbar}}bg-dark{{/darknavbar}} {{^darknavbar}}bg-white{{/darknavbar}} navbar-expand moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
 
         
 
         <ul class="navbar-nav d-none d-md-flex">
-            
+            <a href="{{{ config.wwwroot }}}" class="navbar-brand has-logo d-none d-sm-inline ">
+                <span class="logo d-none d-sm-inline">
+                    <img src="{{output.get_logo_url}}" alt="{{sitename}}">
+                </span>
+            </a>
             <!-- page_heading_menu -->
             {{{ output.page_heading_menu }}}
         </ul>

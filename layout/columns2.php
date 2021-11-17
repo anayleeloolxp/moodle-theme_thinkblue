@@ -46,7 +46,7 @@ if (isloggedin()) {
     $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
 } else {
 
-    $navdraweropen = false;
+    $navdraweropen = true;
 }
 
 $extraclasses = [];

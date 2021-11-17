@@ -260,3 +260,6 @@ $string['message'] = 'Message';
 $string['enrollnow'] = 'Enroll Now';
 $string['userenrolled'] = 'You are already Enrolled.';
 $string['copyquizattempturl'] = 'Copy attempt url';
+
+
+$string['letsgo'] = 'Let\'s Go';
