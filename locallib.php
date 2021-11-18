@@ -591,7 +591,7 @@ function theme_thinkblue_quizzes_user_coursedata($courseid, $useremail) {
         }else{
             $resposedata->data->quizzes_history[$key]->button = 'Again';
         }
-        $resposedata->data->quizzes_history[$key]->buttonlink = $CFG->wwwroot.'/mod/quiz/view.php?id='.$quizzes_history->activity_id;
+        $resposedata->data->quizzes_history[$key]->buttonlink = $CFG->wwwroot.'/mod/quiz/view.php?id='.$quizzes_history->activity_id.'&rematch='.$quizzes_history->id;
         
     }
 
