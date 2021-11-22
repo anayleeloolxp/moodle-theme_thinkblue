@@ -8474,7 +8474,7 @@ div#nav-drawer.closed[data-region="drawer"] .leftusermenu {
     margin-left: 15px;
     line-height: 16px;
 }
-.home-ico-text p:nth-child(2) {
+.home-ico-text p:nth-child(2) a {
     font-size: 12px;
     color: #afafaf;
 }
@@ -8610,9 +8610,9 @@ a:focus {
     padding: 7px 15px 15px 15px;
     width: 100%;
 }
-body:not(#page-site-index) div#page .page-context-header {
+/*body:not(#page-site-index) div#page .page-context-header {
     padding-top: 70px;
-}
+}*/
 .slill_table_items, ul.flexsections.flexsections-level-1 {
     display: flex;
     flex-wrap: wrap;

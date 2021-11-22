@@ -941,6 +941,7 @@ class core_renderer extends \core_renderer {
      * @return string the navigation HTML.
      */
     public function activity_navigation() {
+        global $CFG;
         // First we should check if we want to add navigation.
         $context = $this->page->context;
         if (($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
@@ -1032,12 +1033,14 @@ class core_renderer extends \core_renderer {
                     <div class="col-sm-4">
                     <div class="bottom_activity-left">
                         <div class="home-ico">
-                            <img src="https://solodaleplay.com/theme/thinkblue/img/Duels-Gourav2_03.png">
+                            <a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">
+                                <img src="'.$CFG->wwwroot.'/theme/thinkblue/img/Duels-Gourav2_03.png">
+                            </a>
                         </div>
 
                         <div class="home-ico-text">
                             <p>'.$this->page->cm->get_section_info()->name.'</p>
-                            <p>'.$course->shortname.'</p>
+                            <p><a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">'.$course->shortname.'</a></p>
                         </div>
                     </div>
                     </div>
