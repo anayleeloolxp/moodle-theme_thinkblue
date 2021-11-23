@@ -4335,7 +4335,9 @@ body#page-login-signup .fixed-top.navbar.navbar-light.bg-white {
 #page-mod-quiz-attempt div#page-wrapper {
     padding-bottom: 60px;
 }
-
+body[id^="page-mod-"] header#page-header {
+    display: none;
+}
 
 
 
@@ -7204,7 +7206,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     font-weight: 700;
     text-transform: uppercase;
     position: relative;
-    top: 8px;
+    top: 3px;
 }
 .coursegamified-page .page-top-main-banner {
     height: calc(100vh - 127px);
@@ -7253,6 +7255,9 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     width: 13.8vh;
     height: 15vh;
 }
+.gami-tab-icon {
+    height: calc(100% - 3vh);
+}
 .gamification-right-tab-sec li .gami-tab-itm span {
     color: #2c2c2c;
     font-size: 24px;
@@ -7269,10 +7274,11 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     display: none;
 }
 .gamification-right-tab-sec li .gami-tab-itm .gami-tab-icon img {
-    width: 60%;
+    height: 100%;
     margin: 0 auto;
     display: block;
-    padding: 18px 0;
+    padding: 10px 0;
+    width: auto;
 }
 .bottom-bar {
     display: flex;
@@ -7378,8 +7384,8 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     box-shadow: none;
 }
 .coursegamified-page .modal-content {
-    // background-color: #f5f6fa;
-    background: none;
+    background-color: #f5f6fa;
+    //background: none;
     border: none;
 }
 .coursegamified-page .modal .modal-dialog {
