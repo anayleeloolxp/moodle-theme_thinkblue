@@ -7378,10 +7378,12 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     box-shadow: none;
 }
 .coursegamified-page .modal-content {
-    background-color: #f5f6fa;
+    // background-color: #f5f6fa;
+    background: none;
+    border: none;
 }
 .coursegamified-page .modal .modal-dialog {
-    margin: 5rem auto;
+    margin: 50px auto;
     width: 90%;
     max-width: 1280px;
 }
@@ -8244,7 +8246,10 @@ a:focus {
 #letsgo .enrolled_right img {
     filter: grayscale(1);
 }
-
+.modal-content .left-top-video {
+    padding-top: 77vh;
+    background: none;
+}
 
 
 
