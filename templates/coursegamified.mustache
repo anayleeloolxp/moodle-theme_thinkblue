@@ -392,6 +392,11 @@
 
                                     <div class="duelsSecIn">
                                         <div class="gam-user-img" style="background:url({{baseurl}}/theme/thinkblue/img/circle-profile.png) no-repeat center center;">
+                                        
+                                            <div class="gam-progress">
+                                                {{{progressbarhtml}}}
+                                            </div>
+
                                             <div class="gam-user-im">
                                                 <div class="gam-user-im-in">
                                                     <span>
@@ -400,7 +405,7 @@
                                                 </div>
                                                 <div class="gam-user-tx">
                                                     <span>Level</span>
-                                                    <h4>{{quizzesdata.userdata.currentlevel}}</h4>
+                                                    <h4>{{currentlevel}}</h4>
                                                 </div>
                                                 <div class="gam-urarro" style="background:url({{baseurl}}/theme/thinkblue/img/arrow-icon.png) no-repeat center center;"></div>
                                             </div>
@@ -409,11 +414,10 @@
                                             <div class="gam-user-txt">
                                                 <h2>{{quizzesdata.userdata.pointsthisweek}}</h2>
                                                 <h4>Neurons this week</h4>
-                                                <p>{{quizzesdata.userdata.pointstonextlevel}} Neurons to Level {{quizzesdata.userdata.nextlevel}}</p>
+                                                <p>{{next_level_points_needed}} Neurons to Level {{nextlevel}}</p>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="duels-duelSec duels_col_4">
                                     <div class="duelsHead">History</div>

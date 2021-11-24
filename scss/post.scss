@@ -7498,6 +7498,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     padding: 45px;
     width: 365px;
     height: 366px;
+    background: none !important;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -8257,12 +8258,212 @@ a:focus {
     background: none;
 }
 
+.gam-progress {
+    position: absolute;
+    width: 400px;
+    border-radius: 50%;
+    transform: rotate(-119deg);
+    top: 93px;
+    left: -247px;
+}
+.gam-progress span {
+    background-color: #d9d9d9;
+    font: 0 Monaco,MonoSpace;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+    left: 0;
+    top: 0;
+    transform-origin: center 155px;
+    border-radius: 50%;
+}
+.gam-progress span.active {
+    background: #5d5d5d;
+}
+.gam-progress span.big {
+    width: 18px;
+    height: 18px;
+    transform-origin: center 160px;
+    top: -5px;
+    left: -4px;
+}
+  .char1 {
+    transform: rotate(6deg);
+  }
+  
+  .char2 {
+    transform: rotate(12deg);
+  }
+  
+  .char3 {
+    transform: rotate(18deg);
+  }
+  
+  .char4 {
+    transform: rotate(24deg);
+  }
+  
+  .char5 {
+    transform: rotate(30deg);
+  }
+  
+  .char6 {
+    transform: rotate(36deg);
+  }
+  
+  .char7 {
+    transform: rotate(42deg);
+  }
+  
+  .char8 {
+    transform: rotate(48deg);
+  }
+  
+  .char9 {
+    transform: rotate(54deg);
+  }
+  
+  .char10 {
+    transform: rotate(60deg);
+  }
+  
+  .char11 {
+    transform: rotate(66deg);
+  }
+  
+  .char12 {
+    transform: rotate(72deg);
+  }
+  
+  .char13 {
+    transform: rotate(78deg);
+  }
+  
+  .char14 {
+    transform: rotate(84deg);
+  }
+  
+  .char15 {
+    transform: rotate(90deg);
+  }
+  
+  .char16 {
+    transform: rotate(96deg);
+  }
+  
+  .char17 {
+    transform: rotate(102deg);
+  }
+  
+  .char18 {
+    transform: rotate(108deg);
+  }
+  
+  .char19 {
+    transform: rotate(114deg);
+  }
+  
+  .char20 {
+    transform: rotate(120deg);
+  }
+  
+  .char21 {
+    transform: rotate(126deg);
+  }
+  
+  .char22 {
+    transform: rotate(132deg);
+  }
+  
+  .char23 {
+    transform: rotate(138deg);
+  }
+  
+  .char24 {
+    transform: rotate(144deg);
+  }
+  
+  
+  
+  .char25 {
+    transform: rotate(150deg);
+  }
+  
+  .char26 {
+    transform: rotate(156deg);
+  }
+  .char27 {
+    transform: rotate(162deg);
+  }
+  .char28 {
+    transform: rotate(168deg);
+  }
+  .char29 {
+    transform: rotate(174deg);
+  }
+  .char30 {
+    transform: rotate(180deg);
+  }
+  .char31 {
+    transform: rotate(186deg);
+  }
+  .char32 {
+    transform: rotate(192deg);
+  }
+  .char33 {
+    transform: rotate(198deg);
+  }
+  .char34 {
+    transform: rotate(204deg);
+  }
+  .char35 {
+    transform: rotate(210deg);
+  }
+  .char36 {
+    transform: rotate(216deg);
+  }
+  
+  
+  .char37 {
+    transform: rotate(222deg);
+  }
+  
+  .char38 {
+    transform: rotate(228deg);
+  }
+  
+  .char39 {
+    transform: rotate(234deg);
+  }
+  .char40 {
+    transform: rotate(240deg);
+  }
 
 
 
+  .char41 {
+    transform: rotate(246deg);
+  }
+  
+  .char42 {
+    transform: rotate(252deg);
+  }
+  
+  .char43 {
+    transform: rotate(258deg);
+  }
+  .char44 {
+    transform: rotate(264deg);
+  }
+
+  .char45 {
+    transform: rotate(270deg);
+  }
 
 
 
+ 
+ 
 
 
 
@@ -8690,6 +8891,9 @@ a:focus {
     }
 }
 @media only screen and (max-width: 767px) {
+    .modal-content .left-top-video {
+        padding-top: 56%;
+    }
     .coursegamified-page .page-top-main-banner {
         padding: 8vh 16vh 8vh 5vh;
         position: relative;

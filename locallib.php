@@ -744,3 +744,31 @@ function theme_thinkblue_course_image($course) {
     // Where are the default at even?.
     return print_error('error');
 }
+
+/**
+ * Gamification data
+ *
+ * @param string $email email
+ * @return string HTML fragment
+ */
+function theme_thinkblue_gamification_data($baseemail) {
+    global $DB, $CFG;
+
+    $email = base64_decode($baseemail);
+
+    $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
+
+    if (!empty($tb_game_points)) {
+        $resposedata = json_decode($tb_game_points->pointsdata);
+    }else{
+        theme_thinkblue_gamisync($baseemail);
+
+        $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
+        if (!empty($tb_game_points)) {
+            $resposedata = json_decode($tb_game_points->pointsdata);
+        }else{
+            $resposedata = new stdClass();
+        }
+    }
+    return $resposedata;
+}

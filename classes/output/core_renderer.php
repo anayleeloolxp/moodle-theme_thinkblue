@@ -140,7 +140,7 @@ class core_renderer extends \core_renderer {
         global $USER, $SITE;
         $gamheader = new stdClass();
         $html = '';
-        $gamificationdata = $this->gamification_data( base64_encode($USER->email) );
+        $gamificationdata = theme_thinkblue_gamification_data( base64_encode($USER->email) );
 
         if( $USER->id && !is_siteadmin($USER) && count((array)($gamificationdata)) ){
             
@@ -904,35 +904,6 @@ class core_renderer extends \core_renderer {
         }
 
         return $this->render($menu);
-    }
-
-    /**
-     * Gamification data
-     *
-     * @param string $email email
-     * @return string HTML fragment
-     */
-    public function gamification_data($baseemail) {
-        global $DB, $CFG;
-
-        $email = base64_decode($baseemail);
-
-        $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
-
-        if (!empty($tb_game_points)) {
-            $resposedata = json_decode($tb_game_points->pointsdata);
-        }else{
-            require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
-            theme_thinkblue_gamisync($baseemail);
-
-            $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
-            if (!empty($tb_game_points)) {
-                $resposedata = json_decode($tb_game_points->pointsdata);
-            }else{
-                $resposedata = new stdClass();
-            }
-        }
-        return $resposedata;
     }
 
     /**

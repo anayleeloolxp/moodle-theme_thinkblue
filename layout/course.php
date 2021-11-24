@@ -269,6 +269,46 @@ $leeloocourse = theme_thinkblue_coursedata($courseid);
 
 $quizzesdata = theme_thinkblue_quizzes_user_coursedata($courseid, $USER->email);
 
+$gamificationdata = theme_thinkblue_gamification_data( base64_encode($USER->email) );
+
+if( count((array)($gamificationdata)) ){
+    $templatecontext['currentlevel'] = $gamificationdata->current_level;
+    $templatecontext['total_points'] = $gamificationdata->total_points;
+    $templatecontext['next_level_points'] = $gamificationdata->next_level_points;
+
+    if( $gamificationdata->next_level_points > $gamificationdata->total_points ){
+        $templatecontext['next_level_points_needed'] = $gamificationdata->next_level_points - $gamificationdata->total_points;
+        $templatecontext['nextlevel'] = $gamificationdata->current_level + 1;
+    }else{
+        $templatecontext['next_level_points_needed'] = 0;
+        $templatecontext['nextlevel'] = $gamificationdata->current_level;
+    }
+}else{
+    $templatecontext['currentlevel'] = 0;
+    $templatecontext['total_points'] = 0;
+    $templatecontext['next_level_points'] = 0;
+    $templatecontext['next_level_points_needed'] = 0;
+    $templatecontext['nextlevel'] = 0;
+}
+
+$levelprogresspercent = ($templatecontext['total_points']/$templatecontext['next_level_points'])*100;
+$filleddottsprogress = (($levelprogresspercent*45)/100) | 0;
+
+$progressbarhtml = '';
+
+for ($x = 1; $x <= 45; $x++) {
+    $addclassprogress = '';
+    if( $filleddottsprogress > $x ){
+        $addclassprogress = 'active';
+    }elseif( $filleddottsprogress == $x ){
+        $addclassprogress = 'active big';
+    }elseif( $x == 45 ){
+        $addclassprogress = 'big';
+    }
+    $progressbarhtml .= '<span class="char'.$x.' '.$addclassprogress.'"></span>';
+}
+$templatecontext['progressbarhtml'] = $progressbarhtml;
+
 $templatecontext['quizzesdata'] = (object)$quizzesdata->data;
 
 $templatecontext['coursesummary'] = $PAGE->course->summary;
