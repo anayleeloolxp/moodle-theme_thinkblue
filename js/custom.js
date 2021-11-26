@@ -72,4 +72,10 @@ require(["jquery"], function ($) {
         $('html, body').animate({scrollTop: 0}, 500);
     });
 
+    window.onmessage = function(e) {
+        if (e.data == 'showletsgo') {
+            $('#letsgo').modal('show');
+        }
+    };
+
 });
