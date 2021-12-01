@@ -7652,7 +7652,6 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 .duelsSecFnd-head {
     display: flex;
     flex-wrap: wrap;
-    background: #b1b1b1;
 }
 .duelsSecFnd-left, .duelsSecFnd-right {
     width: 50%;
@@ -7661,7 +7660,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     align-items: center;
     justify-content: space-between;
     padding: 3px 7px;
-    color: #fff;
+    color: #333;
     font-weight: 500;
 }
 .duelsSecFnd-left {
@@ -7669,11 +7668,6 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 }
 .duelsSecFnd-right {
     border-left: 1px solid #949494;
-}
-.duelsSecFndB {
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 800;
 }
 .duelsSecFndS {
     font-size: 13px;
@@ -7724,6 +7718,19 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.duelsSecFnd-bread {
+    padding: 5px 7px;
+    background: #EFEFEF;
+    color: #505050;
+}
+.defeat-item .duelsSecFnd-bread {
+    background: #FADBC1;
+    color: #D75830;
+}
+.victory-item .duelsSecFnd-bread {
+    background: #EAEFCF;
+    color: #9AB334;
 }
 .duelsSecUsrDtl p {
     font-size: 10px;
@@ -7790,14 +7797,64 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     flex-wrap: wrap;
     align-items: center;
 }
-.victory-item .duelsSecFnd-head {
-    background: #636363;
+.duelsSecFndB {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+	color: #fc6800;
 }
-.duelsSecFnd-item {
+.victory-item .duelsSecFndB {
+    color: #97b313;
+}
+.duelsSecFnd-item .duelsSecFnd-main {
     background: #f8f8f9;
+    padding: 7px;
+}
+.check_duel_openModal .modal-dialog {
+    width: 500px!important;
+    top: 100px;
+}
+div.check_duel_openModal {
+    background: rgba(0,0,0,0.5);
+}
+.check_duel_openModal .modal-content {
+    padding: 15px;
+}
+.check_duel_openModal .duelsSecFrdBtns {
+    width: 100%;
 }
 .coursegamified-page #duels_skill .modal-content {
     background-color: #fdfdfd;
+}
+.duelsSecFrdBtns .btn.waiting {
+    background: none;
+    color: #9fba0d;
+}
+.duelsSecFrdBtns .btn.cancelled {
+    background: none;
+    color: #505050;
+}
+.duelsSecFrdBtns .btn.refused {
+    background: none;
+    color: #505050;
+}
+.duelsSecFnd2-item.refused {
+    opacity: .5;
+}
+.duelsSecFnd2-item.refused .duelsSecFrdTim {
+    visibility: hidden;
+}
+.duelsSecFrdBtns .btn.waiting:nth-child(2) {
+    background: linear-gradient(180deg,#666666,#333333);
+    color: white;
+    text-decoration: none;
+    padding-top: 3px;
+}
+.duelsSecFrdBtns .btn:nth-child(2) {
+    background: none;
+    padding: 0;
+    color: #999;
+    text-decoration: underline;
 }
 .duels-userSec:nth-child(1) .duelsSecIn {
     background: #f5f5f6;
