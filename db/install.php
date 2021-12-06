@@ -95,82 +95,7 @@ function xmldb_theme_thinkblue_install() {
     $DB->insert_record('block_instances', $otherobject);
 
     $otherobject = (object) array(
-        'blockname' => 'tb_up_courses',
-        'parentcontextid' => 2,
-        'showinsubcontexts' => 0,
-        'requiredbytheme' => 0,
-        'pagetypepattern' => 'site-index',
-        'subpagepattern' => '',
-        'defaultregion' => 'abovecontent',
-        'defaultweight' => -6,
-        'configdata' => '',
-        'timecreated' => $time,
-        'timemodified' => $time
-    );
-    $DB->insert_record('block_instances', $otherobject);
-
-    $otherobject = (object) array(
-        'blockname' => 'tb_f_courses',
-        'parentcontextid' => 2,
-        'showinsubcontexts' => 0,
-        'requiredbytheme' => 0,
-        'pagetypepattern' => 'site-index',
-        'subpagepattern' => '',
-        'defaultregion' => 'abovecontent',
-        'defaultweight' => -5,
-        'configdata' => '',
-        'timecreated' => $time,
-        'timemodified' => $time
-    );
-    $DB->insert_record('block_instances', $otherobject);
-
-    $otherobject = (object) array(
-        'blockname' => 'tb_a_courses',
-        'parentcontextid' => 2,
-        'showinsubcontexts' => 0,
-        'requiredbytheme' => 0,
-        'pagetypepattern' => 'site-index',
-        'subpagepattern' => '',
-        'defaultregion' => 'abovecontent',
-        'defaultweight' => -4,
-        'configdata' => '',
-        'timecreated' => $time,
-        'timemodified' => $time
-    );
-    $DB->insert_record('block_instances', $otherobject);
-
-    $otherobject = (object) array(
-        'blockname' => 'tb_in_courses',
-        'parentcontextid' => 2,
-        'showinsubcontexts' => 0,
-        'requiredbytheme' => 0,
-        'pagetypepattern' => 'site-index',
-        'subpagepattern' => '',
-        'defaultregion' => 'abovecontent',
-        'defaultweight' => -3,
-        'configdata' => '',
-        'timecreated' => $time,
-        'timemodified' => $time
-    );
-    $DB->insert_record('block_instances', $otherobject);
-
-    $otherobject = (object) array(
-        'blockname' => 'tb_c_courses',
-        'parentcontextid' => 2,
-        'showinsubcontexts' => 0,
-        'requiredbytheme' => 0,
-        'pagetypepattern' => 'site-index',
-        'subpagepattern' => '',
-        'defaultregion' => 'abovecontent',
-        'defaultweight' => -2,
-        'configdata' => '',
-        'timecreated' => $time,
-        'timemodified' => $time
-    );
-    $DB->insert_record('block_instances', $otherobject);
-
-    $otherobject = (object) array(
-        'blockname' => 'tb_my_courses',
+        'blockname' => 'tb_courses',
         'parentcontextid' => 2,
         'showinsubcontexts' => 0,
         'requiredbytheme' => 0,
@@ -246,15 +171,21 @@ function xmldb_theme_thinkblue_install() {
 
     $editingurl = '/course/view.php?id={courseid}&sesskey={sesskey}&edit={editingtoggle}';
     set_config('insertcustomnodesusers', 'Home|/?redirect=0||||||fa-home||"calendar"
-    Blog|/blog/index.php?userid=2||||||fa-quote-left||"calendar"
-    Courses|/course/index.php?categoryid=13||||||fa-graduation-cap||"calendar"
-    Events|/course/index.php?categoryid=12||||||fa-calendar||"calendar"
+    Dashboard|/leeloolxp-smart-dashboard.html||||||fa-leeloo|leeloossourl|
+    Community|/leeloolxp-social-network.html||||||fa-users|leeloossourlj|
+    Courses|/course/index.php?categoryid=1||||||fa-graduation-cap||
+    Events|/course/index.php?categoryid=5||||||fa-ticket||
+    Blog|/blog/index.php?userid=2||||||fa-comments||
+    TV|/mod/leeloolxpvimeo/tv.php||||||fa-tv||
     {editingtoggle}|'.$editingurl.'|||editingteacher|admin,manager|OR|fa-pencil|editing|participants', 'local_boostnavigation');
 
     set_config('removemyhomenode', '1', 'local_boostnavigation');
     set_config('removehomenode', '1', 'local_boostnavigation');
     set_config('removecalendarnode', '1', 'local_boostnavigation');
     set_config('removeprivatefilesnode', '1', 'local_boostnavigation');
+    set_config('removecontentbankcoursenode', '1', 'local_boostnavigation');
+    set_config('removecontentbanknoncoursenode', '1', 'local_boostnavigation');
+
     set_config('removemycoursesnode', '1', 'local_boostnavigation');
     set_config('removebadgescoursenode', '1', 'local_boostnavigation');
     set_config('removecompetenciescoursenode', '1', 'local_boostnavigation');
@@ -274,6 +205,14 @@ function xmldb_theme_thinkblue_install() {
 
     if (!in_array($auth, $authsenabled)) {
         $authsenabled[] = $auth;
+        $authsenabled = array_unique($authsenabled);
+        set_config('auth', implode(',', $authsenabled));
+    }
+
+    $authjoom = 'leeloolxp_tracking_sso';
+
+    if (!in_array($authjoom, $authsenabled)) {
+        $authsenabled[] = $authjoom;
         $authsenabled = array_unique($authsenabled);
         set_config('auth', implode(',', $authsenabled));
     }
