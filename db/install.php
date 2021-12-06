@@ -171,8 +171,8 @@ function xmldb_theme_thinkblue_install() {
 
     $editingurl = '/course/view.php?id={courseid}&sesskey={sesskey}&edit={editingtoggle}';
     set_config('insertcustomnodesusers', 'Home|/?redirect=0||||||fa-home||"calendar"
-    Dashboard|/leeloolxp-smart-dashboard.html||||||fa-leeloo|leeloossourl|
-    Community|/leeloolxp-social-network.html||||||fa-users|leeloossourlj|
+    Dashboard|/local/staticpage/view.php?page=leeloolxp-smart-dashboard||||||fa-leeloo|leeloossourl|
+    Community|/local/staticpage/view.php?page=leeloolxp-social-network||||||fa-users|leeloossourlj|
     Courses|/course/index.php?categoryid=1||||||fa-graduation-cap||
     Events|/course/index.php?categoryid=5||||||fa-ticket||
     Blog|/blog/index.php?userid=2||||||fa-comments||
