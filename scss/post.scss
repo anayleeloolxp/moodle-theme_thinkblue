@@ -8535,7 +8535,24 @@ a:focus {
     transform: rotate(270deg);
   }
 
-
+.adminloggedin ul.flexsections.flexsections-level-1 {
+    display: block;
+    width: 100%;
+}
+.adminloggedin ul.flexsections.flexsections-level-1>li {
+    width: 100%;
+}
+.adminloggedin .course-content ul.flexsections li.section.main li.section.main li.section.main li.section.main .content {
+    display: block;
+}
+.adminloggedin .flexsections .section li.activity {
+    display: block;
+    max-width: initial;
+    width: 100%;
+}
+.adminloggedin .flexsections span.instancename, .adminloggedin .flexsections .actions {
+    display: unset!important;
+}
 
  
  
