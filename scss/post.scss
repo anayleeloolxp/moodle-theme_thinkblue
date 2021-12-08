@@ -8165,7 +8165,7 @@ a:focus {
     padding: 0;
 }
 .course-content .flexsections li.section ul .mod-indent-outer img {
-    height: 25px;
+    height: 20px;
     object-fit: contain;
 }
 #select_skill .course-content ul.flexsections ul.section {
@@ -8178,6 +8178,18 @@ a:focus {
 }
 #activities_skill .course-content ul.flexsections li.section.main {
     border-bottom: 1px solid #dee2e6;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+}
+#select_skill .course-content ul.flexsections li.section.main {
+    margin-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+}
+#activities_skill .flexsections h3.sectionname, #select_skill .flexsections h3.sectionname {
+    margin-bottom: 0;
+    line-height: inherit;
 }
 #activities_skill .course-content ul.flexsections li.section.main:last-child {
     border-bottom: 0;
@@ -8303,6 +8315,9 @@ a:focus {
 .bottom_activity-right-main::-webkit-scrollbar-thumb {
     background-color: #212529;
     border-radius: 4px;
+}
+#activities_skill .flexsections-level-1 > li > div > h3.sectionname, #select_skill .flexsections-level-1 > li > div > h3.sectionname {
+    font-weight: bold;
 }
 .format-flexsections .header.backto {
     display: none;

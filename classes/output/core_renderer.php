@@ -208,7 +208,7 @@ class core_renderer extends \core_renderer {
 
                     if( $completeclass == 'incomplete' ){
 
-                        if( $activitysection == $oldsection || $oldsection == 0 ){
+                        if( ($activitysection == $oldsection || $oldsection == 0) && $arcount <= 5 ){
                             $oldsection = $activitysection;
 
                             $enrolledcoursears[0]['activitysectionname'] = $ar->get_section_info()->name;
