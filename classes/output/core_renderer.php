@@ -912,7 +912,7 @@ class core_renderer extends \core_renderer {
      * @return string the navigation HTML.
      */
     public function activity_navigation() {
-        global $CFG;
+        global $DB,$CFG;
         // First we should check if we want to add navigation.
         $context = $this->page->context;
         if (($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
@@ -970,8 +970,36 @@ class core_renderer extends \core_renderer {
                         $completeclass = 'completed';
                     }
 
-                    $navigationsections[$i]['modules'][$module->id]['name'] = $module->name;
-                    $navigationsections[$i]['modules'][$module->id]['icon'] = $module->get_icon_url();
+                    if( $module->modname == 'quiz' ){
+                        $quizid = $module->get_course_module_record()->instance;
+                        $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
+            
+                        if( isset($quizdata->quiztype) ){
+                            if( $quizdata->quiztype == 'discover' ){
+                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Discover_on.png';
+                            }else if( $quizdata->quiztype == 'exercises' ){
+                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Studycase_on.png';
+                            }else if( $quizdata->quiztype == 'trivias' ){
+                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Trivia_on.png';
+                            }else if( $quizdata->quiztype == 'assessments' ){
+                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Assessments_on.png';
+                            }else if( $quizdata->quiztype == 'quest' ){
+                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Quest_on.png';
+                            }else if( $quizdata->quiztype == 'mission' ){
+                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Mission_on.png';
+                            }else if( $quizdata->quiztype == 'duels' ){
+                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Duelos_on.png';
+                            } else {
+                                $iconsrc = $module->get_icon_url().'?default';
+                            }
+                        } else {
+                            $iconsrc = $module->get_icon_url().'?default';
+                        }
+                    }else{
+                        $iconsrc = $module->get_icon_url();
+                    }
+                    $navigationsections[$i]['modules'][$module->id]['name'] = $module->name.' '.$module->modname;
+                    $navigationsections[$i]['modules'][$module->id]['icon'] = $iconsrc;
                     $navigationsections[$i]['modules'][$module->id]['link'] = new moodle_url($module->url, array('forceview' => 1));
                     $navigationsections[$i]['modules'][$module->id]['completeclass'] = $completeclass;
                 }
