@@ -8554,9 +8554,60 @@ a:focus {
     display: unset!important;
 }
 
- 
- 
+.arena-stats {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    display: inline-block;
+    max-width: 500px;
+} 
+.arena-stats-main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 25px;
+}
+.arena-stats-main .arena-stats-table {
+    width: 50%;
+}
 
+.arena-stats-table {
+    padding: 5px;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.arena-stats-table label {
+    min-width: 110px;
+    margin: 0;
+}
+.arena-stats-table .stats-o {
+    color: #ff6d00;
+    font-size: 20px;
+    font-weight: bold;
+}
+.arena-stats-table .stats-g {
+    color: #9fba0d;
+    font-size: 20px;
+    font-weight: bold;
+}
+.arena-stats-ftr {
+    padding: 25px 0 0;
+    border-top: 1px solid #949494;
+}
+.arena-stats-ftr .arena-stats-table span {
+    margin-right: 20px;
+}
+#pop_stats .modal-header h5 {
+    font-size: 50px;
+    color: #585752;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 700;
+    border-bottom: 2px solid #d9d9d9;
+}
 
 
 

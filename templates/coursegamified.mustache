@@ -116,10 +116,12 @@
                                 <div class="gam-urarro" style="background:url({{baseurl}}/theme/thinkblue/img/arrow-icon.png) no-repeat center center;"></div>
                                 <ul>
                                     <li>
-                                        <div class="gami-tab-itm" style="background:url({{baseurl}}/theme/thinkblue/img/ellipse-1649.png) no-repeat center center;">
-                                            <div class="gami-tab-icon"><img src="{{baseurl}}/theme/thinkblue/img/stats.png"/></div>
-                                            <span>Stats</span>
-                                        </div>
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#pop_stats">
+                                            <div class="gami-tab-itm" style="background:url({{baseurl}}/theme/thinkblue/img/ellipse-1649.png) no-repeat center center;">
+                                                <div class="gami-tab-icon"><img src="{{baseurl}}/theme/thinkblue/img/stats.png"/></div>
+                                                <span>Stats</span>
+                                            </div>
+                                        </button>
                                     </li>
                                     <li>
                                         <button type="button" class="btn" data-toggle="modal" data-target="#duels_skill">
@@ -1017,7 +1019,79 @@
             </div>
 
 
+            <div class="modal fade" id="pop_stats" tabindex="-1" role="dialog" aria-labelledby="pop_stats" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Stats</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="duelsMainSection">
+                                <div class="duels-userSec col-md-4">
+                                    <div class="">
+                                        <div class="gam-user-img" style="background:url({{baseurl}}/theme/thinkblue/img/circle-profile.png) no-repeat center center;">
+                                        
+                                            <div class="gam-progress">
+                                                {{{progressbarhtml}}}
+                                            </div>
 
+                                            <div class="gam-user-im">
+                                                <div class="gam-user-im-in">
+                                                    <span>
+                                                        <img src="{{quizzesdata.userdata.profile_image}}">
+                                                    </span>
+                                                </div>
+                                                <div class="gam-user-tx">
+                                                    <span>Level</span>
+                                                    <h4>{{currentlevel}}</h4>
+                                                </div>
+                                                <div class="gam-urarro" style="background:url({{baseurl}}/theme/thinkblue/img/arrow-icon.png) no-repeat center center;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="arena-main-box">
+                                        <div class="arena-stats">
+                                            <div class="arena-stats-main">
+                                                <div class="arena-stats-table">
+                                                    <label>Neurons:</label>
+                                                    <span class="stats-s">{{total_points}}</span>
+                                                </div>
+                                                <div class="arena-stats-table">
+                                                    <label>Level/XP:</label>
+                                                    <span class="stats-s">{{currentlevel}}/{{quizzesdata.userxp}}</span>
+                                                </div>
+                                                <div class="arena-stats-table">
+                                                    <label>Ratio:</label>
+                                                    <span class="stats-o">{{quizzesdata.ratio}}</span>
+                                                </div>
+                                                <div class="arena-stats-table">
+                                                    <label>Epic Quotient:</label>
+                                                    <span class="stats-g">{{quizzesdata.epic_ques}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="arena-stats-ftr">
+                                                <div class="arena-stats-table">
+                                                    <label>Duels:</label>
+                                                    <span class="stats-g">{{quizzesdata.duelsratio.ratio}}</span>
+                                                    <span class="stats-s">W:{{quizzesdata.duelsratio.wins}} L:{{quizzesdata.duelsratio.lost}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
