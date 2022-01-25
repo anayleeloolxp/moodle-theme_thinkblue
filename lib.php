@@ -154,6 +154,13 @@ function theme_thinkblue_get_pre_scss($theme) {
         'dark_overlay_background_color' => '#000',
         'dark_overlay_text_color' => '#fff',
 
+        'gray-lightest' => '#343a40',
+        'gray-light' => '#343a40',
+        'gray-dark' => '#343a40',
+        'gray-lighter' => '#343a40',
+        'brand-danger' => 'red',
+        'body-bg' => 'white',
+
     ];
 
     foreach ($configurablecolors as $colorsetting => $colorsettingval) {
