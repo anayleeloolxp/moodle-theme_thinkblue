@@ -654,7 +654,7 @@ function theme_thinkblue_updateconf() {
  * @return string HTML fragment
  */
 function theme_thinkblue_gamisync($baseemail) {
-    global $CFG, $DB;
+    global $CFG, $DB, $PAGE;
     require_once($CFG->dirroot . '/lib/filelib.php');
     $leeloolxplicense = get_config('theme_thinkblue')->license;
 
@@ -701,13 +701,27 @@ function theme_thinkblue_gamisync($baseemail) {
 
     $data = [
         'useremail' => $email,
+        'oldpointsdata' => $output,
         'pointsdata' => $output,
     ];
 
     $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
 
+    $PAGE->requires->js_init_code('
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        setCookie("needupdategame", 1, 1);
+
+    ');
+
     if (!empty($tb_game_points)) {
         $data['id'] = $tb_game_points->id;
+        $data['oldpointsdata'] = $tb_game_points->pointsdata;
         $DB->update_record('tb_game_points', $data);
     } else {
         $DB->insert_record('tb_game_points', $data);

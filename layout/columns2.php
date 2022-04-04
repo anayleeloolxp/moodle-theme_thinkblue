@@ -55,7 +55,7 @@ if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
 }
 
-if (is_siteadmin()) {
+if ($PAGE->user_allowed_editing()) {
     $extraclasses[] = 'adminloggedin';
 }
 

@@ -59,6 +59,62 @@ class core_renderer extends \core_renderer {
         return theme_thinkblue_general_leeloosettings();
     }
     /**
+     * Difference between rewards
+     * 
+     * @param string $newjson The new rewards.
+     * @param string $oldjson The old rewards.
+     * @return array of rewards.
+     */
+    public function compare_rewards( $email ) {
+
+        global $DB;
+
+        $gamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
+
+        if( !empty($gamepoints) ){
+            $newjson = json_decode($gamepoints->pointsdata);
+            $oldjson = json_decode($gamepoints->oldpointsdata); 
+    
+            $points = $newjson->total_points - $oldjson->total_points; 
+            $xps = $newjson->total_xps - $oldjson->total_xps; 
+            
+            $change_type = '';
+            if ( !empty($points) || !empty($xps) ) {
+                $change_type = 'minor';
+            }
+    
+            $rewards_data = [];
+    
+            if (!empty($newjson->rewards_data)) {
+                foreach ($newjson->rewards_data as $key => $value) {
+                    $keyyy = array_search($value->name, array_column($oldjson->rewards_data, 'name'));
+                    //var_dump($keyyy);
+                    if (is_int($keyyy) || $oldjson->rewards_data == 0 ) {
+                        $change_type = 'major';
+                        $value->diff = $value->totalcount - $oldjson->rewards_data[$keyyy]->totalcount;
+                    }
+                    $rewards_data[] = $value;
+                }
+            } 
+    
+            $response = array(
+                'points' => $points,
+                'xps' => $xps,
+                'rewards_data' => $rewards_data,
+                'change_type' => $change_type 
+            );
+        }else{
+            $response = array(
+                'points' => 0,
+                'xps' => 0,
+                'rewards_data' => [],
+                'change_type' => '' 
+            );
+        }
+        
+        return $response;
+    }
+    /**
      * Override to display an edit button again by calling the parent function
      * in core/core_renderer because theme_boost's function returns an empty
      * string and therefore displays nothing.
@@ -142,9 +198,24 @@ class core_renderer extends \core_renderer {
         $html = '';
         $gamificationdata = theme_thinkblue_gamification_data( base64_encode($USER->email) );
 
+        global $PAGE, $DB;
+
         if( $USER->id && !is_siteadmin($USER) && count((array)($gamificationdata)) ){
-            
-            global $PAGE, $DB;
+
+            $leelooview = optional_param('view', null, PARAM_RAW);
+
+            $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            if( $leelooview == 'dashboard' ){
+                $gamheader->dashactive = true;
+            }elseif( $leelooview == 'hero' ){
+                $gamheader->heroactive = true;
+            }elseif( $leelooview == 'skills' ){
+                $gamheader->skillsactive = true;
+            }elseif (strpos($actual_link, 'leeloolxp-smart-dashboard') !== false) {
+                $gamheader->arenaactive = true;
+            }
+
             $gamheader->showsrm = true;
 
             $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
@@ -154,7 +225,9 @@ class core_renderer extends \core_renderer {
 
             $gamheader->points = $gamificationdata->total_points;
             $gamheader->current_level = $gamificationdata->current_level;
-            $gamheader->next_level_points = $gamificationdata->next_level_points;
+            $gamheader->next_level_percent = $gamificationdata->next_level_percent;
+
+            $gamheader->userteam = $gamificationdata->userteam;
 
             $gamheader->get_logo_url = $this->get_logo_url();
             $gamheader->sitename = format_string($SITE->fullname, true,
@@ -239,30 +312,101 @@ class core_renderer extends \core_renderer {
 
             $gamheader->enrolledcourseslist = $enrolledcourseslist;
 
-            if( !empty($gamificationdata->currency_data) ){
-                foreach($gamificationdata->currency_data as $currency){
-                    $gamheader->currencyhtml .= '<div class="col-srm">
-                    <div class="srm-top-left-div srm-top-left-div-third">
-                        <span class="round-span">
-                            <img src="'.$currency->image.'">
-                        </span>
-                        <span class="box-span">'.$currency->totalcount.'</span>
-                        <span class="box-icn-span">
-                            <!--<img src="'.$currency->image.'">-->
-                        </span>
-                    </div>
-                </div>';
+            $currencycount = 0;
+            if( !empty($gamificationdata->rewards_data) ){
+                foreach($gamificationdata->rewards_data as $currency){
+                    if($currency->type == 'currencies' && $currencycount < 2 ){
+                        $gamheader->currencyhtml .= '<div class="col-srm">
+                            <div class="srm-top-left-div srm-top-left-div-third">
+                                <span class="round-span">
+                                    <img src="'.$currency->image.'">
+                                </span>
+                                <span class="box-span">'.$currency->totalcount.'</span>
+                                <span class="box-icn-span">
+                                    <!--<img src="'.$currency->image.'">-->
+                                </span>
+                            </div>
+                        </div>';
+                        $currencycount++;
+                    }
+                    
+                }
+            }
+
+            if ( $_COOKIE['needupdategame'] || 1 == 1) {
+                $comparerewards = $this->compare_rewards($USER->email);
+
+                //print_r($comparerewards);
+                
+                if( $comparerewards['change_type'] == 'major' ){
+
+                    $rewardsdata = array();
+
+                    if( $comparerewards['points'] != 0 ){
+                        $rewardsdata[0]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
+                        $rewardsdata[0]->text = $comparerewards['points'].' Neurons';
+                        if( $comparerewards['points'] > 0 ){
+                            $rewardsdata[0]->class = 'active';
+                        }else{
+                            $rewardsdata[0]->class = '';
+                        }
+                    }
+
+                    if( $comparerewards['xps'] != 0 ){
+                        $rewardsdata[1]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
+                        $rewardsdata[1]->text = $comparerewards['xps'].' XPs';
+                        if( $comparerewards['xps'] > 0 ){
+                            $rewardsdata[1]->class = 'active';
+                        }else{
+                            $rewardsdata[1]->class = '';
+                        } 
+                    }
+
+                    $countrewardarr = count($rewardsdata);
+
+                    if( !empty( $comparerewards['rewards_data'] ) ){
+                        foreach( $comparerewards['rewards_data'] as $singreward ){
+                            if( $singreward->diff != 0 ){
+                                $rewardsdata[$countrewardarr]->icon = $singreward->image;
+                                $rewardsdata[$countrewardarr]->text = $singreward->diff.' '.$singreward->name;
+                                if( $comparerewards['xps'] > 0 ){
+                                    $rewardsdata[$countrewardarr]->class = 'active';
+                                }else{
+                                    $rewardsdata[$countrewardarr]->class = '';
+                                } 
+                                $countrewardarr++;
+                            }
+                        }
+                    }
+
+                    if( !empty($rewardsdata) ){
+                        $gamheader->showrewardspop = true;
+                        $gamheader->rewardsdata = $rewardsdata;
+                    }
+
+                }else if( $comparerewards['change_type'] == 'minor' ){
+
+                    $gamheader->showrewardsnoti = true;
+
                 }
             }
 
             $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
 
         }else{
-            $gamheader->get_logo_url = $this->get_logo_url();
-            $gamheader->sitename = format_string($SITE->fullname, true,
-            ['context' => context_course::instance(SITEID), "escape" => false]);
 
-            $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
+            if( $USER->id ){
+                $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
+                $src = $userpicture->get_url($PAGE);
+                $gamheader->avatar = $src;   
+                $gamheader->fullnameuser = fullname($USER);
+    
+                $gamheader->get_logo_url = $this->get_logo_url();
+                $gamheader->sitename = format_string($SITE->fullname, true,
+                ['context' => context_course::instance(SITEID), "escape" => false]);
+    
+                $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
+            }
 
         }
         return $html;
@@ -1028,29 +1172,34 @@ class core_renderer extends \core_renderer {
 
         return '<div class="bottom_activity_navigation">
             <div class="page-bottom-bar">
-                <div class="row">
-                    <div class="col-sm-4">
-                    <div class="bottom_activity-left">
-                        <div class="home-ico">
-                            <a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">
-                                <img src="'.$CFG->wwwroot.'/theme/thinkblue/img/Duels-Gourav2_03.png">
-                            </a>
-                        </div>
+                <div class="page-bottom-inn">
+                    <div class="row">
+                        <div class="col-sm-4">
+                        <div class="bottom_activity-left">
+                            <div class="home-ico">
+                                <a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">
+                                    <img src="'.$CFG->wwwroot.'/theme/thinkblue/img/Duels-Gourav2_03.png">
+                                </a>
+                            </div>
 
-                        <div class="home-ico-text">
-                            <p>'.$this->page->cm->get_section_info()->name.'</p>
-                            <p><a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">'.$course->shortname.'</a></p>
-                        </div>
-                    </div>
-                    </div>
-
-                     <div class="col-sm-8">
-                        <div class="bottom_activity-right-main">
-                            <div class="bottom_activity-right">
-                                '.$activityhtml.'
+                            <div class="home-ico-text">
+                                <p>'.$this->page->cm->get_section_info()->name.'</p>
+                                <p><a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">'.$course->shortname.'</a></p>
                             </div>
                         </div>
-                     </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="bottom_activity-right-main">
+                                <div class="bottom_activity-right">
+                                    '.$activityhtml.'
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-mn-btn">
+                    <button class="btn"><i class="fa fa-ellipsis-v"></i></button>
                 </div>
             </div>
         </div>';

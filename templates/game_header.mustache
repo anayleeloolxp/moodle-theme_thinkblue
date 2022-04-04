@@ -34,60 +34,95 @@
     * Changed the order of the settingsmenu item.
 }}
 
-<div class="srm-top-team-div">
-    <div class="row">
-        <div class="col-lg-3">
-            <a href="{{{ config.wwwroot }}}" class="navbar-brand has-logo d-none d-sm-inline ">
-                <span class="logo d-none d-sm-inline">
-                    <img src="{{get_logo_url}}" alt="{{sitename}}">
-                </span>
-            </a>
-            <!--<div class="user_detl_left">
-                <div class="user_detl_img">
-                    <div class="user_img">
-                            <img src="{{{avatar}}}" class="img-thumbnail img-circle thumb96 ">
+<div class="srm-top-head-main">
+    <div class="srm-top-team-div">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="srm-top-left">
+                    <div class="pl-logo">
+                        <a href="{{{ config.wwwroot }}}" class="navbar-brand has-logo d-none d-sm-inline ">
+                            <span class="logo d-none d-sm-inline">
+                                <img src="{{get_logo_url}}" alt="{{sitename}}">
+                            </span>
+                        </a>
                     </div>
-                </div>
-                <div class="user_detl_cont">
-                    <div class="user_detl_cont_inn">
-                        <h4>{{{fullnameuser}}}</h4>
-                    </div> 
-                </div>
-                <div class="user_detl_cont">
-                    <div class="user_detl_cont_inn">
-                        <label>Select Theme</label>
-                        <select class="theme_select_cls" id="theme_select_id">
-                            <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=light">Light</option>
-                            <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=dark" selected="selected">Dark</option>
-                        </select>
-                    </div> 
-                </div>
-            </div>-->
-        </div>
-        <div class="col-lg-9">
-
-            {{#showsrm}}
-            <div class="srm-top-right-head">
-                <div class="col-srm">
-                    <div class="srm-top-left-div srm-top-left-div-first">
-                        <span class="round-span">{{{current_level}}}</span>
-                        <span class="box-span">{{{points}}}<small>/{{{next_level_points}}}</small></span>
+                    {{#showsrm}}
+                    <div class="srm-top-left-menu">
+                        <ul>
+                            <li><a class="l_dashlinks l_arena_link {{#arenaactive}}active{{/arenaactive}} " href="#">Arena</a></li>
+                            <li><a class="l_dashlinks l_hero_link {{#heroactive}}active{{/heroactive}}" href="#">Hero</a></li>
+                            <li><a class="l_dashlinks l_skills_link {{#skillsactive}}active{{/skillsactive}}" href="#">Skills</a></li>
+                            <li><a class="l_dashlinks l_dashboard_link {{#dashactive}}active{{/dashactive}}" href="#">Dashboard</a></li>
+                        </ul>
                     </div>
+                    {{/showsrm}}
                 </div>
-
-                {{{currencyhtml}}}
-
-                <div class="col-srm">
-                    <div class="srm-top-left-div srm-top-left-div-first">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#letsgo">{{letsgotxt}}</button>
-                    </div>
-                </div>
-                
             </div>
-
-            {{/showsrm}}
-
+            <div class="col-lg-2">
+                {{#showsrm}}
+                <div class="btn-srm-play-middle">
+                    <div class="btn-srm-play">
+                        <button type="button" class="btn" data-toggle="modal" data-target="#letsgo">Play <!--{{letsgotxt}}--> </button> 
+                    </div>
+                </div>
+                {{/showsrm}}
+            </div>
+            <div class="col-lg-5">
+                <div class="srm-top-right">
+                    <div class="user_detl_left">
+                        <div class="user_detl_img">
+                            <div class="user_img">
+                                <img src="{{{avatar}}}" class="img-thumbnail img-circle thumb96 ">
+                            </div>
+                        </div>
+                        <div class="user_detl_cont">
+                            <div class="user_detl_cont_inn">
+                                <h4>{{{fullnameuser}}}</h4>
+                                <p>{{{userteam}}}</p>
+                            </div> 
+                        </div>
+                        <!-- <div class="user_detl_cont">
+                            <div class="user_detl_cont_inn">
+                                <label>Select Theme</label>
+                                <select class="theme_select_cls" id="theme_select_id">
+                                    <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=light">Light</option>
+                                    <option value="https://leeloolxp.com/moodle-plugins-testing/admin/user/user_details/382?theme=dark" selected="selected">Dark</option>
+                                </select>
+                            </div> 
+                        </div> -->
+                    </div>
+                    {{#showsrm}}
+                    <div class="srm-top-right-head">
+                        <div class="col-srm">
+                            <div class="srm-top-left-div srm-top-left-div-third">
+                                <span class="round-span">
+                                    <img src="https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png">
+                                </span>
+                                <span class="box-span">{{{points}}}</span>
+                                <span class="box-icn-span">
+                                </span>
+                            </div>
+                        </div>
+                        {{{currencyhtml}}}
+                        <div class="col-srm">
+                            <div class="progress-pie-chart cool-off-div" data-percent="{{{next_level_percent}}}" data-toggle="tooltip" data-placement="top" data-original-title="{{{next_level_percent}}}%">
+                                <div class="ppc-progress">
+                                    <div class="ppc-progress-fill"></div>
+                                    <div class="ppc-progress-fill2"></div>
+                                </div>
+                                <div class="srm-top-right-pro">
+                                    <span class="srm-right-pro" data-progress="{{{next_level_percent}}}%">{{{current_level}}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/showsrm}}
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="head-mn-btn">
+        <button class="btn"><i class="fa fa-ellipsis-v"></i></button>
     </div>
 </div>
 
@@ -139,5 +174,34 @@
         </div>
     </div>
 </div>
-
 {{/showsrm}}
+
+{{#showrewardspop}}
+<div class="alchemy-wheel-modal modal fade" id="rewardspop" tabindex="-1" role="dialog" aria-labelledby="rewardspop" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header-gam-car">
+                <div class="gam-car-title">
+                <span>Great job!</span>
+                </div>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body-gam-car">
+                <div class="great-popup">
+                    <ul>
+                    {{#rewardsdata}}
+                        <li>
+                            <div class="great-item {{class}}">
+                                <div class="great-item-img"><img src="{{icon}}" alt=""></div>
+                                <div class="great-item-txt">{{text}}</div>
+                            </div>
+                        </li>
+                    {{/rewardsdata}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/showrewardspop}}

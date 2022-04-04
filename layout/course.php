@@ -59,7 +59,7 @@ if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
 }
 
-if (is_siteadmin()) {
+if ( $PAGE->user_allowed_editing() ) {
     $extraclasses[] = 'adminloggedin';
 }
 
@@ -555,7 +555,7 @@ if( isset($showvideo) || isset($showimage) || isset($isleelooproduct) ){
 $letsgourl = '';
 
 // Render course.mustache from thinkblue.
-if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || is_siteadmin() ){
+if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_editing() ){
     echo $OUTPUT->render_from_template('theme_thinkblue/course', $templatecontext);
 }else{
     $format = course_get_format($PAGE->course);

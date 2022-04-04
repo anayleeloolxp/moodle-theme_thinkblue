@@ -98,26 +98,30 @@
 
                             <div class="page-pl-btn">
                                 <div class="pl-btn-int">
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#introModal">
+                                    <div type="button" class="btn" data-toggle="modal" data-target="#introModal">
                                         <div class="pl-btn-icn"><img src="{{baseurl}}/theme/thinkblue/img/pl-bk.png" /></div>
                                         <div class="pl-btn-txt">intro</div>
-                                    </button>
+                                    </div>
                                 </div>
-                                <div class="pl-btn-ltgo" style="background:url({{baseurl}}/theme/thinkblue/img/pl-mn.png) no-repeat center center;">
-                                    <div class="pl-btn-icnback"><a href="{{letsgourl}}">Let’s <br />GO!</a></div>
+                                <div class="pl-btn-ltgo">
+                                    <div class="pl-btn-icnback">
+                                        <a href="{{letsgourl}}"><img src="{{baseurl}}/theme/thinkblue/img/Go-button.png" /></a>
+                                    </div>
                                 </div>
-                                <div class="pl-btn-skil">
-                                    <div class="pl-btn-icn"><a href="{{videosurl}}"><img src="{{baseurl}}/theme/thinkblue/img/pl-bk2.png" /></a></div>
-                                    <div class="pl-btn-txt">VIDEOS</div>
+                                <div class="pl-btn-int">
+                                    <div class="btn">
+                                        <div class="pl-btn-icn"><a href="{{videosurl}}"><img src="{{baseurl}}/theme/thinkblue/img/pl-bk2.png" /></a></div>
+                                        <div class="pl-btn-txt">VIDEOS</div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="gamification-right-tab-sec">
-                                <div class="gam-urarro" style="background:url({{baseurl}}/theme/thinkblue/img/arrow-icon.png) no-repeat center center;"></div>
+                                <div class="gam-urarro" style="background:url({{baseurl}}/theme/thinkblue/img/arrow-icon.png) no-repeat center center; display: none;"></div>
                                 <ul>
                                     <li>
                                         <button type="button" class="btn" data-toggle="modal" data-target="#pop_stats">
-                                            <div class="gami-tab-itm" style="background:url({{baseurl}}/theme/thinkblue/img/ellipse-1649.png) no-repeat center center;">
+                                            <div class="gami-tab-itm">
                                                 <div class="gami-tab-icon"><img src="{{baseurl}}/theme/thinkblue/img/stats.png"/></div>
                                                 <span>Stats</span>
                                             </div>
@@ -125,7 +129,7 @@
                                     </li>
                                     <li>
                                         <button type="button" class="btn" data-toggle="modal" data-target="#duels_skill">
-                                            <div class="gami-tab-itm" style="background:url({{baseurl}}/theme/thinkblue/img/ellipse-1649.png) no-repeat center center;">
+                                            <div class="gami-tab-itm">
                                                 <div class="gami-tab-icon"><img src="{{baseurl}}/theme/thinkblue/img/duels.png"/></div>
                                                 <span>Duels</span>
                                             </div>
@@ -133,7 +137,7 @@
                                     </li>
                                     <li>
                                         <button type="button" class="btn" data-toggle="modal" data-target="#activities_skill">
-                                            <div class="gami-tab-itm" style="background:url({{baseurl}}/theme/thinkblue/img/ellipse-1649.png) no-repeat center center;">
+                                            <div class="gami-tab-itm">
                                                 <div class="gami-tab-icon"><img src="{{baseurl}}/theme/thinkblue/img/activities.png"/></div>
                                                 <span>Activities</span>
                                             </div>
@@ -141,7 +145,7 @@
                                     </li>
                                     <li>
                                         <button type="button" class="btn" data-toggle="modal" data-target="#overview_skill">
-                                            <div class="gami-tab-itm" style="background:url({{baseurl}}/theme/thinkblue/img/ellipse-1649.png) no-repeat center center;">
+                                            <div class="gami-tab-itm">
                                                 <div class="gami-tab-icon"><img src="{{baseurl}}/theme/thinkblue/img/overview.png"/></div>
                                                 <span>Overview</span>
                                             </div>
@@ -156,28 +160,33 @@
             </div>
 
             <div class="page-bottom-bar">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="bottom-bar">
-                            <div class="bottom-bar-logo">
-                                <img src="{{baseurl}}/theme/thinkblue/img/Logooscuro.png" />
-                            </div>
-                            <div class="bottom-bar-proSec">
-                                <div class="bottom-bar-img">
-                                    <img src="{{moodle_course_image}}" />
+                <div class="page-bottom-inn">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="bottom-bar">
+                                <div class="bottom-bar-logo">
+                                    <img src="{{baseurl}}/theme/thinkblue/img/Logooscuro.png" />
                                 </div>
-                                <div class="bottom-bar-txt">
-                                    {{course_title}}
+                                <div class="bottom-bar-proSec">
+                                    <div class="bottom-bar-img">
+                                        <img src="{{moodle_course_image}}" />
+                                    </div>
+                                    <div class="bottom-bar-txt">
+                                        {{course_title}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bottom-bar-btn text-center">
-                            <button type="button" class="btn" data-toggle="modal" data-target="#select_skill">Select skill</button>
+                        <div class="col-md-4">
+                            <div class="bottom-bar-btn text-center">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#select_skill">Select skill</button>
+                            </div>
                         </div>
+                        <div class="col-md-4"></div>
                     </div>
-                    <div class="col-md-4"></div>
+                </div>
+                <div class="bottom-mn-btn">
+                    <button class="btn"><i class="fa fa-ellipsis-v"></i></button>
                 </div>
             </div>
 
@@ -1018,7 +1027,6 @@
                 </div>
             </div>
 
-
             <div class="modal fade" id="pop_stats" tabindex="-1" role="dialog" aria-labelledby="pop_stats" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -1086,18 +1094,11 @@
                                     </div>
                                 </div>
                                 
-                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
 
             <div id="page-content" class="row pb-3 d-none">
                 <div id="region-main-box" class="col-12">
@@ -1448,9 +1449,6 @@
                             {{/teacher_sidebar}}
                             {{/showinstuctor}}
                                 
-
-                                
-
                             </div>
                         </div>
                         {{/showsidebar}}

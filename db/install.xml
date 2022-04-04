@@ -8,6 +8,7 @@
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
         <FIELD NAME="useremail" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="User email"/>
+        <FIELD NAME="oldpointsdata" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Old Game points for user"/>
         <FIELD NAME="pointsdata" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Game points for user"/>
 	  </FIELDS>
       <KEYS>
