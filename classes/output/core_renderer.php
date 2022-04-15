@@ -92,6 +92,9 @@ class core_renderer extends \core_renderer {
                     if (is_int($keyyy) || $oldjson->rewards_data == 0 ) {
                         $change_type = 'major';
                         $value->diff = $value->totalcount - $oldjson->rewards_data[$keyyy]->totalcount;
+                    }else if (!is_int($keyyy) && $oldjson->rewards_data != 0 ) {
+                        $change_type = 'major';
+                        $value->diff = $value->totalcount;
                     }
                     $rewards_data[] = $value;
                 }
@@ -333,10 +336,9 @@ class core_renderer extends \core_renderer {
                 }
             }
 
-            if ( $_COOKIE['needupdategame'] || 1 == 1) {
+            $gamepointscheck = $DB->get_record('tb_game_points', array('useremail' => $USER->email));
+            if ( $gamepointscheck->needupdategame ) {
                 $comparerewards = $this->compare_rewards($USER->email);
-
-                //print_r($comparerewards);
                 
                 if( $comparerewards['change_type'] == 'major' ){
 
@@ -386,9 +388,38 @@ class core_renderer extends \core_renderer {
 
                 }else if( $comparerewards['change_type'] == 'minor' ){
 
+                    $rewardsdata = array();
+
+                    if( $comparerewards['points'] != 0 ){
+                        $rewardsdata[0]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
+                        $rewardsdata[0]->text = $comparerewards['points'].' Neurons';
+                        if( $comparerewards['points'] > 0 ){
+                            $rewardsdata[0]->class = 'active';
+                        }else{
+                            $rewardsdata[0]->class = '';
+                        }
+                    }
+
+                    if( $comparerewards['xps'] != 0 ){
+                        $rewardsdata[1]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
+                        $rewardsdata[1]->text = $comparerewards['xps'].' XPs';
+                        if( $comparerewards['xps'] > 0 ){
+                            $rewardsdata[1]->class = 'active';
+                        }else{
+                            $rewardsdata[1]->class = '';
+                        } 
+                    }
+
                     $gamheader->showrewardsnoti = true;
+                    $gamheader->rewardsdata = $rewardsdata;
 
                 }
+
+                $data['id'] = $gamepointscheck->id;
+                $data['needupdategame'] = 0;
+                $data['oldpointsdata'] = $gamepointscheck->pointsdata;
+                $DB->update_record('tb_game_points', $data);
+
             }
 
             $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);

@@ -22,16 +22,17 @@ require(["jquery"], function ($) {
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
 
-        var needupdategame = getCookie('needupdategame');
+        $("#rewardspop .close").click(function (e) {
+            e.preventDefault();
+            $('#rewardspop').hide();
+            $('#rewardspop').removeClass('show');
+        });
 
-        if( needupdategame == 1 ){
-            setTimeout(function() {
-                $('#rewardspop').modal('show');
-                setCookie("needupdategame", 0, 1);
-            }, 500);
-        }
-
-        
+        $("#rewardsnoti .close").click(function (e) {
+            e.preventDefault();
+            $('#rewardsnoti').hide();
+            $('#rewardsnoti').removeClass('show');
+        });
 
         if ($('a[data-key="localboostnavigationcustomrootusersleeloossourl"]').length ) {
             var href = $('a[data-key="localboostnavigationcustomrootusersleeloossourl"]').attr('href');
@@ -53,10 +54,16 @@ require(["jquery"], function ($) {
             var link = $(this).attr('href');
 
             var parentsection = $(this).closest('li.section');
-            var text = $(parentsection).find('.sectionname').html();
-            if(!$(text).attr("href")){
-                $(parentsection).find('.sectionname').html('<a href="'+link+'">'+text+'</a>');
+            var mainid = parentsection.attr('id');
+
+            if(mainid != 'section-0'){
+                var text = $(parentsection).find('.sectionname').html();
+                var textdiv = $(parentsection).find('.sectionname');
+                if(!$(textdiv).attr("href")){
+                    $(parentsection).find('.sectionname').html('<a href="'+link+'">'+text+'</a>');
+                }
             }
+            
             
         });
 

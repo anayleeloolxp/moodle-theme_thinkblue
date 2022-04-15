@@ -177,7 +177,7 @@
 {{/showsrm}}
 
 {{#showrewardspop}}
-<div class="alchemy-wheel-modal modal fade" id="rewardspop" tabindex="-1" role="dialog" aria-labelledby="rewardspop" aria-hidden="true">
+<div class="alchemy-wheel-modal modal fade show" id="rewardspop" tabindex="-1" role="dialog" aria-labelledby="rewardspop" aria-modal="true" style="display: block;">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -204,4 +204,35 @@
         </div>
     </div>
 </div>
+
 {{/showrewardspop}}
+{{#showrewardsnoti}}
+<div class="modal fade show" id="rewardsnoti" tabindex="-1" role="dialog" aria-labelledby="rewardsnoti" aria-modal="true" style="display: block;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header-gam-car">
+                <div class="gam-car-title">
+                <span>Great job!</span>
+                </div>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body-gam-car">
+                <div class="great-noti">
+                    <ul>
+                    {{#rewardsdata}}
+                        <li>
+                            <div class="great-item {{class}}">
+                                <div class="great-item-img"><img src="{{icon}}" alt=""></div>
+                                <div class="great-item-txt">{{text}}</div>
+                            </div>
+                        </li>
+                    {{/rewardsdata}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/showrewardsnoti}}

@@ -9989,6 +9989,27 @@ span.warning_flex {
 #rewardspop .modal-dialog {
     width: 770px;
 }
+div#rewardspop {
+    background: rgba(0,0,0,0.5);
+}
+div#rewardsnoti {
+    width: 300px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    top: auto;
+    height: auto;
+}
+.great-noti ul {
+    list-style: none;
+}
+.great-noti .great-item-img, .great-noti .great-item-txt {
+    display: inline-block;
+}
+#rewardsnoti .modal-dialog {
+    width: 100%;
+}
 .gam-car-item {
     text-align: center;
 }

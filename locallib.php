@@ -701,29 +701,22 @@ function theme_thinkblue_gamisync($baseemail) {
 
     $data = [
         'useremail' => $email,
-        'oldpointsdata' => $output,
+        //'oldpointsdata' => $output,
         'pointsdata' => $output,
+        'needupdategame' => '0',
     ];
 
     $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
 
-    $PAGE->requires->js_init_code('
-        function setCookie(cname, cvalue, exdays) {
-            const d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            let expires = "expires="+ d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        setCookie("needupdategame", 1, 1);
-
-    ');
-
     if (!empty($tb_game_points)) {
-        $data['id'] = $tb_game_points->id;
-        $data['oldpointsdata'] = $tb_game_points->pointsdata;
-        $DB->update_record('tb_game_points', $data);
+        if( $tb_game_points->pointsdata != $output ){
+            $data['id'] = $tb_game_points->id;
+            //$data['oldpointsdata'] = $tb_game_points->pointsdata;
+            $data['needupdategame'] = '1';
+            $DB->update_record('tb_game_points', $data);
+        }
     } else {
+        $data['oldpointsdata'] = $output;
         $DB->insert_record('tb_game_points', $data);
     }
 }
