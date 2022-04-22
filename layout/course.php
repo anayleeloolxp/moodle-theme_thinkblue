@@ -530,7 +530,7 @@ if( $videosurl == '' ){
     $videosurl = $firstvideo;
 }
 
-$videosurl = str_replace('view.php','tv_single.php', $videosurl);
+//$videosurl = str_replace('view.php','tv_single.php', $videosurl);
 
 $templatecontext['moodle_course_image'] = theme_thinkblue_course_image($PAGE->course);
 
