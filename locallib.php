@@ -577,6 +577,9 @@ function theme_thinkblue_quizzes_user_coursedata($courseid, $useremail) {
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
         'CURLOPT_POST' => count($postdata),
+        'CURLOPT_HTTPHEADER' => array(
+            'LeelooLXPToken: '.get_config('local_leeloolxpapi')->leelooapitoken.''
+        )
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
@@ -691,6 +694,9 @@ function theme_thinkblue_gamisync($baseemail) {
         'CURLOPT_RETURNTRANSFER' => true,
         'CURLOPT_HEADER' => false,
         'CURLOPT_POST' => count($postdata),
+        'CURLOPT_HTTPHEADER' => array(
+            'LeelooLXPToken: '.get_config('local_leeloolxpapi')->leelooapitoken.''
+        )
     );
 
     if (!$output = $curl->post($url, $postdata, $options)) {
