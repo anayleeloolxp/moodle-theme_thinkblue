@@ -38,8 +38,14 @@ require(["jquery"], function ($) {
             var href = $('a[data-key="localboostnavigationcustomrootusersleeloossourl"]').attr('href');
             $('.l_dashlinks').attr('href', href);
 
-            var herohref = href+'?view=hero';
-            var dashhref = href+'?view=dashboard';
+            let result = href.includes("?");
+            if( result ){
+                var herohref = href+'&view=hero';
+                var dashhref = href+'&view=dashboard';
+            } else {
+                var herohref = href+'?view=hero';
+                var dashhref = href+'?view=dashboard';
+            }            
 
             $('.l_hero_link').attr('href', herohref);
             $('.l_dashboard_link').attr('href', dashhref);

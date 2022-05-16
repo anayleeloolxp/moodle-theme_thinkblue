@@ -8872,6 +8872,9 @@ body.up-head .srm-top-team-div {
     padding-top: 77vh;
     background: none;
 }
+.modal-content .left-top-video.left-top-image {
+    padding-top: 0;
+}
 .gam-progress {
     position: absolute;
     width: 400px;
@@ -9752,6 +9755,9 @@ body.up-head .srm-top-team-div {
     .modal-content .left-top-video {
         padding-top: 56%;
     }
+    .modal-content .left-top-video.left-top-image {
+        padding-top: 0;
+    }
     .coursegamified-page .page-top-main-banner {
         padding: 8vh 16vh 8vh 5vh;
         position: relative;
@@ -10089,4 +10095,7 @@ div#rewardsnoti {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+.coursegamified-page .context-header-settings-menu {
+    display: none !important;
 }

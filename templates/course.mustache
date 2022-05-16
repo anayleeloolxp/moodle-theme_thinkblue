@@ -120,14 +120,18 @@
                                 <div class="left-top-video-section">
                                     <div class="row">
                                         <div class="col-9">
+                                            
+                                            {{#showvideo}}
                                             <div class="left-top-video">
-                                                {{#showvideo}}
                                                 <iframe src="{{{course_video}}}" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                                {{/showvideo}}
-                                                {{#showimage}}
-                                                <img src="{{{course_image}}}" width="100%" />
-                                                {{/showimage}}
                                             </div>
+                                            {{/showvideo}}
+                                            {{#showimage}}
+                                            <div class="left-top-video left-top-image">
+                                                <img src="{{{course_image}}}" width="100%" />
+                                            </div>
+                                            {{/showimage}}
+                                           
                                         </div>
                                         <div class="col-3">
                                             <div class="left-top-video-txt">
