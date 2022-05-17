@@ -713,20 +713,23 @@ if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_
     }
 
     foreach($completion->get_activities() as $ar){
-        $current = $completion->get_data($ar);
-        if( $current->completionstate == 0 ){
-            $letsgourl = $ar->get_url();
-            
-            if( $ar->modname == 'quiz' ){
-                $quizid = $ar->get_course_module_record()->instance;
-                $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
-                if( $quizdata->quiztype == 'discover' || $quizdata->quiztype == 'trivias' ){
-                    $letsgourl .= '&autostart=1';
+        if( $ar->visible == 1 ){
+            $current = $completion->get_data($ar);
+            if( $current->completionstate == 0 ){
+                $letsgourl = $ar->get_url();
+                
+                if( $ar->modname == 'quiz' ){
+                    $quizid = $ar->get_course_module_record()->instance;
+                    $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
+                    if( $quizdata->quiztype == 'discover' || $quizdata->quiztype == 'trivias' ){
+                        $letsgourl .= '&autostart=1';
+                    }
                 }
+    
+                break;
             }
-
-            break;
         }
+        
     }
 
     if( $letsgourl == '' ){

@@ -258,48 +258,50 @@ class core_renderer extends \core_renderer {
                 $arcount = 0;
                 $oldsection = '';
                 foreach($completion->get_activities() as $ar){
-                    //$current = $completion->get_data($ar);
-
-                    $activityname = $ar->name;
-                    $activitysection = $ar->section;
-                    $activityiconurl = $ar->get_icon_url();
-                    $activityurl = new moodle_url($ar->url, array('forceview' => 1));
                     
-                    
-                    $hascompletion = $completion->is_enabled($ar);
-                    if ($hascompletion) {
-                        $completeclass = 'incomplete';
-                    }
+                    if( $ar->visible == 1 ){
+                        //$current = $completion->get_data($ar);
 
-                    $completiondata = $completion->get_data(
-                        $ar,
-                        true
-                    );
-                    if (in_array(
-                        $completiondata->completionstate,
-                        $completionok
-                    )) {
-                        $completeclass = 'completed active';
-                    }
+                        $activityname = $ar->name;
+                        $activitysection = $ar->section;
+                        $activityiconurl = $ar->get_icon_url();
+                        $activityurl = new moodle_url($ar->url, array('forceview' => 1));
 
-                    if( $completeclass == 'incomplete' ){
 
-                        if( ($activitysection == $oldsection || $oldsection == 0) && $arcount <= 5 ){
-                            $oldsection = $activitysection;
-
-                            $enrolledcoursears[0]['activitysectionname'] = $ar->get_section_info()->name;
-                            $enrolledcoursears[0]['activities'][$arcount]['activityname'] = $activityname;
-                            $enrolledcoursears[0]['activities'][$arcount]['activitysection'] = $activitysection;
-                            $enrolledcoursears[0]['activities'][$arcount]['activityiconurl'] = $activityiconurl;
-                            $enrolledcoursears[0]['activities'][$arcount]['activityurl'] = $activityurl;
-                            $enrolledcoursears[0]['activities'][$arcount]['completeclass'] = $completeclass;
-                            
-    
-                            $arcount++;
+                        $hascompletion = $completion->is_enabled($ar);
+                        if ($hascompletion) {
+                            $completeclass = 'incomplete';
                         }
-                        
-                    }
 
+                        $completiondata = $completion->get_data(
+                            $ar,
+                            true
+                        );
+                        if (in_array(
+                            $completiondata->completionstate,
+                            $completionok
+                        )) {
+                            $completeclass = 'completed active';
+                        }
+
+                        if( $completeclass == 'incomplete' ){
+
+                            if( ($activitysection == $oldsection || $oldsection == 0) && $arcount <= 5 ){
+                                $oldsection = $activitysection;
+
+                                $enrolledcoursears[0]['activitysectionname'] = $ar->get_section_info()->name;
+                                $enrolledcoursears[0]['activities'][$arcount]['activityname'] = $activityname;
+                                $enrolledcoursears[0]['activities'][$arcount]['activitysection'] = $activitysection;
+                                $enrolledcoursears[0]['activities'][$arcount]['activityiconurl'] = $activityiconurl;
+                                $enrolledcoursears[0]['activities'][$arcount]['activityurl'] = $activityurl;
+                                $enrolledcoursears[0]['activities'][$arcount]['completeclass'] = $completeclass;
+                                
+
+                                $arcount++;
+                            }
+                            
+                        }
+                    }
                     
                 }
 
