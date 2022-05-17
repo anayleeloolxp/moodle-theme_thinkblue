@@ -2085,7 +2085,7 @@ div#nav-drawer[data-region="drawer"] {
         position: fixed;
         width: 71px;
         top: 56px;
-        height: calc(100% - 196px);
+        height: calc(100% - 241px);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch; 
         z-index: 99;
@@ -2099,7 +2099,7 @@ div#nav-drawer[data-region="drawer"] {
     .leftusermenu {
         padding: 10px;
         background: #f5f6fa;
-        height: 140px;
+        height: 185px;
         width: 71px;
         position: fixed;
         bottom: 0;
@@ -2144,7 +2144,7 @@ div#nav-drawer[data-region="drawer"] {
 
 .coursegamified-page#page-wrapper div#nav-drawer[data-region="drawer"] .leftnavcontainer,
 .pagelayout-incourse #page-wrapper div#nav-drawer[data-region="drawer"] .leftnavcontainer {
-    height: calc(100% - 256px);
+    height: calc(100% - 301px);
 }
 .coursegamified-page#page-wrapper div#nav-drawer[data-region="drawer"] .leftusermenu,
 .pagelayout-incourse #page-wrapper div#nav-drawer[data-region="drawer"] .leftusermenu {
@@ -10098,4 +10098,17 @@ div#rewardsnoti {
 }
 .coursegamified-page .context-header-settings-menu {
     display: none !important;
+}
+.navleeloolxpchatcontainer.l_hidden {
+    visibility: hidden;
+}
+#wespher_widget_div{
+    transition: all 0.5s ease-out;
+    right: 0;
+}
+#wespher_widget_div.l_hidden{
+    right: -100%;
+}
+#wespher_widget_div.l_hidden #wespher_widget_frame{
+    display: unset;
 }
