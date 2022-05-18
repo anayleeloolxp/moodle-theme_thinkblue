@@ -272,6 +272,11 @@ $quizzesdata = theme_thinkblue_quizzes_user_coursedata($courseid, $USER->email);
 $gamificationdata = theme_thinkblue_gamification_data( base64_encode($USER->email) );
 
 if( count((array)($gamificationdata)) ){
+
+    if( !isset($gamificationdata->next_level_points) ){
+        $gamificationdata->next_level_points = 0;
+    }
+
     $templatecontext['currentlevel'] = $gamificationdata->current_level;
     $templatecontext['total_points'] = $gamificationdata->total_points;
     $templatecontext['next_level_points'] = $gamificationdata->next_level_points;
@@ -291,7 +296,7 @@ if( count((array)($gamificationdata)) ){
     $templatecontext['nextlevel'] = 0;
 }
 
-$levelprogresspercent = ($templatecontext['total_points']/$templatecontext['next_level_points'])*100;
+@$levelprogresspercent = ($templatecontext['total_points']/$templatecontext['next_level_points'])*100;
 $filleddottsprogress = (($levelprogresspercent*45)/100) | 0;
 
 $progressbarhtml = '';
@@ -607,6 +612,8 @@ if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_
                     if (!$module->uservisible || !$module->visible || !$module->visibleoncoursepage) {
                         continue;
                     }
+
+                    $completeclass = '';
 
                     $hascompletion = $completion->is_enabled($module);
                     if ($hascompletion) {

@@ -268,6 +268,7 @@ class core_renderer extends \core_renderer {
                         $activityurl = new moodle_url($ar->url, array('forceview' => 1));
 
 
+                        $completeclass = '';
                         $hascompletion = $completion->is_enabled($ar);
                         if ($hascompletion) {
                             $completeclass = 'incomplete';
@@ -305,7 +306,7 @@ class core_renderer extends \core_renderer {
                     
                 }
 
-                $enrolledcourseslist[$count]->id = $enrolledcourse->id;
+                @$enrolledcourseslist[$count]->id = $enrolledcourse->id;
                 $enrolledcourseslist[$count]->fullname = $enrolledcourse->fullname;
                 $enrolledcourseslist[$count]->image = theme_thinkblue_course_image($enrolledcourse);
                 $enrolledcourseslist[$count]->url = new moodle_url('/course/view.php', array('id' => $enrolledcourse->id));
@@ -1131,6 +1132,7 @@ class core_renderer extends \core_renderer {
                         continue;
                     }
 
+                    $completeclass = '';
                     $hascompletion = $completioninfo->is_enabled($module);
                     if ($hascompletion) {
                         $completeclass = 'incomplete';
