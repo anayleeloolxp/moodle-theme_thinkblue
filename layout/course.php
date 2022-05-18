@@ -505,20 +505,20 @@ $firstar = '';
 foreach ($modinfo->cms as $cms) {
 
     if( $firstar == '' ){
-        $firstar = $cms->get_url();
+        $firstar = $cms->url;
     }
 
     if ($cms->modname == 'leeloolxpvimeo') {
 
         if( $firstvideo == '' ){
-            $firstvideo = $cms->get_url();
+            $firstvideo = $cms->url;
         }
 
         $current = $completion->get_data($cms);
         
         if( $videosurl == '' ){
             if( $current->completionstate == 0 ){
-                $videosurl = $cms->get_url();
+                $videosurl = $cms->url;
             }
         }
 
@@ -716,7 +716,7 @@ if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_
         if( $ar->visible == 1 ){
             $current = $completion->get_data($ar);
             if( $current->completionstate == 0 ){
-                $letsgourl = $ar->get_url();
+                $letsgourl = $ar->url;
                 
                 if( $ar->modname == 'quiz' ){
                     $quizid = $ar->get_course_module_record()->instance;
