@@ -177,7 +177,7 @@ function xmldb_theme_thinkblue_install() {
     Events|/course/index.php?categoryid=5||||||fa-ticket||
     Blog|/blog/index.php?userid=2||||||fa-comments||
     TV|/mod/leeloolxpvimeo/tv.php||||||fa-tv||
-    {editingtoggle}|'.$editingurl.'|||editingteacher|admin,manager|OR|fa-pencil|editing|participants', 'local_boostnavigation');
+    {editingtoggle}|' . $editingurl . '|||editingteacher|admin,manager|OR|fa-pencil|editing|participants', 'local_boostnavigation');
 
     set_config('removemyhomenode', '1', 'local_boostnavigation');
     set_config('removehomenode', '1', 'local_boostnavigation');

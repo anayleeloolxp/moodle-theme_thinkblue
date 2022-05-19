@@ -21,7 +21,9 @@
  * @author     Leeloo LXP <info@leeloolxp.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 namespace theme_thinkblue\output;
+
 use action_link;
 use action_menu;
 use action_menu_filler;
@@ -59,62 +61,61 @@ class core_renderer extends \core_renderer {
         return theme_thinkblue_general_leeloosettings();
     }
     /**
-     * Difference between rewards
-     * 
-     * @param string $newjson The new rewards.
-     * @param string $oldjson The old rewards.
-     * @return array of rewards.
+     * Compare rewards
+     *
+     * @param string $email email
+     * @return array data
      */
-    public function compare_rewards( $email ) {
+    public function compare_rewards($email) {
 
         global $DB;
 
         $gamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
 
-        if( !empty($gamepoints) ){
+        if (!empty($gamepoints)) {
             $newjson = json_decode($gamepoints->pointsdata);
-            $oldjson = json_decode($gamepoints->oldpointsdata); 
-    
-            $points = $newjson->total_points - $oldjson->total_points; 
-            $xps = $newjson->total_xps - $oldjson->total_xps; 
-            
-            $change_type = '';
-            if ( !empty($points) || !empty($xps) ) {
-                $change_type = 'minor';
+            $oldjson = json_decode($gamepoints->oldpointsdata);
+
+            $points = $newjson->total_points - $oldjson->total_points;
+            $xps = $newjson->total_xps - $oldjson->total_xps;
+
+            $changetype = '';
+            if (!empty($points) || !empty($xps)) {
+                $changetype = 'minor';
             }
-    
-            $rewards_data = [];
-    
+
+            $rewardsvardata = [];
+
             if (!empty($newjson->rewards_data)) {
                 foreach ($newjson->rewards_data as $key => $value) {
                     $keyyy = array_search($value->name, array_column($oldjson->rewards_data, 'name'));
                     //var_dump($keyyy);
-                    if (is_int($keyyy) || $oldjson->rewards_data == 0 ) {
-                        $change_type = 'major';
+                    if (is_int($keyyy) || $oldjson->rewards_data == 0) {
+                        $changetype = 'major';
                         $value->diff = $value->totalcount - $oldjson->rewards_data[$keyyy]->totalcount;
-                    }else if (!is_int($keyyy) && $oldjson->rewards_data != 0 ) {
-                        $change_type = 'major';
+                    } else if (!is_int($keyyy) && $oldjson->rewards_data != 0) {
+                        $changetype = 'major';
                         $value->diff = $value->totalcount;
                     }
-                    $rewards_data[] = $value;
+                    $rewardsvardata[] = $value;
                 }
-            } 
-    
+            }
+
             $response = array(
                 'points' => $points,
                 'xps' => $xps,
-                'rewards_data' => $rewards_data,
-                'change_type' => $change_type 
+                'rewards_data' => $rewardsvardata,
+                'change_type' => $changetype
             );
-        }else{
+        } else {
             $response = array(
                 'points' => 0,
                 'xps' => 0,
                 'rewards_data' => [],
-                'change_type' => '' 
+                'change_type' => ''
             );
         }
-        
+
         return $response;
     }
     /**
@@ -149,13 +150,13 @@ class core_renderer extends \core_renderer {
         global $CFG, $USER;
 
         $reqstartquiz = optional_param('startattempt', 0, PARAM_RAW);
-        if( $reqstartquiz == 1 ){
+        if ($reqstartquiz == 1) {
             $quizid = optional_param('id', 0, PARAM_RAW);
             $usersession = $USER->sesskey;
-            $urltogo = $CFG->wwwroot . '/mod/quiz/startattempt.php?_qf__mod_quiz_preflight_check_form=1&cmid='.$quizid.'&sesskey='.$usersession;
+            $urltogo = $CFG->wwwroot . '/mod/quiz/startattempt.php?_qf__mod_quiz_preflight_check_form=1&cmid=' . $quizid . '&sesskey=' . $usersession;
             redirect($urltogo);
         }
-        
+
         require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
         if (!is_array($additionalclasses)) {
             $additionalclasses = explode(' ', $additionalclasses);
@@ -199,23 +200,23 @@ class core_renderer extends \core_renderer {
         global $USER, $SITE;
         $gamheader = new stdClass();
         $html = '';
-        $gamificationdata = theme_thinkblue_gamification_data( base64_encode($USER->email) );
+        $gamificationdata = theme_thinkblue_gamification_data(base64_encode($USER->email));
 
         global $PAGE, $DB;
 
-        if( $USER->id && !is_siteadmin($USER) && count((array)($gamificationdata)) ){
+        if ($USER->id && !is_siteadmin($USER) && count((array)($gamificationdata))) {
 
             $leelooview = optional_param('view', null, PARAM_RAW);
 
-            $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $actuallink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-            if( $leelooview == 'dashboard' ){
+            if ($leelooview == 'dashboard') {
                 $gamheader->dashactive = true;
-            }elseif( $leelooview == 'hero' ){
+            } else if ($leelooview == 'hero') {
                 $gamheader->heroactive = true;
-            }elseif( $leelooview == 'skills' ){
+            } else if ($leelooview == 'skills') {
                 $gamheader->skillsactive = true;
-            }elseif (strpos($actual_link, 'leeloolxp-smart-dashboard') !== false) {
+            } else if (strpos($actuallink, 'leeloolxp-smart-dashboard') !== false) {
                 $gamheader->arenaactive = true;
             }
 
@@ -223,7 +224,7 @@ class core_renderer extends \core_renderer {
 
             $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
             $src = $userpicture->get_url($PAGE);
-            $gamheader->avatar = $src;   
+            $gamheader->avatar = $src;
             $gamheader->fullnameuser = fullname($USER);
 
             $gamheader->points = $gamificationdata->total_points;
@@ -233,9 +234,12 @@ class core_renderer extends \core_renderer {
             $gamheader->userteam = $gamificationdata->userteam;
 
             $gamheader->get_logo_url = $this->get_logo_url();
-            $gamheader->sitename = format_string($SITE->fullname, true,
-            ['context' => context_course::instance(SITEID), "escape" => false]);
-            
+            $gamheader->sitename = format_string(
+                $SITE->fullname,
+                true,
+                ['context' => context_course::instance(SITEID), "escape" => false]
+            );
+
             $gamheader->currencyhtml = '';
 
             $gamheader->letsgotxt = get_string('letsgo', 'theme_thinkblue');
@@ -244,8 +248,8 @@ class core_renderer extends \core_renderer {
 
             $enrolledcourseslist = array();
             $count = 0;
-            foreach( $enrolledcourses as $key => $enrolledcourse ){
-                
+            foreach ($enrolledcourses as $key => $enrolledcourse) {
+
                 $completion = new completion_info($enrolledcourse);
 
                 $completionok = [
@@ -257,9 +261,9 @@ class core_renderer extends \core_renderer {
 
                 $arcount = 0;
                 $oldsection = '';
-                foreach($completion->get_activities() as $ar){
-                    
-                    if( $ar->visible == 1 ){
+                foreach ($completion->get_activities() as $ar) {
+
+                    if ($ar->visible == 1) {
                         //$current = $completion->get_data($ar);
 
                         $activityname = $ar->name;
@@ -285,9 +289,9 @@ class core_renderer extends \core_renderer {
                             $completeclass = 'completed active';
                         }
 
-                        if( $completeclass == 'incomplete' ){
+                        if ($completeclass == 'incomplete') {
 
-                            if( ($activitysection == $oldsection || $oldsection == 0) && $arcount <= 5 ){
+                            if (($activitysection == $oldsection || $oldsection == 0) && $arcount <= 5) {
                                 $oldsection = $activitysection;
 
                                 $enrolledcoursears[0]['activitysectionname'] = $ar->get_section_info()->name;
@@ -296,14 +300,12 @@ class core_renderer extends \core_renderer {
                                 $enrolledcoursears[0]['activities'][$arcount]['activityiconurl'] = $activityiconurl;
                                 $enrolledcoursears[0]['activities'][$arcount]['activityurl'] = $activityurl;
                                 $enrolledcoursears[0]['activities'][$arcount]['completeclass'] = $completeclass;
-                                
+
 
                                 $arcount++;
                             }
-                            
                         }
                     }
-                    
                 }
 
                 @$enrolledcourseslist[$count]->id = $enrolledcourse->id;
@@ -313,135 +315,131 @@ class core_renderer extends \core_renderer {
 
                 $enrolledcourseslist[$count]->enrolledcoursears = $enrolledcoursears;
                 $count++;
-
             }
 
             $gamheader->enrolledcourseslist = $enrolledcourseslist;
 
             $currencycount = 0;
-            if( !empty($gamificationdata->rewards_data) ){
-                foreach($gamificationdata->rewards_data as $currency){
-                    if($currency->type == 'currencies' && $currencycount < 2 ){
+            if (!empty($gamificationdata->rewards_data)) {
+                foreach ($gamificationdata->rewards_data as $currency) {
+                    if ($currency->type == 'currencies' && $currencycount < 2) {
                         $gamheader->currencyhtml .= '<div class="col-srm">
                             <div class="srm-top-left-div srm-top-left-div-third">
                                 <span class="round-span">
-                                    <img src="'.$currency->image.'">
+                                    <img src="' . $currency->image . '">
                                 </span>
-                                <span class="box-span">'.$currency->totalcount.'</span>
+                                <span class="box-span">' . $currency->totalcount . '</span>
                                 <span class="box-icn-span">
-                                    <!--<img src="'.$currency->image.'">-->
+                                    <!--<img src="' . $currency->image . '">-->
                                 </span>
                             </div>
                         </div>';
                         $currencycount++;
                     }
-                    
                 }
             }
 
             $gamepointscheck = $DB->get_record('tb_game_points', array('useremail' => $USER->email));
-            if ( $gamepointscheck->needupdategame ) {
+            if ($gamepointscheck->needupdategame) {
                 $comparerewards = $this->compare_rewards($USER->email);
-                
-                if( $comparerewards['change_type'] == 'major' ){
+
+                if ($comparerewards['change_type'] == 'major') {
 
                     $rewardsdata = array();
 
-                    if( $comparerewards['points'] != 0 ){
+                    if ($comparerewards['points'] != 0) {
                         $rewardsdata[0]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[0]->text = $comparerewards['points'].' Neurons';
-                        if( $comparerewards['points'] > 0 ){
+                        $rewardsdata[0]->text = $comparerewards['points'] . ' Neurons';
+                        if ($comparerewards['points'] > 0) {
                             $rewardsdata[0]->class = 'active';
-                        }else{
+                        } else {
                             $rewardsdata[0]->class = '';
                         }
                     }
 
-                    if( $comparerewards['xps'] != 0 ){
+                    if ($comparerewards['xps'] != 0) {
                         $rewardsdata[1]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[1]->text = $comparerewards['xps'].' XPs';
-                        if( $comparerewards['xps'] > 0 ){
+                        $rewardsdata[1]->text = $comparerewards['xps'] . ' XPs';
+                        if ($comparerewards['xps'] > 0) {
                             $rewardsdata[1]->class = 'active';
-                        }else{
+                        } else {
                             $rewardsdata[1]->class = '';
-                        } 
+                        }
                     }
 
                     $countrewardarr = count($rewardsdata);
 
-                    if( !empty( $comparerewards['rewards_data'] ) ){
-                        foreach( $comparerewards['rewards_data'] as $singreward ){
-                            if( $singreward->diff != 0 ){
+                    if (!empty($comparerewards['rewards_data'])) {
+                        foreach ($comparerewards['rewards_data'] as $singreward) {
+                            if ($singreward->diff != 0) {
                                 $rewardsdata[$countrewardarr]->icon = $singreward->image;
-                                $rewardsdata[$countrewardarr]->text = $singreward->diff.' '.$singreward->name;
-                                if( $comparerewards['xps'] > 0 ){
+                                $rewardsdata[$countrewardarr]->text = $singreward->diff . ' ' . $singreward->name;
+                                if ($comparerewards['xps'] > 0) {
                                     $rewardsdata[$countrewardarr]->class = 'active';
-                                }else{
+                                } else {
                                     $rewardsdata[$countrewardarr]->class = '';
-                                } 
+                                }
                                 $countrewardarr++;
                             }
                         }
                     }
 
-                    if( !empty($rewardsdata) ){
+                    if (!empty($rewardsdata)) {
                         $gamheader->showrewardspop = true;
                         $gamheader->rewardsdata = $rewardsdata;
                     }
-
-                }else if( $comparerewards['change_type'] == 'minor' ){
+                } else if ($comparerewards['change_type'] == 'minor') {
 
                     $rewardsdata = array();
 
-                    if( $comparerewards['points'] != 0 ){
+                    if ($comparerewards['points'] != 0) {
                         $rewardsdata[0]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[0]->text = $comparerewards['points'].' Neurons';
-                        if( $comparerewards['points'] > 0 ){
+                        $rewardsdata[0]->text = $comparerewards['points'] . ' Neurons';
+                        if ($comparerewards['points'] > 0) {
                             $rewardsdata[0]->class = 'active';
-                        }else{
+                        } else {
                             $rewardsdata[0]->class = '';
                         }
                     }
 
-                    if( $comparerewards['xps'] != 0 ){
+                    if ($comparerewards['xps'] != 0) {
                         $rewardsdata[1]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[1]->text = $comparerewards['xps'].' XPs';
-                        if( $comparerewards['xps'] > 0 ){
+                        $rewardsdata[1]->text = $comparerewards['xps'] . ' XPs';
+                        if ($comparerewards['xps'] > 0) {
                             $rewardsdata[1]->class = 'active';
-                        }else{
+                        } else {
                             $rewardsdata[1]->class = '';
-                        } 
+                        }
                     }
 
                     $gamheader->showrewardsnoti = true;
                     $gamheader->rewardsdata = $rewardsdata;
-
                 }
 
                 $data['id'] = $gamepointscheck->id;
                 $data['needupdategame'] = 0;
                 $data['oldpointsdata'] = $gamepointscheck->pointsdata;
                 $DB->update_record('tb_game_points', $data);
-
             }
 
             $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
+        } else {
 
-        }else{
-
-            if( $USER->id ){
+            if ($USER->id) {
                 $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
                 $src = $userpicture->get_url($PAGE);
-                $gamheader->avatar = $src;   
+                $gamheader->avatar = $src;
                 $gamheader->fullnameuser = fullname($USER);
-    
+
                 $gamheader->get_logo_url = $this->get_logo_url();
-                $gamheader->sitename = format_string($SITE->fullname, true,
-                ['context' => context_course::instance(SITEID), "escape" => false]);
-    
+                $gamheader->sitename = format_string(
+                    $SITE->fullname,
+                    true,
+                    ['context' => context_course::instance(SITEID), "escape" => false]
+                );
+
                 $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);
             }
-
         }
         return $html;
     }
@@ -494,15 +492,20 @@ class core_renderer extends \core_renderer {
             // Check if the shown and the operating user are identical.
             $currentuser = $USER->id == $userid;
             if (($currentuser || is_siteadmin($USER)) &&
-                has_capability('moodle/user:update', \context_system::instance())) {
-                $url = new moodle_url('/user/editadvanced.php', array('id' => $userid, 'course' => $COURSE->id,
-                    'returnto' => 'profile'));
+                has_capability('moodle/user:update', \context_system::instance())
+            ) {
+                $url = new moodle_url('/user/editadvanced.php', array(
+                    'id' => $userid, 'course' => $COURSE->id,
+                    'returnto' => 'profile'
+                ));
                 $header->pageheadingbutton = $this->single_button($url, get_string('editmyprofile', 'core'));
             } else if ((has_capability('moodle/user:editprofile', \context_user::instance($userid)) &&
                 !is_siteadmin($USER)) || ($currentuser &&
                 has_capability('moodle/user:editownprofile', \context_system::instance()))) {
-                $url = new moodle_url('/user/edit.php', array('id' => $userid, 'course' => $COURSE->id,
-                    'returnto' => 'profile'));
+                $url = new moodle_url('/user/edit.php', array(
+                    'id' => $userid, 'course' => $COURSE->id,
+                    'returnto' => 'profile'
+                ));
                 $header->pageheadingbutton = $this->single_button($url, get_string('editmyprofile', 'core'));
             }
         }
@@ -524,15 +527,20 @@ class core_renderer extends \core_renderer {
         // MODIFICATION START:
         // If the setting showhintcoursehidden is set, the visibility of the course is hidden and
         // a hint for the visibility will be shown.
-        if (@$this->getleeloosettings()->course_layout_settings->showhintcoursehidden == 1 && $COURSE->visible == false &&
-            $this->page->has_set_url() && $this->page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)) {
+        if (
+            @$this->getleeloosettings()->course_layout_settings->showhintcoursehidden == 1 && $COURSE->visible == false &&
+            $this->page->has_set_url() && $this->page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
+        ) {
             $html .= html_writer::start_tag('div', array('class' => 'course-hidden-infobox alert alert-warning'));
             $html .= html_writer::tag('i', null, array('class' => 'fa fa-exclamation-circle fa-3x fa-pull-left'));
             $html .= get_string('showhintcoursehiddengeneral', 'theme_thinkblue', $COURSE->id);
             // If the user has the capability to change the course settings, an additional link to the course settings is shown.
             if (has_capability('moodle/course:update', context_course::instance($COURSE->id))) {
-                $html .= html_writer::tag('div', get_string('showhintcoursehiddensettingslink',
-                    'theme_thinkblue', array('url' => $CFG->wwwroot . '/course/edit.php?id=' . $COURSE->id)));
+                $html .= html_writer::tag('div', get_string(
+                    'showhintcoursehiddensettingslink',
+                    'theme_thinkblue',
+                    array('url' => $CFG->wwwroot . '/course/edit.php?id=' . $COURSE->id)
+                ));
             }
             $html .= html_writer::end_tag('div');
         }
@@ -542,15 +550,20 @@ class core_renderer extends \core_renderer {
         // We also check that the user did not switch the role. This is a special case for roles that can fully access the course
         // without being enrolled. A role switch would show the guest access hint additionally in that case and this is not
         // intended.
-        if (@$this->getleeloosettings()->course_layout_settings->showhintcourseguestaccess == 1
+        if (
+            @$this->getleeloosettings()->course_layout_settings->showhintcourseguestaccess == 1
             && is_guest(\context_course::instance($COURSE->id), $USER->id)
             && $this->page->has_set_url()
             && $this->page->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
-            && !is_role_switched($COURSE->id)) {
+            && !is_role_switched($COURSE->id)
+        ) {
             $html .= html_writer::start_tag('div', array('class' => 'course-guestaccess-infobox alert alert-warning'));
             $html .= html_writer::tag('i', null, array('class' => 'fa fa-exclamation-circle fa-3x fa-pull-left'));
-            $html .= get_string('showhintcourseguestaccessgeneral', 'theme_thinkblue',
-                array('role' => role_get_name(get_guest_role())));
+            $html .= get_string(
+                'showhintcourseguestaccessgeneral',
+                'theme_thinkblue',
+                array('role' => role_get_name(get_guest_role()))
+            );
             $html .= theme_thinkblue_get_course_guest_access_hint($COURSE->id);
             $html .= html_writer::end_tag('div');
         }
@@ -566,9 +579,13 @@ class core_renderer extends \core_renderer {
                 $opts = \user_get_user_navigation_info($USER, $this->page);
                 $role = $opts->metadata['rolename'];
                 // Get the URL to switch back (normal role).
-                $url = new moodle_url('/course/switchrole.php',
-                    array('id' => $COURSE->id, 'sesskey' => sesskey(), 'switchrole' => 0,
-                        'returnurl' => $this->page->url->out_as_local_url(false)));
+                $url = new moodle_url(
+                    '/course/switchrole.php',
+                    array(
+                        'id' => $COURSE->id, 'sesskey' => sesskey(), 'switchrole' => 0,
+                        'returnurl' => $this->page->url->out_as_local_url(false)
+                    )
+                );
                 $html .= html_writer::start_tag('div', array('class' => 'switched-role-infobox alert alert-info'));
                 $html .= html_writer::tag('i', null, array('class' => 'fa fa-user-circle fa-3x fa-pull-left'));
                 $html .= html_writer::start_tag('div');
@@ -578,8 +595,11 @@ class core_renderer extends \core_renderer {
                 $html .= html_writer::end_tag('div');
                 // Return to normal role link.
                 $html .= html_writer::start_tag('div');
-                $html .= html_writer::tag('a', get_string('switchrolereturn', 'core'),
-                    array('class' => 'switched-role-backlink', 'href' => $url));
+                $html .= html_writer::tag(
+                    'a',
+                    get_string('switchrolereturn', 'core'),
+                    array('class' => 'switched-role-backlink', 'href' => $url)
+                );
                 $html .= html_writer::end_tag('div'); // Return to normal role link: end div.
                 $html .= html_writer::end_tag('div');
             }
@@ -625,8 +645,10 @@ class core_renderer extends \core_renderer {
         // @codingStandardsIgnoreEnd
         $courseformat = course_get_format($this->page->course);
         // This is a single activity course format, always show the course menu on the activity main page.
-        if ($context->contextlevel == CONTEXT_MODULE &&
-            !$courseformat->has_view_page()) {
+        if (
+            $context->contextlevel == CONTEXT_MODULE &&
+            !$courseformat->has_view_page()
+        ) {
             $this->page->navigation->initialise();
             $activenode = $this->page->navigation->find_active_node();
             // If the settings menu has been forced then show the menu.
@@ -642,15 +664,19 @@ class core_renderer extends \core_renderer {
             }
         }
         // This is the site front page.
-        if ($context->contextlevel == CONTEXT_COURSE &&
+        if (
+            $context->contextlevel == CONTEXT_COURSE &&
             !empty($currentnode) &&
-            $currentnode->key === 'home') {
+            $currentnode->key === 'home'
+        ) {
             $showfrontpagemenu = true;
         }
         // This is the user profile page.
-        if ($context->contextlevel == CONTEXT_USER &&
+        if (
+            $context->contextlevel == CONTEXT_USER &&
             !empty($currentnode) &&
-            ($currentnode->key === 'myprofile')) {
+            ($currentnode->key === 'myprofile')
+        ) {
             $showusermenu = true;
         }
         if ($showfrontpagemenu) {
@@ -711,8 +737,11 @@ class core_renderer extends \core_renderer {
         $url = $this->get_logo_url();
         $context->logourl = $url;
         $context->siteurl = $CFG->wwwroot;
-        $context->sitename = format_string($SITE->fullname, true,
-            ['context' => context_course::instance(SITEID), "escape" => false]);
+        $context->sitename = format_string(
+            $SITE->fullname,
+            true,
+            ['context' => context_course::instance(SITEID), "escape" => false]
+        );
         // MODIFICATION START.
         // Only if setting "loginform" is checked, then call own login.mustache.
         if (@$this->getleeloosettings()->design_settings->loginform == 1) {
@@ -851,7 +880,7 @@ class core_renderer extends \core_renderer {
         }
         $returnstr .= html_writer::span(
             html_writer::span($avatarcontents, $avatarclasses) .
-            html_writer::span($usertextcontents, 'usertext mr-1'),
+                html_writer::span($usertextcontents, 'usertext mr-1'),
             'userbutton'
         );
         // Create a divider (well, a filler).
@@ -929,7 +958,8 @@ class core_renderer extends \core_renderer {
         if ($this->should_display_main_logo($headinglevel)) {
             $sitename = format_string($SITE->fullname, true, array('context' => context_course::instance(SITEID)));
             return html_writer::div(html_writer::empty_tag('img', [
-                'src' => $this->get_logo_url(null, 150), 'alt' => $sitename, 'class' => 'img-fluid']), 'logo');
+                'src' => $this->get_logo_url(null, 150), 'alt' => $sitename, 'class' => 'img-fluid'
+            ]), 'logo');
         }
         // Make sure to use the heading if it has been set.
         if (isset($headerinfo['heading'])) {
@@ -959,8 +989,8 @@ class core_renderer extends \core_renderer {
                 }
                 $imagedata = $this->user_picture($user, array('size' => 100));
                 $enrolledcourses = count(enrol_get_users_courses($user->id));
-                $commentsarr = $DB->get_record_sql('SELECT COUNT(*) comments FROM {comments} WHERE userid = ?', [$user->id]);
-                $comments = $commentsarr->comments;
+                $commentsarr = $DB->get_record_sql('SELECT COUNT(*) postedcomments FROM {comments} WHERE userid = ?', [$user->id]);
+                $comments = $commentsarr->postedcomments;
                 $userbuttons = array(
                     'classes' => array(
                         'buttontype' => 'message',
@@ -1029,7 +1059,7 @@ class core_renderer extends \core_renderer {
             if ($this->page->is_settings_menu_forced()) {
                 $buildmenu = true;
             } else if (!empty($node) && ($node->type == navigation_node::TYPE_ACTIVITY ||
-                            $node->type == navigation_node::TYPE_RESOURCE)) {
+                $node->type == navigation_node::TYPE_RESOURCE)) {
 
                 $items = $this->page->navbar->get_items();
                 $navbarnode = end($items);
@@ -1047,7 +1077,6 @@ class core_renderer extends \core_renderer {
                     $this->build_action_menu_from_navigation($menu, $node);
                 }
             }
-
         } else if ($context->contextlevel == CONTEXT_COURSECAT) {
             // For course category context, show category settings menu, if we're on the course category page.
             if ($this->page->pagetype === 'course-index-category') {
@@ -1057,7 +1086,6 @@ class core_renderer extends \core_renderer {
                     $this->build_action_menu_from_navigation($menu, $node);
                 }
             }
-
         } else {
             $items = $this->page->navbar->get_items();
             $navbarnode = end($items);
@@ -1068,14 +1096,13 @@ class core_renderer extends \core_renderer {
                     // Build an action menu based on the visible nodes from this navigation tree.
                     $this->build_action_menu_from_navigation($menu, $node);
                 }
-
             }
         }
 
         if ($this->page->bodyid == 'page-mod-quiz-view') {
             $quizid = optional_param('id', 0, PARAM_RAW);
             $text = get_string('copyquizattempturl', 'theme_thinkblue');
-            $url = new moodle_url('/mod/quiz/view.php', array('id' => $quizid,'startattempt' => 1));
+            $url = new moodle_url('/mod/quiz/view.php', array('id' => $quizid, 'startattempt' => 1));
             $link = new action_link($url, $text, null, null, new pix_icon('t/copy', $text));
             $link->add_class('copyquizattempturl');
             $menu->add_secondary_action($link);
@@ -1090,11 +1117,12 @@ class core_renderer extends \core_renderer {
      * @return string the navigation HTML.
      */
     public function activity_navigation() {
-        global $DB,$CFG;
+        global $DB, $CFG;
         // First we should check if we want to add navigation.
         $context = $this->page->context;
         if (($this->page->pagelayout !== 'incourse' && $this->page->pagelayout !== 'frametop')
-            || $context->contextlevel != CONTEXT_MODULE) {
+            || $context->contextlevel != CONTEXT_MODULE
+        ) {
             return '';
         }
 
@@ -1118,7 +1146,7 @@ class core_renderer extends \core_renderer {
             COMPLETION_COMPLETE_PASS,
         ];
 
-        foreach( $sections as $section){
+        foreach ($sections as $section) {
             $i = $section->section;
             if (!$section->uservisible) {
                 continue;
@@ -1149,35 +1177,35 @@ class core_renderer extends \core_renderer {
                         $completeclass = 'completed';
                     }
 
-                    if( $module->modname == 'quiz' ){
+                    if ($module->modname == 'quiz') {
                         $quizid = $module->get_course_module_record()->instance;
                         $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
-            
-                        if( isset($quizdata->quiztype) ){
-                            if( $quizdata->quiztype == 'discover' ){
-                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Discover_on.png';
-                            }else if( $quizdata->quiztype == 'exercises' ){
-                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Studycase_on.png';
-                            }else if( $quizdata->quiztype == 'trivias' ){
-                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Trivia_on.png';
-                            }else if( $quizdata->quiztype == 'assessments' ){
-                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Assessments_on.png';
-                            }else if( $quizdata->quiztype == 'quest' ){
-                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Quest_on.png';
-                            }else if( $quizdata->quiztype == 'mission' ){
-                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Mission_on.png';
-                            }else if( $quizdata->quiztype == 'duels' ){
-                                $iconsrc = $CFG->wwwroot.'/local/leeloolxptrivias/pix/Duelos_on.png';
+
+                        if (isset($quizdata->quiztype)) {
+                            if ($quizdata->quiztype == 'discover') {
+                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Discover_on.png';
+                            } else if ($quizdata->quiztype == 'exercises') {
+                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Studycase_on.png';
+                            } else if ($quizdata->quiztype == 'trivias') {
+                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Trivia_on.png';
+                            } else if ($quizdata->quiztype == 'assessments') {
+                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Assessments_on.png';
+                            } else if ($quizdata->quiztype == 'quest') {
+                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Quest_on.png';
+                            } else if ($quizdata->quiztype == 'mission') {
+                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Mission_on.png';
+                            } else if ($quizdata->quiztype == 'duels') {
+                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Duelos_on.png';
                             } else {
-                                $iconsrc = $module->get_icon_url().'?default';
+                                $iconsrc = $module->get_icon_url() . '?default';
                             }
                         } else {
-                            $iconsrc = $module->get_icon_url().'?default';
+                            $iconsrc = $module->get_icon_url() . '?default';
                         }
-                    }else{
+                    } else {
                         $iconsrc = $module->get_icon_url();
                     }
-                    $navigationsections[$i]['modules'][$module->id]['name'] = $module->name.' '.$module->modname;
+                    $navigationsections[$i]['modules'][$module->id]['name'] = $module->name . ' ' . $module->modname;
                     $navigationsections[$i]['modules'][$module->id]['icon'] = $iconsrc;
                     $navigationsections[$i]['modules'][$module->id]['link'] = new moodle_url($module->url, array('forceview' => 1));
                     $navigationsections[$i]['modules'][$module->id]['completeclass'] = $completeclass;
@@ -1186,23 +1214,21 @@ class core_renderer extends \core_renderer {
 
             $count_modules = count($navigationsections[$i]['modules']);
 
-            if( $count_modules == 0 ){
+            if ($count_modules == 0) {
                 unset($navigationsections[$i]);
             }
-
-            
         }
 
         $activityhtml = '';
-        foreach( $navigationsections as $navigationsection){
+        foreach ($navigationsections as $navigationsection) {
 
             $modulehtml = '';
-            foreach( $navigationsection['modules'] as $module ){
+            foreach ($navigationsection['modules'] as $module) {
                 $completonclass = $module['completeclass'];
-                $modulehtml .= '<li class="'.$completonclass.'"><a href="'.$module['link'].'" title="'.$module['name'].'"><img src="'.$module['icon'].'"></a></li>';
+                $modulehtml .= '<li class="' . $completonclass . '"><a href="' . $module['link'] . '" title="' . $module['name'] . '"><img src="' . $module['icon'] . '"></a></li>';
             }
 
-            $activityhtml .= '<div class="d1"><h2>'.$navigationsection["name"].'</h2><ul>'.$modulehtml.'</ul></div>';
+            $activityhtml .= '<div class="d1"><h2>' . $navigationsection["name"] . '</h2><ul>' . $modulehtml . '</ul></div>';
         }
 
         return '<div class="bottom_activity_navigation">
@@ -1212,14 +1238,14 @@ class core_renderer extends \core_renderer {
                         <div class="col-sm-4">
                         <div class="bottom_activity-left">
                             <div class="home-ico">
-                                <a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">
-                                    <img src="'.$CFG->wwwroot.'/theme/thinkblue/img/Duels-Gourav2_03.png">
+                                <a href="' . new moodle_url('/course/view.php', array('id' => $course->id)) . '">
+                                    <img src="' . $CFG->wwwroot . '/theme/thinkblue/img/Duels-Gourav2_03.png">
                                 </a>
                             </div>
 
                             <div class="home-ico-text">
-                                <p>'.$this->page->cm->get_section_info()->name.'</p>
-                                <p><a href="'.new moodle_url('/course/view.php', array('id' => $course->id)).'">'.$course->shortname.'</a></p>
+                                <p>' . $this->page->cm->get_section_info()->name . '</p>
+                                <p><a href="' . new moodle_url('/course/view.php', array('id' => $course->id)) . '">' . $course->shortname . '</a></p>
                             </div>
                         </div>
                         </div>
@@ -1227,7 +1253,7 @@ class core_renderer extends \core_renderer {
                         <div class="col-sm-8">
                             <div class="bottom_activity-right-main">
                                 <div class="bottom_activity-right">
-                                    '.$activityhtml.'
+                                    ' . $activityhtml . '
                                 </div>
                             </div>
                         </div>
@@ -1238,6 +1264,5 @@ class core_renderer extends \core_renderer {
                 </div>
             </div>
         </div>';
-        
     }
 }

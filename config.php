@@ -161,11 +161,11 @@ $THEME->enable_dock = false;
 $THEME->prescsscallback = 'theme_thinkblue_get_pre_scss';
 $THEME->yuicssmodules = array();
 
-$checktrivia = file_exists($CFG->dirroot.'/local/leeloolxptrivias/renderer.php');
-if( $checktrivia == 1 ){
-    require_once($CFG->dirroot.'/local/leeloolxptrivias/renderer.php');
+$checktrivia = file_exists($CFG->dirroot . '/local/leeloolxptrivias/renderer.php');
+if ($checktrivia == 1) {
+    require_once($CFG->dirroot . '/local/leeloolxptrivias/renderer.php');
     $THEME->rendererfactory = 'local_leeloolxptrivias_renderer_factory';
-}else{
+} else {
     $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 }
 

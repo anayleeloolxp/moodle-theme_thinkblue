@@ -83,7 +83,7 @@ if ($PAGE->pagetype == 'site-index') {
     } else {
         $extraclasses[] = 'layout_fullwidth';
     }
-}else{
+} else {
     if (isset($leeloosettings->general_settings->layouttype) && isset($leeloosettings->general_settings->layouttype) != '') {
         if (@$leeloosettings->general_settings->layouttype == 'boxed') {
             $extraclasses[] = 'layout_boxed';

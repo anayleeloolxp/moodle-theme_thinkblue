@@ -46,8 +46,14 @@ function theme_thinkblue_get_loginbackgroundimage_files() {
         $fs = get_file_storage();
 
         // Get all files from filearea.
-        $files = $fs->get_area_files($systemcontext->id, 'theme_thinkblue', 'loginbackgroundimage',
-            false, 'itemid', false);
+        $files = $fs->get_area_files(
+            $systemcontext->id,
+            'theme_thinkblue',
+            'loginbackgroundimage',
+            false,
+            'itemid',
+            false
+        );
     }
 
     return $files;
@@ -153,8 +159,14 @@ function theme_thinkblue_get_loginbackgroundimage_scss() {
     foreach ($files as $file) {
         $count++;
         // Get url from file.
-        $url = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(),
-            $file->get_itemid(), $file->get_filepath(), $file->get_filename());
+        $url = moodle_url::make_pluginfile_url(
+            $file->get_contextid(),
+            $file->get_component(),
+            $file->get_filearea(),
+            $file->get_itemid(),
+            $file->get_filepath(),
+            $file->get_filename()
+        );
         // Add this url to the body class loginbackgroundimage[n] as a background image.
         $scss .= '$loginbackgroundimage' . $count . ': "' . $url . '";';
     }
@@ -207,12 +219,12 @@ function theme_thinkblue_get_imageareacontent() {
                             $setting = trim($setting);
                             if (!empty($setting)) {
                                 switch ($i) {
-                                    // Check for the first param: link.
+                                        // Check for the first param: link.
                                     case 1:
                                         // The name of the image is the key for the URL that will be set.
                                         $links[$settings[0]] = $settings[1];
                                         break;
-                                    // Check for the second param: alt text.
+                                        // Check for the second param: alt text.
                                     case 2:
                                         // The name of the image is the key for the alt text that will be set.
                                         $alttexts[$settings[0]] = $settings[2];
@@ -228,8 +240,14 @@ function theme_thinkblue_get_imageareacontent() {
             // Traverse the files.
             foreach ($files as $file) {
                 // Get the Moodle url for each file.
-                $url = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(),
-                    $file->get_itemid(), $file->get_filepath(), $file->get_filename());
+                $url = moodle_url::make_pluginfile_url(
+                    $file->get_contextid(),
+                    $file->get_component(),
+                    $file->get_filearea(),
+                    $file->get_itemid(),
+                    $file->get_filepath(),
+                    $file->get_filename()
+                );
                 // Get the path to the file.
                 $filepath = $url->get_path();
                 // Get the filename.
@@ -300,7 +318,7 @@ function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
 
     if ($course->id > 1) {
         // It's a real course.
-        
+
         $courseformat = course_get_format($course);
         $coursenode = $PAGE->navigation->find_active_node();
         $targettype = navigation_node::TYPE_COURSE;
@@ -378,30 +396,39 @@ function theme_thinkblue_get_incourse_settings() {
                 // If the setting 'incoursesettingsswitchtoroleposition' is set either set to the option 'yes'
                 // or to the option 'both', then add these to the $node.
                 if (((@$leeloosettings->course_layout_settings->incoursesettingsswitchtoroleposition == 'yes') ||
-                    (@$leeloosettings->course_layout_settings->incoursesettingsswitchtoroleposition == 'both'))
-                    && !is_role_switched($COURSE->id)) {
+                        (@$leeloosettings->course_layout_settings->incoursesettingsswitchtoroleposition == 'both'))
+                    && !is_role_switched($COURSE->id)
+                ) {
                     // Build switch role link
                     // We could only access the existing menu item by creating the user menu and traversing it.
                     // So we decided to create this node from scratch with the values copied from Moodle core.
                     $roles = get_switchable_roles($PAGE->context);
                     if (is_array($roles) && (count($roles) > 0)) {
                         // Define the properties for a new tab.
-                        $properties = array('text' => get_string('switchroleto', 'theme_thinkblue'),
+                        $properties = array(
+                            'text' => get_string('switchroleto', 'theme_thinkblue'),
                             'type' => navigation_node::TYPE_CONTAINER,
-                            'key' => 'switchroletotab');
+                            'key' => 'switchroletotab'
+                        );
                         // Create the node.
                         $switchroletabnode = new navigation_node($properties);
                         // Add the tab to the course administration node.
                         $node->add_node($switchroletabnode);
                         // Add the available roles as children nodes to the tab content.
                         foreach ($roles as $key => $role) {
-                            $properties = array('action' => new moodle_url('/course/switchrole.php',
-                                array('id' => $COURSE->id,
-                                    'switchrole' => $key,
-                                    'returnurl' => $PAGE->url->out_as_local_url(false),
-                                    'sesskey' => sesskey())),
+                            $properties = array(
+                                'action' => new moodle_url(
+                                    '/course/switchrole.php',
+                                    array(
+                                        'id' => $COURSE->id,
+                                        'switchrole' => $key,
+                                        'returnurl' => $PAGE->url->out_as_local_url(false),
+                                        'sesskey' => sesskey()
+                                    )
+                                ),
                                 'type' => navigation_node::TYPE_CUSTOM,
-                                'text' => $role);
+                                'text' => $role
+                            );
                             $switchroletabnode->add_node(new navigation_node($properties));
                         }
                     }
@@ -458,8 +485,11 @@ function theme_thinkblue_get_course_guest_access_hint($courseid) {
         }
         $plugin = $plugins[$instance->enrol];
         if ($plugin->show_enrolme_link($instance)) {
-            $html = html_writer::tag('div', get_string('showhintcourseguestaccesslink',
-                'theme_thinkblue', array('url' => $CFG->wwwroot . '/enrol/index.php?id=' . $courseid)));
+            $html = html_writer::tag('div', get_string(
+                'showhintcourseguestaccesslink',
+                'theme_thinkblue',
+                array('url' => $CFG->wwwroot . '/enrol/index.php?id=' . $courseid)
+            ));
             break;
         }
     }
@@ -578,7 +608,7 @@ function theme_thinkblue_quizzes_user_coursedata($courseid, $useremail) {
         'CURLOPT_HEADER' => false,
         'CURLOPT_POST' => count($postdata),
         'CURLOPT_HTTPHEADER' => array(
-            'LeelooLXPToken: '.get_config('local_leeloolxpapi')->leelooapitoken.''
+            'LeelooLXPToken: ' . get_config('local_leeloolxpapi')->leelooapitoken . ''
         )
     );
 
@@ -588,19 +618,17 @@ function theme_thinkblue_quizzes_user_coursedata($courseid, $useremail) {
 
     $resposedata = json_decode($output);
 
-    foreach( $resposedata->data->quizzes_history as $key => $quizzes_history ){
-        if( $quizzes_history->winningstatus == 'defeat' ){
+    foreach ($resposedata->data->quizzes_history as $key => $quizzeshistory) {
+        if ($quizzeshistory->winningstatus == 'defeat') {
             $resposedata->data->quizzes_history[$key]->button = 'Revenge';
-        }else{
+        } else {
             $resposedata->data->quizzes_history[$key]->button = 'Again';
         }
-        $resposedata->data->quizzes_history[$key]->buttonlink = $CFG->wwwroot.'/mod/quiz/view.php?id='.$quizzes_history->activity_id.'&rematch='.$quizzes_history->id;
-        
+        $resposedata->data->quizzes_history[$key]->buttonlink = $CFG->wwwroot . '/mod/quiz/view.php?id=' . $quizzeshistory->activity_id . '&rematch=' . $quizzeshistory->id;
     }
 
-    foreach( $resposedata->data->quizzes_requests as $key => $quizzes_requests ){
-        $resposedata->data->quizzes_requests[$key]->acceptlink = $CFG->wwwroot.'/mod/quiz/view.php?id='.$quizzes_requests->activity_id;
-        
+    foreach ($resposedata->data->quizzes_requests as $key => $quizzesrequests) {
+        $resposedata->data->quizzes_requests[$key]->acceptlink = $CFG->wwwroot . '/mod/quiz/view.php?id=' . $quizzesrequests->activity_id;
     }
 
     return $resposedata;
@@ -653,8 +681,8 @@ function theme_thinkblue_updateconf() {
 /**
  * Sync Gamification data
  *
- * @param string $email email
- * @return string HTML fragment
+ * @param string $baseemail baseemail
+ * @return boolean data
  */
 function theme_thinkblue_gamisync($baseemail) {
     global $CFG, $DB, $PAGE;
@@ -695,7 +723,7 @@ function theme_thinkblue_gamisync($baseemail) {
         'CURLOPT_HEADER' => false,
         'CURLOPT_POST' => count($postdata),
         'CURLOPT_HTTPHEADER' => array(
-            'LeelooLXPToken: '.get_config('local_leeloolxpapi')->leelooapitoken.''
+            'LeelooLXPToken: ' . get_config('local_leeloolxpapi')->leelooapitoken . ''
         )
     );
 
@@ -712,12 +740,12 @@ function theme_thinkblue_gamisync($baseemail) {
         'needupdategame' => '0',
     ];
 
-    $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
+    $tbgamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
 
-    if (!empty($tb_game_points)) {
-        if( $tb_game_points->pointsdata != $output ){
-            $data['id'] = $tb_game_points->id;
-            //$data['oldpointsdata'] = $tb_game_points->pointsdata;
+    if (!empty($tbgamepoints)) {
+        if ($tbgamepoints->pointsdata != $output) {
+            $data['id'] = $tbgamepoints->id;
+            //$data['oldpointsdata'] = $tbgamepoints->pointsdata;
             $data['needupdategame'] = '1';
             $DB->update_record('tb_game_points', $data);
         }
@@ -741,9 +769,12 @@ function theme_thinkblue_course_image($course) {
     if ($course->id > 0 && $course->get_course_overviewfiles()) {
         foreach ($course->get_course_overviewfiles() as $file) {
             $isimage = $file->is_valid_image();
-            $url = file_encode_url("$CFG->wwwroot/pluginfile.php",
+            $url = file_encode_url(
+                "$CFG->wwwroot/pluginfile.php",
                 '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
-                $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
+                    $file->get_filearea() . $file->get_filepath() . $file->get_filename(),
+                !$isimage
+            );
             if ($isimage) {
                 return $url;
             } else {
@@ -759,27 +790,27 @@ function theme_thinkblue_course_image($course) {
 }
 
 /**
- * Gamification data
+ * Return gamigication data
  *
- * @param string $email email
- * @return string HTML fragment
+ * @param string $baseemail baseemail
+ * @return object data
  */
 function theme_thinkblue_gamification_data($baseemail) {
     global $DB, $CFG;
 
     $email = base64_decode($baseemail);
 
-    $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
+    $tbgamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
 
-    if (!empty($tb_game_points)) {
-        $resposedata = json_decode($tb_game_points->pointsdata);
-    }else{
+    if (!empty($tbgamepoints)) {
+        $resposedata = json_decode($tbgamepoints->pointsdata);
+    } else {
         theme_thinkblue_gamisync($baseemail);
 
-        $tb_game_points = $DB->get_record('tb_game_points', array('useremail' => $email));
-        if (!empty($tb_game_points)) {
-            $resposedata = json_decode($tb_game_points->pointsdata);
-        }else{
+        $tbgamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
+        if (!empty($tbgamepoints)) {
+            $resposedata = json_decode($tbgamepoints->pointsdata);
+        } else {
             $resposedata = new stdClass();
         }
     }

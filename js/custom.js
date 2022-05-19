@@ -45,7 +45,7 @@ require(["jquery"], function ($) {
             } else {
                 var herohref = href+'?view=hero';
                 var dashhref = href+'?view=dashboard';
-            }            
+            }
 
             $('.l_hero_link').attr('href', herohref);
             $('.l_dashboard_link').attr('href', dashhref);
@@ -69,8 +69,8 @@ require(["jquery"], function ($) {
                     $(parentsection).find('.sectionname').html('<a href="'+link+'">'+text+'</a>');
                 }
             }
-            
-            
+
+
         });
 
         $("#page-course-view-topics ul.topics li.section").each(function(){
@@ -105,7 +105,7 @@ require(["jquery"], function ($) {
 
         $('#id_updatecourseformat').attr('disabled' , true);
         $(id_format).on('change', function() {
-            
+
             var thisval = $(this).val();
             if( id_formatval == 'flexsections' && thisval != 'flexsections' ){
                 var success = confirm('Warning: switching from Flexible section format to another course format will break the hierarchy of the course. Are you sure you want to do this?');

@@ -59,7 +59,7 @@ if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
 }
 
-if ( $PAGE->user_allowed_editing() ) {
+if ($PAGE->user_allowed_editing()) {
     $extraclasses[] = 'adminloggedin';
 }
 
@@ -269,11 +269,11 @@ $leeloocourse = theme_thinkblue_coursedata($courseid);
 
 $quizzesdata = theme_thinkblue_quizzes_user_coursedata($courseid, $USER->email);
 
-$gamificationdata = theme_thinkblue_gamification_data( base64_encode($USER->email) );
+$gamificationdata = theme_thinkblue_gamification_data(base64_encode($USER->email));
 
-if( count((array)($gamificationdata)) ){
+if (count((array)($gamificationdata))) {
 
-    if( !isset($gamificationdata->next_level_points) ){
+    if (!isset($gamificationdata->next_level_points)) {
         $gamificationdata->next_level_points = 0;
     }
 
@@ -281,14 +281,14 @@ if( count((array)($gamificationdata)) ){
     $templatecontext['total_points'] = $gamificationdata->total_points;
     $templatecontext['next_level_points'] = $gamificationdata->next_level_points;
 
-    if( $gamificationdata->next_level_points > $gamificationdata->total_points ){
+    if ($gamificationdata->next_level_points > $gamificationdata->total_points) {
         $templatecontext['next_level_points_needed'] = $gamificationdata->next_level_points - $gamificationdata->total_points;
         $templatecontext['nextlevel'] = $gamificationdata->current_level + 1;
-    }else{
+    } else {
         $templatecontext['next_level_points_needed'] = 0;
         $templatecontext['nextlevel'] = $gamificationdata->current_level;
     }
-}else{
+} else {
     $templatecontext['currentlevel'] = 0;
     $templatecontext['total_points'] = 0;
     $templatecontext['next_level_points'] = 0;
@@ -296,21 +296,21 @@ if( count((array)($gamificationdata)) ){
     $templatecontext['nextlevel'] = 0;
 }
 
-@$levelprogresspercent = ($templatecontext['total_points']/$templatecontext['next_level_points'])*100;
-$filleddottsprogress = (($levelprogresspercent*45)/100) | 0;
+@$levelprogresspercent = ($templatecontext['total_points'] / $templatecontext['next_level_points']) * 100;
+$filleddottsprogress = (($levelprogresspercent * 45) / 100) | 0;
 
 $progressbarhtml = '';
 
 for ($x = 1; $x <= 45; $x++) {
     $addclassprogress = '';
-    if( $filleddottsprogress > $x ){
+    if ($filleddottsprogress > $x) {
         $addclassprogress = 'active';
-    }elseif( $filleddottsprogress == $x ){
+    } else if ($filleddottsprogress == $x) {
         $addclassprogress = 'active big';
-    }elseif( $x == 45 ){
+    } else if ($x == 45) {
         $addclassprogress = 'big';
     }
-    $progressbarhtml .= '<span class="char'.$x.' '.$addclassprogress.'"></span>';
+    $progressbarhtml .= '<span class="char' . $x . ' ' . $addclassprogress . '"></span>';
 }
 $templatecontext['progressbarhtml'] = $progressbarhtml;
 
@@ -509,20 +509,20 @@ $firstvideo = '';
 $firstar = '';
 foreach ($modinfo->cms as $cms) {
 
-    if( $firstar == '' ){
+    if ($firstar == '') {
         $firstar = $cms->url;
     }
 
     if ($cms->modname == 'leeloolxpvimeo') {
 
-        if( $firstvideo == '' ){
+        if ($firstvideo == '') {
             $firstvideo = $cms->url;
         }
 
         $current = $completion->get_data($cms);
-        
-        if( $videosurl == '' ){
-            if( $current->completionstate == 0 ){
+
+        if ($videosurl == '') {
+            if ($current->completionstate == 0) {
                 $videosurl = $cms->url;
             }
         }
@@ -531,7 +531,7 @@ foreach ($modinfo->cms as $cms) {
     }
 }
 
-if( $videosurl == '' ){
+if ($videosurl == '') {
     $videosurl = $firstvideo;
 }
 
@@ -549,25 +549,25 @@ $templatecontext['videos'] = $videos;
 
 $templatecontext['baseurl'] = $CFG->wwwroot;
 
-if( isset($hasblocks) || isset($aboutsidebar) || isset($statssidebar) || isset($teachersidebar) ){
+if (isset($hasblocks) || isset($aboutsidebar) || isset($statssidebar) || isset($teachersidebar)) {
     $templatecontext['showsidebar'] = true;
 }
 
-if( isset($showvideo) || isset($showimage) || isset($isleelooproduct) ){
+if (isset($showvideo) || isset($showimage) || isset($isleelooproduct)) {
     $templatecontext['showtopvideosection'] = true;
 }
 
 $letsgourl = '';
 
 // Render course.mustache from thinkblue.
-if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_editing() ){
+if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_editing()) {
     echo $OUTPUT->render_from_template('theme_thinkblue/course', $templatecontext);
-}else{
+} else {
     $format = course_get_format($PAGE->course);
     $sections = $format->get_sections();
 
-    if( $format->get_format() == 'flexsections' ){
-        
+    if ($format->get_format() == 'flexsections') {
+
 
         $sectionhtml = '';
         $selectskillhtmlfull = '';
@@ -585,7 +585,7 @@ if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_
             //print_r($children);
 
         }*/
-    }else{
+    } else {
 
         $navigationsections = [];
 
@@ -594,14 +594,14 @@ if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_
             COMPLETION_COMPLETE_PASS,
         ];
 
-        foreach( $sections as $key => $section){
+        foreach ($sections as $key => $section) {
             $i = $section->section;
             if (!$section->uservisible) {
                 continue;
             }
 
-            if( $section->name == '' ){
-                $section->name = 'Topic '.$key;
+            if ($section->name == '') {
+                $section->name = 'Topic ' . $key;
             }
 
             $navigationsections[$i]['name'] = $section->name;
@@ -640,68 +640,65 @@ if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_
 
             $count_modules = count($navigationsections[$i]['modules']);
 
-            if( $count_modules == 0 ){
+            if ($count_modules == 0) {
                 unset($navigationsections[$i]);
             }
-
-            
         }
 
         $sectionhtml = '';
         $selectskillhtml = '';
-        
-        foreach( $navigationsections as $navkey => $navigationsection){
 
-            if( trim($navigationsection["name"]) == '' ){
-                $navigationsection["name"] = 'Topic '.($navkey+1);
+        foreach ($navigationsections as $navkey => $navigationsection) {
+
+            if (trim($navigationsection["name"]) == '') {
+                $navigationsection["name"] = 'Topic ' . ($navkey + 1);
             }
 
             $modulehtml = '';
             $sectionuncompletear = '';
             $sectionfirstar = '';
-            foreach( $navigationsection['modules'] as $module ){
+            foreach ($navigationsection['modules'] as $module) {
                 $completonclass = $module['completeclass'];
 
-                if( $sectionfirstar == '' ){
+                if ($sectionfirstar == '') {
                     $sectionfirstar = $module['link'];
                 }
 
-                if( $module['completeclass'] == 'incomplete' && $sectionuncompletear == '' ){
+                if ($module['completeclass'] == 'incomplete' && $sectionuncompletear == '') {
                     $sectionuncompletear = $module['link'];
                 }
 
                 $modulehtml .= '<tr class="label_cont_td">
                 <td>
-                    <div class="label_txt"><a href="'.$module['link'].'" title="'.$module['name'].'">'.$module['name'].'</a></div>
+                    <div class="label_txt"><a href="' . $module['link'] . '" title="' . $module['name'] . '">' . $module['name'] . '</a></div>
                 </td>
                 <td>
                     <div class="label_icn">
                         <ul>
-                            <li class="'.$completonclass.'"><a href="'.$module['link'].'" title="'.$module['name'].'"><img width="48" src="'.$module['icon'].'" /></a></li>
+                            <li class="' . $completonclass . '"><a href="' . $module['link'] . '" title="' . $module['name'] . '"><img width="48" src="' . $module['icon'] . '" /></a></li>
                         </ul>
                     </div>
                 </td>
             </tr>';
             }
 
-            if( $sectionuncompletear == '' ){
+            if ($sectionuncompletear == '') {
                 $sectionuncompletear = $sectionfirstar;
             }
 
             $sectionhtml .= '<div class="slill_table_item">
             <table class="table">
                 <tr class="section_nm_th">
-                    <th colspan="2"><div class="section_name">'.$navigationsection["name"].'</div></th>
+                    <th colspan="2"><div class="section_name">' . $navigationsection["name"] . '</div></th>
                 </tr>
-                '.$modulehtml.'
-                        
+                ' . $modulehtml . '
+
             </table>
             </div>';
 
             $selectskillhtml .= '<tr class="label_nm_td">
-                        <td><div class="label_name"><a href="'.$sectionuncompletear.'">'.$navigationsection["name"].'</a></div></td>
+                        <td><div class="label_name"><a href="' . $sectionuncompletear . '">' . $navigationsection["name"] . '</a></div></td>
                     </tr>';
-
         }
 
         $selectskillhtmlfull = '<div class="slill_table_item">
@@ -709,37 +706,35 @@ if( (isset( $_GET['ui'] ) && isset( $_GET['ui'] ) != '') || $PAGE->user_allowed_
                 <tr class="section_nm_th">
                     <th colspan="2"><div class="section_name">Sections</div></th>
                 </tr>
-                '.$selectskillhtml.'
+                ' . $selectskillhtml . '
             </table>
         </div>';
 
-        $templatecontext['sectionhtml'] = '<div class="slill_table"><div class="slill_table_items">'.$sectionhtml.'</div></div>';
-        
-        $templatecontext['selectskillhtmlfull'] = '<div class="slill_table"><div class="slill_table_items">'.$selectskillhtmlfull.'</div></div>';
+        $templatecontext['sectionhtml'] = '<div class="slill_table"><div class="slill_table_items">' . $sectionhtml . '</div></div>';
 
+        $templatecontext['selectskillhtmlfull'] = '<div class="slill_table"><div class="slill_table_items">' . $selectskillhtmlfull . '</div></div>';
     }
 
-    foreach($completion->get_activities() as $ar){
-        if( $ar->visible == 1 ){
+    foreach ($completion->get_activities() as $ar) {
+        if ($ar->visible == 1) {
             $current = $completion->get_data($ar);
-            if( $current->completionstate == 0 ){
+            if ($current->completionstate == 0) {
                 $letsgourl = $ar->url;
-                
-                if( $ar->modname == 'quiz' ){
+
+                if ($ar->modname == 'quiz') {
                     $quizid = $ar->get_course_module_record()->instance;
                     $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
-                    if( $quizdata->quiztype == 'discover' || $quizdata->quiztype == 'trivias' ){
+                    if ($quizdata->quiztype == 'discover' || $quizdata->quiztype == 'trivias') {
                         $letsgourl .= '&autostart=1';
                     }
                 }
-    
+
                 break;
             }
         }
-        
     }
 
-    if( $letsgourl == '' ){
+    if ($letsgourl == '') {
         $letsgourl = $firstar;
     }
 
