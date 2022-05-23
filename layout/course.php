@@ -325,7 +325,7 @@ $templatecontext['username'] = $USER->username;
 $templatecontext['userfullname'] = fullname($USER);
 
 if (isset(get_config('tool_leeloo_courses_sync')->version)) {
-    $leelooproduct = $DB->get_record_sql('SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = ? AND courseid = ?', [1, $courseid]);
+    $leelooproduct = $DB->get_record_sql("SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = ? AND courseid = ?", [1, $courseid]);
 
     if ($leelooproduct) {
         $isleelooproduct = true;

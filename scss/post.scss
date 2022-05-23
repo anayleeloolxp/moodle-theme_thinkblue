@@ -1880,7 +1880,7 @@ div#page-navbar ol.breadcrumb {
                 }
                 .contentwithoutlink {
                     padding: 0;
-                }                
+                }
             }
         }
     }
@@ -2050,14 +2050,14 @@ div#nav-drawer[data-region="drawer"] {
         margin: 0 auto;
         width: 100%;
         text-align: center;
-        padding: 0; 
+        padding: 0;
         display: block;
     }
     span.media-left {
         margin: 0 auto;
         width: 100%;
         text-align: center;
-        padding: 0; 
+        padding: 0;
         display: block;
         i.icon {
             font-size: 25px !important;
@@ -2087,7 +2087,7 @@ div#nav-drawer[data-region="drawer"] {
         top: 56px;
         height: calc(100% - 241px);
         overflow-y: auto;
-        -webkit-overflow-scrolling: touch; 
+        -webkit-overflow-scrolling: touch;
         z-index: 99;
         background-color: #f5f6fa;
         -webkit-transition: right .5s ease,left .5s ease;
@@ -2127,7 +2127,7 @@ div#nav-drawer[data-region="drawer"] {
 }
 
 .leftusermenu {
-    .popover-region-container { 
+    .popover-region-container {
         height: 250px;
         width: 220px;
         background: #f5f6fa;
@@ -4479,7 +4479,7 @@ div#nav-drawer.closed[data-region="drawer"] .leftusermenu ul li.nav-item .popove
 }
 .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd .closebutton {
     background: none !important;
-    outline: none; 
+    outline: none;
 }
 .form-control, .custom-select, .btn-group>.btn, .btn {
     box-shadow: none !important;
@@ -7524,7 +7524,7 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
     flex-wrap: wrap;
     align-items: center;
 }
-.user_detl_img { 
+.user_detl_img {
     width: 210px;
 }
 .user_detl_cont {
@@ -8415,7 +8415,7 @@ div.check_duel_openModal {
     top: -10px;
     font-size: 12px;
     font-weight: 600;
-    color: #939393; 
+    color: #939393;
 }
 .duelsSecFrdTim-in p {
     margin: 2px 0 0;
@@ -8478,8 +8478,8 @@ div.check_duel_openModal {
     background: none;
 }
 #nav-drawer {
-    background-color: unset; 
-} 
+    background-color: unset;
+}
 .closed .leftnavcontainer, .closed .leftusermenu {
     left: 0px !important;
 }
@@ -8585,7 +8585,7 @@ div#nav-drawer .logo_side_container::before {
 }
 div#nav-drawer.closed .logo_side_container::before {
     left: 0;
-} 
+}
 div#nav-drawer[data-region="drawer"] nav.list-group::-webkit-scrollbar {
     width: 7px;
 }
@@ -8612,7 +8612,7 @@ a:focus {
     outline: none !important;
     box-shadow: none !important;
     color: unset !important;
-} 
+}
 #page-wrapper #page #page-content section.block.block_tb_slider {
     margin-top: -40px !important;
 }
@@ -8907,105 +8907,105 @@ body.up-head .srm-top-team-div {
   .char1 {
     transform: rotate(6deg);
   }
-  
+
   .char2 {
     transform: rotate(12deg);
   }
-  
+
   .char3 {
     transform: rotate(18deg);
   }
-  
+
   .char4 {
     transform: rotate(24deg);
   }
-  
+
   .char5 {
     transform: rotate(30deg);
   }
-  
+
   .char6 {
     transform: rotate(36deg);
   }
-  
+
   .char7 {
     transform: rotate(42deg);
   }
-  
+
   .char8 {
     transform: rotate(48deg);
   }
-  
+
   .char9 {
     transform: rotate(54deg);
   }
-  
+
   .char10 {
     transform: rotate(60deg);
   }
-  
+
   .char11 {
     transform: rotate(66deg);
   }
-  
+
   .char12 {
     transform: rotate(72deg);
   }
-  
+
   .char13 {
     transform: rotate(78deg);
   }
-  
+
   .char14 {
     transform: rotate(84deg);
   }
-  
+
   .char15 {
     transform: rotate(90deg);
   }
-  
+
   .char16 {
     transform: rotate(96deg);
   }
-  
+
   .char17 {
     transform: rotate(102deg);
   }
-  
+
   .char18 {
     transform: rotate(108deg);
   }
-  
+
   .char19 {
     transform: rotate(114deg);
   }
-  
+
   .char20 {
     transform: rotate(120deg);
   }
-  
+
   .char21 {
     transform: rotate(126deg);
   }
-  
+
   .char22 {
     transform: rotate(132deg);
   }
-  
+
   .char23 {
     transform: rotate(138deg);
   }
-  
+
   .char24 {
     transform: rotate(144deg);
   }
-  
-  
-  
+
+
+
   .char25 {
     transform: rotate(150deg);
   }
-  
+
   .char26 {
     transform: rotate(156deg);
   }
@@ -9039,16 +9039,16 @@ body.up-head .srm-top-team-div {
   .char36 {
     transform: rotate(216deg);
   }
-  
-  
+
+
   .char37 {
     transform: rotate(222deg);
   }
-  
+
   .char38 {
     transform: rotate(228deg);
   }
-  
+
   .char39 {
     transform: rotate(234deg);
   }
@@ -9061,11 +9061,11 @@ body.up-head .srm-top-team-div {
   .char41 {
     transform: rotate(246deg);
   }
-  
+
   .char42 {
     transform: rotate(252deg);
   }
-  
+
   .char43 {
     transform: rotate(258deg);
   }
@@ -9102,7 +9102,7 @@ body.up-head .srm-top-team-div {
     padding: 40px;
     display: inline-block;
     max-width: 500px;
-} 
+}
 .arena-stats-main {
     display: flex;
     flex-wrap: wrap;
