@@ -122,6 +122,14 @@ require(["jquery"], function ($) {
             }
         });
 
+
+        if ($(".currentactivear")[0]){
+            var $container = $(".bottom_activity-right-main");
+            var $scrollTo = $('.currentactivear');
+
+            $container.animate({scrollLeft: $scrollTo.position().left - $container.offset().left + $container.scrollLeft(), scrollTop: 0},300);
+        }
+
     });
 
     $(".leeloobuytheme").on("click", function (e) {

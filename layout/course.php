@@ -513,7 +513,7 @@ foreach ($modinfo->cms as $cms) {
         $firstar = $cms->url;
     }
 
-    if ($cms->modname == 'leeloolxpvimeo') {
+    if ($cms->modname == 'leeloolxpvimeo' &&  $cms->visible == 1) {
 
         if ($firstvideo == '') {
             $firstvideo = $cms->url;
@@ -534,8 +534,6 @@ foreach ($modinfo->cms as $cms) {
 if ($videosurl == '') {
     $videosurl = $firstvideo;
 }
-
-//$videosurl = str_replace('view.php','tv_single.php', $videosurl);
 
 $templatecontext['moodle_course_image'] = theme_thinkblue_course_image($PAGE->course);
 

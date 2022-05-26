@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="page-pl-btn">
-                                <div class="pl-btn-int">
+                                <div class="pl-btn-int {{^showvideo}}leeloohidden{{/showvideo}}{{#showvideo}}leelooshow{{/showvideo}}">
                                     <div type="button" class="btn" data-toggle="modal" data-target="#introModal">
                                         <div class="pl-btn-icn"><img src="{{baseurl}}/theme/thinkblue/img/pl-bk.png" /></div>
                                         <div class="pl-btn-txt">intro</div>
@@ -108,7 +108,7 @@
                                         <a href="{{letsgourl}}"><img src="{{baseurl}}/theme/thinkblue/img/Go-button.png" /></a>
                                     </div>
                                 </div>
-                                <div class="pl-btn-int">
+                                <div class="pl-btn-int {{^videosurl}}leeloohidden{{/videosurl}}{{#videosurl}}leelooshow{{/videosurl}}">
                                     <div class="btn">
                                         <div class="pl-btn-icn"><a href="{{videosurl}}"><img src="{{baseurl}}/theme/thinkblue/img/pl-bk2.png" /></a></div>
                                         <div class="pl-btn-txt">VIDEOS</div>

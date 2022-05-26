@@ -202,7 +202,7 @@ class core_renderer extends \core_renderer {
         $html = '';
         $gamificationdata = theme_thinkblue_gamification_data(base64_encode($USER->email));
 
-        global $PAGE, $DB;
+        global $PAGE, $DB, $CFG;
 
         if ($USER->id && !is_siteadmin($USER) && count((array)($gamificationdata))) {
 
@@ -264,11 +264,38 @@ class core_renderer extends \core_renderer {
                 foreach ($completion->get_activities() as $ar) {
 
                     if ($ar->visible == 1) {
-                        //$current = $completion->get_data($ar);
-
                         $activityname = $ar->name;
                         $activitysection = $ar->section;
-                        $activityiconurl = $ar->get_icon_url();
+
+                        if ($ar->modname == 'quiz') {
+                            $quizid = $ar->get_course_module_record()->instance;
+                            $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
+
+                            if (isset($quizdata->quiztype)) {
+                                if ($quizdata->quiztype == 'discover') {
+                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Discover_on.png';
+                                } else if ($quizdata->quiztype == 'exercises') {
+                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Studycase_on.png';
+                                } else if ($quizdata->quiztype == 'trivias') {
+                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Trivia_on.png';
+                                } else if ($quizdata->quiztype == 'assessments') {
+                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Assessments_on.png';
+                                } else if ($quizdata->quiztype == 'quest') {
+                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Quest_on.png';
+                                } else if ($quizdata->quiztype == 'mission') {
+                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Mission_on.png';
+                                } else if ($quizdata->quiztype == 'duels') {
+                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Duelos_on.png';
+                                } else {
+                                    $activityiconurl = $ar->get_icon_url() . '?default';
+                                }
+                            } else {
+                                $activityiconurl = $ar->get_icon_url() . '?default';
+                            }
+                        } else {
+                            $activityiconurl = $ar->get_icon_url();
+                        }
+
                         $activityurl = new moodle_url($ar->url, array('forceview' => 1));
 
 
@@ -1131,6 +1158,8 @@ class core_renderer extends \core_renderer {
             return '';
         }
 
+        $currmoduleid = $this->page->cm->get_course_module_record()->id;
+
         // Get a list of all the activities in the course.
         $course = $this->page->cm->get_course();
         $modinfo = get_fast_modinfo($course);
@@ -1205,10 +1234,18 @@ class core_renderer extends \core_renderer {
                     } else {
                         $iconsrc = $module->get_icon_url();
                     }
+
+                    if ($currmoduleid == $module->id) {
+                        $currentclass = 'currentactivear';
+                    } else {
+                        $currentclass = '';
+                    }
+
                     $navigationsections[$i]['modules'][$module->id]['name'] = $module->name . ' ' . $module->modname;
                     $navigationsections[$i]['modules'][$module->id]['icon'] = $iconsrc;
                     $navigationsections[$i]['modules'][$module->id]['link'] = new moodle_url($module->url, array('forceview' => 1));
                     $navigationsections[$i]['modules'][$module->id]['completeclass'] = $completeclass;
+                    $navigationsections[$i]['modules'][$module->id]['currentclass'] = $currentclass;
                 }
             }
 
@@ -1225,7 +1262,8 @@ class core_renderer extends \core_renderer {
             $modulehtml = '';
             foreach ($navigationsection['modules'] as $module) {
                 $completonclass = $module['completeclass'];
-                $modulehtml .= '<li class="' . $completonclass . '"><a href="' . $module['link'] . '" title="' . $module['name'] . '"><img src="' . $module['icon'] . '"></a></li>';
+                $currentclass = $module['currentclass'];
+                $modulehtml .= '<li class="' . $completonclass . ' ' . $currentclass . '"><a href="' . $module['link'] . '" title="' . $module['name'] . '"><img src="' . $module['icon'] . '"></a></li>';
             }
 
             $activityhtml .= '<div class="d1"><h2>' . $navigationsection["name"] . '</h2><ul>' . $modulehtml . '</ul></div>';
