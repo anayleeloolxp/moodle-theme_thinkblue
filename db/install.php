@@ -23,8 +23,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Function to upgrade theme_thinkblue
  * @return bool result
@@ -194,7 +192,7 @@ function xmldb_theme_thinkblue_install() {
 
     set_config('cleanhtml', '2', 'local_staticpage');
 
-    get_enabled_auth_plugins(true); // fix the list of enabled auths
+    get_enabled_auth_plugins(true);
     if (empty($CFG->auth)) {
         $authsenabled = array();
     } else {

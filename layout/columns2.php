@@ -74,7 +74,10 @@ if (!isset($USER->id) && isset($USER->id) == '') {
 }
 
 if ($PAGE->pagetype == 'site-index') {
-    if (isset($leeloosettings->general_settings->homelayouttype) && isset($leeloosettings->general_settings->homelayouttype) != '') {
+    if (
+        isset($leeloosettings->general_settings->homelayouttype) &&
+        isset($leeloosettings->general_settings->homelayouttype) != ''
+    ) {
         if (@$leeloosettings->general_settings->homelayouttype == 'boxed') {
             $extraclasses[] = 'layout_boxed';
         } else {

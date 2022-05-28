@@ -34,7 +34,6 @@ if ($ADMIN->fulltree) {
         get_string('license', 'theme_thinkblue'),
         0
     );
-    //$setting->set_updatedcallback(theme_thinkblue_updateconf());
     $settings->add($setting);
 
     $setting = new admin_setting_configthinkblue('theme_thinkblue/settingsjson', '', '', '', PARAM_RAW);

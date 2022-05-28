@@ -41,7 +41,6 @@ use user_picture;
 use curl;
 use completion_info;
 
-defined('MOODLE_INTERNAL') || die;
 /**
  * Extending the core_renderer interface.
  *
@@ -89,7 +88,6 @@ class core_renderer extends \core_renderer {
             if (!empty($newjson->rewards_data)) {
                 foreach ($newjson->rewards_data as $key => $value) {
                     $keyyy = array_search($value->name, array_column($oldjson->rewards_data, 'name'));
-                    //var_dump($keyyy);
                     if (is_int($keyyy) || $oldjson->rewards_data == 0) {
                         $changetype = 'major';
                         $value->diff = $value->totalcount - $oldjson->rewards_data[$keyyy]->totalcount;
@@ -153,7 +151,8 @@ class core_renderer extends \core_renderer {
         if ($reqstartquiz == 1) {
             $quizid = optional_param('id', 0, PARAM_RAW);
             $usersession = $USER->sesskey;
-            $urltogo = $CFG->wwwroot . '/mod/quiz/startattempt.php?_qf__mod_quiz_preflight_check_form=1&cmid=' . $quizid . '&sesskey=' . $usersession;
+            $urltogo = $CFG->wwwroot .
+                '/mod/quiz/startattempt.php?_qf__mod_quiz_preflight_check_form=1&cmid=' . $quizid . '&sesskey=' . $usersession;
             redirect($urltogo);
         }
 
@@ -202,13 +201,14 @@ class core_renderer extends \core_renderer {
         $html = '';
         $gamificationdata = theme_thinkblue_gamification_data(base64_encode($USER->email));
 
-        global $PAGE, $DB, $CFG;
+        global $DB, $CFG;
 
         if ($USER->id && !is_siteadmin($USER) && count((array)($gamificationdata))) {
 
             $leelooview = optional_param('view', null, PARAM_RAW);
 
-            $actuallink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $actuallink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .
+                "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             if ($leelooview == 'dashboard') {
                 $gamheader->dashactive = true;
@@ -223,7 +223,7 @@ class core_renderer extends \core_renderer {
             $gamheader->showsrm = true;
 
             $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
-            $src = $userpicture->get_url($PAGE);
+            $src = $userpicture->get_url($this->page);
             $gamheader->avatar = $src;
             $gamheader->fullnameuser = fullname($USER);
 
@@ -298,7 +298,6 @@ class core_renderer extends \core_renderer {
 
                         $activityurl = new moodle_url($ar->url, array('forceview' => 1));
 
-
                         $completeclass = '';
                         $hascompletion = $completion->is_enabled($ar);
                         if ($hascompletion) {
@@ -327,7 +326,6 @@ class core_renderer extends \core_renderer {
                                 $enrolledcoursears[0]['activities'][$arcount]['activityiconurl'] = $activityiconurl;
                                 $enrolledcoursears[0]['activities'][$arcount]['activityurl'] = $activityurl;
                                 $enrolledcoursears[0]['activities'][$arcount]['completeclass'] = $completeclass;
-
 
                                 $arcount++;
                             }
@@ -454,7 +452,7 @@ class core_renderer extends \core_renderer {
 
             if ($USER->id) {
                 $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
-                $src = $userpicture->get_url($PAGE);
+                $src = $userpicture->get_url($this->page);
                 $gamheader->avatar = $src;
                 $gamheader->fullnameuser = fullname($USER);
 
@@ -548,9 +546,6 @@ class core_renderer extends \core_renderer {
         // Render from the own header template.
         $html = $this->render_from_template('theme_thinkblue/full_header', $header);
         // MODIFICATION END.
-        /* ORIGINAL START
-        return $this->render_from_template('core/full_header', $header);
-        ORIGINAL END. */
         // MODIFICATION START:
         // If the setting showhintcoursehidden is set, the visibility of the course is hidden and
         // a hint for the visibility will be shown.
@@ -1021,7 +1016,8 @@ class core_renderer extends \core_renderer {
                 $userbuttons = array(
                     'classes' => array(
                         'buttontype' => 'message',
-                        'title' => '<span class="totalcount_ph">' . $enrolledcourses . '</span> ' . get_string('classes', 'theme_thinkblue'),
+                        'title' => '<span class="totalcount_ph">' .
+                            $enrolledcourses . '</span> ' . get_string('classes', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'classes',
                         'linkattributes' => array(),
@@ -1029,7 +1025,8 @@ class core_renderer extends \core_renderer {
                     ),
                     'entries' => array(
                         'buttontype' => 'message',
-                        'title' => '<span class="totalcount_ph">' . $comments . '</span> ' . get_string('entries', 'theme_thinkblue'),
+                        'title' => '<span class="totalcount_ph">' .
+                            $comments . '</span> ' . get_string('entries', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'entries',
                         'linkattributes' => array(),
@@ -1037,7 +1034,8 @@ class core_renderer extends \core_renderer {
                     ),
                     'comments' => array(
                         'buttontype' => 'message',
-                        'title' => '<span class="totalcount_ph">' . $comments . '</span> ' . get_string('comments', 'theme_thinkblue'),
+                        'title' => '<span class="totalcount_ph">' .
+                            $comments . '</span> ' . get_string('comments', 'theme_thinkblue'),
                         'url' => '#',
                         'image' => 'comment',
                         'linkattributes' => array(),
@@ -1249,9 +1247,9 @@ class core_renderer extends \core_renderer {
                 }
             }
 
-            $count_modules = count($navigationsections[$i]['modules']);
+            $countmodules = count($navigationsections[$i]['modules']);
 
-            if ($count_modules == 0) {
+            if ($countmodules == 0) {
                 unset($navigationsections[$i]);
             }
         }
@@ -1263,12 +1261,18 @@ class core_renderer extends \core_renderer {
             foreach ($navigationsection['modules'] as $module) {
                 $completonclass = $module['completeclass'];
                 $currentclass = $module['currentclass'];
-                $modulehtml .= '<li class="' . $completonclass . ' ' . $currentclass . '"><a href="' . $module['link'] . '" title="' . $module['name'] . '"><img src="' . $module['icon'] . '"></a></li>';
+                $modulehtml .= '<li class="' .
+                    $completonclass . ' ' .
+                    $currentclass . '"><a href="' .
+                    $module['link'] . '" title="' .
+                    $module['name'] . '"><img src="' .
+                    $module['icon'] . '"></a></li>';
             }
 
             $activityhtml .= '<div class="d1"><h2>' . $navigationsection["name"] . '</h2><ul>' . $modulehtml . '</ul></div>';
         }
 
+        $courseurlused = new moodle_url('/course/view.php', array('id' => $course->id));
         return '<div class="bottom_activity_navigation">
             <div class="page-bottom-bar">
                 <div class="page-bottom-inn">
@@ -1276,14 +1280,14 @@ class core_renderer extends \core_renderer {
                         <div class="col-sm-4">
                         <div class="bottom_activity-left">
                             <div class="home-ico">
-                                <a href="' . new moodle_url('/course/view.php', array('id' => $course->id)) . '">
+                                <a href="' . $courseurlused . '">
                                     <img src="' . $CFG->wwwroot . '/theme/thinkblue/img/Duels-Gourav2_03.png">
                                 </a>
                             </div>
 
                             <div class="home-ico-text">
                                 <p>' . $this->page->cm->get_section_info()->name . '</p>
-                                <p><a href="' . new moodle_url('/course/view.php', array('id' => $course->id)) . '">' . $course->shortname . '</a></p>
+                                <p><a href="' . $courseurlused . '">' . $course->shortname . '</a></p>
                             </div>
                         </div>
                         </div>

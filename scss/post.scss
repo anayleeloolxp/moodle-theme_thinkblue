@@ -46,7 +46,7 @@
     max-width: 70%;
 }
 iframe {
-    background: #ffffff !important;
+    background: #fff !important;
 }
 /*------------------------------------
   Login page
@@ -6387,7 +6387,7 @@ body#page-course-view-topics div#page div#page-content div#region-main-box {
     color: $text_color !important;
 }
 #page-wrapper #page #page-content .main-right-section section.block#mod_quiz_navblock .content a.qnbutton.thispage {
-    background: linear-gradient( 105deg, #a1a1a1 20%, #2c2c2c) !important;
+    background: linear-gradient(105deg, #a1a1a1 20%, #2c2c2c) !important;
     color: #fff !important;
     box-shadow: none !important;
 }
@@ -7713,7 +7713,6 @@ aside#block-region-abovecontent section.block .no-overflow p iframe#video_discov
 }
 .gamification-right-tab-sec li .gami-tab-itm span {
     color: #2c2c2c;
-    font-size: 24px;
     font-size: 1.8vh;
     font-weight: 800;
     font-family: "Kaushan Script", cursive;
@@ -8902,7 +8901,8 @@ ul.flexsections.flexsections-level-1 > li {
 }
 .gam-progress span {
     background-color: #d9d9d9;
-    font: 0 Monaco, MonoSpace;
+    font-size: 0;
+    font-family: Monaco, monospace;
     height: 10px;
     position: absolute;
     width: 10px;

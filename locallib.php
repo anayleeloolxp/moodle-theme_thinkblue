@@ -22,8 +22,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Return the files from the loginbackgroundimage file area.
  * This function always loads the files from the filearea that is not really performant.
@@ -264,7 +262,7 @@ function theme_thinkblue_get_imageareacontent() {
                 } else {
                     $alttext = "";
                 }
-                // Add the file
+                // Add the file.
                 $imageareacache[] = array('filepath' => $filepath, 'linkpath' => $linkpath, 'alttext' => $alttext);
             }
             // Sort array alphabetically ascending to the key "filepath".
@@ -291,7 +289,10 @@ function theme_thinkblue_process_flatnav(flat_navigation $flatnav) {
     global $USER, $PAGE;
     $leeloosettings = theme_thinkblue_general_leeloosettings();
     // If the setting defaulthomepageontop is enabled.
-    if (isset($leeloosettings->additional_layout_settings->defaulthomepageontop) && isset($leeloosettings->additional_layout_settings->defaulthomepageontop) != '') {
+    if (
+        isset($leeloosettings->additional_layout_settings->defaulthomepageontop) &&
+        isset($leeloosettings->additional_layout_settings->defaulthomepageontop) != ''
+    ) {
         if (@$leeloosettings->additional_layout_settings->defaulthomepageontop == 1) {
             // Only proceed processing if we are in a course context.
             if (($coursehomenode = $flatnav->find('coursehome', global_navigation::TYPE_CUSTOM)) != false) {
@@ -624,11 +625,13 @@ function theme_thinkblue_quizzes_user_coursedata($courseid, $useremail) {
         } else {
             $resposedata->data->quizzes_history[$key]->button = 'Again';
         }
-        $resposedata->data->quizzes_history[$key]->buttonlink = $CFG->wwwroot . '/mod/quiz/view.php?id=' . $quizzeshistory->activity_id . '&rematch=' . $quizzeshistory->id;
+        $resposedata->data->quizzes_history[$key]->buttonlink = $CFG->wwwroot .
+            '/mod/quiz/view.php?id=' . $quizzeshistory->activity_id . '&rematch=' . $quizzeshistory->id;
     }
 
     foreach ($resposedata->data->quizzes_requests as $key => $quizzesrequests) {
-        $resposedata->data->quizzes_requests[$key]->acceptlink = $CFG->wwwroot . '/mod/quiz/view.php?id=' . $quizzesrequests->activity_id;
+        $resposedata->data->quizzes_requests[$key]->acceptlink = $CFG->wwwroot .
+            '/mod/quiz/view.php?id=' . $quizzesrequests->activity_id;
     }
 
     return $resposedata;
@@ -735,7 +738,6 @@ function theme_thinkblue_gamisync($baseemail) {
 
     $data = [
         'useremail' => $email,
-        //'oldpointsdata' => $output,
         'pointsdata' => $output,
         'needupdategame' => '0',
     ];
@@ -745,7 +747,6 @@ function theme_thinkblue_gamisync($baseemail) {
     if (!empty($tbgamepoints)) {
         if ($tbgamepoints->pointsdata != $output) {
             $data['id'] = $tbgamepoints->id;
-            //$data['oldpointsdata'] = $tbgamepoints->pointsdata;
             $data['needupdategame'] = '1';
             $DB->update_record('tb_game_points', $data);
         }

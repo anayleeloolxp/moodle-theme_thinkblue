@@ -325,7 +325,10 @@ $templatecontext['username'] = $USER->username;
 $templatecontext['userfullname'] = fullname($USER);
 
 if (isset(get_config('tool_leeloo_courses_sync')->version)) {
-    $leelooproduct = $DB->get_record_sql("SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = ? AND courseid = ?", [1, $courseid]);
+    $leelooproduct = $DB->get_record_sql(
+        "SELECT * FROM {tool_leeloo_courses_sync} WHERE enabled = ? AND courseid = ?",
+        [1, $courseid]
+    );
 
     if ($leelooproduct) {
         $isleelooproduct = true;
@@ -389,7 +392,10 @@ if (is_object($leeloocourse)) {
         $templatecontext['stats_sidebar'] = $statssidebar;
     }
 
-    if (isset($leeloocourse->course_data->instructor_section_position) && $leeloocourse->course_data->instructor_section_position == 'main') {
+    if (
+        isset($leeloocourse->course_data->instructor_section_position) &&
+        $leeloocourse->course_data->instructor_section_position == 'main'
+    ) {
         $teachermain = true;
 
         $templatecontext['teacher_main'] = $teachermain;
@@ -400,7 +406,10 @@ if (is_object($leeloocourse)) {
         $templatecontext['teacher_sidebar'] = $teachersidebar;
     }
 
-    if (isset($leeloocourse->course_data->about_course_section_position) && $leeloocourse->course_data->about_course_section_position == 'main') {
+    if (
+        isset($leeloocourse->course_data->about_course_section_position) &&
+        $leeloocourse->course_data->about_course_section_position == 'main'
+    ) {
         $aboutmain = true;
 
         $templatecontext['about_main'] = $aboutmain;
@@ -416,12 +425,16 @@ if (is_object($leeloocourse)) {
 
         $templatecontext['showheaderimage'] = $showheaderimage;
 
-        $courseheadimage = '<style>.page-top-main-banner{background-size: 100% 100%;background:url("' . $leeloocourse->course_data->course_header_image . '")</style>';
+        $courseheadimage = '<style>.page-top-main-banner{background-size: 100% 100%;background:url("' .
+            $leeloocourse->course_data->course_header_image . '")</style>';
 
         $templatecontext['course_header_image'] = $courseheadimage;
     }
 
-    if (isset($leeloocourse->course_data->course_header_description) && $leeloocourse->course_data->course_header_description != '') {
+    if (
+        isset($leeloocourse->course_data->course_header_description) &&
+        $leeloocourse->course_data->course_header_description != ''
+    ) {
         $showheaderdes = true;
 
         $templatecontext['showheaderdes'] = $showheaderdes;
@@ -572,17 +585,6 @@ if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_edit
 
         $templatecontext['sectionhtml'] = $OUTPUT->main_content();
         $templatecontext['selectskillhtmlfull'] = '';
-
-        /*foreach( $sections as $section){
-            $sectionnum = $section->section;
-
-            $children = course_get_format($PAGE->course)->get_subsections($sectionnum);
-            foreach ($children as $num) {
-                print_r($num);
-            }
-            //print_r($children);
-
-        }*/
     } else {
 
         $navigationsections = [];
@@ -636,9 +638,9 @@ if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_edit
                 }
             }
 
-            $count_modules = count($navigationsections[$i]['modules']);
+            $countmodules = count($navigationsections[$i]['modules']);
 
-            if ($count_modules == 0) {
+            if ($countmodules == 0) {
                 unset($navigationsections[$i]);
             }
         }
@@ -668,12 +670,21 @@ if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_edit
 
                 $modulehtml .= '<tr class="label_cont_td">
                 <td>
-                    <div class="label_txt"><a href="' . $module['link'] . '" title="' . $module['name'] . '">' . $module['name'] . '</a></div>
+                    <div class="label_txt"><a href="' .
+                    $module['link'] . '" title="' .
+                    $module['name'] . '">' .
+                    $module['name'] . '</a></div>
                 </td>
                 <td>
                     <div class="label_icn">
                         <ul>
-                            <li class="' . $completonclass . '"><a href="' . $module['link'] . '" title="' . $module['name'] . '"><img width="48" src="' . $module['icon'] . '" /></a></li>
+                            <li class="' .
+                    $completonclass .
+                    '"><a href="' .
+                    $module['link'] .
+                    '" title="' .
+                    $module['name'] .
+                    '"><img width="48" src="' . $module['icon'] . '" /></a></li>
                         </ul>
                     </div>
                 </td>
@@ -695,7 +706,10 @@ if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_edit
             </div>';
 
             $selectskillhtml .= '<tr class="label_nm_td">
-                        <td><div class="label_name"><a href="' . $sectionuncompletear . '">' . $navigationsection["name"] . '</a></div></td>
+                        <td><div class="label_name"><a href="' .
+                $sectionuncompletear . '">' .
+                $navigationsection["name"] . '
+                </a></div></td>
                     </tr>';
         }
 
@@ -708,9 +722,11 @@ if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_edit
             </table>
         </div>';
 
-        $templatecontext['sectionhtml'] = '<div class="slill_table"><div class="slill_table_items">' . $sectionhtml . '</div></div>';
+        $templatecontext['sectionhtml'] = '<div class="slill_table"><div class="slill_table_items">' .
+            $sectionhtml . '</div></div>';
 
-        $templatecontext['selectskillhtmlfull'] = '<div class="slill_table"><div class="slill_table_items">' . $selectskillhtmlfull . '</div></div>';
+        $templatecontext['selectskillhtmlfull'] = '<div class="slill_table"><div class="slill_table_items">' .
+            $selectskillhtmlfull . '</div></div>';
     }
 
     foreach ($completion->get_activities() as $ar) {
@@ -738,9 +754,6 @@ if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_edit
 
     $templatecontext['letsgourl'] = $letsgourl;
 
-    //$current = $this->get_data($cm, false, $USER->id);
-    //get_activities
-    //print_r($modinfo);
     echo $OUTPUT->render_from_template('theme_thinkblue/coursegamified', $templatecontext);
 }
 
