@@ -16,7 +16,6 @@
 /**
  * Theme Think Blue - JS code for catching pressed keys.
  *
- * @package    theme_thinkblue
  * @copyright  2017 Kathrin Osswald, Ulm University <kathrin.osswald@uni-ulm.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

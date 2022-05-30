@@ -24,6 +24,7 @@
  */
 
 require('../../../config.php');
+require_login();
 
 $to = $_REQUEST['teacheremail'];
 $subject = 'Enquiry :- ' . $_REQUEST['subject'];

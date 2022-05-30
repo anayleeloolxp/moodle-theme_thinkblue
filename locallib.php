@@ -787,7 +787,7 @@ function theme_thinkblue_course_image($course) {
         return 'https://leeloolxp.com/modules/mod_acadmic/images/Leeloo-lxp1.png';
     }
     // Where are the default at even?.
-    return print_error('error');
+    return 'https://leeloolxp.com/modules/mod_acadmic/images/Leeloo-lxp1.png';
 }
 
 /**
