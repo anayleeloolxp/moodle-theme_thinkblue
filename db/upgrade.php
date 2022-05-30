@@ -30,6 +30,12 @@
  */
 function xmldb_theme_thinkblue_upgrade($oldversion) {
     global $DB;
+    $dbman = $DB->get_manager();
+
+    if ($oldversion < 2022053001) {
+        $table = new xmldb_table('tb_game_points');
+        $dbman->rename_table($table, 'theme_thinkblue_tb_game_points', true, true);
+    }
 
     return true;
 }
