@@ -69,7 +69,7 @@ class core_renderer extends \core_renderer {
 
         global $DB;
 
-        $gamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
+        $gamepoints = $DB->get_record('theme_thinkblue_tb_game_points', array('useremail' => $email));
 
         if (!empty($gamepoints)) {
             $newjson = json_decode($gamepoints->pointsdata);
@@ -364,7 +364,7 @@ class core_renderer extends \core_renderer {
                 }
             }
 
-            $gamepointscheck = $DB->get_record('tb_game_points', array('useremail' => $USER->email));
+            $gamepointscheck = $DB->get_record('theme_thinkblue_tb_game_points', array('useremail' => $USER->email));
             if ($gamepointscheck->needupdategame) {
                 $comparerewards = $this->compare_rewards($USER->email);
 
@@ -444,7 +444,7 @@ class core_renderer extends \core_renderer {
                 $data['id'] = $gamepointscheck->id;
                 $data['needupdategame'] = 0;
                 $data['oldpointsdata'] = $gamepointscheck->pointsdata;
-                $DB->update_record('tb_game_points', $data);
+                $DB->update_record('theme_thinkblue_tb_game_points', $data);
             }
 
             $html = $this->render_from_template('theme_thinkblue/game_header', $gamheader);

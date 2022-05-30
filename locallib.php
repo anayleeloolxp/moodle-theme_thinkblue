@@ -742,17 +742,17 @@ function theme_thinkblue_gamisync($baseemail) {
         'needupdategame' => '0',
     ];
 
-    $tbgamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
+    $tbgamepoints = $DB->get_record('theme_thinkblue_tb_game_points', array('useremail' => $email));
 
     if (!empty($tbgamepoints)) {
         if ($tbgamepoints->pointsdata != $output) {
             $data['id'] = $tbgamepoints->id;
             $data['needupdategame'] = '1';
-            $DB->update_record('tb_game_points', $data);
+            $DB->update_record('theme_thinkblue_tb_game_points', $data);
         }
     } else {
         $data['oldpointsdata'] = $output;
-        $DB->insert_record('tb_game_points', $data);
+        $DB->insert_record('theme_thinkblue_tb_game_points', $data);
     }
 }
 
@@ -801,14 +801,14 @@ function theme_thinkblue_gamification_data($baseemail) {
 
     $email = base64_decode($baseemail);
 
-    $tbgamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
+    $tbgamepoints = $DB->get_record('theme_thinkblue_tb_game_points', array('useremail' => $email));
 
     if (!empty($tbgamepoints)) {
         $resposedata = json_decode($tbgamepoints->pointsdata);
     } else {
         theme_thinkblue_gamisync($baseemail);
 
-        $tbgamepoints = $DB->get_record('tb_game_points', array('useremail' => $email));
+        $tbgamepoints = $DB->get_record('theme_thinkblue_tb_game_points', array('useremail' => $email));
         if (!empty($tbgamepoints)) {
             $resposedata = json_decode($tbgamepoints->pointsdata);
         } else {
