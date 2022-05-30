@@ -34,7 +34,7 @@ function xmldb_theme_thinkblue_upgrade($oldversion) {
 
     if ($oldversion < 2022053001) {
         $table = new xmldb_table('tb_game_points');
-        $dbman->rename_table($table, 'theme_thinkblue_tb_game_points', true, true);
+        $dbman->rename_table($table, 'theme_thinkblue_points', true, true);
         upgrade_plugin_savepoint(true, 2022053001, 'theme', 'thinkblue');
     }
 
