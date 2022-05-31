@@ -199,7 +199,7 @@ class core_renderer extends \core_renderer {
         global $USER, $SITE;
         $gamheader = new stdClass();
         $html = '';
-        $gamificationdata = theme_thinkblue_gamification_data(base64_encode($USER->email));
+        @$gamificationdata = theme_thinkblue_gamification_data(base64_encode($USER->email));
 
         global $DB, $CFG;
 
@@ -365,7 +365,7 @@ class core_renderer extends \core_renderer {
             }
 
             $gamepointscheck = $DB->get_record('theme_thinkblue_points', array('useremail' => $USER->email));
-            if ($gamepointscheck->needupdategame) {
+            if (isset($gamepointscheck->needupdategame) && isset($gamepointscheck->needupdategame) != '') {
                 $comparerewards = $this->compare_rewards($USER->email);
 
                 if ($comparerewards['change_type'] == 'major') {
