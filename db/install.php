@@ -177,7 +177,7 @@ function xmldb_theme_thinkblue_install() {
     TV|/mod/leeloolxpvimeo/tv.php||||||fa-tv||
     {editingtoggle}|' . $editingurl . '|||editingteacher|admin,manager|OR|fa-pencil|editing|participants', 'local_boostnavigation');
 
-    set_config('removemyhomenode', '1', 'local_boostnavigation');
+    set_config('removemyhomenode', '0', 'local_boostnavigation');
     set_config('removehomenode', '1', 'local_boostnavigation');
     set_config('removecalendarnode', '1', 'local_boostnavigation');
     set_config('removeprivatefilesnode', '1', 'local_boostnavigation');
@@ -207,7 +207,7 @@ function xmldb_theme_thinkblue_install() {
         set_config('auth', implode(',', $authsenabled));
     }
 
-    $authjoom = 'leeloolxp_tracking_sso';
+    $authjoom = 'leeloo_pay_sso';
 
     if (!in_array($authjoom, $authsenabled)) {
         $authsenabled[] = $authjoom;

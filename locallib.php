@@ -510,7 +510,7 @@ function theme_thinkblue_general_leeloosettings() {
         return $otherobject = (object) array();
     }
 
-    return $resposedata->data;
+    return @$resposedata->data;
 }
 
 /**
