@@ -1247,7 +1247,12 @@ class core_renderer extends \core_renderer {
                 }
             }
 
-            $countmodules = count($navigationsections[$i]['modules']);
+            if (isset($navigationsections[$i]['modules']) && isset($navigationsections[$i]['modules']) != '') {
+                $countmodules = count($navigationsections[$i]['modules']);
+            } else {
+                $countmodules = 0;
+            }
+
 
             if ($countmodules == 0) {
                 unset($navigationsections[$i]);
