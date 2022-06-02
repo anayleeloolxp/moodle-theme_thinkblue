@@ -170,7 +170,7 @@ if ($checktrivia == 1) {
 }
 
 $THEME->requiredblocks = ' ';
-if ($leeloosettings->advanced_settings->addablockposition == 'positionnavdrawer') {
+if (@$leeloosettings->advanced_settings->addablockposition == 'positionnavdrawer') {
     $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 } else {
     $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_DEFAULT;
