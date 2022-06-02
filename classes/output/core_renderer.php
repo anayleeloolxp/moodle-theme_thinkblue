@@ -1253,7 +1253,6 @@ class core_renderer extends \core_renderer {
                 $countmodules = 0;
             }
 
-
             if ($countmodules == 0) {
                 unset($navigationsections[$i]);
             }
