@@ -638,7 +638,7 @@ if ((isset($_GET['ui']) && isset($_GET['ui']) != '') || $PAGE->user_allowed_edit
                 }
             }
 
-            $countmodules = count($navigationsections[$i]['modules']);
+            @$countmodules = count($navigationsections[$i]['modules']);
 
             if ($countmodules == 0) {
                 unset($navigationsections[$i]);
