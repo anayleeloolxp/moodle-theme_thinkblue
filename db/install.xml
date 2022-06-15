@@ -10,6 +10,7 @@
         <FIELD NAME="useremail" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="User email"/>
         <FIELD NAME="oldpointsdata" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Old Game points for user"/>
         <FIELD NAME="pointsdata" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Game points for user"/>
+        <FIELD NAME="needupdategame" TYPE="int" LENGTH="1" NOTNULL="false" DEFAULT="0" SEQUENCE="false"/>
 	  </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

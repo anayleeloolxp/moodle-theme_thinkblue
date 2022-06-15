@@ -38,5 +38,37 @@ function xmldb_theme_thinkblue_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2022053001, 'theme', 'thinkblue');
     }
 
+    if ($oldversion < 2022053002) {
+
+        // Define table theme_thinkblue_points to be dropped.
+        $table = new xmldb_table('theme_thinkblue_points');
+
+        // Conditionally launch drop table for theme_thinkblue_points.
+        if ($dbman->table_exists($table)) {
+            $dbman->drop_table($table);
+        }
+
+        // Define table theme_thinkblue_points to be created.
+        $table = new xmldb_table('theme_thinkblue_points');
+
+        // Adding fields to table theme_thinkblue_points.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('useremail', XMLDB_TYPE_CHAR, '255', null, XMLDB_NOTNULL, null, null);
+        $table->add_field('oldpointsdata', XMLDB_TYPE_TEXT, null, null, XMLDB_NOTNULL, null, null);
+        $table->add_field('pointsdata', XMLDB_TYPE_TEXT, null, null, XMLDB_NOTNULL, null, null);
+        $table->add_field('needupdategame', XMLDB_TYPE_INTEGER, '1', null, null, null, '0');
+
+        // Adding keys to table theme_thinkblue_points.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        // Conditionally launch create table for theme_thinkblue_points.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Thinkblue savepoint reached.
+        upgrade_plugin_savepoint(true, 2022053002, 'theme', 'thinkblue');
+    }
+
     return true;
 }
