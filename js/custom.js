@@ -175,6 +175,19 @@ require(["jquery"], function ($) {
         if (event.data == 'showletsgo') {
             $('#letsgo').modal('show');
         }
+
+        var text = event.data;
+        if( text.includes("leeloo_chatcount-") ){
+            var count = text.replace("leeloo_chatcount-", "");
+            if( count != 0 ){
+                $('.l_chatcount').removeClass('l_hidden');
+                $('.l_chatcount').text(count);
+            }else{
+                $('.l_chatcount').addClass('l_hidden');
+                $('.l_chatcount').text(count);
+            }
+        }
+
     });
 
 
