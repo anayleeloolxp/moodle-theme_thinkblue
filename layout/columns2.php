@@ -43,7 +43,7 @@ $leeloosettings = theme_thinkblue_general_leeloosettings();
 // MODIFICATION END.
 
 if (isloggedin()) {
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
+    $navdraweropen = (get_user_preferences('drawer-open-nav', 'false') == 'true');
 } else {
 
     $navdraweropen = true;
