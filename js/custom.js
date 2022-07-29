@@ -176,6 +176,15 @@ require(["jquery"], function ($) {
             $('#letsgo').modal('show');
         }
 
+        if (event.data == 'arenamodelshow') {
+            $('.boardheader, div#nav-drawer').fadeOut(500);
+        }
+
+        if (event.data == 'arenamodelclose') {
+            console.log('arenamodelclose');
+            $('.boardheader, div#nav-drawer').fadeIn(500);
+        }
+
         var text = event.data;
         if( text.includes("leeloo_chatcount-") ){
             var count = text.replace("leeloo_chatcount-", "");
