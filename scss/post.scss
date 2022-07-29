@@ -6852,6 +6852,9 @@ div#leeloosocialdiv iframe.leeloosocial {
 body.up-head div#leeloosocialdiv iframe.leeloosocial {
     height: calc(100vh - 62px);
 }
+.boardheader ~ div#page-content iframe.leeloosocial {
+    height: calc(100vh - 2px);
+}
 #page-login-index #page-wrapper #region-main .card-block .card-body {
     padding: 30px 0;
 }
@@ -9149,7 +9152,7 @@ ul.flexsections.flexsections-level-1 > li {
 .head-mn-btn {
     position: absolute;
     top: 12px;
-    right: 0;
+    right: 10px;
     z-index: 3;
 }
 .head-mn-btn .btn {
@@ -9234,7 +9237,43 @@ ul.flexsections.flexsections-level-1 > li {
 .coursegamified-page #page .srm-top-head-main {
     min-height: auto;
 }
+.srm-top-head-main.boardheader {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    .head-mn-btn {
+        .btn {
+            color: #fff;
+        }
+    }
+    .srm-top-team-div {
+        left: 0;
+        width: 100%;
+        .user_detl_left {
+            display: none;
+        }
+    }
+    .srm-top-team-div::after {
+        background: rgba(0,0,0,0.2);
+    }
+    .logo_side_container {
+        button.btn.nav-link i {
+            color: #fff;
+        }
+    }
+    .srm-top-left-menu {
+        display: none;
+    }
+    .srm-top-left-div {
+        span.box-span {
+            color: #fff;
+        }
+    }
+}
 
+
+// Rsponsive css
 @media only screen and (max-width: 1800px) {
     .pl-logo {
         width: 132px;
@@ -10008,9 +10047,13 @@ div#rewardsnoti {
 .great-noti ul {
     list-style: none;
 }
-.great-noti .great-item-img,
-.great-noti .great-item-txt {
-    display: inline-block;
+.great-noti {
+    .great-item-img {
+        display: inline-block;
+    }
+    .great-item-txt {
+        display: inline-block;
+    }
 }
 #rewardsnoti .modal-dialog {
     width: 100%;
@@ -10023,79 +10066,81 @@ div#rewardsnoti {
     flex-wrap: wrap;
     align-items: center;
 }
-.alchemy-wheel-modal .gam-car-title {
-    justify-content: center;
-}
-.alchemy-wheel-modal .gam-car-title span {
-    color: #383838;
-    font-size: 65px;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-}
-.alchemy-wheel-modal .modal-dialog .modal-content {
-    background: #f9faff;
+.alchemy-wheel-modal {
+    .gam-car-title {
+        justify-content: center;
+        span {
+            color: #383838;
+            font-size: 65px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+        }
+    }
+    .modal-dialog .modal-content {
+        background: #f9faff;
+    }
 }
 .great-popup {
     padding: 20px;
-}
-.great-popup ul {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-}
-.great-popup ul li {
-    width: 25%;
-    padding-top: 25%;
-    position: relative;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        li {
+            width: 25%;
+            padding-top: 25%;
+            position: relative;
+            .great-item {
+                background: #fff;
+                border-radius: 0;
+                box-shadow: 1px 3px 5px #dbdde5 inset;
+                padding: 10px;
+                font-size: 25px;
+                color: #404040;
+                font-family: "Kaushan Script", cursive;
+                text-align: center;
+                text-decoration: none;
+                outline: none !important;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: calc(100% - 20px);
+                height: calc(100% - 20px);
+                transform: translate(-50%, -50%);
+                opacity: 0.6;
+                filter: grayscale(1);
+                .great-item-txt {
+                    font-size: 18px;
+                    margin: 20px 0 0;
+                }
+                .great-item-img {
+                    height: calc(100% - 50px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+            }
+            .great-item.active {
+                opacity: 1;
+                filter: grayscale(0);
+                box-shadow: 1px 3px 5px #dbdde5;
+            }
+        }
+    }
 }
 .great-popup ul li:nth-child(1),
 .great-popup ul li:nth-child(2),
 .great-popup ul li:nth-child(3) {
     width: 33.3333%;
     padding-top: 33.3333%;
-}
-.great-popup ul li .great-item {
-    background: #fff;
-    border-radius: 0;
-    box-shadow: 1px 3px 5px #dbdde5 inset;
-    padding: 10px;
-    font-size: 25px;
-    color: #404040;
-    font-family: "Kaushan Script", cursive;
-    text-align: center;
-    text-decoration: none;
-    outline: none !important;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    transform: translate(-50%, -50%);
-    opacity: 0.6;
-    filter: grayscale(1);
-}
-.great-popup ul li .great-item.active {
-    opacity: 1;
-    filter: grayscale(0);
-    box-shadow: 1px 3px 5px #dbdde5;
-}
-.great-popup ul li .great-item .great-item-txt {
-    font-size: 18px;
-    margin: 20px 0 0;
-}
-.great-popup ul li .great-item .great-item-img {
-    height: calc(100% - 50px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.great-popup ul li .great-item .great-item-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
 .coursegamified-page .context-header-settings-menu {
     display: none !important;
@@ -10112,9 +10157,9 @@ div#rewardsnoti {
 }
 #wespher_widget_div.l_hidden {
     right: -100%;
-}
-#wespher_widget_div.l_hidden #wespher_widget_frame {
-    display: unset;
+    #wespher_widget_frame {
+        display: unset;
+    }
 }
 .leeloohidden {
     visibility: hidden;

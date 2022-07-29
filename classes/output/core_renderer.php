@@ -220,6 +220,13 @@ class core_renderer extends \core_renderer {
                 $gamheader->arenaactive = true;
             }
 
+            if (
+                strpos($actuallink, 'leeloolxp-smart-dashboard') !== false
+                && @$this->getleeloosettings()->general_settings->edition == 1
+            ) {
+                $gamheader->boardheader = true;
+            }
+
             $gamheader->showsrm = true;
 
             $userpicture = new user_picture($USER, array('size' => 50, 'class' => ''));
