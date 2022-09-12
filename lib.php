@@ -287,7 +287,7 @@ class admin_setting_configthinkblue extends admin_setting {
      * @return mixed returns config if successful else null
      */
     public function write_setting($data) {
-        if ($this->paramtype === PARAM_INT and $data === '') {
+        if ($this->paramtype === PARAM_INT && $data === '') {
             $data = 0;
         }
         $validated = $this->validate($data);
