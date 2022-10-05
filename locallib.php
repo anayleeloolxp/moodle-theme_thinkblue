@@ -631,7 +631,7 @@ function theme_thinkblue_quizzes_user_coursedata($courseid, $useremail) {
 
     foreach ($resposedata->data->quizzes_requests as $key => $quizzesrequests) {
         $resposedata->data->quizzes_requests[$key]->acceptlink = $CFG->wwwroot .
-            '/mod/quiz/view.php?id=' . $quizzesrequests->activity_id;
+            '/mod/quiz/view.php?id=' . $quizzesrequests->activity_id . '&accept=' . $quizzesrequests->id;
     }
 
     return $resposedata;
