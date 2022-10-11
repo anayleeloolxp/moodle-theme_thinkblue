@@ -250,5 +250,6 @@ $string['enrollnow'] = 'Enroll Now';
 $string['userenrolled'] = 'You are already Enrolled.';
 $string['copyquizattempturl'] = 'Copy attempt url';
 
-
+$string['neurons'] = 'Neurons';
+$string['xps'] = 'XPs';
 $string['letsgo'] = 'Let\'s Go';

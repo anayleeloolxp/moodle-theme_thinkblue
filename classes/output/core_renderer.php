@@ -381,7 +381,7 @@ class core_renderer extends \core_renderer {
 
                     if ($comparerewards['points'] != 0) {
                         $rewardsdata[0]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[0]->text = $comparerewards['points'] . ' Neurons';
+                        $rewardsdata[0]->text = $comparerewards['points'] . ' ' . get_string('neurons', 'theme_thinkblue');
                         if ($comparerewards['points'] > 0) {
                             $rewardsdata[0]->class = 'active';
                         } else {
@@ -391,7 +391,7 @@ class core_renderer extends \core_renderer {
 
                     if ($comparerewards['xps'] != 0) {
                         $rewardsdata[1]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[1]->text = $comparerewards['xps'] . ' XPs';
+                        $rewardsdata[1]->text = $comparerewards['xps'] . ' ' . get_string('xps', 'theme_thinkblue');
                         if ($comparerewards['xps'] > 0) {
                             $rewardsdata[1]->class = 'active';
                         } else {
@@ -426,7 +426,7 @@ class core_renderer extends \core_renderer {
 
                     if ($comparerewards['points'] != 0) {
                         $rewardsdata[0]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[0]->text = $comparerewards['points'] . ' Neurons';
+                        $rewardsdata[0]->text = $comparerewards['points'] . ' ' . get_string('neurons', 'theme_thinkblue');
                         if ($comparerewards['points'] > 0) {
                             $rewardsdata[0]->class = 'active';
                         } else {
@@ -436,7 +436,7 @@ class core_renderer extends \core_renderer {
 
                     if ($comparerewards['xps'] != 0) {
                         $rewardsdata[1]->icon = 'https://leeloolxp.com/leeloo_assets/assets/img/1633644604-Jadea.png';
-                        $rewardsdata[1]->text = $comparerewards['xps'] . ' XPs';
+                        $rewardsdata[1]->text = $comparerewards['xps'] . ' ' . get_string('xps', 'theme_thinkblue');;
                         if ($comparerewards['xps'] > 0) {
                             $rewardsdata[1]->class = 'active';
                         } else {
