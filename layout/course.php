@@ -510,6 +510,8 @@ $templatecontext['lang']['enrollnow'] = get_string('enrollnow', 'theme_thinkblue
 
 $templatecontext['lang']['userenrolled'] = get_string('userenrolled', 'theme_thinkblue');
 
+$templatecontext['lang']['neurons'] = get_string('neurons', 'theme_thinkblue');
+
 $activities = 0;
 
 foreach ($modinfo->sections as $section) {
