@@ -30,4 +30,17 @@ require_once($CFG->dirroot . '/theme/thinkblue/locallib.php');
 $leeloosettings = theme_thinkblue_general_leeloosettings();
 $footerhtml = @$leeloosettings->footerhtml;
 $templatecontext['footerhtml'] = $footerhtml;
+
+$lang = current_language();
+if ($lang) {
+    $scss = '<style>span.multilang {
+        display: none;
+    }
+    span.multilang[lang="' . $lang . '"] {
+        display: inherit;
+    }</style>';
+}
+
+echo $scss;
+
 echo $OUTPUT->render_from_template('theme_thinkblue/footer', $templatecontext);
