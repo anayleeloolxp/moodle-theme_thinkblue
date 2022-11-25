@@ -279,23 +279,7 @@ class core_renderer extends \core_renderer {
                             $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
 
                             if (isset($quizdata->quiztype)) {
-                                if ($quizdata->quiztype == 'discover') {
-                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Discover_on.png';
-                                } else if ($quizdata->quiztype == 'exercises') {
-                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Studycase_on.png';
-                                } else if ($quizdata->quiztype == 'trivias') {
-                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Trivia_on.png';
-                                } else if ($quizdata->quiztype == 'assessments') {
-                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Assessments_on.png';
-                                } else if ($quizdata->quiztype == 'quest') {
-                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Quest_on.png';
-                                } else if ($quizdata->quiztype == 'mission') {
-                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Mission_on.png';
-                                } else if ($quizdata->quiztype == 'duels') {
-                                    $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Duelos_on.png';
-                                } else {
-                                    $activityiconurl = $ar->get_icon_url() . '?default';
-                                }
+                                $activityiconurl = $CFG->wwwroot . '/local/leeloolxptrivias/pix/' . $quizdata->quiztype . '.png';
                             } else {
                                 $activityiconurl = $ar->get_icon_url() . '?default';
                             }
@@ -1216,23 +1200,7 @@ class core_renderer extends \core_renderer {
                         $quizdata = $DB->get_record('quiz', array('id' => $quizid), '*', MUST_EXIST);
 
                         if (isset($quizdata->quiztype)) {
-                            if ($quizdata->quiztype == 'discover') {
-                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Discover_on.png';
-                            } else if ($quizdata->quiztype == 'exercises') {
-                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Studycase_on.png';
-                            } else if ($quizdata->quiztype == 'trivias') {
-                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Trivia_on.png';
-                            } else if ($quizdata->quiztype == 'assessments') {
-                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Assessments_on.png';
-                            } else if ($quizdata->quiztype == 'quest') {
-                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Quest_on.png';
-                            } else if ($quizdata->quiztype == 'mission') {
-                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Mission_on.png';
-                            } else if ($quizdata->quiztype == 'duels') {
-                                $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/Duelos_on.png';
-                            } else {
-                                $iconsrc = $module->get_icon_url() . '?default';
-                            }
+                            $iconsrc = $CFG->wwwroot . '/local/leeloolxptrivias/pix/' . $quizdata->quiztype . '.png';
                         } else {
                             $iconsrc = $module->get_icon_url() . '?default';
                         }
