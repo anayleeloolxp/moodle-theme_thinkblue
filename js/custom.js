@@ -176,6 +176,11 @@ require(["jquery"], function ($) {
             $('#letsgo').modal('show');
         }
 
+        if (event.data == 'showleftmeu') {
+            $('.logo_side_container button').addClass('click');
+            $('.logo_side_container button').trigger('click');
+        }
+
         if (event.data == 'arenamodelshow') {
             $('.boardheader, div#nav-drawer').fadeOut(500);
         }

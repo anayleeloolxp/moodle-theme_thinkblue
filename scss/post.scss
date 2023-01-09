@@ -10176,3 +10176,15 @@ div#rewardsnoti {
 .great-noti li {
     margin: 5px 0;
 }
+.demo_mode .srm-top-head-main {
+    display: none;
+}
+body.demo_mode.up-head div#leeloosocialdiv iframe.leeloosocial {
+    height: calc(100vh - 1px);
+}
+.demo_mode .logo_side_container a.navbar-brand, .demo_mode div#nav-drawer.closed[data-region="drawer"] a.navbar-brand.has-logo {
+    display: none!important;
+}
+.demo_mode .logo_side_container {
+    display: none!important;
+}

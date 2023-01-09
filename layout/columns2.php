@@ -98,6 +98,15 @@ if ($PAGE->pagetype == 'site-index') {
     }
 }
 
+if (isset($leeloosettings->general_settings->demo_mode) && isset($leeloosettings->general_settings->demo_mode) != '') {
+    if ($leeloosettings->general_settings->demo_mode == 'TRUE' && !is_siteadmin()) {
+        $extraclasses[] = 'demo_mode';
+        $extraclasses[] = 'up-head';
+        $navdraweropen = true;
+        unset($extraclasses['drawer-open-left']);
+    }
+}
+
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 
 $blockshtml = $OUTPUT->blocks('side-pre');
