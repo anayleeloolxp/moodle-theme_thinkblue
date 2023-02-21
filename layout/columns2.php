@@ -27,8 +27,12 @@ defined('MOODLE_INTERNAL') || die();
 
 // MODIFICATION START.
 
-global $PAGE;
-
+global $PAGE, $SESSION;
+$PAGE->requires->js(new moodle_url('/theme/thinkblue/js/custom.js'));
+$reqlb = optional_param('lb', 0, PARAM_RAW);
+if ($reqlb == 1) {
+    $SESSION->theme = '';
+}
 // MODIFICATION END.
 
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);

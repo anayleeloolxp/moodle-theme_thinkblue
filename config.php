@@ -25,9 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-global $PAGE;
-$PAGE->requires->js(new moodle_url('/theme/thinkblue/js/custom.js'));
-
 $THEME->name = 'thinkblue';
 $THEME->parents = ['boost'];
 $THEME->editor_sheets = [];
